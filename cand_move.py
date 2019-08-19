@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from PIL import Image
 from glob import glob
 import cv2
@@ -27,4 +29,6 @@ for i in images:
     cv2.destroyAllWindows()
     cand_grade = input()
     os.rename(i, "cand_grade_{0}/{1}".format(cand_grade, i))
+    pfd = i[:-4]
+    os.rename(pfd, "cand_grade_{0}/{1}".format(cand_grade, pfd))
 
