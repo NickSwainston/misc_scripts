@@ -87,27 +87,31 @@ read_time = 1. #s
 calc_time = 0.21
 write_time = 0.7
 npointing = 1
+secs_plotting = 5
+
 
 #original
 read_starts = [0.]
 calc_starts = [read_time]
 write_starts = [npointing*calc_time + read_time]
-for i in range(1,10):
+for i in range(1,5):
     read_starts.append(write_starts[i-1] + write_time)
     calc_starts.append(read_starts[i] + read_time) 
     write_starts.append(calc_starts[i] + calc_time)
 
-print(read_starts, calc_starts, write_starts)
+#print(read_starts, calc_starts, write_starts)
 
-for i in range(10):
+linewidth = 2.
+
+for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time,  1., facecolor='r',
-                      linewidth=1., edgecolor='black')
+                      linewidth=linewidth, edgecolor='black')
     ax.add_artist(read)
     calc  = Rectangle([calc_starts[i],  1.],  calc_time,  1., facecolor='g',
-                      linewidth=1., edgecolor='black')
+                      linewidth=linewidth, edgecolor='black')
     ax.add_artist(calc)
     write = Rectangle([write_starts[i], 0.], write_time, 1., facecolor='b',
-                      linewidth=1., edgecolor='black')
+                      linewidth=linewidth, edgecolor='black')
     ax.add_artist(write)
 plt.axis([0, write_starts[-1]+write_time, 0, 3])
 plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=20)
@@ -123,36 +127,44 @@ npointing = 10
 
 #multi-pixel
 read_starts = [0.]
-calc_starts = [read_time]
+temp_calc = [read_time]
+for p in range(1, npointing):
+    temp_calc.append(temp_calc[p-1] + calc_time)
+calc_starts = [temp_calc]
 write_starts = [npointing*calc_time + read_time]
-for i in range(1,10):
+for i in range(1, secs_plotting):
     if i == 1:
         read_starts.append(read_starts[0] + read_time)
     #elif i == 2:
     #    read_starts.append(read_starts[1] + calc_time)
     else:
-        read_starts.append(calc_starts[i-2] + npointing*calc_time)
-    calc_starts.append(calc_starts[i-1] + npointing*calc_time) 
-    write_starts.append(calc_starts[i])
+        read_starts.append(calc_starts[i-2][0] + npointing*calc_time)
+    temp_calc = [calc_starts[i-1][-1] + calc_time]
+    for p in range(1, npointing):
+        temp_calc.append(temp_calc[p-1] + calc_time)
+    calc_starts.append(temp_calc) 
+    write_starts.append(calc_starts[i][-1] + calc_time)
 
-print(read_starts, calc_starts, write_starts)
+#print(read_starts, calc_starts, write_starts)
 
 patches = []
-for i in range(10):
+for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
-                      linewidth=1., edgecolor='black')
+                      linewidth=linewidth, edgecolor='black')
     ax.add_artist(read)
-    calc  = Rectangle([calc_starts[i],  1.],  npointing*calc_time, 1., facecolor='g',
-                      linewidth=1., edgecolor='black')
-    ax.add_artist(calc)
+    for p in range(npointing):
+        calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
+                          linewidth=linewidth, edgecolor='black')
+        ax.add_artist(calc)
     write = Rectangle([write_starts[i], 0.], write_time, 1., facecolor='b',
-                      linewidth=1., edgecolor='black')
+                      linewidth=linewidth, edgecolor='black')
     ax.add_artist(write)
 #p = collections.PatchCollection(patches)
 #ax.add_collection(p)
-plt.axis([0, calc_starts[-1]+npointing*calc_time, 0, 3])
+plt.axis([0, calc_starts[-1][-1] + calc_time + write_time, 0, 3])
 plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=20)
-plt.xlabel('Processing time (s)')
+plt.xticks(fontsize=30)
+plt.xlabel('Processing time (s)', fontsize=30)
 plt.savefig('mult-pixel_workflow.eps')
 
 
