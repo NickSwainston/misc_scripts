@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from PIL import Image
 from glob import glob
 import cv2
