@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import itertools
 
 def find_duos(players_list):
     
@@ -28,39 +29,69 @@ def find_duos(players_list):
         possible_matches = []
         for pair_1 in possible_pairs:
             for pair_2 in possible_pairs:
-                #check for inpossible pairings
+                # Check for impossible pairings
                 if not (pair_1[0] in pair_2 or pair_1[1] in pair_2):
                     possible_matches.append([pair_1, pair_2])
 
-        # Score each possible match by counting how many times the players have previous played against or played with their matches
+        possible_courts = []
+        shape = [len(possible_matches)] * (len(playing_this_round) // 4)
+        #print(shape)
+        for match_i in itertools.product(*[range(s) for s in shape]):
+            if len(match_i) == 1:
+                # only one court so no need to do any checks
+                possible_courts.append([possible_matches[match_i[0]]])
+            else:
+                # Make sure the matches make sense (people aren't playing multiple games at once)
+                temp_check_list = []
+                for ci in range(len(match_i)):
+                    #print(list(match_i), ci)
+                    #print(possible_courts)
+                    pair_1, pair_2 = possible_matches[list(match_i)[ci]]
+                    py1, py2 = pair_1
+                    py3, py4 = pair_2
+                    for player in [py1, py2, py3, py4]:
+                        temp_check_list.append(player)
+                if len(temp_check_list) == len(set(temp_check_list)):
+                    # No double ups so it's possible
+                    temp_courts = []
+                    for mi in match_i:
+                        temp_courts.append(possible_matches[mi])
+                    possible_courts.append(temp_courts)
+            #print(len(match_i))
+            #for match in possible_matches:
+
+        #print(possible_courts)
+
+        # Score each possible match by counting how many times the players have
+        # previous played against or played with their matches
         match_score_with = []
         match_score_against = []
-        for match in possible_matches:
+        for possible_matches in possible_courts:
             temp_score_with = 0
             temp_score_against = 0
-            pair_1, pair_2 = match
-            py1, py2 = pair_1
-            py3, py4 = pair_2
-            # Check if played with
-            if py1 in players_dict[py2]["played_with"]:
-                temp_score_with += 1
-            if py3 in players_dict[py4]["played_with"]:
-                temp_score_with += 1
+            for match in possible_matches:
+                pair_1, pair_2 = match
+                py1, py2 = pair_1
+                py3, py4 = pair_2
+                # Check if played with
+                if py1 in players_dict[py2]["played_with"]:
+                    temp_score_with += 1
+                if py3 in players_dict[py4]["played_with"]:
+                    temp_score_with += 1
 
-            # Check if played against
-            if py1 in players_dict[py3]["played_against"]:
-                temp_score_against += 1
-            if py1 in players_dict[py4]["played_against"]:
-                temp_score_against += 1
-            if py2 in players_dict[py3]["played_against"]:
-                temp_score_against += 1
-            if py2 in players_dict[py4]["played_against"]:
-                temp_score_against += 1
-            #print("          Pair 1: {0}   {1}".format(py1, py2))
-            #print("          Pair 2: {0}   {1}".format(py3, py4))
-            #print("          score with {0}".format(temp_score_with))
+                # Check if played against
+                if py1 in players_dict[py3]["played_against"]:
+                    temp_score_against += 1
+                if py1 in players_dict[py4]["played_against"]:
+                    temp_score_against += 1
+                if py2 in players_dict[py3]["played_against"]:
+                    temp_score_against += 1
+                if py2 in players_dict[py4]["played_against"]:
+                    temp_score_against += 1
+                #print("          Pair 1: {0}   {1}".format(py1, py2))
+                #print("          Pair 2: {0}   {1}".format(py3, py4))
+                #print("          score with {0}".format(temp_score_with))
 
-            
             match_score_with.append(temp_score_with)
             match_score_against.append(temp_score_against)
 
@@ -74,37 +105,39 @@ def find_duos(players_list):
         if min_score_with > 0:
             print("Out of possible matches")
             break
-        for mi, match in enumerate(possible_matches):
-            if match_score_with[mi] == min_score_with and \
-               match_score_against[mi] == min_score_against:
+        for ci, court in enumerate(possible_courts):
+            if match_score_with[ci] == min_score_with and \
+               match_score_against[ci] == min_score_against:
                 # Print the next match
                 print("Round #{0}:".format(round_number))
-                #for ci, court in enumerate(match):
-                pair_1, pair_2 = match
-                py1, py2 = pair_1
-                py3, py4 = pair_2
-                print("          Pair 1: {0}   {1}".format(py1, py2))
-                print("          Pair 2: {0}   {1}".format(py3, py4))
+                #print(court)
+                for mi, match in enumerate(court):
+                    pair_1, pair_2 = match
+                    py1, py2 = pair_1
+                    py3, py4 = pair_2
+                    print("          Court: {0}".format(mi + 1))
+                    print("             Pair 1: {0}   {1}".format(py1, py2))
+                    print("             Pair 2: {0}   {1}".format(py3, py4))
 
-                # Update the dicts
+                    # Update the dicts
+                    players_dict[py1]["played_with"].append(py2)
+                    players_dict[py2]["played_with"].append(py1)
+                    players_dict[py3]["played_with"].append(py4)
+                    players_dict[py4]["played_with"].append(py3)
+
+                    players_dict[py1]["played_against"].append(py3)
+                    players_dict[py1]["played_against"].append(py4)
+                    players_dict[py2]["played_against"].append(py3)
+                    players_dict[py2]["played_against"].append(py4)
+                    players_dict[py3]["played_against"].append(py1)
+                    players_dict[py3]["played_against"].append(py2)
+                    players_dict[py4]["played_against"].append(py1)
+                    players_dict[py4]["played_against"].append(py2)
+
+                    #print(players_dict)
+                    #if round_number == 3:
+                    #    exit()
                 round_number += 1
-                players_dict[py1]["played_with"].append(py2)
-                players_dict[py2]["played_with"].append(py1)
-                players_dict[py3]["played_with"].append(py4)
-                players_dict[py4]["played_with"].append(py3)
-
-                players_dict[py1]["played_against"].append(py3)
-                players_dict[py1]["played_against"].append(py4)
-                players_dict[py2]["played_against"].append(py3)
-                players_dict[py2]["played_against"].append(py4)
-                players_dict[py3]["played_against"].append(py1)
-                players_dict[py3]["played_against"].append(py2)
-                players_dict[py4]["played_against"].append(py1)
-                players_dict[py4]["played_against"].append(py2)
-
-                #print(players_dict)
-                #if round_number == 3:
-                #    exit()
                 break
 
 if __name__ == '__main__':
