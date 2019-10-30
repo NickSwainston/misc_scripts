@@ -64,7 +64,7 @@ if __name__ == '__main__':
     else:
         flags = args.flagged_tiles
 
-    print "gathering required data"
+    print("gathering required data")
     if not os.path.exists('{0}/{1}_metafits_ppds.fits'.format(args.out_dir,args.obsid)):
         os.system('wget -O {0}/{1}_metafits_ppds.fits mwa-metadata01.pawsey.org.au/metadata/fits?obs_id={1}'.format(args.out_dir, args.obsid))
     xpos, ypos, zpos, tile_n = getTileLocations(args.obsid, flags, fdir=args.out_dir)
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     for i in range(len(xpos)):
         dis.append(np.sqrt(xpos[i]**2 + ypos[i]**2))
         if math.isnan(dis[i]):
-            print xpos[i],ypos[i]
+            print(xpos[i],ypos[i])
 
     #dec_list = [x for _,x in sorted(zip(ra_list,dec_list))]
     xpos = [x for _,x in sorted(zip(dis,xpos))]
@@ -84,17 +84,24 @@ if __name__ == '__main__':
     tile_n = [x for _,x in sorted(zip(dis,tile_n))]
     dis = sorted(dis)
     #print dis
-    print "Tiles from furtherst to closest: ",
+    import matplotlib.pyplot as plt
+    plt.plot(dis)
+    plt.show()
+    exit()
+    
+    print("Tiles from furtherst to closest: ",)
+    
+    
     for i in reversed(tile_n):
-        print i,
-    print "\n",
+        print(i,)
+    print("\n")
     #get freq from metadata
     beam_meta_data = meta.getmeta(service='obs', params={'obs_id':args.obsid})
     channels = beam_meta_data[u'rfstreams'][u"0"][u'frequencies']
     minfreq = float(min(channels))
     maxfreq = float(max(channels))
     centrefreq = 1.28 * 10**6 * (minfreq + (maxfreq-minfreq)/2) #in Hz
-    print centrefreq
+    print(centrefreq)
     wavelength = 2.997*10**8 / centrefreq
 
     #simulate change in FWHM
@@ -114,14 +121,14 @@ if __name__ == '__main__':
                 baselines.append(temp_base)
         #print baselines
         FWHMs.append(np.degrees(1.22*wavelength/max(baselines))*60.)
-    print FWHMs[0]
-    print FWHMs[15]
+    print(FWHMs[0])
+    print(FWHMs[15])
     
        #remove N furthes tiles
     flagged_xpos = xpos[-(args.numflag):]
     flagged_ypos = ypos[-(args.numflag):]
     flagged_tiles = tile_n[-(args.numflag):]
-    print "Tiles to flag: ",flagged_tiles
+    print("Tiles to flag: ",flagged_tiles)
     
     if args.flag_file:
         with open(args.flag_file, 'a+') as f:
@@ -211,6 +218,6 @@ if __name__ == '__main__':
  
 
 
-    print "Will have a reltaive sensitivity of "+str(sn_range[args.numflag])
+    print("Will have a reltaive sensitivity of "+str(sn_range[args.numflag]))
 
    
