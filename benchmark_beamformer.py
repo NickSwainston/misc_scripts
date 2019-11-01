@@ -48,6 +48,7 @@ def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_nu
                                   begin=begin, end=end, channels=channels,
                                   DI_dir=DI_dir, relaunch_script=relaunch_script,
                                   args=args)
+        print("Sent off benchmarking jobs for {} pointings".format(len(pointing_list)))
         process_vcs_wrapper(search_opts, pointing_list,
                             channels=channels)
     return
