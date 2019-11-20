@@ -79,13 +79,14 @@ plt.savefig("benchmarking_per_pointing.eps")
 # Make workflow plots---------------------------------------------------------------------
 
 plt.clf()
-plt.close()
-fig = plt.figure( figsize=(15,5))
-ax = fig.add_subplot(111)
+fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0}, figsize=(15,10))
 
-read_time = 1. #s
-calc_time = 0.21
-write_time = 0.7/10
+#fig = plt.figure( figsize=(15,5))
+#ax = fig.add_subplot(111)
+
+read_time = 0.2 #s
+calc_time = 0.17
+write_time = 0.035
 npointing = 1
 secs_plotting = 5
 
@@ -106,24 +107,28 @@ linewidth = 2.
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time,  1., facecolor='r',
                       linewidth=linewidth, edgecolor='black')
-    ax.add_artist(read)
+    ax[0].add_artist(read)
     calc  = Rectangle([calc_starts[i],  1.],  calc_time,  1., facecolor='g',
                       linewidth=linewidth, edgecolor='black')
-    ax.add_artist(calc)
+    ax[0].add_artist(calc)
     write = Rectangle([write_starts[i], 0.], write_time, 1., facecolor='b',
                       linewidth=linewidth, edgecolor='black')
-    ax.add_artist(write)
-plt.axis([0, write_starts[-1]+write_time, 0, 3])
-plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=20)
-plt.xlabel('Processing time (s)')
-plt.savefig('original_workflow.eps')
+    ax[0].add_artist(write)
+#plt.axis([0, write_starts[-1]+write_time, 0, 3])
+#plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=20)
+#plt.xlabel('Processing time (s)')
+#plt.savefig('original_workflow.eps')
+#plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=30)
 
-plt.clf()
-plt.close()
-fig = plt.figure(figsize=(15,5))
-ax = fig.add_subplot(111)
+#plt.clf()
+#plt.close()
+#fig = plt.figure(figsize=(15,5))
+#ax = fig.add_subplot(111)
 
-npointing = 10
+npointing = 7
+read_time = 1.36 #s
+calc_time = 0.22
+write_time = 0.084
 
 #multi-pixel
 read_starts = [0.]
@@ -157,22 +162,26 @@ patches = []
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
                       linewidth=linewidth, edgecolor='black')
-    ax.add_artist(read)
+    ax[1].add_artist(read)
     for p in range(npointing):
         calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
                           linewidth=linewidth, edgecolor='black')
-        ax.add_artist(calc)
+        ax[1].add_artist(calc)
     for p in range(npointing):
         write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
                           linewidth=linewidth, edgecolor='black')
-        ax.add_artist(write)
+        ax[1].add_artist(write)
 #p = collections.PatchCollection(patches)
 #ax.add_collection(p)
 print(write_starts[0][-1], write_starts[1][-1], write_starts[2][-1], write_starts[3][-1], write_starts[4][-1])
 plt.axis([0, write_starts[-1][-1] + write_time, 0, 3])
-plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'], fontsize=20)
+plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'])
+for tick in ax[0].yaxis.get_major_ticks():
+    tick.label.set_fontsize(30)
+for tick in ax[1].yaxis.get_major_ticks():
+    tick.label.set_fontsize(30)
 plt.xticks(fontsize=30)
 plt.xlabel('Processing time (s)', fontsize=30)
-plt.savefig('mult-pixel_workflow.eps')
+plt.savefig('multi-pixel_workflow.eps')
 
 
