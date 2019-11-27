@@ -84,11 +84,19 @@ fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0}, f
 #fig = plt.figure( figsize=(15,5))
 #ax = fig.add_subplot(111)
 
-read_time = 0.2 #s
-calc_time = 0.17
-write_time = 0.035
 npointing = 1
 secs_plotting = 5
+
+#old timing
+#read_time = 0.2 #s
+#calc_time = 0.17
+#write_time = 0.035
+
+#retimed with better timing averaging
+read_time = 0.516 #s
+calc_time = 0.581
+write_time = 0.026
+
 
 
 #original
@@ -125,10 +133,23 @@ for i in range(secs_plotting):
 #fig = plt.figure(figsize=(15,5))
 #ax = fig.add_subplot(111)
 
-npointing = 7
-read_time = 1.36 #s
-calc_time = 0.22
-write_time = 0.084
+npointing = 5
+
+#openMP version:
+#read_time = 1.36 #s
+#calc_time = 0.22
+#write_time = 0.084
+
+#serial upgrade 1p:
+read_time  = 0.542 #s
+calc_time  = 0.510
+write_time = 0.009
+
+#serial upgrade 15p:
+read_time  = 0.471 #s
+calc_time  = 0.368
+write_time = 0.012
+
 
 #multi-pixel
 read_starts = [0.]
@@ -141,6 +162,8 @@ for p in range(1, npointing):
     temp_write.append(temp_write[p-1] + write_time)
 write_starts = [temp_write]
 for i in range(1, secs_plotting):
+    """
+    #async mode
     if i == 1:
         read_starts.append(read_starts[0] + read_time)
     #elif i == 2:
@@ -155,6 +178,17 @@ for i in range(1, secs_plotting):
     for p in range(1, npointing):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
+    """
+    read_starts.append(calc_starts[-1][-1] + calc_time)
+    temp_calc = [read_starts[i] + read_time]
+    for p in range(1, npointing):
+        temp_calc.append(temp_calc[p-1] + calc_time)
+    calc_starts.append(temp_calc) 
+    temp_write = [calc_starts[i][-1] + calc_time]
+    for p in range(1, npointing):
+        temp_write.append(temp_write[p-1] + write_time)
+    write_starts.append(temp_write)
+
 
 #print(read_starts, calc_starts, write_starts)
 
