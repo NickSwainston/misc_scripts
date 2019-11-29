@@ -28,7 +28,7 @@ def make_pointing_list(pointing_in, pointing_num):
         pointing_list_list.append(temp_list)
     return pointing_list_list
 
-def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_num, args):
+def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_num, args, vcstools_version):
     #creating pointing list
     pointing_list_list = make_pointing_list(pointing_in, pointing_num)
     #print(pointing_list_list)
@@ -47,7 +47,7 @@ def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_nu
         search_opts = search_options_class(obsid, cal_id=cal_obs,
                                   begin=begin, end=end, channels=channels,
                                   DI_dir=DI_dir, relaunch_script=relaunch_script,
-                                  args=args)
+                                  args=args, vcstools_ver=vcstools_version)
         print("Sent off benchmarking jobs for {} pointings".format(len(pointing_list)))
         process_vcs_wrapper(search_opts, pointing_list,
                             channels=channels)
@@ -97,12 +97,31 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     for bench in benchmark_list:
         pns.append(bench[0])
         bench_total_times = bench[1]
-        total_times.append(np.mean(bench_total_times)/bench[0])
-        total_time_std.append(np.std(bench_total_times)/bench[0])
+        total_times.append(np.mean(bench_total_times)/bench[0]/100*24)
+        total_time_std.append(np.std(bench_total_times)/bench[0]/100*24)
+
+    print(f"Times: {total_times}")
+    print(f"Times std: {total_time_std}")
+    
+    #Galaxy MPB benchmarks serial, cal once upgrade
+    galaxy_mpb_times = [24.946077569999996, 16.736973759999998, 13.74829847,
+                        12.11295253, 11.083652268, 10.641167811666666,
+                        10.711637881428569, 9.822233005000001, 9.584228442222221,
+                        9.22881431, 9.166687645454546, 9.4694958725,
+                        9.33200447923077, 8.810422717142856, 8.674555905999998]
+    galaxy_mpb_t_std = [1.4452587252036433, 0.8276700183039727, 0.7197822452137351,
+                        0.38995991243788464, 0.1323128179640961, 0.38698380790094133,
+                        0.23876854414689958, 0.2991264454866008, 0.28994737767526846,
+                        0.2038852330143943, 0.17738044480151316, 0.20314511164648275,
+                        0.19631739333354165, 0.47328326372738955, 0.19456733116853275]
 
     import matplotlib.pyplot as plt
     fig = plt.figure()
-    plt.errorbar(pns, total_times, yerr=total_time_std)
+    plt.errorbar(pns, galaxy_mpb_times, yerr=galaxy_mpb_t_std, label='Galaxy multi-pixel beamformer')
+    plt.errorbar(pns, [1.23*24]*15, yerr=[0.05*24]*15, label='Galaxy original beamformer')
+    plt.ylabel("Processing Time per pointing per second of data (s)")
+    plt.xlabel("Number of pointings")
+    plt.legend(loc='upper left')
     plt.show()
     
 
@@ -122,13 +141,16 @@ if __name__ == "__main__":
              help="Last GPS time to process")
     parser.add_argument('--max_pointing_num', type=int, default=15,
             help="Max number of pointings for multipixel beamformer")
+    parser.add_argument('--vcstools_version', type=str, default='master',
+            help="Vcstools version")
     parser.add_argument('-m', '--mode', type=str, default='s',
             help="Script mode. s: send off jobs. r: read in outputs and do statitics")
     args = parser.parse_args()
 
     if args.mode == 's':
         send_off_benchmark_jobs(args.observation, args.cal_obs, args.pointing,
-                            args.begin, args.end, args.max_pointing_num, args)
+                                args.begin, args.end, args.max_pointing_num, args,
+                                args.vcstools_version)
     elif args.mode == 'r':
         dur = args.end - args.begin + 1
         read_beanchmark_jobs(args.observation, args.pointing, args.max_pointing_num,

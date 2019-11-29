@@ -31,5 +31,8 @@ for i in images:
     cand_grade = input()
     os.rename(i, "cand_grade_{0}/{1}".format(cand_grade, i))
     pfd = i[:-4]
-    os.rename(pfd, "cand_grade_{0}/{1}".format(cand_grade, pfd))
+    if os.path.isfile(pfd):
+        os.rename(pfd, "cand_grade_{0}/{1}".format(cand_grade, pfd))
+    else:
+        print('WARNING no pfd file')
 

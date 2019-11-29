@@ -72,6 +72,15 @@ if __name__ == '__main__':
     ypos = ypos-np.mean(ypos)
     orig_tn = len(xpos)
 
+
+    #calculate maximum baselines
+    baseline = []
+    for i in range(orig_tn):
+        for j in range(orig_tn):
+            baseline.append(np.sqrt( (xpos[i] - xpos[j])**2 + (ypos[i] - ypos[j])**2))
+    print("Maximum baseline: {}".format(max(baseline)))
+    exit()
+
     dis = []
     for i in range(len(xpos)):
         dis.append(np.sqrt(xpos[i]**2 + ypos[i]**2))
