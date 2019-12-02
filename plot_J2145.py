@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 from astropy.coordinates import SkyCoord
 import astropy.units as u
+import math
 from math import sqrt
 import numpy as np
+import find_pulsar_in_obs as fpio
+import mwa_metadb_utils as meta
 
 true_pos_raj  = '21:45:50.46'
 true_pos_decj = '-07:50:18.48'
@@ -241,6 +244,7 @@ rads = coords.ra.degree
 decds = coords.dec.degree
 #fig, axes = plt.subplots(nrows=2)
 ax = plt.gca()
+#plt.axis('equal')
 
 distance = []
 for rad, decd, sn in zip(rads, decds, sns):
@@ -248,8 +252,8 @@ for rad, decd, sn in zip(rads, decds, sns):
     ax.add_patch(circle)
     distance.append(sqrt( (rad - true_pos_rad)**2 + (decd - true_pos_decd)**2))
 
-print "Max distance: {0} degrees".format(max(distance))
-print "J2145-0750 detected {} times".format(len(sns)+1)
+print("Max distance: {0} degrees".format(max(distance)))
+print("J2145-0750 detected {} times".format(len(sns)+1))
 
 #true position
 #circle = plt.Circle((true_pos_rad, true_pos_decd), 0.15, color='b')
@@ -262,6 +266,7 @@ coord = SkyCoord(obs_centre_raj, obs_centre_decj, unit=(u.hourangle,u.deg))
 obs_centre_rad = coord.ra.degree
 obs_centre_decd = coord.dec.degree
 
+"""
 #calc number of loops
 n_beam = 7100
 l = 0
@@ -273,7 +278,49 @@ search_radius = 0.9 * 0.3 * float(l)
 print("Number of loops: {}".format(l))
 circle = plt.Circle((obs_centre_rad, obs_centre_decd), search_radius, color='b', fill=False)
 ax.add_patch(circle)
+"""
 
+
+#plot fwhm of tile beam
+ob = 1221832280
+ob, ra, dec, time, delays,centrefreq, channels = meta.get_common_obs_metadata(ob)
+print(delays)
+delays = [[12, 12, 12, 12, 8, 8, 8, 8, 4, 4, 4, 4, 0, 0, 0, 0], [12, 12, 12, 12, 8, 8, 8, 8, 4, 4, 4, 4, 0, 0, 0, 0]]
+cord = [ob, ra, dec, time, delays, centrefreq, channels]
+z=[] ; z_sens =[] ; x=[] ; y=[]
+
+map_dec_range = range(int(dec-15),int(dec+13),1)
+map_ra_range = range(int(ra-15),int(ra+37),1)
+RA=[] ; Dec=[]
+for i in map_dec_range:
+    for j in map_ra_range:
+        Dec.append(i)
+        RA.append(j)
+
+#print(max(Dec), min(RA), Dec.dtype)
+time_intervals = 600 # seconds
+names_ra_dec = np.column_stack((['source']*len(RA), RA, Dec))
+powout = fpio.get_beam_power_over_time(cord, names_ra_dec, dt=time_intervals, degrees = True)
+#grab a line of beam power for the pointing declination
+#if i == 0:
+#    print("len powers list: " + str(powout.shape))
+for c in range(len(RA)):
+    temppower = 0.
+    temppower_sense = 0.
+    for t in range(powout.shape[1]):
+        power_ra = powout[c,t,0]
+        if power_ra > temppower:
+            temppower = power_ra
+    z.append(temppower)
+    x.append(RA[c])
+    y.append(Dec[c])
+    #x.append(-RA[c]/180.*np.pi +np.pi)
+    #y.append(Dec[c]/180.*np.pi)
+
+nx=np.array(x) ; ny=np.array(y); nz=np.array(z)
+plt.tricontour(nx, ny, nz, levels=[0.5*max(nz)], alpha = 0.6,
+                           colors='blue',
+                           linewidths=1.0)
 
 #plot
 plt.axis('scaled')
@@ -287,4 +334,6 @@ plt.colorbar()
 #plt.show()
 #fig.show()
 #plt.colorbar(label="Presto signal to noise")
-plt.savefig('J2145-0750_detections.png')
+plt.gca().set_aspect('equal', adjustable='box')
+plt.savefig('J2145-0750_detections.png', dpi=1000)
+plt.savefig('J2145-0750_detections.eps')
