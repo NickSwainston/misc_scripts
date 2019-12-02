@@ -150,6 +150,16 @@ read_time  = 0.471 #s
 calc_time  = 0.368
 write_time = 0.012
 
+#serial and cal once 1p:
+read_time  = 0.499 #s
+calc_time  = 0.363
+write_time = 0.008
+
+#serial and cal once 15p:
+read_time  = 0.516 #s
+calc_time  = 0.275
+write_time = 0.016
+
 
 #multi-pixel
 read_starts = [0.]
