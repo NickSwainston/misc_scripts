@@ -74,6 +74,8 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
         command = "grep {0} {1}mb*batch".format(pointing_str, batch_dir)
         output = subprocess.Popen([command], stdout=subprocess.PIPE, shell=True).stdout
         for out in output:
+            if b'cp' in out:
+                continue
             base_batch = out.decode().split(".batch:")[0]
             begin_out = out.decode().split(" -b ")[1][:10]
             end_out   = out.decode().split(" -e ")[1][:10]
@@ -102,27 +104,68 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
 
     print(f"Times: {total_times}")
     print(f"Times std: {total_time_std}")
+
+
+
+def plot_benchmarks(max_pointings):
+    pns = list(range(1,max_pointings+1))
     
     #Galaxy MPB benchmarks serial, cal once upgrade
-    galaxy_mpb_times = [24.946077569999996, 16.736973759999998, 13.74829847,
+    galaxy_mpb_times = np.array([24.946077569999996, 16.736973759999998, 13.74829847,
                         12.11295253, 11.083652268, 10.641167811666666,
                         10.711637881428569, 9.822233005000001, 9.584228442222221,
                         9.22881431, 9.166687645454546, 9.4694958725,
-                        9.33200447923077, 8.810422717142856, 8.674555905999998]
-    galaxy_mpb_t_std = [1.4452587252036433, 0.8276700183039727, 0.7197822452137351,
+                        9.33200447923077, 8.810422717142856, 8.674555905999998])
+    galaxy_mpb_t_std = np.array([1.4452587252036433, 0.8276700183039727, 0.7197822452137351,
                         0.38995991243788464, 0.1323128179640961, 0.38698380790094133,
                         0.23876854414689958, 0.2991264454866008, 0.28994737767526846,
                         0.2038852330143943, 0.17738044480151316, 0.20314511164648275,
-                        0.19631739333354165, 0.47328326372738955, 0.19456733116853275]
+                        0.19631739333354165, 0.47328326372738955, 0.19456733116853275])
+    galaxy_orig_times = np.array([1.23*24]*15)
+    galaxy_orig_t_std = np.array([0.03*24]*15)
+
+    #Ozstar MPB benchmarks serial, cal once upgrade
+    ozstar_mpb_times = np.array([10.8919, 6.6485, 5.138566666666667,
+                        4.611625, 4.37054, 4.0846833333333326,
+                        3.665057142857143, 3.8473875, 3.688588888888889,
+                        3.65932, 3.472590909090909, 3.642475,
+                        3.6434384615384605, 3.1627214285714285, 3.0993533333333327])
+    ozstar_mpb_t_std = np.array([0.5828762390079045, 0.38231331391935586, 0.2598150089754033,
+                        0.3046873551281707, 0.3518930786474778, 0.33209539752239203,
+                        0.32578035796016463, 0.3030123241614934, 0.300121486307145,
+                        0.3495969816803344, 0.2543067229525066, 0.2715681916357903,
+                        0.251464319230689, 0.24366376957200842, 0.22391966882989287])
+    ozstar_orig_times = np.array([0.73*24]*15)
+    ozstar_orig_t_std = np.array([0.02*24]*15)
 
     import matplotlib.pyplot as plt
     fig = plt.figure()
-    plt.errorbar(pns, galaxy_mpb_times, yerr=galaxy_mpb_t_std, label='Galaxy multi-pixel beamformer')
-    plt.errorbar(pns, [1.23*24]*15, yerr=[0.05*24]*15, label='Galaxy original beamformer')
+    #plt.fill_between(pns, galaxy_orig_times-galaxy_orig_t_std, galaxy_orig_times+galaxy_orig_t_std,
+    #                 facecolor='gray')
+    plt.errorbar(pns, galaxy_orig_times, yerr=galaxy_orig_t_std,
+            fmt='D-', color='deepskyblue', label='Galaxy original beamformer')
+    
+    #plt.fill_between(pns, galaxy_mpb_times-galaxy_mpb_t_std, galaxy_mpb_times+galaxy_mpb_t_std,
+    #                 facecolor='gray')
+    plt.errorbar(pns, galaxy_mpb_times, yerr=galaxy_mpb_t_std,
+                 color='mediumblue', label='Galaxy multi-pixel beamformer')
+    
+    #plt.fill_between(pns, ozstar_orig_times-ozstar_orig_t_std, ozstar_orig_times+ozstar_orig_t_std,
+    #                 facecolor='gray')
+    plt.errorbar(pns, ozstar_orig_times, yerr=ozstar_orig_t_std,
+                 fmt='D-', color='lime', label='Ozstar original beamformer')
+    
+    #plt.fill_between(pns, ozstar_mpb_times-ozstar_mpb_t_std, ozstar_mpb_times+ozstar_mpb_t_std,
+    #                 facecolor='gray')
+    #plt.errorbar(pns, total_times, yerr=total_time_std, label='Ozstar multi-pixel beamformer')
+    plt.errorbar(pns,  ozstar_mpb_times, yerr=ozstar_mpb_t_std,
+                 color='mediumseagreen', label='Ozstar multi-pixel beamformer')
+
     plt.ylabel("Processing Time per pointing per second of data (s)")
     plt.xlabel("Number of pointings")
-    plt.legend(loc='upper left')
-    plt.show()
+    plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
+    #plt.show()
+    plt.savefig("Beamformer_benchmark.eps")
     
 
 if __name__ == "__main__":
@@ -155,5 +198,7 @@ if __name__ == "__main__":
         dur = args.end - args.begin + 1
         read_beanchmark_jobs(args.observation, args.pointing, args.max_pointing_num,
                              args.begin, args.end)
+    elif args.mode == 'p':
+        plot_benchmarks(args.max_pointing_num)
     else:
         print("No valid option given. Doing nothing")
