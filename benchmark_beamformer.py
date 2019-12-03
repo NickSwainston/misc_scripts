@@ -120,7 +120,7 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     plt.errorbar(pns, galaxy_mpb_times, yerr=galaxy_mpb_t_std, label='Galaxy multi-pixel beamformer')
     plt.errorbar(pns, [1.23*24]*15, yerr=[0.05*24]*15, label='Galaxy original beamformer')
     plt.ylabel("Processing Time per pointing per second of data (s)")
-    plt.xlabel("Number of pointings")
+    plt.xlabel("Number of simultaneous tied-array beams")
     plt.legend(loc='upper left')
     plt.show()
     
