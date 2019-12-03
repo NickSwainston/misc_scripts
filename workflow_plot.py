@@ -5,11 +5,8 @@ import numpy as np
 from matplotlib.patches import Rectangle
 import matplotlib.collections as collections
 
-
-# Make workflow plots---------------------------------------------------------------------
-
-plt.clf()
-fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0}, figsize=(15,10))
+fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0},
+                       figsize=(15,10))
 
 #fig = plt.figure( figsize=(15,5))
 #ax = fig.add_subplot(111)
@@ -22,10 +19,16 @@ secs_plotting = 5
 #calc_time = 0.17
 #write_time = 0.035
 
+#Galaxy
 #retimed with better timing averaging
 read_time = 0.516 #s
 calc_time = 0.581
 write_time = 0.026
+
+#ozstar
+read_time = 0.280 #s
+calc_time = 0.153
+write_time = 0.032
 
 
 
@@ -80,6 +83,23 @@ read_time  = 0.471 #s
 calc_time  = 0.368
 write_time = 0.012
 
+#serial and cal once 1p:
+read_time  = 0.499 #s
+calc_time  = 0.363
+write_time = 0.008
+
+#serial and cal once 15p:
+read_time  = 0.516 #s
+calc_time  = 0.275
+write_time = 0.016
+
+#Ozstar
+#serial and cal once 15p:
+read_time  = 0.266 #s
+calc_time  = 0.044
+write_time = 0.013
+
+
 
 #multi-pixel
 read_starts = [0.]
@@ -109,7 +129,7 @@ for i in range(1, secs_plotting):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
     """
-    read_starts.append(calc_starts[-1][-1] + calc_time)
+    read_starts.append(write_starts[-1][-1] + write_time)
     temp_calc = [read_starts[i] + read_time]
     for p in range(1, npointing):
         temp_calc.append(temp_calc[p-1] + calc_time)
