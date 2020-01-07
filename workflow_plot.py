@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib.patches import Rectangle
 import matplotlib.collections as collections
 
-fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0},
+fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0.1},
                        figsize=(15,10))
 
 #fig = plt.figure( figsize=(15,5))
@@ -27,18 +27,22 @@ write_time = 0.026
 
 #ozstar
 read_time = 0.280 #s
-calc_time = 0.153
+cal_time = 0.058
+calc_time = 0.095
+#calc_time = 0.153 #total calc
 write_time = 0.032
 
 
 
 #original
 read_starts = [0.]
-calc_starts = [read_time]
-write_starts = [npointing*calc_time + read_time]
+cal_starts = [read_time]
+calc_starts = [read_time + cal_time]
+write_starts = [read_time + cal_time + calc_time]
 for i in range(1,5):
     read_starts.append(write_starts[i-1] + write_time)
-    calc_starts.append(read_starts[i] + read_time) 
+    cal_starts.append(read_starts[i] + read_time)
+    calc_starts.append(cal_starts[i] + cal_time) 
     write_starts.append(calc_starts[i] + calc_time)
 
 #print(read_starts, calc_starts, write_starts)
@@ -49,6 +53,9 @@ for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time,  1., facecolor='r',
                       linewidth=linewidth, edgecolor='black')
     ax[0].add_artist(read)
+    cal  = Rectangle([cal_starts[i],  1.],  cal_time,  1., facecolor='purple',
+                      linewidth=linewidth, edgecolor='black')
+    ax[0].add_artist(cal)
     calc  = Rectangle([calc_starts[i],  1.],  calc_time,  1., facecolor='g',
                       linewidth=linewidth, edgecolor='black')
     ax[0].add_artist(calc)
@@ -99,15 +106,26 @@ read_time  = 0.266 #s
 calc_time  = 0.044
 write_time = 0.013
 
+#Ozstar
+#serial and cal once 1p:
+read_time  = 0.266 #s
+cal_time   = 0.070
+#calc_time  = 0.085 Calculated using calc_time_total * .55
+calc_time  = 0.039 # calculated from the (15p_calc_time - 0.07)/15
+
+#calc_time = 0.155 #total
+write_time = 0.013
+
 
 
 #multi-pixel
 read_starts = [0.]
-temp_calc = [read_time]
+cal_starts = [read_time]
+temp_calc = [read_time + cal_time]
 for p in range(1, npointing):
     temp_calc.append(temp_calc[p-1] + calc_time)
 calc_starts = [temp_calc]
-temp_write = [read_time + calc_time*npointing]
+temp_write = [read_time + cal_time + calc_time*npointing]
 for p in range(1, npointing):
     temp_write.append(temp_write[p-1] + write_time)
 write_starts = [temp_write]
@@ -130,7 +148,8 @@ for i in range(1, secs_plotting):
     write_starts.append(temp_write)
     """
     read_starts.append(write_starts[-1][-1] + write_time)
-    temp_calc = [read_starts[i] + read_time]
+    cal_starts.append(read_starts[i] + read_time)
+    temp_calc = [cal_starts[i] + cal_time]
     for p in range(1, npointing):
         temp_calc.append(temp_calc[p-1] + calc_time)
     calc_starts.append(temp_calc) 
@@ -147,6 +166,9 @@ for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
                       linewidth=linewidth, edgecolor='black')
     ax[1].add_artist(read)
+    cal  = Rectangle([cal_starts[i],  1.],  cal_time, 1., facecolor='purple',
+                      linewidth=linewidth, edgecolor='black')
+    ax[1].add_artist(cal)
     for p in range(npointing):
         calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
                           linewidth=linewidth, edgecolor='black')

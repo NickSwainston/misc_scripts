@@ -1,10 +1,6 @@
 import argparse
 import numpy as np
 
-import config
-from mwa_search_pipeline import process_vcs_wrapper, search_options_class
-from mwa_metadb_utils import get_channels
-
 def make_pointing_list(pointing_in, pointing_num):
     pointing_list_list = []
     arcsec = 0
@@ -29,6 +25,9 @@ def make_pointing_list(pointing_in, pointing_num):
     return pointing_list_list
 
 def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_num, args, vcstools_version):
+    import config
+    from mwa_search_pipeline import process_vcs_wrapper, search_options_class
+    from mwa_metadb_utils import get_channels
     #creating pointing list
     pointing_list_list = make_pointing_list(pointing_in, pointing_num)
     #print(pointing_list_list)
@@ -55,6 +54,7 @@ def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_nu
 
 
 def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
+    from mwa_metadb_utils import get_channels
     comp_config = config.load_config_file()
     batch_dir = "{0}/{1}/batch/".format(comp_config['base_product_dir'], obsid)
     channels = get_channels(obsid)
@@ -145,7 +145,8 @@ def plot_benchmarks(max_pointings):
     arm_orig_t_std = np.array([0.02]*15)
 
     import matplotlib.pyplot as plt
-    fig = plt.figure()
+    
+    """
     #plt.fill_between(pns, galaxy_orig_times-galaxy_orig_t_std, galaxy_orig_times+galaxy_orig_t_std,
     #                 facecolor='gray')
     plt.errorbar(pns, galaxy_orig_times, yerr=galaxy_orig_t_std,
@@ -166,11 +167,16 @@ def plot_benchmarks(max_pointings):
     #plt.errorbar(pns, total_times, yerr=total_time_std, label='Ozstar multi-pixel beamformer')
     plt.errorbar(pns,  ozstar_mpb_times, yerr=ozstar_mpb_t_std,
                  color='mediumseagreen', label='Ozstar multi-pixel beamformer')
+    """
+    plt.errorbar(pns, ozstar_orig_times/ozstar_mpb_times, yerr=ozstar_mpb_t_std/5,
+                 color='green', label='Ozstar multi-pixel beamformer')
+    plt.errorbar(pns, galaxy_orig_times/galaxy_mpb_times, yerr=galaxy_mpb_t_std/5,
+                 color='blue', label='Galaxy multi-pixel beamformer')
 
-    plt.ylabel("Processing Time per pointing per second of data (s)")
-    plt.xlabel("Number of pointings")
-    plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
-    #plt.show()
+    plt.ylabel("Factor of improved processing efficiency")
+    plt.xlabel("Number of simultaneous tied-array beams")
+    #plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
+    plt.legend(loc='upper left', bbox_to_anchor=(0.05, 0.98))
     plt.savefig("Beamformer_benchmark.eps")
     
 
