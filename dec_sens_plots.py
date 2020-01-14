@@ -52,6 +52,7 @@ def calc_powers(centrefreq=150.):
     return powers_list
 
 if __name__ == "__main__":
+    #plot all sweet spots
     for freq in [120, 150, 200]:
         powers_list = calc_powers(freq)
         sweet_dec_range = [-82.8,-71.4,-63.1,-55.,-47.5,-40.4,-33.5,-26.7,-19.9,-13.,-5.9,1.6,9.7,18.6,29.4,44.8]
@@ -68,15 +69,17 @@ if __name__ == "__main__":
         plt.xlim(-90, 65)
         plt.savefig("dec_sens_{}.png".format(freq))
 
+    # plot the declinations abouve 30
     for freq in [120, 150, 185]:
         powers_list = calc_powers(freq)
         sweet_dec_range = [-82.8,-71.4,-63.1,-55.,-47.5,-40.4,-33.5,-26.7,-19.9,-13.,-5.9,1.6,9.7,18.6,29.4,44.8]
         plt.figure(figsize=(15,10))
         for pi, p in enumerate(powers_list):
             #check if they're worth using above 30 deg
-            #if max(p[120:]) < 0.05:
-            if sweet_dec_range[pi] != 44.8:
-                continue
+            p = 2.5 / np.array(p)
+            #if sweet_dec_range[pi] != 44.8:
+            if min(p[120:]) > 40.:
+               continue
             
             if sweet_dec_range[pi] < -30.:
                 plt.plot(range(-89,89,1), p, linestyle=":", label=sweet_dec_range[pi])
@@ -84,10 +87,12 @@ if __name__ == "__main__":
                 plt.plot(range(-89,89,1), p, label=sweet_dec_range[pi])
         plt.legend()
         plt.xlabel("Declination (degrees)")
-        plt.ylabel("Zenith normalised power")
+        #plt.ylabel("Zenith normalised power")
+        plt.ylabel(r"Detection Sensitivity, 10$\sigma$ (mJy)")
         plt.title("Meridian powers for observations at {} MHz".format(freq))
         plt.xlim(30, 65)
-        plt.ylim(0.,0.3)
+        #plt.ylim(0.,0.3)
+        plt.ylim(0.,50.)
         plt.savefig("dec_sens_zoom_{}.png".format(freq))
 
     #make a theoretical maximum sensitivty plot 
@@ -99,9 +104,7 @@ if __name__ == "__main__":
                 max_power[di] = deg_p
 
     max_sens = 2.5 / np.array(max_power).reshape((178,1))
-    print(max_sens.shape)
     max_sens_map = np.repeat(max_sens, 360, axis=1)
-    print(max_sens_map)
 
     #set up plot arrays
     res = 1
@@ -118,11 +121,13 @@ if __name__ == "__main__":
     ny.shape = (len(map_dec_range),len(map_ra_range))
 
     import matplotlib.colors as colors
+    from matplotlib.colors import LogNorm
     fig = plt.figure(figsize=(6, 4))
     plt.rc("font", size=8)
     fig.add_subplot(111)
     ax = plt.axes(projection='mollweide')    
-    plt.pcolor(nx, ny, max_sens_map, cmap='plasma_r', vmin=2., vmax=10.)
+    plt.pcolor(nx, ny, max_sens_map, cmap='plasma_r', vmin=1., vmax=100.,
+               norm=LogNorm(vmin=1., vmax=100.))
 
     plt.xlabel("Right Ascension")
     plt.ylabel("Declination")
@@ -130,6 +135,6 @@ if __name__ == "__main__":
     ax.set_xticklabels(xtick_labels, zorder=150)
     plt.grid(True, color='gray', lw=0.5, linestyle='dotted')
     plt.colorbar(spacing='uniform', shrink = 0.65, #ticks=[2., 10., 20., 30., 40., 50.], 
-                     label=r"Detection Sensitivity, 10$\sigma$ (mJy)")
+                 label=r"Detection Sensitivity, 10$\sigma$ (mJy)")
     
     plt.savefig("max_sense_{}.png".format(185), dpi=1000)
