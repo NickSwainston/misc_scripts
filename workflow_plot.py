@@ -5,8 +5,8 @@ import numpy as np
 from matplotlib.patches import Rectangle
 import matplotlib.collections as collections
 
-fig, ax = plt.subplots(5, sharex=True, sharey=True, gridspec_kw={'hspace': 0.1},
-                       figsize=(20,25))
+fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0.1},
+                       figsize=(20,10))
 
 #fig = plt.figure( figsize=(15,5))
 #ax = fig.add_subplot(111)
@@ -75,6 +75,7 @@ for i in range(secs_plotting):
 
 npointing = 5
 
+"""
 #multi-pixel
 read_starts = [0.]
 temp_cal = [read_time]
@@ -188,7 +189,7 @@ for i in range(secs_plotting):
 #ax.add_collection(p)
 
 max_xaxis = write_starts[-1][-1] + write_time
-
+"""
 
 
 #serial upgrade 1p:
@@ -230,7 +231,7 @@ write_time = 0.013
 
 
 
-
+"""
 #remove unnessary calcs
 read_starts = [0.]
 temp_cal = [read_time]
@@ -275,7 +276,7 @@ for i in range(secs_plotting):
                           linewidth=linewidth, edgecolor='black')
         ax[3].add_artist(write)
 
-
+"""
 #multi-pixel
 read_starts = [0.]
 cal_starts = [read_time]
@@ -299,6 +300,7 @@ for i in range(1, secs_plotting):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
 
+max_xaxis = write_starts[-1][-1] + write_time
 
 #print(read_starts, calc_starts, write_starts)
 
@@ -306,29 +308,29 @@ patches = []
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
                       linewidth=linewidth, edgecolor='black')
-    ax[4].add_artist(read)
+    ax[1].add_artist(read)
     cal  = Rectangle([cal_starts[i],  1.],  cal_time, 1., facecolor='purple',
                       linewidth=linewidth, edgecolor='black')
-    ax[4].add_artist(cal)
+    ax[1].add_artist(cal)
     for p in range(npointing):
         calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
                           linewidth=linewidth, edgecolor='black')
-        ax[4].add_artist(calc)
+        ax[1].add_artist(calc)
         write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
                           linewidth=linewidth, edgecolor='black')
-        ax[4].add_artist(write)
+        ax[1].add_artist(write)
 #p = collections.PatchCollection(patches)
 #ax.add_collection(p)
 
 
-for i, label in enumerate(('a)', 'b)', 'c)', 'd)', 'e)')):
-    ax[i].text(-0.1, 0.5, label, transform=ax[i].transAxes,
-      fontsize=25, va='center', ha='right')
+#for i, label in enumerate(('a)', 'b)', 'c)', 'd)', 'e)')):
+#    ax[i].text(-0.1, 0.5, label, transform=ax[i].transAxes,
+#      fontsize=25, va='center', ha='right')
 
 
 plt.axis([0, max_xaxis, 0, 3])
 plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'])
-for axi in range(5):
+for axi in range(2):
     for tick in ax[axi].yaxis.get_major_ticks():
         tick.label.set_fontsize(30)
 plt.xticks(fontsize=30)
