@@ -35,4 +35,7 @@ for i in images:
         os.rename(pfd, "cand_grade_{0}/{1}".format(cand_grade, pfd))
     else:
         print('WARNING no pfd file')
+    bestprof = pfd + '.bestprof'
+    if os.path.isfile(bestprof):
+        os.rename(bestprof, "cand_grade_{0}/{1}".format(cand_grade, bestprof))
 
