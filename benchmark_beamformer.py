@@ -172,6 +172,7 @@ def plot_benchmarks(max_pointings):
     #plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
     plt.legend(loc='upper left', bbox_to_anchor=(0.05, 0.98))
     plt.savefig("Beamformer_benchmark.eps")
+    plt.savefig("Beamformer_benchmark.png", bbox_inches='tight', dpi=1000)
     
 
 if __name__ == "__main__":
