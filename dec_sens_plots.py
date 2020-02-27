@@ -104,6 +104,13 @@ if __name__ == "__main__":
                 max_power[di] = deg_p
 
     max_sens = 2.5 / np.array(max_power).reshape((178,1))
+    #write max sensitivty to file
+    import csv
+    with open('max_sensitvity.csv', 'w', newline='') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=',')
+        for dec, sens in zip(range(-89,89,1), max_sens):
+            spamwriter.writerow([dec, sens[0]])
+
     max_sens_map = np.repeat(max_sens, 360, axis=1)
 
     #set up plot arrays
