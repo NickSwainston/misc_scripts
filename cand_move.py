@@ -38,4 +38,7 @@ for i in images:
         print('WARNING no pfd file')
     if os.path.isfile(tar):
         os.rename(tar, "cand_grade_{0}/{1}".format(cand_grade, tar))
+    bestprof = pfd + '.bestprof'
+    if os.path.isfile(bestprof):
+        os.rename(bestprof, "cand_grade_{0}/{1}".format(cand_grade, bestprof))
 
