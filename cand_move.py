@@ -31,8 +31,14 @@ for i in images:
     cand_grade = input()
     os.rename(i, "cand_grade_{0}/{1}".format(cand_grade, i))
     pfd = i[:-4]
+    tar = pfd + ".tar.gz"
     if os.path.isfile(pfd):
         os.rename(pfd, "cand_grade_{0}/{1}".format(cand_grade, pfd))
-    else:
+    elif "singlepulse" not in pfd:
         print('WARNING no pfd file')
+    if os.path.isfile(tar):
+        os.rename(tar, "cand_grade_{0}/{1}".format(cand_grade, tar))
+    bestprof = pfd + '.bestprof'
+    if os.path.isfile(bestprof):
+        os.rename(bestprof, "cand_grade_{0}/{1}".format(cand_grade, bestprof))
 
