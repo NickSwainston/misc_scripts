@@ -55,6 +55,7 @@ def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_nu
 
 def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     from mwa_metadb_utils import get_channels
+    import config
     comp_config = config.load_config_file()
     batch_dir = "{0}/{1}/batch/".format(comp_config['base_product_dir'], obsid)
     channels = get_channels(obsid)
@@ -138,6 +139,13 @@ def plot_benchmarks(max_pointings):
     ozstar_orig_times = np.array([0.73*24]*15)
     ozstar_orig_t_std = np.array([0.02*24]*15)
 
+    #Shangia ARM MPB benchmarks serial, cal once upgrade
+    #sugon gpu
+    arm_mpb_times = np.array([10.428699999999997, 6.327849999999999, 4.876733333333333, 4.2145, 3.8385600000000006, 3.6098166666666662, 3.3983857142857152, 3.2382874999999993, 3.1671000000000005, 3.1546199999999995, 3.1414727272727276, 3.0049666666666663, 2.968484615384616, 2.9391785714285716, 2.871186666666667])
+    arm_mpb_t_std = np.array([1.144133239618533, 0.4706367999848716, 0.14700383970797806, 0.11682392734367397, 0.1553377944996001, 0.13968908233008837, 0.1601386790585342, 0.13881945502612375, 0.09439224112809899, 0.13325357931402818, 0.12566505526876778, 0.11650441574845508, 0.09220699860485634, 0.15198450495000457, 0.10387002048500599])
+    arm_orig_times = np.array([43.710000/100.*24.]*15)
+    arm_orig_t_std = np.array([0.02]*15)
+
     import matplotlib.pyplot as plt
     
     """
@@ -163,15 +171,18 @@ def plot_benchmarks(max_pointings):
                  color='mediumseagreen', label='Ozstar multi-pixel beamformer')
     """
     plt.errorbar(pns, ozstar_orig_times/ozstar_mpb_times, yerr=ozstar_mpb_t_std/5,
-                 color='green', label='Ozstar multi-pixel beamformer')
+                 color='green', label='OzSTAR super computer')
     plt.errorbar(pns, galaxy_orig_times/galaxy_mpb_times, yerr=galaxy_mpb_t_std/5,
-                 color='blue', label='Galaxy multi-pixel beamformer')
+                 color='blue', label='Galaxy super computer')
+    plt.errorbar(pns, arm_orig_times/arm_mpb_times, yerr=arm_mpb_t_std/5,
+                 color='red', label='CSRC prototype')
 
     plt.ylabel("Factor of improved processing efficiency")
     plt.xlabel("Number of simultaneous tied-array beams")
     #plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
-    plt.legend(loc='upper left', bbox_to_anchor=(0.05, 0.98))
+    plt.legend(loc='upper left', bbox_to_anchor=(0.005, 0.995))
     plt.savefig("Beamformer_benchmark.eps")
+    plt.savefig("Beamformer_benchmark.png", bbox_inches='tight', dpi=1000)
     
 
 if __name__ == "__main__":

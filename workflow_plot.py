@@ -6,7 +6,7 @@ from matplotlib.patches import Rectangle
 import matplotlib.collections as collections
 
 fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0.1},
-                       figsize=(15,10))
+                       figsize=(20,10))
 
 #fig = plt.figure( figsize=(15,5))
 #ax = fig.add_subplot(111)
@@ -47,7 +47,7 @@ for i in range(1,5):
 
 #print(read_starts, calc_starts, write_starts)
 
-linewidth = 2.
+linewidth = 1.
 
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time,  1., facecolor='r',
@@ -75,10 +75,122 @@ for i in range(secs_plotting):
 
 npointing = 5
 
+"""
+#multi-pixel
+read_starts = [0.]
+temp_cal = [read_time]
+temp_calc = [read_time + cal_time]
+for p in range(1, npointing):
+    temp_cal.append(temp_calc[p-1] + calc_time)
+    temp_calc.append(temp_cal[p] + cal_time)
+cal_starts = [temp_cal]
+calc_starts = [temp_calc]
+temp_write = [calc_starts[0][-1] + calc_time]
+for p in range(1, npointing):
+    temp_write.append(temp_write[p-1] + write_time)
+write_starts = [temp_write]
+
+for i in range(1, secs_plotting):
+    read_starts.append(write_starts[-1][-1] + write_time)
+    temp_cal = [read_starts[i] + read_time]
+    temp_calc = [temp_cal[0] + cal_time]
+    for p in range(1, npointing):
+        temp_cal.append(temp_calc[p-1] + calc_time)
+        temp_calc.append(temp_cal[p] + cal_time)
+    cal_starts.append(temp_cal)
+    calc_starts.append(temp_calc) 
+    temp_write = [calc_starts[i][-1] + calc_time]
+    for p in range(1, npointing):
+        temp_write.append(temp_write[p-1] + write_time)
+    write_starts.append(temp_write)
+    
+patches = []
+for i in range(secs_plotting):
+    read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
+                      linewidth=linewidth, edgecolor='black')
+    ax[1].add_artist(read)
+    for p in range(npointing):
+        cal  = Rectangle([cal_starts[i][p],  1.],  cal_time, 1., facecolor='purple',
+                          linewidth=linewidth, edgecolor='black')
+        ax[1].add_artist(cal)
+        calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
+                          linewidth=linewidth, edgecolor='black')
+        ax[1].add_artist(calc)
+        write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
+                          linewidth=linewidth, edgecolor='black')
+        ax[1].add_artist(write)
+
+
+#temp change of times for async
+read_time  *= 5.
+cal_time   *= 2.
+calc_time  *= 2.
+write_time *= 5.
+
 #openMP version:
 #read_time = 1.36 #s
 #calc_time = 0.22
 #write_time = 0.084
+
+
+#multi pixel async
+read_starts = [0.]
+temp_cal = [read_time]
+temp_calc = [read_time + cal_time]
+for p in range(1, npointing):
+    temp_cal.append(temp_calc[p-1] + calc_time)
+    temp_calc.append(temp_cal[p] + cal_time)
+cal_starts = [temp_cal]
+calc_starts = [temp_calc]
+temp_write = [calc_starts[0][-1] + calc_time]
+for p in range(1, npointing):
+    temp_write.append(temp_write[p-1] + write_time)
+write_starts = [temp_write]
+
+for i in range(1, secs_plotting):
+    #async mode
+    if i == 1:
+        read_starts.append(read_starts[0] + read_time)
+    #elif i == 2:
+    #    read_starts.append(read_starts[1] + calc_time)
+    else:
+        read_starts.append(calc_starts[i-2][-1] + calc_time)
+    temp_cal = [calc_starts[i-1][-1] + calc_time]
+    temp_calc = [temp_cal[0] + cal_time]
+    for p in range(1, npointing):
+        temp_cal.append(temp_calc[p-1] + calc_time)
+        temp_calc.append(temp_cal[p] + cal_time)
+    cal_starts.append(temp_cal)
+    calc_starts.append(temp_calc) 
+    temp_write = [calc_starts[i][-1] + calc_time]
+    for p in range(1, npointing):
+        temp_write.append(temp_write[p-1] + write_time)
+    write_starts.append(temp_write)
+    
+
+#print(read_starts, calc_starts, write_starts)
+
+patches = []
+for i in range(secs_plotting):
+    read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
+                      linewidth=linewidth, edgecolor='black')
+    ax[2].add_artist(read)
+    for p in range(npointing):
+        cal  = Rectangle([cal_starts[i][p],  1.],  cal_time, 1., facecolor='purple',
+                          linewidth=linewidth, edgecolor='black')
+        ax[2].add_artist(cal)
+        calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
+                          linewidth=linewidth, edgecolor='black')
+        ax[2].add_artist(calc)
+        write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
+                          linewidth=linewidth, edgecolor='black')
+        ax[2].add_artist(write)
+#p = collections.PatchCollection(patches)
+#ax.add_collection(p)
+
+max_xaxis = write_starts[-1][-1] + write_time
+"""
+
 
 #serial upgrade 1p:
 read_time  = 0.542 #s
@@ -118,6 +230,53 @@ write_time = 0.013
 
 
 
+
+"""
+#remove unnessary calcs
+read_starts = [0.]
+temp_cal = [read_time]
+temp_calc = [read_time + cal_time]
+for p in range(1, npointing):
+    temp_cal.append(temp_calc[p-1] + calc_time)
+    temp_calc.append(temp_cal[p] + cal_time)
+cal_starts = [temp_cal]
+calc_starts = [temp_calc]
+temp_write = [calc_starts[0][-1] + calc_time]
+for p in range(1, npointing):
+    temp_write.append(temp_write[p-1] + write_time)
+write_starts = [temp_write]
+
+for i in range(1, secs_plotting):
+    read_starts.append(write_starts[-1][-1] + write_time)
+    temp_cal = [read_starts[i] + read_time]
+    temp_calc = [temp_cal[0] + cal_time]
+    for p in range(1, npointing):
+        temp_cal.append(temp_calc[p-1] + calc_time)
+        temp_calc.append(temp_cal[p] + cal_time)
+    cal_starts.append(temp_cal)
+    calc_starts.append(temp_calc) 
+    temp_write = [calc_starts[i][-1] + calc_time]
+    for p in range(1, npointing):
+        temp_write.append(temp_write[p-1] + write_time)
+    write_starts.append(temp_write)
+    
+patches = []
+for i in range(secs_plotting):
+    read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
+                      linewidth=linewidth, edgecolor='black')
+    ax[3].add_artist(read)
+    for p in range(npointing):
+        cal  = Rectangle([cal_starts[i][p],  1.],  cal_time, 1., facecolor='purple',
+                          linewidth=linewidth, edgecolor='black')
+        ax[3].add_artist(cal)
+        calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
+                          linewidth=linewidth, edgecolor='black')
+        ax[3].add_artist(calc)
+        write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
+                          linewidth=linewidth, edgecolor='black')
+        ax[3].add_artist(write)
+
+"""
 #multi-pixel
 read_starts = [0.]
 cal_starts = [read_time]
@@ -130,23 +289,6 @@ for p in range(1, npointing):
     temp_write.append(temp_write[p-1] + write_time)
 write_starts = [temp_write]
 for i in range(1, secs_plotting):
-    """
-    #async mode
-    if i == 1:
-        read_starts.append(read_starts[0] + read_time)
-    #elif i == 2:
-    #    read_starts.append(read_starts[1] + calc_time)
-    else:
-        read_starts.append(calc_starts[i-2][0] + npointing*calc_time)
-    temp_calc = [calc_starts[i-1][-1] + calc_time]
-    for p in range(1, npointing):
-        temp_calc.append(temp_calc[p-1] + calc_time)
-    calc_starts.append(temp_calc) 
-    temp_write = [calc_starts[i][-1] + calc_time]
-    for p in range(1, npointing):
-        temp_write.append(temp_write[p-1] + write_time)
-    write_starts.append(temp_write)
-    """
     read_starts.append(write_starts[-1][-1] + write_time)
     cal_starts.append(read_starts[i] + read_time)
     temp_calc = [cal_starts[i] + cal_time]
@@ -158,6 +300,7 @@ for i in range(1, secs_plotting):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
 
+max_xaxis = write_starts[-1][-1] + write_time
 
 #print(read_starts, calc_starts, write_starts)
 
@@ -173,21 +316,26 @@ for i in range(secs_plotting):
         calc  = Rectangle([calc_starts[i][p],  1.],  calc_time, 1., facecolor='g',
                           linewidth=linewidth, edgecolor='black')
         ax[1].add_artist(calc)
-    for p in range(npointing):
         write = Rectangle([write_starts[i][p], 0.], write_time, 1., facecolor='b',
                           linewidth=linewidth, edgecolor='black')
         ax[1].add_artist(write)
 #p = collections.PatchCollection(patches)
 #ax.add_collection(p)
-print(write_starts[0][-1], write_starts[1][-1], write_starts[2][-1], write_starts[3][-1], write_starts[4][-1])
-plt.axis([0, write_starts[-1][-1] + write_time, 0, 3])
+
+
+#for i, label in enumerate(('a)', 'b)', 'c)', 'd)', 'e)')):
+#    ax[i].text(-0.1, 0.5, label, transform=ax[i].transAxes,
+#      fontsize=25, va='center', ha='right')
+
+
+plt.axis([0, max_xaxis, 0, 3])
 plt.yticks([0.5, 1.5, 2.5], ['Write', 'Calc', 'Read'])
-for tick in ax[0].yaxis.get_major_ticks():
-    tick.label.set_fontsize(30)
-for tick in ax[1].yaxis.get_major_ticks():
-    tick.label.set_fontsize(30)
+for axi in range(2):
+    for tick in ax[axi].yaxis.get_major_ticks():
+        tick.label.set_fontsize(30)
 plt.xticks(fontsize=30)
 plt.xlabel('Processing time (s)', fontsize=30)
-plt.savefig('multi-pixel_workflow.eps')
+plt.savefig('multi-pixel_workflow.eps', bbox_inches='tight', dpi=1000)
+plt.savefig('multi-pixel_workflow.png', bbox_inches='tight', dpi=1000)
 
 
