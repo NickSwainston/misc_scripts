@@ -70,11 +70,11 @@ if __name__ == "__main__":
     #fig, ax = plt.subplots()
     #plt.gca().invert_yaxis()
     #for colour_pos in [["red",    30.,  105.], ["green",  106., 180.], ["yellow", 181., 255.]]:
-    for colour_pos in [["red",   72.,  105.], ["green",  144., 180.], ["purple", 216., 255.]]:
+    for colour_pos in [["yellow",   16*15.,  22*15.], ["purple",  12*15., 16*15.]]:
         print("TIMES FOR {}".format(colour_pos[0]))
-        year = 2019
-        months = range(7, 16)
-        days = range(1,30, 1)
+        year = 2021
+        months = range(1, 11)
+        days = range(1,28, 1)
         hours = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
         minutes = range(0, 60, 1)
         days_x_axis = np.array([])
