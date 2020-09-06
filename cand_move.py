@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-from PIL import Image
-#import Image
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 from glob import glob
 import cv2
 import os
@@ -26,7 +28,7 @@ for i in images:
     cv2.namedWindow('image',cv2.WINDOW_NORMAL)
     cv2.resizeWindow('image', 1400, 1800)
     cv2.imshow('image', im)
-    cv2.waitKey(1000)
+    cv2.waitKey(2000)
     cv2.destroyAllWindows()
     cand_grade = input()
     os.rename(i, "cand_grade_{0}/{1}".format(cand_grade, i))

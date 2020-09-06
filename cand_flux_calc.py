@@ -21,11 +21,12 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-trcvr="/group/mwaops/PULSAR/MWA_Trcvr_tile_56.csv"
+trcvr="/home/nick/code/vcstools/database/MWA_Trcvr_tile_56.csv"
 bestprof_data = prof_utils.get_from_bestprof(sys.argv[1])
 obsid, pulsar, _, period, _, beg, t_int, profile, num_bins = bestprof_data
 period=float(period)
 num_bins=int(num_bins)
+print(profile)
 
 #get r_sys and gain
 obs_metadata = get_common_obs_metadata(obsid)
@@ -83,6 +84,7 @@ gain_err = gain * ((1. - beam_power)*0.12 + 2.*(theta/(0.5*np.pi))**2. + 0.1)
 #    gain_err.shape
 #    gain_err = gain_err[0]
 #estimate S/N
+print(profile)
 try:
     prof_dict = prof_utils.auto_gfit(profile,\
                 period = period, plot_name="{0}_{1}_{2}_bins_gaussian_fit.png".format(obsid, pulsar, num_bins))

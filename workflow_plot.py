@@ -335,7 +335,7 @@ for axi in range(2):
         tick.label.set_fontsize(30)
 plt.xticks(fontsize=30)
 plt.xlabel('Processing time (s)', fontsize=30)
-plt.savefig('multi-pixel_workflow.eps', bbox_inches='tight', dpi=1000)
-plt.savefig('multi-pixel_workflow.png', bbox_inches='tight', dpi=1000)
+plt.savefig('multi-pixel_workflow.eps', bbox_inches='tight', dpi=100)
+plt.savefig('multi-pixel_workflow.png', bbox_inches='tight', dpi=100)
 
 
