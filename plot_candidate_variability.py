@@ -50,7 +50,7 @@ prof_dict = prof_utils.auto_gfit(profile, period)
 
 mjds = []
 norm_sns = []
-"""
+pdmp_norm_sns = []
 for det in detections:
     obsid, bestprof_file, pdmp_sn = det
     mjd = Time(int(obsid), format='gps', scale='utc').mjd
@@ -107,12 +107,14 @@ for det in detections:
     output_data, obsid_meta = fpio.find_sources_in_obs([obsid], [["J0036-1033", "00:36:14.70", "-10:33:37.18"]],
                                  dt_input=100, min_power=0.3, degrees_check=False)
     pulsar, enter, exit, max_power = output_data[obsid][0]
-    sn_normalised = pdmp_sn / ( max_power * math.sqrt(float(t_int)/4800 * bandwidth/30720000)) 
+    #pdmp_sn_normalised = pdmp_sn / ( max_power * math.sqrt(float(t_int)/4800 * bandwidth/30720000)) 
+    #normalise for 20 mins
+    pdmp_sn_normalised = pdmp_sn / ( max_power * math.sqrt(float(t_int)/1200 * bandwidth/30720000))
 
 
-    t_sys, _, gain, u_gain = snfe.find_t_sys_gain(pulsar, obsid, obs_metadata=metadata,\
-                                    p_ra="00:36:14.70", p_dec="-10:33:37.18",
-                                    beg=beg, end=(t_int + beg - 1))
+    #t_sys, _, gain, u_gain = snfe.find_t_sys_gain(pulsar, obsid, obs_metadata=metadata,\
+    #                                p_ra="00:36:14.70", p_dec="-10:33:37.18",
+    #                                beg=beg, end=(t_int + beg - 1))
 
     #estimate S/N
     try:
@@ -120,13 +122,14 @@ for det in detections:
                     period = period, plot_name="{0}_{1}_{2}_bins_gaussian_fit.png".format(obsid, pulsar, num_bins))
     except (prof_utils.ProfileLengthError, prof_utils.NoFitError) as _:
         prof_dict=None
-
+    print(prof_dict)
 
     sn = prof_dict["sn"]
     u_sn = prof_dict["sn_e"]
+    sn_normalised = sn / ( max_power * math.sqrt(float(t_int)/1200 * bandwidth/30720000))
 
-    sn = pdmp_sn
-    u_sn = pdmp_sn * 0.1
+    #sn = pdmp_sn
+    #u_sn = pdmp_sn * 0.1
     w_equiv_bins = prof_dict["Weq"]
     u_w_equiv_bins =  prof_dict["Weq_e"]
     w_equiv_ms = period/num_bins * w_equiv_bins
@@ -135,6 +138,7 @@ for det in detections:
     u_scattering = prof_dict["Wscat_e"]*period/num_bins/1000
     scattered = prof_dict["scattered"]
 
+    """
     #if scattered:
     #    print(f'{obsid} & {mjd} & scattered')
     #    continue
@@ -154,17 +158,19 @@ for det in detections:
             math.sqrt( w_equiv_bins / (num_bins - w_equiv_bins)) * 1000.
     u_S_mean = math.sqrt( math.pow(S_mean_cons * u_sn / gain , 2)  +\
                         math.pow(sn * S_mean_cons * u_gain / math.pow(gain,2) , 2) )
+    """
     
     #if obsid == 1220886016:
     #    S_mean = S_mean/2
 
     mjds.append(mjd)
     norm_sns.append(sn_normalised)
+    pdmp_norm_sns.append(pdmp_sn_normalised)
     t_int = int(t_int)
     print(f'{obsid} & {mjd:.1f} & {o_phase:3}     & {minfreq:.2f}-{maxfreq:.2f} & {t_int:4}      & {min_beam_offset:6.1f}     & {pdmp_sn:5.1f} & {sn_normalised:6.1f} \\\\')
     #{S_mean:.2f} & {u_S_mean:.2f} \\\\') 
     print('Smean {0:.2f} +/- {1:.2f} mJy'.format(S_mean, u_S_mean))
-    """
+
 mjds = [57366.404340277775, 57406.460543981484, 57556.89971064815, 57717.49998842592, 57931.85414351852, 58067.49655092593, 58374.624976851854, 58374.624976851854, 58395.59442129629, 58427.598587962966, 58774.602847222224, 59001.937476851854, 59002.013865740744, 59002.03747685185, 59002.937476851854, 59002.994421296295, 59003.013865740744, 59003.937476851854, 59005.937476851854, 59010.937476851854, 59010.973587962966, 59020.918217592596, 59036.89803240741]
 norm_sns = [39.880341880158696, 25.440146393870187, 7.516520454649676, 50.77783967013483, 19.872526637138165, 23.34347123156014, 51.31816682731386, 60.99878134934648, 88.15310930886803, 31.343352198895765, 88.43070646255248, 48.384597128356425, 61.20510339706202, 36.782424844791855, 56.097347505717366, 47.0961123200065, 41.06825962295899, 47.67525931070088, 48.57128515657029, 64.20016640202387, 68.31086018782896, 36.02152126125464, 52.5816839829118]
 
