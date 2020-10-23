@@ -52,6 +52,7 @@ prof_dict = prof_utils.auto_gfit(profile, period)
 
 mjds = []
 norm_sns = []
+u_norm_sns = []
 pdmp_norm_sns = []
 for det in detections:
     obsid, bestprof_file, pdmp_sn = det
@@ -119,17 +120,39 @@ for det in detections:
     #                                beg=beg, end=(t_int + beg - 1))
 
     #estimate S/N
+    """
     try:
         prof_dict = prof_utils.auto_gfit(profile,\
                     period = period, plot_name="{0}_{1}_{2}_bins_gaussian_fit.png".format(obsid, pulsar, num_bins))
     except (prof_utils.ProfileLengthError, prof_utils.NoFitError) as _:
         prof_dict=None
-    print(prof_dict)
-
     sn = prof_dict["sn"]
     u_sn = prof_dict["sn_e"]
-    sn_normalised = sn / ( max_power * math.sqrt(float(t_int)/1200 * bandwidth/30720000))
+    """
+    #Normalize, find the SN
+    # Normalise
+    y = np.array(profile)/max(profile)
+    # Find std of the noise
+    noise_std, clipped = prof_utils.sigmaClip(y, alpha=3.)
+    # re normalise it fo 0 is on the noise mean
+    y = y - np.nanmean(clipped)
+    y = y/max(y)
+    # Sum on pulse
+    pulse_flux = 0.
+    pulse_width = 0
+    for yi in range(len(y)):
+        #print(clipped[yi])
+        if np.isnan(clipped[yi]):
+            pulse_flux = pulse_flux + y[yi]
+            pulse_width = pulse_width + 1
+            #print(pulse_flux)
+    sn = pulse_flux / pulse_width / noise_std
+    u_sn = np.sqrt(pulse_width) * noise_std
 
+    sn_normalised = sn / ( max_power * math.sqrt(float(t_int)/1200 * bandwidth/30720000))
+    u_sn_normalised = u_sn / ( max_power * math.sqrt(float(t_int)/1200 * bandwidth/30720000))
+
+    """
     #sn = pdmp_sn
     #u_sn = pdmp_sn * 0.1
     w_equiv_bins = prof_dict["Weq"]
@@ -140,7 +163,7 @@ for det in detections:
     u_scattering = prof_dict["Wscat_e"]*period/num_bins/1000
     scattered = prof_dict["scattered"]
 
-    """
+    
     #if scattered:
     #    print(f'{obsid} & {mjd} & scattered')
     #    continue
@@ -167,23 +190,24 @@ for det in detections:
 
     mjds.append(mjd)
     norm_sns.append(sn_normalised)
+    u_norm_sns.append(u_sn_normalised)
     pdmp_norm_sns.append(pdmp_sn_normalised)
     t_int = int(t_int)
-    print(f'{obsid} & {mjd:.1f} & {o_phase:3}     & {minfreq:.2f}-{maxfreq:.2f} & {t_int:4}      & {min_beam_offset:6.1f}     & {pdmp_sn:5.1f} & {sn_normalised:6.1f} \\\\')
+    print(f'{obsid} & {mjd:.1f} & {o_phase:3}     & {minfreq:.2f}-{maxfreq:.2f} & {t_int:4}      & {min_beam_offset:6.1f}     & {sn:5.1f} & {sn_normalised:6.1f} \\\\')
     #{S_mean:.2f} & {u_S_mean:.2f} \\\\') 
-    print('Smean {0:.2f} +/- {1:.2f} mJy'.format(S_mean, u_S_mean))
+    #print('Smean {0:.2f} +/- {1:.2f} mJy'.format(S_mean, u_S_mean))
 
-mjds = [57366.404340277775, 57406.460543981484, 57556.89971064815, 57717.49998842592, 57931.85414351852, 58067.49655092593, 58374.624976851854, 58374.624976851854, 58395.59442129629, 58427.598587962966, 58774.602847222224, 59001.937476851854, 59002.013865740744, 59002.03747685185, 59002.937476851854, 59002.994421296295, 59003.013865740744, 59003.937476851854, 59005.937476851854, 59010.937476851854, 59010.973587962966, 59020.918217592596, 59036.89803240741]
-norm_sns = [39.880341880158696, 25.440146393870187, 7.516520454649676, 50.77783967013483, 19.872526637138165, 23.34347123156014, 51.31816682731386, 60.99878134934648, 88.15310930886803, 31.343352198895765, 88.43070646255248, 48.384597128356425, 61.20510339706202, 36.782424844791855, 56.097347505717366, 47.0961123200065, 41.06825962295899, 47.67525931070088, 48.57128515657029, 64.20016640202387, 68.31086018782896, 36.02152126125464, 52.5816839829118]
+#mjds = [57366.404340277775, 57406.460543981484, 57556.89971064815, 57717.49998842592, 57931.85414351852, 58067.49655092593, 58374.624976851854, 58374.624976851854, 58395.59442129629, 58427.598587962966, 58774.602847222224, 59001.937476851854, 59002.013865740744, 59002.03747685185, 59002.937476851854, 59002.994421296295, 59003.013865740744, 59003.937476851854, 59005.937476851854, 59010.937476851854, 59010.973587962966, 59020.918217592596, 59036.89803240741]
+#norm_sns = [39.880341880158696, 25.440146393870187, 7.516520454649676, 50.77783967013483, 19.872526637138165, 23.34347123156014, 51.31816682731386, 60.99878134934648, 88.15310930886803, 31.343352198895765, 88.43070646255248, 48.384597128356425, 61.20510339706202, 36.782424844791855, 56.097347505717366, 47.0961123200065, 41.06825962295899, 47.67525931070088, 48.57128515657029, 64.20016640202387, 68.31086018782896, 36.02152126125464, 52.5816839829118]
 
 
-#print(mjds)
-#print(norm_sns)
+print(mjds)
+print(norm_sns)
 fig, ax = plt.subplots(1, 2, figsize=(10, 5))
 ax[0].set_ylim(0, 100)
 ax[1].set_ylim(0, 100)
-ax[0].errorbar(mjds, norm_sns, yerr=np.array(norm_sns)*0.1, fmt=".")
-ax[1].errorbar(mjds[11:], norm_sns[11:], yerr=np.array(norm_sns[11:])*0.1, fmt=".")
+ax[0].errorbar(mjds, norm_sns, yerr=u_norm_sns, fmt=".")
+ax[1].errorbar(mjds[11:], norm_sns[11:], yerr=u_norm_sns[11:], fmt=".")
 ax[1].set_yticks([])
 
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
@@ -197,7 +221,7 @@ plt.savefig('normalised_sn_zoom.png', bbox_inches='tight')
 
 fig, ax = plt.subplots(figsize=(5, 5))
 ax.set_ylim(0, 100)
-ax.scatter(mjds, norm_sns)#, yerr=np.array(norm_sns)*0.1, fmt=".")
+ax.errorbar(mjds, norm_sns, yerr=u_norm_sns, fmt=".")
 ax.set_xlabel('MJD')
 ax.set_ylabel('Normalised S/N')
 plt.savefig('normalised_sn.png', bbox_inches='tight')
@@ -206,7 +230,7 @@ plt.savefig('normalised_sn.png', bbox_inches='tight')
 fig, ax = plt.subplots()#figsize=(5, 5))
 
 ax.set_ylim(0, 100)
-ax.scatter(mjds, norm_sns)#, yerr=np.array(norm_sns)*0.1, fmt=".")
+ax.errorbar(mjds, norm_sns, yerr=u_norm_sns, fmt=".")
 ax.set_xlabel('MJD')
 ax.set_ylabel('Normalised S/N')
 
@@ -214,13 +238,10 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 # Insert 1 -----------------------------------
 zoom_factor = 1
-axins1 = inset_axes(ax, 2.4, 1, loc='lower left', bbox_to_anchor=(0.17, 0.55), bbox_transform=ax.figure.transFigure)
-mark_inset(ax, axins1, loc1=1, loc2=3, fc="none", ec="0.5", zorder=0.5)
-#axins1 = ax.inset_axes([57500, 58250, 60, 95])#, transform=ax.transData)
-#axins1 = ax.inset_axes([0.05, 0.5, 0.5, 0.95])
-axins1.scatter(mjds[11:], norm_sns[11:])#, yerr=np.array(norm_sns[11:])*0.1, fmt=".")
-axins1.set_xlim(min(mjds[11:])-5, max(mjds[11:])+5) # apply the x-limits
-axins1.set_ylim(min(norm_sns[11:])-5, max(norm_sns[11:])+5) # apply the y-limits
+axins1 = inset_axes(ax, 2, 1, loc='lower left', bbox_to_anchor=(1, 1), bbox_transform=ax.figure.transFigure)
+axins1.errorbar(mjds[11:], norm_sns[11:], yerr=u_norm_sns[11:], fmt=".")
+axins1.set_xlim(min(mjds[11:])-100, max(mjds[11:])+100) # apply the x-limits
+axins1.set_ylim(min(norm_sns[11:])-2, max(norm_sns[11:])+2) # apply the y-limits
 #axins1.set_yticks([y1[0]-0.00002, y1[0]-0.00001, y1[0], y1[0]+0.00001, y1[0]+0.00002])
 #axins1.set_yticklabels(['-0.00002', '-0.00001', '0', '0.00001', '0.00002'])
 
@@ -232,8 +253,10 @@ plt.savefig('normalised_sn_inset.png', bbox_inches='tight')
 fig ,(ax1,ax2) = plt.subplots(1, 2, sharey=True, facecolor='w', figsize=(10, 5))
 
 #plot
-ax1.scatter(mjds[:11], norm_sns[:11])
-ax2.scatter(mjds[11:], norm_sns[11:])
+#ax1.scatter(mjds[:11], norm_sns[:11])
+#ax2.scatter(mjds[11:], norm_sns[11:])
+ax1.errorbar(mjds[:11], norm_sns[:11], yerr=u_norm_sns[:11], fmt=".")
+ax2.errorbar(mjds[11:], norm_sns[11:], yerr=u_norm_sns[11:], fmt=".")
 
 # hide the spines between ax and ax2
 ax1.spines['right'].set_visible(False)
@@ -260,7 +283,6 @@ ax1.set_xticks(np.arange(57000, 59000, 10), minor = True)
 ax1.set_xticks(np.arange(57000, 59000, 100))
 ax2.set_xticks(np.arange(59000, 59040, 10), minor = True)
 ax2.set_xticks(np.arange(59000, 59040, 100))
-
 print(np.arange(57000, 59000, 10))
 print(np.arange(57000, 59000, 100))
 print(np.arange(59000, 59040, 10))
@@ -275,5 +297,9 @@ ax1.tick_params(which='major', length=7)
 ax1.tick_params(which='minor', length=4)
 ax2.tick_params(which='major', length=7)
 ax2.tick_params(which='minor', length=4)
+
+
+plt.xlabel('MJD')
+ax1.set_ylabel('Normalised S/N')
 
 plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight')
