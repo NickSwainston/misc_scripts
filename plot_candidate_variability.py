@@ -4,6 +4,8 @@ from astropy.coordinates import SkyCoord, AltAz, EarthLocation, ICRS
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
+                               AutoMinorLocator)
 import math
 import numpy as np
 
@@ -195,7 +197,7 @@ plt.savefig('normalised_sn_zoom.png', bbox_inches='tight')
 
 fig, ax = plt.subplots(figsize=(5, 5))
 ax.set_ylim(0, 100)
-ax.errorbar(mjds, norm_sns, yerr=np.array(norm_sns)*0.1, fmt=".")
+ax.scatter(mjds, norm_sns)#, yerr=np.array(norm_sns)*0.1, fmt=".")
 ax.set_xlabel('MJD')
 ax.set_ylabel('Normalised S/N')
 plt.savefig('normalised_sn.png', bbox_inches='tight')
@@ -204,7 +206,7 @@ plt.savefig('normalised_sn.png', bbox_inches='tight')
 fig, ax = plt.subplots()#figsize=(5, 5))
 
 ax.set_ylim(0, 100)
-ax.errorbar(mjds, norm_sns, yerr=np.array(norm_sns)*0.1, fmt=".")
+ax.scatter(mjds, norm_sns)#, yerr=np.array(norm_sns)*0.1, fmt=".")
 ax.set_xlabel('MJD')
 ax.set_ylabel('Normalised S/N')
 
@@ -212,13 +214,66 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 # Insert 1 -----------------------------------
 zoom_factor = 1
-axins1 = inset_axes(ax, 2, 1, loc='lower left', bbox_to_anchor=(1, 1), bbox_transform=ax.figure.transFigure)
-axins1.errorbar(mjds[11:], norm_sns[11:], yerr=np.array(norm_sns[11:])*0.1, fmt=".")
-axins1.set_xlim(min(mjds[11:])-100, max(mjds[11:])+100) # apply the x-limits
-axins1.set_ylim(min(norm_sns[11:])-2, max(norm_sns[11:])+2) # apply the y-limits
+axins1 = inset_axes(ax, 2.4, 1, loc='lower left', bbox_to_anchor=(0.17, 0.55), bbox_transform=ax.figure.transFigure)
+mark_inset(ax, axins1, loc1=1, loc2=3, fc="none", ec="0.5", zorder=0.5)
+#axins1 = ax.inset_axes([57500, 58250, 60, 95])#, transform=ax.transData)
+#axins1 = ax.inset_axes([0.05, 0.5, 0.5, 0.95])
+axins1.scatter(mjds[11:], norm_sns[11:])#, yerr=np.array(norm_sns[11:])*0.1, fmt=".")
+axins1.set_xlim(min(mjds[11:])-5, max(mjds[11:])+5) # apply the x-limits
+axins1.set_ylim(min(norm_sns[11:])-5, max(norm_sns[11:])+5) # apply the y-limits
 #axins1.set_yticks([y1[0]-0.00002, y1[0]-0.00001, y1[0], y1[0]+0.00001, y1[0]+0.00002])
 #axins1.set_yticklabels(['-0.00002', '-0.00001', '0', '0.00001', '0.00002'])
 
 axins1.set_xticks([], minor=True)
 
 plt.savefig('normalised_sn_inset.png', bbox_inches='tight')
+
+# Cut off change scale -----------------
+fig ,(ax1,ax2) = plt.subplots(1, 2, sharey=True, facecolor='w', figsize=(10, 5))
+
+#plot
+ax1.scatter(mjds[:11], norm_sns[:11])
+ax2.scatter(mjds[11:], norm_sns[11:])
+
+# hide the spines between ax and ax2
+ax1.spines['right'].set_visible(False)
+ax2.spines['left'].set_visible(False)
+ax1.yaxis.tick_left()
+#ax1.tick_params(labelright='off')
+ax2.yaxis.set_label_position("right")
+ax2.tick_params(axis='y', which='both', labelleft='off', labelright='on')
+ax2.yaxis.tick_right()
+
+d = .015 # how big to make the diagonal lines in axes coordinates
+# arguments to pass plot, just so we don't keep repeating them
+kwargs = dict(transform=ax1.transAxes, color='k', clip_on=False)
+ax1.plot((1-d,1+d), (-d,+d), **kwargs)
+ax1.plot((1-d,1+d),(1-d,1+d), **kwargs)
+
+kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
+ax2.plot((-d,+d), (1-d,1+d), **kwargs)
+ax2.plot((-d,+d), (-d,+d), **kwargs)
+
+# Set up tics
+"""
+ax1.set_xticks(np.arange(57000, 59000, 10), minor = True)
+ax1.set_xticks(np.arange(57000, 59000, 100))
+ax2.set_xticks(np.arange(59000, 59040, 10), minor = True)
+ax2.set_xticks(np.arange(59000, 59040, 100))
+
+print(np.arange(57000, 59000, 10))
+print(np.arange(57000, 59000, 100))
+print(np.arange(59000, 59040, 10))
+print(np.arange(59000, 59040, 100))
+"""
+ax1.xaxis.set_major_locator(MultipleLocator(200))
+ax1.xaxis.set_minor_locator(MultipleLocator(20))
+ax2.xaxis.set_major_locator(MultipleLocator(200))
+ax2.xaxis.set_minor_locator(MultipleLocator(20))
+
+ax1.tick_params(which='major', length=7)
+ax1.tick_params(which='minor', length=4)
+ax2.tick_params(which='major', length=7)
+ax2.tick_params(which='minor', length=4)
+
+plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight')
