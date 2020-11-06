@@ -277,8 +277,8 @@ ra = coord.ra.degree
 
 ra_including_offset = ra - 42/60/60
 dec_including_offset = dec - 11.2/60/60
-p2e_ax.arrow(ra_including_offset, dec_including_offset, 42/60/60, 11.2/60/60, head_width=0.0005, head_length=0.001, fc='r', ec='r', width=0.0001)
-print(ra_including_offset, dec_including_offset, 42/60/60, 11.2/60/60)
+#p2e_ax.arrow(ra_including_offset, dec_including_offset, 42/60/60, 11.2/60/60, head_width=0.0005, head_length=0.001, fc='r', ec='r', width=0.0001)
+#print(ra_including_offset, dec_including_offset, 42/60/60, 11.2/60/60)
 
 map_dec_range = range(30)
 ra_range = np.arange(dec-2*pos_u, dec+2*pos_u-pos_u/30, 4*pos_u/30)
@@ -298,6 +298,8 @@ for i in map_dec_range:
 
 y_ax.plot(dec_sums/max(dec_sums), np.arange(dec-2*pos_u, dec+2*pos_u-pos_u/30, 4*pos_u/30))
 x_ax.plot(np.arange(ra-2*pos_u, ra+2*pos_u-pos_u/30, 4*pos_u/30), ra_sums/max(ra_sums))
+x_ax.set_ylabel(r'$\rho$ (A.U.)')
+y_ax.set_xlabel(r'$\rho$ (A.U.)')
 
 p2c_ax.set_xlabel("Right Acension (degrees)")
 p2c_ax.set_ylabel("Declination (degrees)")
