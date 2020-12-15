@@ -9,7 +9,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 import math
 import numpy as np
 
-from mwa_metadb_utils import get_common_obs_metadata, get_obs_array_phase, getmeta
+from vcstools.metadb_utils import get_common_obs_metadata, get_obs_array_phase, getmeta
 import find_pulsar_in_obs as fpio
 import sn_flux_est as snfe
 import prof_utils
@@ -45,7 +45,8 @@ detections = [ [1255444104, "/astro/mwavcs/nswainston/J0036-1033_detections/1255
           [1278106408, "/astro/mwavcs/nswainston/J0036-1033_detections/1278106408_00:36:14.44_-10:33:18.61_900.04ms_Cand.pfd.bestprof", 27.36],
           [1283104232, "/astro/mwavcs/nswainston/J0036-1033_detections/1283104232_00:36:14.02_-10:33:22.44_900.04ms_Cand.pfd.bestprof", 24.07],
           [1285086000, "/astro/mwavcs/nswainston/J0036-1033_detections/1285086000_00:36:13.77_-10:33:22.44_900.04ms_Cand.pfd.bestprof", 17.84],
-          [1287670032, "/astro/mwavcs/nswainston/J0036-1033_detections/1287670032_00:36:14.02_-10:33:33.78_900.04ms_Cand.pfd.bestprof", 25.52]]
+          [1287670032, "/astro/mwavcs/nswainston/J0036-1033_detections/1287670032_00:36:14.02_-10:33:33.78_900.04ms_Cand.pfd.bestprof", 25.52],
+          [1290341112, "/astro/mwavcs/nswainston/J0036-1033_detections/1290341112_00:36:14.58_-10:33:16.40_900.04ms_Cand.pfd.bestprof", 30.23]]
 
 
 pulsar="J0036-1033"
@@ -61,7 +62,7 @@ u_norm_sns = [0.09301068692306166, 0.8738270534163127, 0.3332504550652208, 0.203
 colours = ['purple', 'r', 'r', 'r', 'g', 'g', 'b', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b']
 array_phases = ['P2C', 'P1', 'P1', 'P1', 'P2C', 'P2C', 'P2E', 'P2C', 'P2C', 'P2C', 'P2C', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E']
 
-'''
+
 array_phases = []
 colours = []
 mjds = []
@@ -245,7 +246,7 @@ for det in detections:
     #print(f'{obsid} & {mjd:.1f} & {o_phase:3}     & {minfreq:.2f}-{maxfreq:.2f} & {t_int:4}      & {min_beam_offset:6.1f}     & {sn:5.1f} & {sn_normalised:6.1f} \\\\')
     #{S_mean:.2f} & {u_S_mean:.2f} \\\\') 
     #print('Smean {0:.2f} +/- {1:.2f} mJy'.format(S_mean, u_S_mean))
-'''
+
 
 
 print("mjds = {}".format(mjds))
@@ -351,4 +352,4 @@ ax1.set_ylabel('Mean Flux (Arbitrary Units)')
 ax1.set_xlabel('Days since MJD {}'.format(57300))
 ax2.set_xlabel('Days since MJD {}'.format(59000))
 
-plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight', dpi=1000)
+plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight', dpi=200)
