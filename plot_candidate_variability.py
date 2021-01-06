@@ -256,10 +256,12 @@ print("u_norm_sns = {}".format(u_norm_sns))
 print("colours = {}".format(colours))
 print("array_phases = {}".format(array_phases))
 
-print("obsid, MJD, SN, norm_SN")
+#print("obsid, MJD, SN, norm_SN")
+#for i in range(len(mjds)):
+#    print("{}, {:.1f}, {:5.1f}, {:5.1f}".format(detections[i][0], mjds[i], sns[i], norm_sns[i]))
+print("MJD, flux, flux_err, SN")
 for i in range(len(mjds)):
-    print("{}, {:.1f}, {:5.1f}, {:5.1f}".format(detections[i][0], mjds[i], sns[i], norm_sns[i]))
-
+    print("{:.1f}, {:5.1f}, {:5.1f}, {:5.1f}".format(mjds[i], norm_sns[i], u_norm_sns[i], sns[i]))
 
 
 # Cut off change scale -----------------
