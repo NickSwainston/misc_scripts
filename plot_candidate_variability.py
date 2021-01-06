@@ -10,9 +10,9 @@ import math
 import numpy as np
 
 from vcstools.metadb_utils import get_common_obs_metadata, get_obs_array_phase, getmeta
-import find_pulsar_in_obs as fpio
-import sn_flux_est as snfe
-import prof_utils
+from vcstools.beam_calc import find_sources_in_obs
+import vcstools.sn_flux_est as snfe
+import vcstools.prof_utils as prof_utils
 
 import logging
 logger = logging.getLogger(__name__)
@@ -49,10 +49,6 @@ detections = [ [1255444104, "/astro/mwavcs/nswainston/J0036-1033_detections/1255
           [1290341112, "/astro/mwavcs/nswainston/J0036-1033_detections/1290341112_00:36:14.58_-10:33:16.40_900.04ms_Cand.pfd.bestprof", 30.23]]
 
 
-pulsar="J0036-1033"
-bestprof_data = prof_utils.get_from_bestprof("/astro/mwavcs/nswainston/J0036-1033_detections/1278106408_00:36:14.44_-10:33:18.61_900.04ms_Cand.pfd.bestprof")
-obsid, prof_psr, dm, period, _, beg, t_int, profile, num_bins = bestprof_data
-prof_dict = prof_utils.auto_gfit(profile, period)
 
 
 mjds = [58774.602847222224, 57366.404340277775, 57406.460543981484, 57556.89971064815, 57717.49998842592, 57931.85414351852, 58067.49655092593, 58374.624976851854, 58374.624976851854, 58395.59442129629, 58427.598587962966, 59001.937476851854, 59002.013865740744, 59002.03747685185, 59002.937476851854, 59002.994421296295, 59003.013865740744, 59003.937476851854, 59005.937476851854, 59010.937476851854, 59010.973587962966, 59020.918217592596, 59036.89803240741, 59094.74321759259, 59117.680347222224, 59147.588125]
@@ -60,11 +56,17 @@ sns = [36.180054684322116, 8.611114663132401, 11.451918495336324, 10.72566657624
 norm_sns = [11.185885277272176, 6.608036692245963, 3.938236272714118, 1.9688263602442928, 3.347324769739635, 4.748671794035306, 3.3165869299190986, 5.2913753944942705, 7.123091432736747, 8.057288501091563, 4.088049056095448, 5.854663701572106, 8.047772834209637, 4.733012412119289, 5.337611741157288, 5.787081219398446, 5.417902834811325, 6.178442309783125, 5.679017331670005, 6.980214700524004, 7.641481362864146, 4.201340912437257, 5.859816077210512, 4.944149595113389, 4.52659570319818, 4.3010402585646315]
 u_norm_sns = [0.09301068692306166, 0.8738270534163127, 0.3332504550652208, 0.20368716153703356, 0.10965035289864414, 0.5660108017894304, 0.6909981869378609, 0.4693127751707024, 0.6682025683674854, 0.20429417247275294, 0.2943755488126769, 0.27493411489815833, 0.35524617099203665, 0.38163252135348846, 0.31219613024867277, 0.25338221422951773, 0.31681043574435425, 0.35116499504868925, 0.18587513643431863, 0.2321007109369484, 0.19609987672565432, 0.24123151332659423, 0.1481330050375039, 0.19614663157240814, 0.22898043791152783, 0.14318285725370777]
 colours = ['purple', 'r', 'r', 'r', 'g', 'g', 'b', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b']
+marks = []
 array_phases = ['P2C', 'P1', 'P1', 'P1', 'P2C', 'P2C', 'P2E', 'P2C', 'P2C', 'P2C', 'P2C', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E']
 
 
+pulsar="J0036-1033"
+bestprof_data = prof_utils.get_from_bestprof("/astro/mwavcs/nswainston/J0036-1033_detections/1278106408_00:36:14.44_-10:33:18.61_900.04ms_Cand.pfd.bestprof")
+obsid, prof_psr, dm, period, _, beg, t_int, profile, num_bins = bestprof_data
+prof_dict = prof_utils.auto_gfit(profile, period)
 array_phases = []
 colours = []
+marks = []
 mjds = []
 sns = []
 norm_sns = []
@@ -80,12 +82,16 @@ for det in detections:
     if obsid == 1255444104:
         #orig obs
         colours.append('purple')
+        marks.append("X")
     elif o_phase == 'P2E':
         colours.append('b')
+        marks.append("^")
     elif o_phase == 'P2C':
         colours.append('g')
+        marks.append("H")
     elif o_phase == 'P1':
         colours.append('r')
+        marks.append("o")
     array_phases.append(o_phase)
     #print(obsid)
     #unpack the bestprof_data
@@ -134,7 +140,7 @@ for det in detections:
         beam_distance.append(tile_radec.separation(cand_posn).deg)
     min_beam_offset = min(beam_distance)
     
-    output_data, obsid_meta = fpio.find_sources_in_obs([obsid], [["J0036-1033", "00:36:14.70", "-10:33:37.18"]],
+    output_data, obsid_meta = find_sources_in_obs([obsid], [["J0036-1033", "00:36:14.70", "-10:33:37.18"]],
                                  dt_input=100, min_power=0.3, degrees_check=False)
     pulsar, enter, exit, max_power = output_data[obsid][0]
     #pdmp_sn_normalised = pdmp_sn / ( max_power * math.sqrt(float(t_int)/4800 * bandwidth/30720000)) 
@@ -275,13 +281,13 @@ capsize = 3
 
 # plot ax1
 array_phase_legend = {"P1": True, "P2C": True, "P2E": True}
-array_phase_legend_labels = {"P1": "Phase 1 array", "P2C": "Phase 2 Compact Array", "P2E":"Phase 2 Extended Array"}
+array_phase_legend_labels = {"P1": "Phase 1 Array", "P2C": "Phase 2 Compact Array", "P2E":"Phase 2 Extended Array"}
 for i in range(11):
     if norm_sns[i] == max(norm_sns):
-        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt="o", markersize=markersize, capsize=capsize, label="1st Pulsar Detection")
+        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize, label="1st Pulsar Detection")
     else:
         #print(array_phase_legend[array_phases[i]])
-        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt="o", markersize=markersize, capsize=capsize,
+        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize,
                                                      label=array_phase_legend_labels[array_phases[i]] if array_phase_legend[array_phases[i]] else "")
         array_phase_legend[array_phases[i]] = False
     for cap in caps:
@@ -299,7 +305,7 @@ for i in range(11, len(mjds)):
     #if i in [22, 11]:
     #    colours[i] = 'orange'
     #    print(colours[i])
-    (_, caps, _) = ax2.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt="o", markersize=markersize, capsize=capsize)
+    (_, caps, _) = ax2.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize)
     for cap in caps:
         cap.set_markeredgewidth(makerwidth)
     #ax2.legend(array_phases[i])
@@ -349,7 +355,7 @@ ax2.tick_params(which='minor', length=4)
 ax1.set_xticklabels((ax1.get_xticks()-57300).astype(int))
 ax2.set_xticklabels((ax2.get_xticks()-59000).astype(int))
 ax1.set_ylabel('Mean Flux (Arbitrary Units)')
-ax1.set_xlabel('Days since MJD {}'.format(57300))
-ax2.set_xlabel('Days since MJD {}'.format(59000))
+ax1.set_xlabel('Days since MJD {} (2015 Oct 5)'.format(57300))
+ax2.set_xlabel('Days since MJD {} (2020 May 31)'.format(59000))
 
 plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight', dpi=200)
