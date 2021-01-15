@@ -125,7 +125,10 @@ p2c_ras_deg = coord.ra.degree
 for ra, dec, sn in zip(p2c_ras_deg, p2c_decs_deg, p2c_sns):
     if use_sns:
         p2c_ax.text(ra, dec, str(sn), color='black', fontsize=8, ha='center', va='center')
-        circle = plt.Circle((ra, dec), p2cr, color='g', fill=False, linewidth=1, alpha=sn/max(p2c_sns))
+        if ra == min(p2c_ras_deg) or ra == max(p2c_ras_deg):
+            circle = plt.Circle((ra, dec), p2cr, color='g', fill=False, linewidth=3)#, alpha=sn/max(p2c_sns))
+        else:
+            circle = plt.Circle((ra, dec), p2cr, color='g', fill=False, linewidth=1)
     else:
         circle = plt.Circle((ra, dec), p2cr, color='g', fill=False, linewidth=1)
     p2c_ax.add_artist(circle)
@@ -203,7 +206,7 @@ for pos in p1_grid:
     if use_sns:
         if sn > 7.2:
             p1_ax.text(ra, dec, str(sn), color='black', fontsize=8, ha='center', va='center')
-        circle = plt.Circle((ra, dec), p1r, color='r', fill=False, linewidth=1, alpha=sn/max(p1_sns))
+        circle = plt.Circle((ra, dec), p1r, color='r', fill=False, linewidth=1)#, alpha=sn/max(p1_sns))
     else:
         circle = plt.Circle((ra, dec), p1r, color='r', fill=False, linewidth=1)
     p1_ax.add_artist(circle)
@@ -232,7 +235,7 @@ for pos in p2e_grid_final:
         if sn > 7.:
             p2e_ax.text(ra, dec, str(sn), color='black', fontsize=8, ha='center', va='center')
         #p1_ax.text(ra, dec, str(sn), color='b', fontsize=8, ha='center', va='center')
-        circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5, alpha=sn/max(p2e_sns))
+        circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5)#, alpha=sn/max(p2e_sns))
         p2e_ax.add_artist(circle)
         #circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5, alpha=sn/max(p2e_sns))
     #else:
@@ -310,4 +313,4 @@ p2e_ax.set_xlabel("Right Acension (degrees)")
 mark_inset(p2c_ax, p1_ax, loc1=2, loc2=3, fc="none", ec="0.5", zorder=0.5)
 mark_inset(p1_ax, p2e_ax, loc1=2, loc2=3, fc="none", ec="0.5", zorder=0.5)
 
-plt.savefig("first_mwa_discovery_localisation.png", dpi=1000)
+plt.savefig("first_mwa_discovery_localisation.ps", dpi=1000)
