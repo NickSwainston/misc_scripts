@@ -56,10 +56,10 @@ sns = [36.180054684322116, 8.611114663132401, 11.451918495336324, 10.72566657624
 norm_sns = [11.185885277272176, 6.608036692245963, 3.938236272714118, 1.9688263602442928, 3.347324769739635, 4.748671794035306, 3.3165869299190986, 5.2913753944942705, 7.123091432736747, 8.057288501091563, 4.088049056095448, 5.854663701572106, 8.047772834209637, 4.733012412119289, 5.337611741157288, 5.787081219398446, 5.417902834811325, 6.178442309783125, 5.679017331670005, 6.980214700524004, 7.641481362864146, 4.201340912437257, 5.859816077210512, 4.944149595113389, 4.52659570319818, 4.3010402585646315]
 u_norm_sns = [0.09301068692306166, 0.8738270534163127, 0.3332504550652208, 0.20368716153703356, 0.10965035289864414, 0.5660108017894304, 0.6909981869378609, 0.4693127751707024, 0.6682025683674854, 0.20429417247275294, 0.2943755488126769, 0.27493411489815833, 0.35524617099203665, 0.38163252135348846, 0.31219613024867277, 0.25338221422951773, 0.31681043574435425, 0.35116499504868925, 0.18587513643431863, 0.2321007109369484, 0.19609987672565432, 0.24123151332659423, 0.1481330050375039, 0.19614663157240814, 0.22898043791152783, 0.14318285725370777]
 colours = ['purple', 'r', 'r', 'r', 'g', 'g', 'b', 'g', 'g', 'g', 'g', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b']
-marks = []
+marks = ['x', 'o', 'o', 'o', 's', 's', '^', 's', 's', 's', 's', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^']
 array_phases = ['P2C', 'P1', 'P1', 'P1', 'P2C', 'P2C', 'P2E', 'P2C', 'P2C', 'P2C', 'P2C', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E', 'P2E']
 
-
+'''
 pulsar="J0036-1033"
 bestprof_data = prof_utils.get_from_bestprof("/astro/mwavcs/nswainston/J0036-1033_detections/1278106408_00:36:14.44_-10:33:18.61_900.04ms_Cand.pfd.bestprof")
 obsid, prof_psr, dm, period, _, beg, t_int, profile, num_bins = bestprof_data
@@ -252,7 +252,7 @@ for det in detections:
     #print(f'{obsid} & {mjd:.1f} & {o_phase:3}     & {minfreq:.2f}-{maxfreq:.2f} & {t_int:4}      & {min_beam_offset:6.1f}     & {sn:5.1f} & {sn_normalised:6.1f} \\\\')
     #{S_mean:.2f} & {u_S_mean:.2f} \\\\') 
     #print('Smean {0:.2f} +/- {1:.2f} mJy'.format(S_mean, u_S_mean))
-
+'''
 
 
 print("mjds = {}".format(mjds))
@@ -260,6 +260,7 @@ print("sns = {}".format(sns))
 print("norm_sns = {}".format(norm_sns))
 print("u_norm_sns = {}".format(u_norm_sns))
 print("colours = {}".format(colours))
+print("marks = {}".format(marks))
 print("array_phases = {}".format(array_phases))
 
 #print("obsid, MJD, SN, norm_SN")
@@ -277,7 +278,7 @@ fig ,(ax1,ax2) = plt.subplots(1, 2, sharey=True, facecolor='w', figsize=(10, 5))
 #ax1.scatter(mjds[:11], norm_sns[:11])
 #ax2.scatter(mjds[11:], norm_sns[11:])
 
-markersize = 3
+markersize = 5
 makerwidth = 1
 capsize = 3
 
@@ -286,10 +287,10 @@ array_phase_legend = {"P1": True, "P2C": True, "P2E": True}
 array_phase_legend_labels = {"P1": "Phase 1 Array", "P2C": "Phase 2 Compact Array", "P2E":"Phase 2 Extended Array"}
 for i in range(11):
     if norm_sns[i] == max(norm_sns):
-        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize, label="1st Pulsar Detection")
+        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt=marks[i], markersize=markersize, capsize=capsize, label="1st Pulsar Detection")
     else:
         #print(array_phase_legend[array_phases[i]])
-        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize,
+        (plotline, caps, barlinecols) = ax1.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt=marks[i], markersize=markersize, capsize=capsize,
                                                      label=array_phase_legend_labels[array_phases[i]] if array_phase_legend[array_phases[i]] else "")
         array_phase_legend[array_phases[i]] = False
     for cap in caps:
@@ -307,7 +308,7 @@ for i in range(11, len(mjds)):
     #if i in [22, 11]:
     #    colours[i] = 'orange'
     #    print(colours[i])
-    (_, caps, _) = ax2.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], marker=marks[i], markersize=markersize, capsize=capsize)
+    (_, caps, _) = ax2.errorbar(mjds[i], norm_sns[i], yerr=u_norm_sns[i], c=colours[i], fmt=marks[i], markersize=markersize, capsize=capsize)
     for cap in caps:
         cap.set_markeredgewidth(makerwidth)
     #ax2.legend(array_phases[i])
@@ -361,3 +362,4 @@ ax1.set_xlabel('Days since MJD {} (2015 Oct 5)'.format(57300))
 ax2.set_xlabel('Days since MJD {} (2020 May 31)'.format(59000))
 
 plt.savefig('normalised_sn_scale_change.png', bbox_inches='tight', dpi=200)
+plt.savefig('normalised_sn_scale_change.eps', bbox_inches='tight')
