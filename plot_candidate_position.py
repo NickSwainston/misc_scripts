@@ -6,6 +6,8 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 from mpl_toolkits.axes_grid1 import ImageGrid
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
+import mimic_alpha as ma
+
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 from astropy.io import fits
@@ -139,7 +141,8 @@ for ra, dec, sn in zip(p2c_ras_deg, p2c_decs_deg, p2c_sns):
 coord = SkyCoord("00:36:09.74", "-10:32:11.18", unit=(u.hourangle,u.deg))
 dec_est = coord.dec.degree
 ra_est = coord.ra.degree
-circle = plt.Circle((ra_est, dec_est), p2cr/2, color='g', alpha=0.5)
+#circle = plt.Circle((ra_est, dec_est), p2cr/2, color='g', alpha=0.5)
+circle = plt.Circle((ra_est, dec_est), p2cr/2, color=ma.colorAlpha_to_rgb('g', 0.5)[0], zorder=0.5)
 p2c_ax.add_artist(circle)
 
 p2c_ax.set_ylim(p2c_decs_deg[0]-2*p2cr, p2c_decs_deg[0]+2*p2cr)
@@ -237,7 +240,7 @@ for pos in p2e_grid_final:
         #p1_ax.text(ra, dec, str(sn), color='b', fontsize=8, ha='center', va='center')
         circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5)#, alpha=sn/max(p2e_sns))
         p2e_ax.add_artist(circle)
-        #circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5, alpha=sn/max(p2e_sns))
+        #circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5)#, alpha=sn/max(p2e_sns))
     #else:
     #    circle = plt.Circle((ra, dec), p2er, color='b', fill=False, linewidth=0.5)
     #p1_ax.add_artist(circle)
@@ -261,7 +264,7 @@ if use_sns:
 coord = SkyCoord("00:36:14.61", "-10:33:42.81", unit=(u.hourangle,u.deg))
 dec = coord.dec.degree
 ra = coord.ra.degree
-circle = plt.Circle((ra, dec), p1r/2, color='r', alpha=0.5)
+circle = plt.Circle((ra, dec), p1r/2, color=ma.colorAlpha_to_rgb('r', 0.5)[0], zorder=0.5)
 p1_ax.add_artist(circle)
 circle = plt.Circle((ra, dec), p1r/2, color='r', fill=False)
 p2e_ax.add_artist(circle)
@@ -297,7 +300,20 @@ for i in map_dec_range:
         dec_sums[i] += fits_data[i][j]
         ra_sums[j]  += fits_data[i][j]
         fits_sn.append(fits_data[i][j])
-        p2e_ax.scatter(dec_range[i], ra_range[j], alpha=fits_data[i][j]/np.amax(fits_data), c='b')
+        norm_loc = round(fits_data[i][j]/np.amax(fits_data), 4)
+        if norm_loc != 0:
+            print("")
+            print(norm_loc)
+            print(ma.colorAlpha_to_rgb('b', norm_loc)[0])
+        new_colour = ma.colorAlpha_to_rgb('b', norm_loc)[0]
+        if new_colour[-1] > 1.:
+            new_colour = np.array([new_colour[0], new_colour[1], 1.])
+            print(new_colour)
+        try:
+            p2e_ax.scatter(dec_range[i], ra_range[j], marker='s',
+                           color=ma.colorAlpha_to_rgb('b', norm_loc)[0], zorder=0.5*norm_loc)
+        except:
+            print("above failed")
 
 y_ax.plot(dec_sums/max(dec_sums), np.arange(dec-2*pos_u, dec+2*pos_u-pos_u/30, 4*pos_u/30))
 x_ax.plot(np.arange(ra-2*pos_u, ra+2*pos_u-pos_u/30, 4*pos_u/30), ra_sums/max(ra_sums))
@@ -313,4 +329,5 @@ p2e_ax.set_xlabel("Right Acension (degrees)")
 mark_inset(p2c_ax, p1_ax, loc1=2, loc2=3, fc="none", ec="0.5", zorder=0.5)
 mark_inset(p1_ax, p2e_ax, loc1=2, loc2=3, fc="none", ec="0.5", zorder=0.5)
 
-plt.savefig("first_mwa_discovery_localisation.ps", dpi=1000)
+plt.savefig("first_mwa_discovery_localisation.png", dpi=200)
+plt.savefig("first_mwa_discovery_localisation.eps")
