@@ -21,8 +21,8 @@ yellow_target = FixedTarget(SkyCoord(283., dec, unit=(u.deg,u.deg)), name="yello
 blue_target   = FixedTarget(SkyCoord(354., dec, unit=(u.deg,u.deg)), name="blue")
 observer = Observer(longitude=116.670813889*u.deg, latitude=-26.703319444*u.deg, elevation=377.8*u.m)
 
-start_time = Time('2019-07-01T16:00:01', format='isot', scale='utc')
-end_time   = Time('2020-08-01T16:00:01', format='isot', scale='utc')
+start_time = Time('2021-05-01T16:00:01', format='isot', scale='utc')
+end_time   = Time('2021-12-31T16:00:01', format='isot', scale='utc')
 time_resolution = 24 * u.hour
 
 time_grid = time_grid_from_range([start_time, end_time],
