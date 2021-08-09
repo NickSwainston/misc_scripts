@@ -21,43 +21,27 @@ yellow_ra_decs = [[255.7,-13.0],[255.7,18.3],[255.7,-40.5],[272.1,-26.7],[272.1,
 blue_ra_decs   = [[330.4,-55.0], [337.7,1.6],[337.7,-26.7],[354.1,-13.0],[354.1,18.3],[354.1,-40.5],[10.5,-26.7], [10.5,1.6],[10.6,-55.0],[10.6,-72.0],[26.9,-40.5],[26.9,18.3],[26.9,-13.0]]
 
 colour_targets = []
-for ci, colour_ra_dec in enumerate([["red", red_ra_decs], ["green", green_ra_decs], ["purple", purple_ra_decs], ["yellow", yellow_ra_decs], ["blue", blue_ra_decs]]):
+for ci, colour_ra_dec in enumerate([["purple", purple_ra_decs], ["yellow", yellow_ra_decs]]): #["red", red_ra_decs], ["green", green_ra_decs], ["blue", blue_ra_decs]
     #targets = []
     colour, ra_dec = colour_ra_dec
     for ra, dec in ra_dec:
         target = FixedTarget(SkyCoord( ra, dec, unit=(u.deg,u.deg)), name=colour)
         colour_targets.append([colour, target])
     #colour_targets.append(targets)
-#red_target    = FixedTarget(SkyCoord( 67., dec, unit=(u.deg,u.deg)), name="red")
-#green_target  = FixedTarget(SkyCoord(139., dec, unit=(u.deg,u.deg)), name="green")
-#purple_target = FixedTarget(SkyCoord(211., dec, unit=(u.deg,u.deg)), name="purple")
-#yellow_target = FixedTarget(SkyCoord(283., dec, unit=(u.deg,u.deg)), name="yellow")
-#blue_target   = FixedTarget(SkyCoord(354., dec, unit=(u.deg,u.deg)), name="blue")
 observer = Observer(longitude=116.670813889*u.deg, latitude=-26.703319444*u.deg, elevation=377.8*u.m)
 
-start_time = Time('2021-04-01T16:00:01', format='isot', scale='utc')
+start_time = Time('2021-01-01T16:00:01', format='isot', scale='utc')
 end_time   = Time('2021-12-31T16:00:01', format='isot', scale='utc')
 time_resolution = 24 * u.hour
 
 time_grid = time_grid_from_range([start_time, end_time],
                                  time_resolution=time_resolution)
 
-#red_nights = AtNightConstraint(observer, target, times=time_grid,
-#                                         max_solar_altitude=30. * u.deg)
-#red_alts = AltitudeConstraint(observer, target, times=time_grid,
-#                                        min=60. * u.deg)
-#red_obs = np.logical_and(red_nights, red_alts)
-#constraints = [AltitudeConstraint(min=50. * u.deg)]
-#for i, constraint in enumerate(constraints):
-#    red_obs    = constraint(observer, red_target,    times=time_grid)
-#    green_obs  = constraint(observer, green_target,  times=time_grid)
-#    purple_obs = constraint(observer, purple_target, times=time_grid)
-#    yellow_obs = constraint(observer, yellow_target, times=time_grid)
-#    blue_obs   = constraint(observer, blue_target,   times=time_grid)
-
 alt_cut_off = 40.
 constraint = AltitudeConstraint(min=alt_cut_off * u.deg)
-plot_data = np.zeros((70, len(time_grid))) + 1
+print(len(time_grid))
+#print(time_grid)
+plot_data = np.zeros((29, len(time_grid))) + 1
 days_x_axis = np.array([])
 for ci, colour_target in enumerate(colour_targets):
     colour, target = colour_target
@@ -68,29 +52,31 @@ for ci, colour_target in enumerate(colour_targets):
 for t, time in enumerate(time_grid):
     days_x_axis = np.append(days_x_axis, time.datetime.strftime("%Y-%m-%d %H:%M:%S"))
 days_x_axis = np.array(days_x_axis, dtype='datetime64')
-#print(len(red_ra_decs), len(green_ra_decs), len(purple_ra_decs), len(yellow_ra_decs), len(blue_ra_decs))
-cmap = colors.ListedColormap(['white','red', 'green', 'purple', 'yellow', 'blue'])
-bounds = [0, 1.5, 14.5, 29.5, 43.5, 58.5, 71.5]
+print(len(red_ra_decs), len(green_ra_decs), len(purple_ra_decs), len(yellow_ra_decs), len(blue_ra_decs))
+#cmap = colors.ListedColormap(['white','red', 'green', 'purple', 'yellow', 'blue'])
+#bounds = [0, 1.5, 14.5, 29.5, 43.5, 58.5, 71.5]
+cmap = colors.ListedColormap(['white', 'purple', 'orange'])
+bounds = [0, 1.5, 15.5, 30.5]
 norm = colors.BoundaryNorm(bounds, cmap.N)
 
 fig, ax = plt.subplots(figsize=(15,5))
 ax.imshow(plot_data, extent=[mdates.date2num(days_x_axis[0]), mdates.date2num(days_x_axis[-1]), 0, 2],
                              aspect='auto', cmap=cmap, norm=norm)
 ax.xaxis_date()
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d'))
+plt.xlabel("Date (month-day)")
 #plt.setp(ax.get_xticklabels(), rotation=45)
 #plt.gcf().autofmt_xdate()
-fig.autofmt_xdate()
+#fig.autofmt_xdate()
 plt.yticks([], [])
 # draw gridlines
 #ax.grid(which='major', axis='both', linestyle='-', color='k', linewidth=2)
-xticks = []
-for d in days_x_axis:
-    if "01T16:00:00" in str(d):
-        xticks.append(d)
-ax.set_xticks(xticks)
+#ax.text(2459216 + 150, 8.5, "2020B", va='center', ha='center', fontsize=6, color='black')
+#ax.text(2459216 + 225, 23,  "2020B", va='center', ha='center', fontsize=6, color='black')
+#ax.text(0, 8.5, "2020B", va='center', ha='center', fontsize=6, color='black')
+plt.xticks(rotation=0)
 #ax.set_yticks(np.arange(-.5, 10, 1));
-plt.title("Dates SMART observation are above an altitude of {} deg".format(alt_cut_off))
+plt.title("Date ranges the SMART observations are above an altitude of {} deg".format(alt_cut_off))
 plt.savefig('SMART_observing_plan.png')
 
 
