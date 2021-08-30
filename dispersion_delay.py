@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-from mwa_metadb_utils import get_channels
+from vcstools.metadb_utils import get_channels
 
 
 if __name__ == "__main__":
