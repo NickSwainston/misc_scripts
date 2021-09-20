@@ -1,10 +1,14 @@
 import csv
+import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid.inset_locator import (inset_axes, InsetPosition,
+                                                  mark_inset)
+import numpy as np
+from math import sqrt, exp, log, cos, sin, radians
+import glob
+
 from astropy.coordinates import SkyCoord
 from astropy import units as u
-import matplotlib.pyplot as plt
-import numpy as np
-from math import sqrt, exp, log, cos, radians
-import glob
+from astropy.io import fits
 #from AegeanTools.catalogs import load_catalog
 
 remove_average_offset = False
@@ -12,9 +16,28 @@ save_small_plots = False
 add_title = False
 
 # For obsid 1275758864
-fwhm = 1.05 /60. #in degrees
-#fwhm = 1.99 /60. #in degrees
-print("FWHM(``): {:.1f}".format(fwhm*3600.))
+#fwhm = 1.05 /60. #in degrees. Estimation from vcstools scripts
+# PSF elispe values from Marcin (in degrees)
+emaj   = 0.02122665
+emin   = 0.01499498
+eangle = 154.6901
+# angle at 270 degrees (for offringer_1276625432)
+#fwhm = emaj * cos(radians(270)) * cos(radians(eangle)) - emin * sin(radians(270))* sin(radians(eangle))
+angle_from_major = 180 - eangle
+fwhm = emaj * emin / sqrt( emaj**2 * sin(radians(angle_from_major))**2 + emin**2 * cos(radians(angle_from_major))**2 )
+#fwhm = radius * sin(radians(angle_from_major))
+
+# Read in fits data
+hdul = fits.open('/astro/mwavcs/susmita/1276619416/8192x8192_1second/IDG/psf_mean.fits')
+fits_data = hdul[0].data
+pixel_size = 0.0047 * 60 * 60 #arc seconds
+offset_psf = np.array(range(5)) * pixel_size
+print(offset_psf)
+print(fits_data[4096][4096:4101])
+
+
+print("FWHM(deg): {:.3f}".format(fwhm))
+print("FWHM(``) : {:.1f}".format(fwhm*3600.))
 
 # Read in the positions that Susmitas image using aegean
 #cat = load_catalog('odo_comp.xml')
@@ -144,7 +167,16 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
             'tab:blue', 'tab:orange', 'tab:green', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan',
             'indigo', 'navy', 'chocolate']
     size = 5
-    bigfig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(3*size,size))
+
+    # 3 plot method
+    #bigfig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(3*size,size))
+
+    # inset plot method
+    bigfig, (ax2, ax3) = plt.subplots(1,2, figsize=(2*size,size))
+    ax1 = plt.axes([0,0,1,1])
+    # Manually set the position and relative size of the inset axes within ax1
+    ip = InsetPosition(ax2, [0.64,0.1,0.3,0.3])
+    ax1.set_axes_locator(ip)
 
     # First plot. Relative offsets
     plt.figure(figsize=(size, size))
@@ -161,11 +193,13 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
     ax1.set_xlim(-pos_size, pos_size)
     plt.ylim(-pos_size, pos_size)
     ax1.set_ylim(-pos_size, pos_size)
+    ax1.set_xticklabels([0, r"-50$^{\prime\prime}$", "0", r"50$^{\prime\prime}$"])
+    ax1.set_yticklabels([0, r"-50$^{\prime\prime}$", "0", r"50$^{\prime\prime}$"])
     #plt.legend(loc='upper right')
-    plt.xlabel(r"$\Delta$ Right Ascension ($^{\prime\prime}$)")
-    ax1.set_xlabel(r"$\Delta$ Right Ascension ($^{\prime\prime}$)")
-    plt.ylabel(r"$\Delta$ Declination ($^{\prime\prime}$)")
-    ax1.set_ylabel(r"$\Delta$ Declination ($^{\prime\prime}$)")
+    #plt.xlabel(r"$\Delta$ Right Ascension ($^{\prime\prime}$)")
+    #ax1.set_xlabel(r"$\Delta$ Right Ascension ($^{\prime\prime}$)")
+    #plt.ylabel(r"$\Delta$ Declination ($^{\prime\prime}$)")
+    #ax1.set_ylabel(r"$\Delta$ Declination ($^{\prime\prime}$)")
     if save_small_plots:
         plt.savefig("{}_relative_offsets.png".format(plot_label), dpi=500)
     else:
@@ -185,8 +219,12 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
     ax2.set_xlim(xlim_min, xlim_max)
     plt.ylim(ylim_min, ylim_max)
     ax2.set_ylim(ylim_min, ylim_max)
-    plt.xlabel(r"Right Ascension ($^\circ$)")
-    ax2.set_xlabel(r"Right Ascension ($^\circ$)")
+
+    ax2.set_xticklabels(["15:20", "15:40", "16:00", "16:20",
+                         "16:40", "17:00", "17:20", "17:40"])
+
+    plt.xlabel(r"Right Ascension (HH:MM)")
+    ax2.set_xlabel(r"Right Ascension (HH:MM)")
     plt.ylabel(r"Declination ($^\circ$)")
     ax2.set_ylabel(r"Declination ($^\circ$)")
     #plt.legend(loc='upper left')
@@ -209,19 +247,22 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
     fwhm_as = fwhm * 60 * 60
     sigma = fwhm_as / 2.35482
     gaussian = np.exp(-(x)**2/(2*sigma**2))
-    print(gaussian)
+    #print(gaussian)
     improvement_expected = 100 * (1 - gaussian)
-    plt.plot(x, improvement_expected)
-    legend_lines.append(ax3.plot(x, improvement_expected))
+    #plt.plot(x, improvement_expected)
+    #legend_lines.append(ax3.plot(x, improvement_expected))
+
+    plt.plot(offset_psf, fits_data[4096][4096:4101])
+    legend_lines.append(ax3.plot(offset_psf, 100 - fits_data[4096][4096:4101]*100))
 
     plt.xlabel(r"Offset ($^{\prime\prime}$)")
     ax3.set_xlabel(r"Offset ($^{\prime\prime}$)")
-    plt.ylabel("SN Improvement (%)")
-    ax3.set_ylabel("SN Improvement (%)")
+    plt.ylabel("SN Degredation (%)")
+    ax3.set_ylabel("SN Degredation (%)")
     plt.xlim(0, pos_size)
     ax3.set_xlim(0, pos_size)
-    plt.ylim(0, pos_size)
-    ax3.set_ylim(0, pos_size)
+    plt.ylim(60, 0)
+    ax3.set_ylim(60, 0)
     #plt.legend(loc='upper left')
     if save_small_plots:
         plt.savefig("{}_SN_improvements_vs_offsets.png".format(plot_label), dpi=500)
