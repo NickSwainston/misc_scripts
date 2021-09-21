@@ -1,5 +1,7 @@
 import argparse
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 def make_pointing_list(pointing_in, pointing_num):
     pointing_list_list = []
@@ -106,10 +108,53 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     print(f"Times: {total_times}")
     print(f"Times std: {total_time_std}")
 
+def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, offset,
+                   read, cal, beam, write):
+    # Account for the number of beams for each MPB benchmark
+    mpb = []
+    mpb_std = []
+    for pn in pns:
+        mpb.append(mpb_raw[pn-1]/pn)
+        mpb_std.append(mpb_std_raw[pn-1]/pn)
+    mpb = np.array(mpb)
+    mpb_std = np.array(mpb_std)
+    factor_improved = orig/mpb
+
+    # Calc std
+    std = []
+    for i in range(len(orig_std)):
+        std.append( factor_improved[i] * (orig_std[i]/orig[i] + mpb_std[i]/mpb[i]) )
+    
+    # Plot error bars
+    markersize = 3
+    makerwidth = 1
+    capsize = 3
+    (_, caps, _) = plt.errorbar(np.array(pns)+offset, factor_improved, yerr=std,
+                 color=colour, label=label,
+                 fmt="o", markersize=markersize, capsize=capsize)
+    for cap in caps:
+        cap.set_markeredgewidth(makerwidth)
+
+    # Calc theoretical improvement
+    improvs = []
+    for pn in pns:
+        improvs.append(pn * (read + cal + beam + write) / \
+                       (read + cal + pn * ( beam + write) ))
+    plt.plot(np.array(pns)+offset, improvs, color=colour)
 
 
 def plot_benchmarks(max_pointings):
     pns = list(range(1,max_pointings+1))
+    fig, ax = plt.subplots()
+
+    #Ozstar MPB benchmarks serial, cal once upgrade
+    ozstar_mpb_times = np.array([998.8585620833334, 692.6444897083333, 800.4549388333331, 881.5249498333333, 1006.315353, 944.5507646249999, 1065.683886, 1063.0515686249998, 1099.2300005, 1360.5995952916667, 1381.2553838333333, 1337.1792244166666, 1460.8898765000001, 1501.5252142083334, 1535.600801041667, 1561.9304510000002, 1674.5120721249998, 1750.5902402500003, 1824.18594275, 1878.5291691250002])
+    ozstar_mpb_t_std = np.array([147.98231303212285, 147.24272859058829, 197.83727364838705, 171.18852669311877, 167.60135555888132, 190.65141587960483, 177.04170260993504, 169.2816422432124, 185.18820636979697, 201.6599944420951, 201.72517694475567, 138.64690917466743, 179.91234870781938, 148.1496567797671, 156.73456736977104, 185.03415973741747, 195.90517716215902, 169.5883673103956, 174.1339554201066, 120.76407871800876])
+    ozstar_orig_times = np.array([972.8001408958335]*20)
+    ozstar_orig_t_std = np.array([140.90075911087607]*20)
+
+    plot_benchmark(pns, ozstar_orig_times, ozstar_mpb_times, ozstar_orig_t_std, ozstar_mpb_t_std, 'green', 'OzSTAR super computer', -0.1,
+                   888.9, 114.6,  42.5,  43.4)
     
     #Galaxy MPB benchmarks serial, cal once upgrade
     galaxy_mpb_times = np.array([24.946077569999996, 16.736973759999998, 13.74829847,
@@ -125,19 +170,8 @@ def plot_benchmarks(max_pointings):
     galaxy_orig_times = np.array([1.23*24]*15)
     galaxy_orig_t_std = np.array([0.03*24]*15)
 
-    #Ozstar MPB benchmarks serial, cal once upgrade
-    ozstar_mpb_times = np.array([10.8919, 6.6485, 5.138566666666667,
-                        4.611625, 4.37054, 4.0846833333333326,
-                        3.665057142857143, 3.8473875, 3.688588888888889,
-                        3.65932, 3.472590909090909, 3.642475,
-                        3.6434384615384605, 3.1627214285714285, 3.0993533333333327])
-    ozstar_mpb_t_std = np.array([0.5828762390079045, 0.38231331391935586, 0.2598150089754033,
-                        0.3046873551281707, 0.3518930786474778, 0.33209539752239203,
-                        0.32578035796016463, 0.3030123241614934, 0.300121486307145,
-                        0.3495969816803344, 0.2543067229525066, 0.2715681916357903,
-                        0.251464319230689, 0.24366376957200842, 0.22391966882989287])
-    ozstar_orig_times = np.array([0.73*24]*15)
-    ozstar_orig_t_std = np.array([0.02*24]*15)
+    #plot_benchmark(pns, galaxy_orig_times, galaxy_mpb_times, galaxy_orig_t_std, galaxy_mpb_t_std, 'blue', 'Galaxy super computer',
+    #               1.103, 0.209, 0.256, 0.062)
 
     #Shangia ARM MPB benchmarks serial, cal once upgrade
     #sugon gpu
@@ -146,41 +180,26 @@ def plot_benchmarks(max_pointings):
     arm_orig_times = np.array([43.710000/100.*24.]*15)
     arm_orig_t_std = np.array([0.02]*15)
 
-    import matplotlib.pyplot as plt
-    
-    """
-    #plt.fill_between(pns, galaxy_orig_times-galaxy_orig_t_std, galaxy_orig_times+galaxy_orig_t_std,
-    #                 facecolor='gray')
-    plt.errorbar(pns, galaxy_orig_times, yerr=galaxy_orig_t_std,
-            fmt='D-', color='deepskyblue', label='Galaxy original beamformer')
-    
-    #plt.fill_between(pns, galaxy_mpb_times-galaxy_mpb_t_std, galaxy_mpb_times+galaxy_mpb_t_std,
-    #                 facecolor='gray')
-    plt.errorbar(pns, galaxy_mpb_times, yerr=galaxy_mpb_t_std,
-                 color='mediumblue', label='Galaxy multi-pixel beamformer')
-    
-    #plt.fill_between(pns, ozstar_orig_times-ozstar_orig_t_std, ozstar_orig_times+ozstar_orig_t_std,
-    #                 facecolor='gray')
-    plt.errorbar(pns, ozstar_orig_times, yerr=ozstar_orig_t_std,
-                 fmt='D-', color='lime', label='Ozstar original beamformer')
-    
-    #plt.fill_between(pns, ozstar_mpb_times-ozstar_mpb_t_std, ozstar_mpb_times+ozstar_mpb_t_std,
-    #                 facecolor='gray')
-    #plt.errorbar(pns, total_times, yerr=total_time_std, label='Ozstar multi-pixel beamformer')
-    plt.errorbar(pns,  ozstar_mpb_times, yerr=ozstar_mpb_t_std,
-                 color='mediumseagreen', label='Ozstar multi-pixel beamformer')
-    """
-    plt.errorbar(pns, ozstar_orig_times/ozstar_mpb_times, yerr=ozstar_mpb_t_std/5,
-                 color='green', label='OzSTAR super computer')
-    plt.errorbar(pns, galaxy_orig_times/galaxy_mpb_times, yerr=galaxy_mpb_t_std/5,
-                 color='blue', label='Galaxy super computer')
-    plt.errorbar(pns, arm_orig_times/arm_mpb_times, yerr=arm_mpb_t_std/5,
-                 color='red', label='CSRC prototype')
+    #plot_benchmark(pns, arm_orig_times, arm_mpb_times, arm_orig_t_std, arm_mpb_t_std, 'red', 'CSRC prototype', 0.0,
+    #               0.366, 0.070, 0.120, 0.013)
+
+    # Garrawarla 10 min test with max 20 pointings
+    #pns = list(range(1,20+1))
+    garra_mpb_times = np.array([490.77602183333335, 573.6949246666667, 584.4762629166667, 654.6630625833333, 692.4883127916668, 677.400559125, 741.27693525, 770.6290484583333, 787.6888258750001, 799.8723137083333, 905.1626540416668, 900.9540809583335, 942.2014737916667, 958.6411068333333, 1008.5791074999999, 1039.8349550833334, 1064.2677795416666, 1164.5895205, 1180.4333267083332, 1253.159594625])
+    garra_mpb_t_std = np.array([26.513424967711305, 93.0549250040443, 86.77483618375689, 75.75238040330706, 77.90221027793791, 82.27091117305409, 83.69835235396589, 72.91378678995667, 56.3784458363581, 107.35616794927424, 85.68601358318065, 74.25646523716804, 71.9703100963701, 99.36264292041486, 67.82971562152885, 84.76268052497689, 72.0871899948102, 96.62361598666135, 89.59023889326066, 130.83673168626572])
+    garra_orig_times = np.array([479.76736960416673]*20)
+    garra_orig_t_std = np.array([47.1551744501299]*20)
+
+    plot_benchmark(pns, garra_orig_times, garra_mpb_times, garra_orig_t_std, garra_mpb_t_std, 'purple', 'Garrawarla', 0.1,
+                   677.1, 80.6, 33.1, 20.8)
+
+
 
     plt.ylabel("Factor of improved processing efficiency")
     plt.xlabel("Number of simultaneous tied-array beams")
     #plt.legend(loc='upper right', bbox_to_anchor=(0.95, 0.85))
     plt.legend(loc='upper left', bbox_to_anchor=(0.005, 0.995))
+    ax.set_xticks([1,5,10,15,20])
     plt.savefig("Beamformer_benchmark.eps")
     plt.savefig("Beamformer_benchmark.png", bbox_inches='tight', dpi=1000)
     
@@ -199,7 +218,7 @@ if __name__ == "__main__":
              help="First GPS time to process")
     parser.add_argument("-e", "--end", type=int, default=1221832450,
              help="Last GPS time to process")
-    parser.add_argument('--max_pointing_num', type=int, default=15,
+    parser.add_argument('--max_pointing_num', type=int, default=20,
             help="Max number of pointings for multipixel beamformer")
     parser.add_argument('--vcstools_version', type=str, default='master',
             help="Vcstools version")
