@@ -108,7 +108,7 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     print(f"Times: {total_times}")
     print(f"Times std: {total_time_std}")
 
-def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, offset,
+def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, offset, marker,
                    read, cal, beam, write):
     # Account for the number of beams for each MPB benchmark
     mpb = []
@@ -123,17 +123,20 @@ def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, off
     # Calc std
     std = []
     for i in range(len(orig_std)):
-        std.append( factor_improved[i] * (orig_std[i]/orig[i] + mpb_std[i]/mpb[i]) )
+        std.append( factor_improved[i] * np.sqrt( (orig_std[i]/orig[i])**2 + (mpb_std[i]/mpb[i])**2 ) )
     
     # Plot error bars
     markersize = 3
     makerwidth = 1
     capsize = 3
-    (_, caps, _) = plt.errorbar(np.array(pns)+offset, factor_improved, yerr=std,
-                 color=colour, label=label,
-                 fmt="o", markersize=markersize, capsize=capsize)
-    for cap in caps:
-        cap.set_markeredgewidth(makerwidth)
+    #(_, caps, _) = plt.errorbar(np.array(pns)+offset, factor_improved, yerr=std,
+    #             color=colour, label=label,
+    #             fmt="o", markersize=markersize, capsize=capsize)
+    #for cap in caps:
+    #    cap.set_markeredgewidth(makerwidth)
+    plt.scatter(np.array(pns)+offset, factor_improved,
+                 color=colour, label=label, marker=marker)
+
 
     # Calc theoretical improvement
     improvs = []
@@ -141,6 +144,9 @@ def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, off
         improvs.append(pn * (read + cal + beam + write) / \
                        (read + cal + pn * ( beam + write) ))
     plt.plot(np.array(pns)+offset, improvs, color=colour)
+
+    print("Theoertical improvement for {}: {:5.2f} at {} pointings".format(label, improvs[-1], pns[-1]))
+    print("Measured    improvement for {}: {:5.2f} at {} pointings".format(label, factor_improved[-1], pns[-1]))
 
 
 def plot_benchmarks(max_pointings):
@@ -153,7 +159,7 @@ def plot_benchmarks(max_pointings):
     ozstar_orig_times = np.array([972.8001408958335]*20)
     ozstar_orig_t_std = np.array([140.90075911087607]*20)
 
-    plot_benchmark(pns, ozstar_orig_times, ozstar_mpb_times, ozstar_orig_t_std, ozstar_mpb_t_std, 'green', 'OzSTAR super computer', -0.1,
+    plot_benchmark(pns, ozstar_orig_times, ozstar_mpb_times, ozstar_orig_t_std, ozstar_mpb_t_std, 'green', 'OzSTAR super computer', -0.0, ".",
                    888.9, 114.6,  42.5,  43.4)
     
     #Galaxy MPB benchmarks serial, cal once upgrade
@@ -175,13 +181,13 @@ def plot_benchmarks(max_pointings):
 
     #Shangia ARM MPB benchmarks serial, cal once upgrade
     #sugon gpu
-    arm_mpb_times = np.array([10.428699999999997, 6.327849999999999, 4.876733333333333, 4.2145, 3.8385600000000006, 3.6098166666666662, 3.3983857142857152, 3.2382874999999993, 3.1671000000000005, 3.1546199999999995, 3.1414727272727276, 3.0049666666666663, 2.968484615384616, 2.9391785714285716, 2.871186666666667])
-    arm_mpb_t_std = np.array([1.144133239618533, 0.4706367999848716, 0.14700383970797806, 0.11682392734367397, 0.1553377944996001, 0.13968908233008837, 0.1601386790585342, 0.13881945502612375, 0.09439224112809899, 0.13325357931402818, 0.12566505526876778, 0.11650441574845508, 0.09220699860485634, 0.15198450495000457, 0.10387002048500599])
-    arm_orig_times = np.array([43.710000/100.*24.]*15)
-    arm_orig_t_std = np.array([0.02]*15)
+    arm_mpb_times = np.array([1064.6842546666667, 1035.925497375, 1095.6567987916667, 1117.217249625, 1116.6289995, 1269.5149322916666, 1355.7624843333333, 1405.5853571666667, 1178.3422542916667, 1305.0510973333332, 1575.5143663333336, 1587.468552541667, 1656.3445657083337, 1620.6172655416667, 1714.5886795, 1890.493141375, 1839.6132066666669, 1979.3485394583338, 2031.4548157083334, 2104.5370792083336])
+    arm_mpb_t_std = np.array([390.0525198905725, 358.05167142148986, 338.0677586100545, 425.76753216410646, 356.358982145573, 367.7705284620963, 341.0496397912639, 380.66996617226533, 372.9002269086173, 320.04075969979255, 442.53719150377, 436.97744920059034, 424.7550133925048, 486.53346078555603, 580.5229953920162, 509.50770291863904, 506.0167345715911, 525.3652840644522, 539.5795842738253, 559.8052841561744])
+    arm_orig_times = np.array([884.2250819375]*20)
+    arm_orig_t_std = np.array([318.4891566478076]*20)
 
-    #plot_benchmark(pns, arm_orig_times, arm_mpb_times, arm_orig_t_std, arm_mpb_t_std, 'red', 'CSRC prototype', 0.0,
-    #               0.366, 0.070, 0.120, 0.013)
+    plot_benchmark(pns, arm_orig_times, arm_mpb_times, arm_orig_t_std, arm_mpb_t_std, 'red', 'CSRC prototype', 0.0, "^",
+                   1329.0, 36.7, 54.5, 32.9)
 
     # Garrawarla 10 min test with max 20 pointings
     #pns = list(range(1,20+1))
@@ -190,7 +196,7 @@ def plot_benchmarks(max_pointings):
     garra_orig_times = np.array([479.76736960416673]*20)
     garra_orig_t_std = np.array([47.1551744501299]*20)
 
-    plot_benchmark(pns, garra_orig_times, garra_mpb_times, garra_orig_t_std, garra_mpb_t_std, 'purple', 'Garrawarla', 0.1,
+    plot_benchmark(pns, garra_orig_times, garra_mpb_times, garra_orig_t_std, garra_mpb_t_std, 'blue', 'Garrawarla', 0.0, "*",
                    677.1, 80.6, 33.1, 20.8)
 
 
