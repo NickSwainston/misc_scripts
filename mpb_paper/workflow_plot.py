@@ -14,25 +14,11 @@ fig, ax = plt.subplots(2, sharex=True, sharey=True, gridspec_kw={'hspace': 0.1},
 npointing = 1
 secs_plotting = 5
 
-#old timing
-#read_time = 0.2 #s
-#calc_time = 0.17
-#write_time = 0.035
-
-#Galaxy
-#retimed with better timing averaging
-read_time = 0.516 #s
-calc_time = 0.581
-write_time = 0.026
-
-#ozstar
-read_time = 0.280 #s
-cal_time = 0.058
-calc_time = 0.095
-#calc_time = 0.153 #total calc
-write_time = 0.032
-
-
+#ozstar 10 minute with more accurate timing method
+read_time  = 0.8889
+cal_time   = 0.1146
+calc_time  = 0.0425
+write_time = 0.0434
 
 #original
 read_starts = [0.]
@@ -191,42 +177,6 @@ for i in range(secs_plotting):
 max_xaxis = write_starts[-1][-1] + write_time
 """
 
-
-#serial upgrade 1p:
-read_time  = 0.542 #s
-calc_time  = 0.510
-write_time = 0.009
-
-#serial upgrade 15p:
-read_time  = 0.471 #s
-calc_time  = 0.368
-write_time = 0.012
-
-#serial and cal once 1p:
-read_time  = 0.499 #s
-calc_time  = 0.363
-write_time = 0.008
-
-#serial and cal once 15p:
-read_time  = 0.516 #s
-calc_time  = 0.275
-write_time = 0.016
-
-#Ozstar
-#serial and cal once 15p:
-read_time  = 0.266 #s
-calc_time  = 0.044
-write_time = 0.013
-
-#Ozstar
-#serial and cal once 1p:
-read_time  = 0.266 #s
-cal_time   = 0.070
-#calc_time  = 0.085 Calculated using calc_time_total * .55
-calc_time  = 0.039 # calculated from the (15p_calc_time - 0.07)/15
-
-#calc_time = 0.155 #total
-write_time = 0.013
 
 
 
