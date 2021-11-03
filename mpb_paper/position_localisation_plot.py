@@ -28,12 +28,27 @@ fwhm = emaj * emin / sqrt( emaj**2 * sin(radians(angle_from_major))**2 + emin**2
 #fwhm = radius * sin(radians(angle_from_major))
 
 # Read in fits data
-hdul = fits.open('/astro/mwavcs/susmita/1276619416/8192x8192_1second/IDG/psf_mean.fits')
+#hdul = fits.open('/astro/mwavcs/susmita/1276619416/8192x8192_1second/IDG/psf_mean.fits')
+#pixel_size = 0.004 * 60 * 60 #arc seconds
+#hdul = fits.open('/astro/mwavcs/nswainston/1276619416_work/PSF/pixel_0.00094deg/psf_mean.fits')
+
+# 8.46'' pixel size data
+hdul = fits.open('/astro/mwavcs/nswainston/1276619416_work/PSF/pixel_0.00235deg/psf_mean.fits')
+pixel_size = 0.00235 * 60 * 60 #arc seconds
+pixel_centre = 4096
+
 fits_data = hdul[0].data
-pixel_size = 0.0047 * 60 * 60 #arc seconds
-offset_psf = np.array(range(5)) * pixel_size
+offset_psf = np.array(range(25)) * pixel_size
 print(offset_psf)
-print(fits_data[4096][4096:4101])
+print(fits_data.shape)
+#print(fits_data[512][512:537])
+print(fits_data[pixel_centre][pixel_centre:pixel_centre+25])
+print(fits_data[pixel_centre][pixel_centre+4])
+print(fits_data[pixel_centre+4][pixel_centre])
+psf_slice = []
+for i in range(pixel_centre, pixel_centre+25):
+    psf_slice.append(fits_data[i][pixel_centre])
+psf_slice = np.array(psf_slice)
 
 
 print("FWHM(deg): {:.3f}".format(fwhm))
@@ -252,8 +267,9 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
     #plt.plot(x, improvement_expected)
     #legend_lines.append(ax3.plot(x, improvement_expected))
 
-    plt.plot(offset_psf, fits_data[4096][4096:4101])
-    legend_lines.append(ax3.plot(offset_psf, 100 - fits_data[4096][4096:4101]*100))
+    plt.plot(offset_psf, fits_data[pixel_centre][pixel_centre:pixel_centre+25])
+    #legend_lines.append(ax3.plot(offset_psf, 100 - fits_data[pixel_centre][pixel_centre:pixel_centre+25]*100))
+    legend_lines.append(ax3.plot(offset_psf, 100 - psf_slice*100))
 
     plt.xlabel(r"Offset ($^{\prime\prime}$)")
     ax3.set_xlabel(r"Offset ($^{\prime\prime}$)")
