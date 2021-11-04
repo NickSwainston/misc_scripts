@@ -86,7 +86,7 @@ ax2.set_ylabel(r"Relative Sensitivty")
 #ax1.legend(loc='upper right', ncol=3, bbox_to_anchor=(1.8, 0.88))
 
 fig.legend(legend_lines,     # The line objects
-           labels=["P2E FRHM", "",
+           labels=["P2E HWHM", "",
                    "Residual angular offset (50%)", "Residual angular offset (90%)",
                    "Bulk time offset (1 hour)", "Bulk time offset (12 hour)"],
            loc="upper center",   # Position of legend
