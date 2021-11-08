@@ -72,6 +72,9 @@ with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
             # See if dpp ran and what is the best bin size
             #print("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
             #                          obsid, jname))
+
+            # Finding on Garra and pulsar database
+            """
             gaussian_fits = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
                                       obsid, jname))
             bestprof = None
@@ -161,6 +164,16 @@ with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
                             bestprof = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{0}_{1}.bestprof".format(obsid, jname)
                         except:
                             logger.debug("{} not on database".format(pn))
+            """
+
+            # Find in SMART quick look directory (must be run from it)
+            bestprof = glob.glob("{0}/*{0}_{1}*f".format(obsid, jname))
+            if len(bestprof) == 1:
+                bestprof = bestprof[0]
+            png = glob.glob("{0}/*{0}_{1}*ps".format(obsid, jname)) + glob.glob("{0}/*{0}_{1}*png".format(obsid, jname))
+            if len(png) == 1:
+                png = png[0]
+            sefd_loc = glob.glob("{0}/{1}_{0}*stats".format(obsid, jname))
             # Grab DM and SN
             if bestprof:
                 with open(bestprof, "r") as bestprof_f:
@@ -180,7 +193,7 @@ with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
                 ra_dec_list = format_ra_dec([[query["RAJ"][query_id], query["DECJ"][query_id]]])
                 pointing = "{}_{}".format(ra_dec_list[0][0], ra_dec_list[0][1])
                 #print("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
-                sefd_loc = glob.glob("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
+                #sefd_loc = glob.glob("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
                 if len(sefd_loc) == 0:
                     print("Missing sefd for {} {} so resubmitting".format(obsid, jname))
                     command = "submit_to_database.py -o {} -O {} -b {} -p {} --pointing {} --vcstools_version nswainston --dont_upload".format(obsid, calid_dict[obsid], bestprof, jname, pointing)
@@ -188,8 +201,16 @@ with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
                     #test = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE)
                     #output = test.communicate()[0]
                     #os.system(command)
+                else:
+                    print("Found sefd for {} {} so running flux calc".format(obsid, jname))
+                    command = "submit_to_database.py -o {} -O {} -b {} -p {} --pointing {} --vcstools_version nswainston --dont_upload --sefd_file {}".format(obsid, calid_dict[obsid], bestprof, jname, pointing, sefd_loc[0])
+                    print(command)
+                    os.system(command)
+
+
                 
                 # move files to saved dir
+                """
                 dst = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid)
                 if not os.path.isdir(dst):
                     os.mkdir(dst)
@@ -199,6 +220,7 @@ with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
                     copyfile(bestprof, "{}/{}".format(dst, bestprof.split("/")[-1]))
                 if not os.path.isfile("{}/{}".format(dst, sefd_loc[0].split("/")[-1])):
                     copyfile(sefd_loc[0], "{}/{}".format(dst, sefd_loc[0].split("/")[-1]))
+                """
 print("All missing data obsids")
 obs_with_missing_profiles = list(dict.fromkeys(obs_with_missing_profiles))
 obs_with_missing_profiles.sort()
