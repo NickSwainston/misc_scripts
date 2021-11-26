@@ -93,4 +93,4 @@ fig.legend(legend_lines,     # The line objects
            borderaxespad=0.1,    # Small spacing around legend box)
            ncol=3,
 )
-fig.savefig("theoretical_offset.png")
+fig.savefig("theoretical_offset.eps")
