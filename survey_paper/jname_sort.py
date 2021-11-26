@@ -5,8 +5,11 @@ import logging
 import psrqpy
 import subprocess
 from shutil import copyfile
+import pandas as pd
 
 from vcstools.pointing_utils import format_ra_dec
+from vcstools.metadb_utils import getmeta
+from vcstools.sn_flux_utils import est_pulsar_sn
 
 logger = logging.getLogger(__name__)
 
@@ -59,146 +62,230 @@ for o, o_jnames in csv_data:
         jname_dict[oj].append(o)
 
 obs_with_missing_profiles = []
+df = pd.DataFrame(columns=["Pulsar",
+                           "ObservationID",
+                           "ATNF Period (s)",
+                           "ATNF DM",
+                           "Bextprof DM",
+                           "Bestprof sigma",
+                           "Bestprof location",
+                           "Plot location",
+                           "Archive locaion",
+                           "Flux Density (mJy)",
+                           "Flux Density Uncertainty (mJy)",
+                           "SN",
+                           "SN Uncertainty",
+                           "Predicted SN",
+                           "Predicted SN Uncertainty"])
 query = psrqpy.QueryATNF(params = ['PSRJ', 'DM', 'P0', 'RAJ', 'DECJ']).pandas
-with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
-    spamwriter = csv.writer(csvfile)
-    for jname, obsids in sorted(jname_dict.items()):
-        for o, obsid in enumerate(obsids):
-            if o == 0:
-                joutput = jname
-            else:
-                joutput = ""
-            query_id = list(query['PSRJ']).index(jname)
-            # See if dpp ran and what is the best bin size
-            #print("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
-            #                          obsid, jname))
-            gaussian_fits = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
-                                      obsid, jname))
-            bestprof = None
-            png = None
-            archive = None
+#with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
+#    spamwriter = csv.writer(csvfile)
+for jname, obsids in sorted(jname_dict.items()):
+    for o, obsid in enumerate(obsids):
+        #print(jname, obsid)
+        if o == 0:
+            joutput = jname
+        else:
+            joutput = ""
+        query_id = list(query['PSRJ']).index(jname)
+        # See if dpp ran and what is the best bin size
+        #print("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
+        #                          obsid, jname))
+        gaussian_fits = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}*bins_gaussian_fit.png".format(
+                                    obsid, jname))
+        bestprof = None
+        png = None
+        archive = None
 
-            if len(gaussian_fits) != 0:
-                # Grab best bin profile
-                all_bins = []
-                for g in gaussian_fits:
-                    all_bins.append(int(g.split("_bins_gaussian_fit.png")[0].split("_")[-1]))
-            else:
-                # see what bin profiles there are
-                dpp_bestprof = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b*bestprof".format(
-                                         obsid, jname))
-                all_bins = []
-                for b in dpp_bestprof:
-                    all_bins.append(int(b.split("_b")[-1].split("_")[0]))
-            if all_bins:
-                bins = max(all_bins)
-                if bins < 100:
-                    # MSP so use smallest bin profile
-                    bins = min(all_bins)
-                
-                # Find bestprof
-                #print("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*bestprof".format(
-                #                         obsid, jname, bins))
-                dpp_bestprof = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*bestprof".format(
-                                        obsid, jname, int(bins)))
-                if len(dpp_bestprof) != 0:
-                    bestprof = dpp_bestprof[0]
-
-                # Find png
-                dpp_png = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*png".format(
-                                        obsid, jname, int(bins)))
-                if len(dpp_png) != 0:
-                    png = dpp_png[0]
-            
-                # Find archive 
-                dpp_archive = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}_archive.ar".format(
+        if len(gaussian_fits) != 0:
+            # Grab best bin profile
+            all_bins = []
+            for g in gaussian_fits:
+                all_bins.append(int(g.split("_bins_gaussian_fit.png")[0].split("_")[-1]))
+        else:
+            # see what bin profiles there are
+            dpp_bestprof = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b*bestprof".format(
                                         obsid, jname))
-                if len(dpp_archive) == 0:
-                    print("No archive for {} {}".format(obsid, jname))
-                else:
-                    archive = dpp_archive[0]
-                    print(archive)
+            all_bins = []
+            for b in dpp_bestprof:
+                all_bins.append(int(b.split("_b")[-1].split("_")[0]))
+        if all_bins:
+            bins = int(max(all_bins))
+            if bins < 100:
+                # MSP so use smallest bin profile
+                bins = int(min(all_bins))
+        else:
+            bins = ""
+            
+        # Find files, always look in SMART dir first
 
-            if not png or not bestprof:
-                # Attempt to download the data from the pulsar database
-                from mwa_pulsar_client.client import detection_file_download
-                web_address, auth = get_db_auth_addr()
+        # Find bestprof
+        dpp_bestprof = glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*bestprof".format(
+                                obsid, jname))
+        if len(dpp_bestprof) != 0:
+            bestprof = dpp_bestprof[0]
+        else:
+            dpp_bestprof = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/*{0}_{1}*bestprof".format(
+                                    obsid, jname))
+            if len(dpp_bestprof) != 0:
+                bestprof = dpp_bestprof[0]
 
-                if not os.path.isdir("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid)):
-                    os.mkdir("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
-                if not png:
-                    # download ps
-                    possible_names = ["{}_{}.prepfold.ps".format(obsid, jname),
-                                      "{}_{}.prepfold.ps".format(obsid, jname.replace("+","")),
-                                      "{}_{}_c1221342176_b22.prepfold.ps".format(obsid, jname),
-                                      "{}_{}_c1268063056_b1024.prepfold.ps".format(obsid, jname.replace("+",""))]
-                    for pn in possible_names:
-                        if os.path.isfile("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)):
-                            png = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)
-                            break
-                        try:
-                            detection_file_download(web_address, auth,
-                                                    pn,
-                                                    "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
-                            png = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{0}_{1}.prepfold.ps".format(obsid, jname)
-                        except:
-                            logger.debug("{} not on database".format(pn))
-                
-                if not bestprof:
-                    # download bestprof
-                    possible_names = ["{}_{}.bestprof".format(obsid, jname),
-                                      "{}_{}.bestprof".format(obsid, jname.replace("+","")),
-                                      "{}_{}_c1221342176_b22.bestprof".format(obsid, jname),
-                                      "{}_{}_c1268063056_b1024.bestprof".format(obsid, jname.replace("+",""))]
-                    for pn in possible_names:
-                        if os.path.isfile("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)):
-                            bestprof = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)
-                            break
-                        try:
-                            detection_file_download(web_address, auth,
-                                                    pn,
-                                                    "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
-                            bestprof = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{0}_{1}.bestprof".format(obsid, jname)
-                        except:
-                            logger.debug("{} not on database".format(pn))
-            # Grab DM and SN
-            if bestprof:
-                with open(bestprof, "r") as bestprof_f:
-                    lines = bestprof_f.readlines()
-                    dm = lines[14][22:-1]
-                    sigma = lines[13].split("(~")[-1].split(" sigma")[0]
+        # Find png
+        dpp_png = glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*png".format(
+                            obsid, jname)) +\
+                glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*ps".format(
+                            obsid, jname))
+        if len(dpp_png) != 0:
+            png = dpp_png[0]
+        else:
+            dpp_png = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*png".format(
+                                obsid, jname, bins))
+            if len(dpp_png) != 0:
+                png = dpp_png[0]
+    
+        # Find archive 
+        dpp_archive = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}_archive.ar".format(
+                                obsid, jname))
+        if len(dpp_archive) != 0:
+            archive = dpp_archive[0]
+        else:
+            dpp_archive = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/{0}_{1}_archive.ar".format(
+                                    obsid, jname))
+            if len(dpp_archive) != 0:
+                archive = dpp_archive[0]
+            #else:
+                #print("No archive for {} {}".format(obsid, jname))
+
+        if not png or not bestprof:
+            # Attempt to download the data from the pulsar database
+            """
+            print("Downloading {} {}".format(jname, obsid))
+            from mwa_pulsar_client.client import detection_file_download
+            web_address, auth = get_db_auth_addr()
+
+            if not os.path.isdir("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid)):
+                os.mkdir("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
+            if not png:
+                # download ps
+                possible_names = ["{}_{}.prepfold.ps".format(obsid, jname),
+                                    "{}_{}.prepfold.ps".format(obsid, jname.replace("+","")),
+                                    "{}_{}_c1221342176_b22.prepfold.ps".format(obsid, jname),
+                                    "{}_{}_c1268063056_b1024.prepfold.ps".format(obsid, jname.replace("+",""))]
+                for pn in possible_names:
+                    if os.path.isfile("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)):
+                        png = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)
+                        break
+                    try:
+                        detection_file_download(web_address, auth,
+                                                pn,
+                                                "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
+                        png = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{0}_{1}.prepfold.ps".format(obsid, jname)
+                    except:
+                        logger.debug("{} not on database".format(pn))
+            if not bestprof:
+                # download bestprof
+                possible_names = ["{}_{}.bestprof".format(obsid, jname),
+                                    "{}_{}.bestprof".format(obsid, jname.replace("+","")),
+                                    "{}_{}_c1221342176_b22.bestprof".format(obsid, jname),
+                                    "{}_{}_c1268063056_b1024.bestprof".format(obsid, jname.replace("+",""))]
+                for pn in possible_names:
+                    if os.path.isfile("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)):
+                        bestprof = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{1}".format(obsid, pn)
+                        break
+                    try:
+                        detection_file_download(web_address, auth,
+                                                pn,
+                                                "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid))
+                        bestprof = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/{0}_{1}.bestprof".format(obsid, jname)
+                    except:
+                        logger.debug("{} not on database".format(pn))
+            """
+        # Grab DM and SN
+        if bestprof:
+            with open(bestprof, "r") as bestprof_f:
+                lines = bestprof_f.readlines()
+                dm = lines[14][22:-1]
+                sigma = lines[13].split("(~")[-1].split(" sigma")[0]
+        else:
+            dm = None
+            sigma = None
+
+        
+        #spamwriter.writerow([joutput, obsid, query["P0"][query_id], query["DM"][query_id], dm, sigma, bestprof, png, archive])
+        flux = u_flux = sn = u_sn = SN = SN_err = None
+        if not png or not bestprof:
+            print("{},{},{},{}".format(joutput, obsid, bestprof, png))
+            obs_with_missing_profiles.append(obsid)
+        elif submit:
+            ra_dec_list = format_ra_dec([[query["RAJ"][query_id], query["DECJ"][query_id]]])
+            pointing = "{}_{}".format(ra_dec_list[0][0], ra_dec_list[0][1])
+            #print("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
+            sefd_loc = glob.glob("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
+            if len(sefd_loc) == 0:
+                print("Missing sefd for {} {} so resubmitting".format(obsid, jname))
+                command = "submit_to_database.py -o {} -O {} -b {} -p {} --pointing {} --vcstools_version nswainston --dont_upload".format(obsid, calid_dict[obsid], bestprof, jname, pointing)
+                print(command)
+                #test = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE)
+                #output = test.communicate()[0]
+                os.system(command)
             else:
-                dm = None
-                sigma = None
+                #os.remove(sefd_loc[0])
+                flux_loc = glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}_{1}_*_flux_results.csv".format(jname, obsid))
+                if len(flux_loc) == 0:
+                    print("No flux calc result, rerunning")
+                    command = "submit_to_database.py -o {} -O {} -b {} -p {} --pointing {} --vcstools_version nswainston --dont_upload --sefd_file {}".format(obsid, calid_dict[obsid], bestprof, jname, pointing, sefd_loc[0])
+                    print(command)
+                    os.system(command)
+                else:
+                    # Read flux file
+                    with open(flux_loc[0]) as csvfile:
+                        spamreader = csv.reader(csvfile)
+                        for row in spamreader:
+                            if row[0] == 'flux':
+                                flux = row[1]
+                            elif row[0] == 'flux_error':
+                                u_flux = row[1]
+                            elif row[0] == 'sn':
+                                sn = row[1]
+                            elif row[0] == 'u_sn':
+                                u_sn = row[1]
+                    # Est SN
+                    full_metadata = getmeta(service='obs', params={'obs_id':obsid})
+                    beg = full_metadata[u'stoptime'] 
+                    end = full_metadata[u'starttime']
+                    SN, SN_err, s_mean, s_mean_err = est_pulsar_sn(jname, obsid, beg, end,
+                                  full_meta=full_metadata)
+            # move files to saved dir
+            """
+            dst = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid)
+            if not os.path.isdir(dst):
+                os.mkdir(dst)
+            if not os.path.isfile("{}/{}".format(dst, png.split("/")[-1])):
+                copyfile(png, "{}/{}".format(dst, png.split("/")[-1]))
+            if not os.path.isfile("{}/{}".format(dst, bestprof.split("/")[-1])):
+                copyfile(bestprof, "{}/{}".format(dst, bestprof.split("/")[-1]))
+            #if not os.path.isfile("{}/{}".format(dst, sefd_loc[0].split("/")[-1])):
+            #    copyfile(sefd_loc[0], "{}/{}".format(dst, sefd_loc[0].split("/")[-1]))
+            """
 
-            # output results
-            spamwriter.writerow([joutput, obsid, query["P0"][query_id], query["DM"][query_id], dm, sigma, bestprof, png])
-            if not png or not bestprof:
-                print("{},{},{},{}".format(joutput, obsid, bestprof, png))
-                obs_with_missing_profiles.append(obsid)
-            elif submit:
-                ra_dec_list = format_ra_dec([[query["RAJ"][query_id], query["DECJ"][query_id]]])
-                pointing = "{}_{}".format(ra_dec_list[0][0], ra_dec_list[0][1])
-                #print("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
-                sefd_loc = glob.glob("/astro/mwavcs/vcs/{0}/sefd_simulations/{1}_{0}_*.stats".format(obsid, jname))
-                if len(sefd_loc) == 0:
-                    print("Missing sefd for {} {} so resubmitting".format(obsid, jname))
-                    command = "submit_to_database.py -o {} -O {} -b {} -p {} --pointing {} --vcstools_version nswainston --dont_upload".format(obsid, calid_dict[obsid], bestprof, jname, pointing)
-                    #print(command)
-                    #test = subprocess.Popen(command.split(" "), stdout=subprocess.PIPE)
-                    #output = test.communicate()[0]
-                    #os.system(command)
-                
-                # move files to saved dir
-                dst = "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{}".format(obsid)
-                if not os.path.isdir(dst):
-                    os.mkdir(dst)
-                if not os.path.isfile("{}/{}".format(dst, png.split("/")[-1])):
-                    copyfile(png, "{}/{}".format(dst, png.split("/")[-1]))
-                if not os.path.isfile("{}/{}".format(dst, bestprof.split("/")[-1])):
-                    copyfile(bestprof, "{}/{}".format(dst, bestprof.split("/")[-1]))
-                if not os.path.isfile("{}/{}".format(dst, sefd_loc[0].split("/")[-1])):
-                    copyfile(sefd_loc[0], "{}/{}".format(dst, sefd_loc[0].split("/")[-1]))
+        # output results
+        df = df.append({"Pulsar":joutput,
+                        "ObservationID":obsid,
+                        "ATNF Period (s)":query["P0"][query_id], 
+                        "ATNF DM":query["DM"][query_id],
+                        "Bextprof DM":dm,
+                        "Bestprof sigma":sigma,
+                        "Bestprof location":bestprof,
+                        "Plot location":png,
+                        "Archive locaion":archive,
+                        "Flux Density (mJy)":flux,
+                        "Flux Density Uncertainty (mJy)":u_flux,
+                        "SN":sn,
+                        "SN Uncertainty":u_sn,
+                        "Predicted SN":SN,
+                        "Predicted SN Uncertainty":SN_err}, ignore_index=True)
+# Save pandas file to csv
+df.to_csv('SMART_pulsars.csv', index=False)
 print("All missing data obsids")
 obs_with_missing_profiles = list(dict.fromkeys(obs_with_missing_profiles))
 obs_with_missing_profiles.sort()

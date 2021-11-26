@@ -11,9 +11,15 @@ from astropy import units as u
 from astropy.io import fits
 #from AegeanTools.catalogs import load_catalog
 
+from vcstools.analyse_psf import read_psf_fits
+
 remove_average_offset = False
 save_small_plots = False
 add_title = False
+
+# get data dir
+import os
+data_dir = os.path.dirname(os.path.realpath(__file__))[:-10] + "/data/"
 
 # For obsid 1275758864
 #fwhm = 1.05 /60. #in degrees. Estimation from vcstools scripts
@@ -33,22 +39,35 @@ fwhm = emaj * emin / sqrt( emaj**2 * sin(radians(angle_from_major))**2 + emin**2
 #hdul = fits.open('/astro/mwavcs/nswainston/1276619416_work/PSF/pixel_0.00094deg/psf_mean.fits')
 
 # 8.46'' pixel size data
-hdul = fits.open('/astro/mwavcs/nswainston/1276619416_work/PSF/pixel_0.00235deg/psf_mean.fits')
-pixel_size = 0.00235 * 60 * 60 #arc seconds
-pixel_centre = 4096
+#hdul = fits.open('/astro/mwavcs/nswainston/1276619416_work/PSF/pixel_0.00235deg/psf_mean.fits')
+#offset_psf = np.array(range(25)) * pixel_size
 
-fits_data = hdul[0].data
-offset_psf = np.array(range(25)) * pixel_size
-print(offset_psf)
+# natural weighted psf
+rav, decv, fits_data = read_psf_fits('{}wsclean_1276619416_20200619163000_briggs-psf.fits'.format(data_dir))
+print(rav.shape)
+print(decv.shape)
 print(fits_data.shape)
+fits_data = fits_data
+pixel_centre = fits_data.shape[0] // 2
+
+psf_slice = fits_data[pixel_centre][pixel_centre:pixel_centre+25]
+offset_psf = (rav[pixel_centre][pixel_centre] - rav[pixel_centre][pixel_centre:pixel_centre+25]) * 60 * 60
+
 #print(fits_data[512][512:537])
+"""
 print(fits_data[pixel_centre][pixel_centre:pixel_centre+25])
 print(fits_data[pixel_centre][pixel_centre+4])
 print(fits_data[pixel_centre+4][pixel_centre])
 psf_slice = []
+offest_psf = []
 for i in range(pixel_centre, pixel_centre+25):
     psf_slice.append(fits_data[i][pixel_centre])
+    print(rav[i][pixel_centre], rav[pixel_centre][pixel_centre])
+    offest_psf.append(rav[i][pixel_centre] - rav[pixel_centre][pixel_centre])
 psf_slice = np.array(psf_slice)
+offest_psf = np.array(offest_psf)
+"""
+print(offset_psf)
 
 
 print("FWHM(deg): {:.3f}".format(fwhm))
@@ -297,4 +316,4 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
     #bigfig.legend(handles, labels, loc='upper left')
     #bigfig.subplots_adjust(right=0.85)
     #bigfig.axis('equal')
-    bigfig.savefig("{}_all_offsets.png".format(plot_label), dpi=500)
+    bigfig.savefig("{}_all_offsets.eps".format(plot_label), dpi=500)
