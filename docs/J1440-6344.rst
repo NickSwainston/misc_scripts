@@ -1,0 +1,39 @@
+J1440-6344
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1440-6344_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1440-6344 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.97±0.15","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1440-6344 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "55.5±18.5", "11.4", "14.6", "0.263"
+
+.. csv-table:: J1440-6344 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302106648", "55.5±11.4"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1440-6344_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302106648_J1440-6344_14:40:31.26_-63:44:48.40_b256_459.58ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302106648_J1440-6344_256_bins_gaussian_components.png
+  :width: 800

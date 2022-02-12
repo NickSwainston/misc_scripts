@@ -1,0 +1,55 @@
+J2330-2005
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2330-2005_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J2330-2005 fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-0.59±0.12","-2.16±0.15","-2.41±0.05"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2330-2005_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J2330-2005 before fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-0.60±0.12","-2.19±0.17","-2.41±0.05"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2330-2005 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "72.5±45.6", "16.1", "67.4", "0.929"
+
+.. csv-table:: J2330-2005 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1222697776", "67.9±10.6"
+    "1226062160", "77.1±12.1"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2330-2005_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1222697776_J2330-2005_23:30:26.88_-20:05:29.63_b1024_1643.62ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1222697776_J2330-2005_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1226062160_J2330-2005_23:30:26.88_-20:05:29.63_b1024_1643.73ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1226062160_J2330-2005_1024_bins_gaussian_components.png
+  :width: 800

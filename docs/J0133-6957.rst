@@ -1,0 +1,29 @@
+J0133-6957
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0133-6957 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "10.7±7.2", "3.5", "6.2", "0.581"
+
+.. csv-table:: J0133-6957 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1227009976", "10.7±3.5"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0133-6957_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1227009976_J0133-6957.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1227009976_J0133-6957_64_bins_gaussian_components.png
+  :width: 800

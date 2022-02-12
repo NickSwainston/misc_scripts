@@ -1,0 +1,55 @@
+J0255-5304
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0255-5304_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0255-5304 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-0.61±0.26","0.01±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0255-5304_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0255-5304 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-0.93±0.39","0.01±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0255-5304 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "15.9±12.0", "4.8", "10.9", "0.690"
+
+.. csv-table:: J0255-5304 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1224859816", "15.9±4.8"
+    "1253471952", "nan±nan"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0255-5304_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1224859816_J0255-5304.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1224859816_J0255-5304_128_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1253471952_J0255-5304.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1253471952_J0255-5304_100_bins_gaussian_components.png
+  :width: 800

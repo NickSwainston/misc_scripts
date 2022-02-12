@@ -1,0 +1,49 @@
+J2048-1616
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2048-1616_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2048-1616 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.22±0.08","0.02±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2048-1616_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2048-1616 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.24±0.08","0.02±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2048-1616 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "60.9±49.8", "8.8", "49.1", "0.805"
+
+.. csv-table:: J2048-1616 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1222435400", "60.9±8.8"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2048-1616_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1222435400_J2048-1616_20:48:35.64_-16:16:44.55_b512_1961.61ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1222435400_J2048-1616_512_bins_gaussian_components.png
+  :width: 800

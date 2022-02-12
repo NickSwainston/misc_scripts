@@ -1,0 +1,49 @@
+J2155-3118
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2155-3118_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2155-3118 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-2.08±0.17","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2155-3118_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2155-3118 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-2.07±0.17","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2155-3118 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "196.3±142.1", "24.9", "139.9", "0.713"
+
+.. csv-table:: J2155-3118 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1222435400", "196.3±24.9"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2155-3118_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1222435400_J2155-3118_21:55:13.61_-31:18:54.66_b1024_1030.04ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1222435400_J2155-3118_1024_bins_gaussian_components.png
+  :width: 800

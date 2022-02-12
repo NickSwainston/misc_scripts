@@ -1,0 +1,23 @@
+J0702-4956
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0702-4956 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "0",  "16.7±10.5", "5.2", "9.1", "0.545"
+
+.. csv-table:: J0702-4956 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1257617424", "nan±nan"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0702-4956_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------

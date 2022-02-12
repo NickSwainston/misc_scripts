@@ -1,0 +1,39 @@
+J1335-3642
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1335-3642_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1335-3642 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-2.19±0.16","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1335-3642 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "44.3±21.0", "8.1", "19.4", "0.438"
+
+.. csv-table:: J1335-3642 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1301412552", "44.3±8.1"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1335-3642_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1301412552_J1335-3642_13:35:36.00_-36:42:00.00_b256_399.17ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301412552_J1335-3642_256_bins_gaussian_components.png
+  :width: 800

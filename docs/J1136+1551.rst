@@ -1,0 +1,49 @@
+J1136+1551
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1136+1551_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J1136+1551 fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-1.84±0.14","-4.25±0.24","-2.56±0.08"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1136+1551_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J1136+1551 before fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-1.86±0.14","-4.28±0.24","-2.56±0.08"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1136+1551 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "272.7±330.7", "31.6", "329.2", "1.207"
+
+.. csv-table:: J1136+1551 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1268063336", "272.7±31.6"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1136+1551_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1268063336_J1136+1551_c1268063056_b1024.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1268063336_J1136+1551_1024_bins_gaussian_components.png
+  :width: 800

@@ -1,0 +1,49 @@
+J2234+2114
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2234+2114_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2234+2114 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.51±0.40","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2234+2114_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2234+2114 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.56±0.36","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2234+2114 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "7.8±7.4", "6.4", "3.7", "0.476"
+
+.. csv-table:: J2234+2114 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1223042480", "7.8±6.4"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2234+2114_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1223042480_J2234+2114_22:34:56.64_+21:14:18.80_b100_1358.75ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1223042480_J2234+2114_100_bins_gaussian_components.png
+  :width: 800

@@ -1,0 +1,29 @@
+J0038-2501
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0038-2501 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "39.1±43.9", "4.9", "43.7", "1.117"
+
+.. csv-table:: J0038-2501 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1226062160", "39.1±4.9"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0038-2501_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1226062160_J0038-2501_00:38:10.26_-25:01:30.73_b256_256.94ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1226062160_J0038-2501_256_bins_gaussian_components.png
+  :width: 800

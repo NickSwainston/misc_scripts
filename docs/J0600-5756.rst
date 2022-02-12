@@ -1,0 +1,29 @@
+J0600-5756
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0600-5756 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "23.4±12.2", "2.5", "12.0", "0.512"
+
+.. csv-table:: J0600-5756 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1257617424", "23.4±2.5"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0600-5756_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1257617424_J0600-5756.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1257617424_J0600-5756_256_bins_gaussian_components.png
+  :width: 800

@@ -1,0 +1,61 @@
+J0206-4028
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0206-4028_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0206-4028 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.90±0.09","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0206-4028_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0206-4028 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.90±0.09","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0206-4028 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "68.1±45.4", "14.2", "51.9", "0.762"
+
+.. csv-table:: J0206-4028 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1226062160", "24.9±4.6"
+    "1224859816", "111.2±13.5"
+    "1253991112", "nan±nan"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0206-4028_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1226062160_J0206-4028_02:06:01.29_-40:28:03.62_b512_630.57ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1226062160_J0206-4028_512_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1224859816_J0206-4028.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1224859816_J0206-4028_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1253991112_J0206-4028.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1253991112_J0206-4028_100_bins_gaussian_components.png
+  :width: 800

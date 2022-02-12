@@ -1,0 +1,49 @@
+J0729-1448
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0729-1448_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0729-1448 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.51±0.14","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0729-1448_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0729-1448 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.47±0.15","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0729-1448 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "59.0±20.5", "10.1", "17.8", "0.303"
+
+.. csv-table:: J0729-1448 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1266155952", "59.0±10.1"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0729-1448_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1266155952_J0729-1448.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1266155952_J0729-1448_256_bins_gaussian_components.png
+  :width: 800

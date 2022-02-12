@@ -1,0 +1,55 @@
+J0737-3039A
+===========
+
+Best Fit
+--------
+.. image:: best_fits/J0737-3039A_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J0737-3039A fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-0.28±0.11","-1.88±0.08","-2.56±0.03"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0737-3039A_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J0737-3039A before fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-0.29±0.11","-1.88±0.08","-2.56±0.03"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0737-3039A flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "143.1±49.6", "32.0", "58.3", "0.407"
+
+.. csv-table:: J0737-3039A flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1258221008", "129.7±20.1"
+    "1261241272", "156.5±25.0"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0737-3039A_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1258221008_J0737-3039A.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1258221008_J0737-3039A_100_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1261241272_J0737-3039A.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1261241272_J0737-3039A_100_bins_gaussian_components.png
+  :width: 800

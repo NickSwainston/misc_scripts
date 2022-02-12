@@ -1,0 +1,29 @@
+J2354-22
+========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2354-22 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "13.7±12.1", "2.6", "11.9", "0.862"
+
+.. csv-table:: J2354-22 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1226062160", "13.7±2.6"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2354-22_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1226062160_J2354-22_23:54:26.00_-22:51:53.00_b512_558.07ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1226062160_J2354-22_512_bins_gaussian_components.png
+  :width: 800

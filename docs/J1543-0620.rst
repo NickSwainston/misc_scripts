@@ -1,0 +1,49 @@
+J1543-0620
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1543-0620_low_frequency_turn_over_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1543-0620 fit results
+   :header: "model","vc (MHz)","a","b","beta"
+
+   "low_frequency_turn_over_power_law","77±14","-1.87±0.40","0.00±0.00","1.47±0.58"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1543-0620_low_frequency_turn_over_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1543-0620 before fit results
+   :header: "model","vc (MHz)","a","b","beta"
+
+   "low_frequency_turn_over_power_law","76±15","-1.85±0.41","0.00±0.00","1.49±0.60"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1543-0620 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "251.7±165.9", "32.6", "162.7", "0.646"
+
+.. csv-table:: J1543-0620 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302712864", "251.7±32.6"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1543-0620_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302712864_J1543-0620_15:43:30.13_-06:20:45.33_b1024_709.01ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302712864_J1543-0620_1024_bins_gaussian_components.png
+  :width: 800

@@ -1,0 +1,29 @@
+J1536-4948
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1536-4948 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "12.4±12.7", "11.4", "5.7", "0.458"
+
+.. csv-table:: J1536-4948 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302282040", "12.4±11.4"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1536-4948_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302282040_J1536-4948_15:36:00.00_-49:48:00.00_b31_3.08ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/
+  :width: 800

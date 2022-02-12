@@ -1,0 +1,49 @@
+J2324-6054
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2324-6054_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2324-6054 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.11±0.25","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2324-6054_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2324-6054 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.27±0.35","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2324-6054 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "10.3±8.4", "3.6", "7.5", "0.733"
+
+.. csv-table:: J2324-6054 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1227009976", "10.3±3.6"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2324-6054_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1227009976_J2324-6054.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1227009976_J2324-6054_64_bins_gaussian_components.png
+  :width: 800

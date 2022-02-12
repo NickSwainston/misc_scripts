@@ -1,0 +1,61 @@
+J1311-1228
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1311-1228_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1311-1228 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.76±0.19","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1311-1228_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1311-1228 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.74±0.18","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1311-1228 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "3",  "52.7±27.1", "15.9", "24.7", "0.469"
+
+.. csv-table:: J1311-1228 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1300809400", "92.0±11.6"
+    "1301674968", "20.3±6.9"
+    "1301847296", "46.0±8.3"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1311-1228_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1300809400_J1311-1228_13:11:52.64_-12:28:01.63_b1024_447.50ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1300809400_J1311-1228_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1301674968_J1311-1228_13:11:52.64_-12:28:01.63_b128_447.52ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301674968_J1311-1228_128_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1301847296_J1311-1228_13:11:52.64_-12:28:01.63_b512_447.51ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301847296_J1311-1228_512_bins_gaussian_components.png
+  :width: 800

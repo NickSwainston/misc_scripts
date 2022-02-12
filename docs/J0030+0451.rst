@@ -1,0 +1,49 @@
+J0030+0451
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0030+0451_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0030+0451 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.78±0.10","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0030+0451_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0030+0451 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.78±0.10","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0030+0451 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "32.5±42.0", "7.3", "41.3", "1.272"
+
+.. csv-table:: J0030+0451 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1255444104", "32.5±7.3"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0030+0451_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1255444104_J0030+0451.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/
+  :width: 800

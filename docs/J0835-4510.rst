@@ -1,0 +1,61 @@
+J0835-4510
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0835-4510_broken_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0835-4510 fit results
+   :header: "model","vb (MHz)","a1","a2","b"
+
+   "broken_power_law","1344±38","-0.78±0.05","-4.68±0.06","1.37±0.14"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0835-4510_low_frequency_turn_over_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0835-4510 before fit results
+   :header: "model","vc (MHz)","a","b","beta"
+
+   "low_frequency_turn_over_power_law","113±3","-2.71±0.03","1.33±0.10","0.56±0.01"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0835-4510 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "985.2±347.5", "48.7", "344.0", "0.349"
+
+.. csv-table:: J0835-4510 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1265983624", "0.0±6.3"
+    "1265470568", "-0.0±-6.4"
+    "1266680784", "985.2±48.7"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0835-4510_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1265983624_J0835-4510.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1265983624_J0835-4510_894_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1265470568_J0835-4510.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1265470568_J0835-4510_100_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1266680784_J0835-4510.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1266680784_J0835-4510_894_bins_gaussian_components.png
+  :width: 800

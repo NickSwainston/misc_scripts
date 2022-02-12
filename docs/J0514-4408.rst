@@ -1,0 +1,29 @@
+J0514-4408
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0514-4408 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "77.2±55.0", "6.5", "54.6", "0.707"
+
+.. csv-table:: J0514-4408 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1257617424", "77.2±6.5"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0514-4408_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1257617424_J0514-4408.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1257617424_J0514-4408_512_bins_gaussian_components.png
+  :width: 800

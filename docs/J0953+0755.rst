@@ -1,0 +1,56 @@
+J0953+0755
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0953+0755_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J0953+0755 fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-1.04±0.04","-2.11±0.04","-1.02±0.02"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0953+0755_low_frequency_turn_over_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0953+0755 before fit results
+   :header: "model","vc (MHz)","a","b","beta"
+
+   "low_frequency_turn_over_power_law","116±4","-4.07±0.06","96.15±69.90","0.29±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0953+0755 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "1157.9±1161.4", "119.8", "1758.9", "1.519"
+
+.. csv-table:: J0953+0755 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1264867416", "1637.8±111.0"
+    "1267111608", "678.1±44.9"
+    "1268063336", "nan±nan"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0953+0755_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1264867416_J0953+0755.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1264867416_J0953+0755_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/1267111608_J0953+0755.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1267111608_J0953+0755_1024_bins_gaussian_components.png
+  :width: 800

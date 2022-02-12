@@ -1,0 +1,47 @@
+J1418-3921
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1418-3921 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "4",  "46.2±20.9", "19.7", "17.0", "0.368"
+
+.. csv-table:: J1418-3921 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1301412552", "58.2±9.0"
+    "1301674968", "26.1±7.6"
+    "1302106648", "49.2±10.7"
+    "1302282040", "51.3±11.7"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1418-3921_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1301412552_J1418-3921_14:18:50.28_-39:21:18.51_b512_1096.70ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301412552_J1418-3921_512_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1301674968_J1418-3921_14:18:50.28_-39:21:18.51_b128_1096.83ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301674968_J1418-3921_128_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1302106648_J1418-3921_14:18:50.28_-39:21:18.51_b256_1096.71ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302106648_J1418-3921_256_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1302282040_J1418-3921_14:18:50.28_-39:21:18.51_b256_1096.72ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302282040_J1418-3921_256_bins_gaussian_components.png
+  :width: 800

@@ -1,0 +1,39 @@
+J1328-4357
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1328-4357_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1328-4357 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.10±0.24","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1328-4357 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "49.7±23.3", "8.4", "21.7", "0.437"
+
+.. csv-table:: J1328-4357 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1301412552", "49.7±8.4"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1328-4357_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1301412552_J1328-4357_13:28:06.43_-43:57:44.12_b512_532.69ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301412552_J1328-4357_512_bins_gaussian_components.png
+  :width: 800

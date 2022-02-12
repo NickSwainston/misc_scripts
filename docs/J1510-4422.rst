@@ -1,0 +1,29 @@
+J1510-4422
+==========
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1510-4422 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "47.6±19.1", "11.7", "15.0", "0.316"
+
+.. csv-table:: J1510-4422 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302282040", "47.6±11.7"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1510-4422_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302282040_J1510-4422_15:10:48.90_-44:22:07.00_b128_943.78ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302282040_J1510-4422_128_bins_gaussian_components.png
+  :width: 800

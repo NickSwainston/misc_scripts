@@ -1,0 +1,55 @@
+J1534-5334
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1534-5334_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1534-5334 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.87±0.05","0.01±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1534-5334_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1534-5334 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.87±0.05","0.01±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1534-5334 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "105.4±44.4", "21.5", "59.0", "0.560"
+
+.. csv-table:: J1534-5334 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302106648", "122.2±15.0"
+    "1302282040", "88.7±15.4"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1534-5334_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302106648_J1534-5334_15:34:08.27_-53:34:19.66_b1024_1368.72ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302106648_J1534-5334_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1302282040_J1534-5334_15:34:08.27_-53:34:19.66_b512_1368.73ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302282040_J1534-5334_512_bins_gaussian_components.png
+  :width: 800

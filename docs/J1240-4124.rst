@@ -1,0 +1,45 @@
+J1240-4124
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1240-4124_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1240-4124 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.88±0.24","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1240-4124 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "2",  "24.7±13.3", "10.7", "10.6", "0.427"
+
+.. csv-table:: J1240-4124 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1267459328", "18.4±6.8"
+    "1301412552", "31.0±8.3"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1240-4124_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1267459328_J1240-4124.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1267459328_J1240-4124_256_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1301412552_J1240-4124_12:40:17.61_-41:24:51.70_b256_512.22ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301412552_J1240-4124_256_bins_gaussian_components.png
+  :width: 800

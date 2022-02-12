@@ -1,0 +1,49 @@
+J1543+0929
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1543+0929_low_frequency_turn_over_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1543+0929 fit results
+   :header: "model","vc (MHz)","a","b","beta"
+
+   "low_frequency_turn_over_power_law","94±8","-2.32±0.26","0.01±0.00","1.14±0.27"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1543+0929_log_parabolic_spectrum_fit.png
+  :width: 800
+
+.. csv-table:: J1543+0929 before fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-1.16±0.11","-3.09±0.16","-2.39±0.05"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1543+0929 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "397.7±191.3", "26.0", "189.5", "0.477"
+
+.. csv-table:: J1543+0929 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1302540536", "397.7±26.0"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1543+0929_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1302540536_J1543+0929_15:43:38.82_+09:29:16.33_b1024_748.40ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1302540536_J1543+0929_1024_bins_gaussian_components.png
+  :width: 800

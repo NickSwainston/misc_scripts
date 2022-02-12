@@ -1,0 +1,49 @@
+J1332-3032
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J1332-3032_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1332-3032 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-2.54±0.31","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1332-3032_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1332-3032 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-3.18±1.00","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J1332-3032 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "46.0±33.4", "7.7", "32.5", "0.707"
+
+.. csv-table:: J1332-3032 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1301674968", "46.0±7.7"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1332-3032_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1301674968_J1332-3032_13:32:52.48_-30:32:17.30_b256_650.43ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1301674968_J1332-3032_256_bins_gaussian_components.png
+  :width: 800

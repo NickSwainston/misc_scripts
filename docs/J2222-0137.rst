@@ -1,0 +1,49 @@
+J2222-0137
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J2222-0137_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2222-0137 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-0.71±0.33","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J2222-0137_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J2222-0137 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-0.69±0.32","0.00±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J2222-0137 flux density total results
+   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "27.3±40.1", "5.9", "39.6", "1.453"
+
+.. csv-table:: J2222-0137 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1221832280", "27.3±5.9"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J2222-0137_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1221832280_J2222-0137_22:22:05.96_-01:37:15.72_b164_PSR_J2222-0137.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1221832280_J2222-0137_164_bins_gaussian_components.png
+  :width: 800
