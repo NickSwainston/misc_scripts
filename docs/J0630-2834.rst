@@ -25,7 +25,7 @@ Fit Before MWA
 Flux Density Results
 --------------------
 .. csv-table:: J0630-2834 flux density total results
-   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
    "2",  "940.8±352.6", "93.1", "451.7", "0.480"
 

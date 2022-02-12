@@ -1,11 +1,16 @@
 J0902-6325
 ==========
 
+Best Fit
+--------
+Only 2 MWA data and 2 cat data available
+
+
 
 Flux Density Results
 --------------------
 .. csv-table:: J0902-6325 flux density total results
-   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
    "2",  "27.2±12.5", "9.8", "9.2", "0.338"
 
@@ -14,11 +19,6 @@ Flux Density Results
 
     "1266329600", "35.0±8.8"
     "1266932744", "19.5±4.4"
-
-Comparison Fit
---------------
-.. image:: comparison_fits/J0902-6325_comparison_fit.png
-  :width: 800
 
 Detection Plots
 ---------------

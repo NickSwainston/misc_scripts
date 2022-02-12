@@ -15,7 +15,7 @@ Best Fit
 Flux Density Results
 --------------------
 .. csv-table:: J1335-3642 flux density total results
-   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
    "1",  "44.3±21.0", "8.1", "19.4", "0.438"
 

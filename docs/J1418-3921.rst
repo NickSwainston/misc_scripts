@@ -1,11 +1,16 @@
 J1418-3921
 ==========
 
+Best Fit
+--------
+Only 4 MWA data and 2 cat data available
+
+
 
 Flux Density Results
 --------------------
 .. csv-table:: J1418-3921 flux density total results
-   :header: "N obs", "Flux Density (mJy)", " u_S_mean", "u_scint", "m_r_v"
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
    "4",  "46.2±20.9", "19.7", "17.0", "0.368"
 
@@ -16,11 +21,6 @@ Flux Density Results
     "1301674968", "26.1±7.6"
     "1302106648", "49.2±10.7"
     "1302282040", "51.3±11.7"
-
-Comparison Fit
---------------
-.. image:: comparison_fits/J1418-3921_comparison_fit.png
-  :width: 800
 
 Detection Plots
 ---------------
