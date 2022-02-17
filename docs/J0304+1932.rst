@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0304+1932 fit results
    :header: "model","a","b","c"
 
-   "log_parabolic_spectrum","-0.93±0.32","-1.87±0.46","-2.28±0.14"
+   "log_parabolic_spectrum","-0.92±0.32","-1.86±0.45","-2.28±0.14"
 
 Fit Before MWA
 --------------

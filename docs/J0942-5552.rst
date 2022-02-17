@@ -4,13 +4,13 @@ J0942-5552
 
 Best Fit
 --------
-.. image:: best_fits/J0942-5552_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0942-5552_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0942-5552 fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "log_parabolic_spectrum","-1.93±0.27","-2.34±0.20","-1.94±0.01"
+   "broken_power_law","1135±50","-0.40±0.18","-2.73±0.14","0.02±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J0942-5552 before fit results
    :header: "model","a","b","c"
 
-   "log_parabolic_spectrum","-1.61±0.25","-2.30±0.16","-1.94±0.00"
+   "log_parabolic_spectrum","-5.00±5.98","-2.42±0.23","-1.94±0.01"
 
 
 Flux Density Results

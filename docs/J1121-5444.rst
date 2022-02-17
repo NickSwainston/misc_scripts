@@ -4,13 +4,13 @@ J1121-5444
 
 Best Fit
 --------
-.. image:: best_fits/J1121-5444_broken_power_law_fit.png
+.. image:: best_fits/J1121-5444_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J1121-5444 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","a","b","c"
 
-   "broken_power_law","208±11","1.51±0.82","-2.30±0.09","1.71±2.24"
+   "log_parabolic_spectrum","-0.56±0.32","-2.44±0.25","-2.78±0.04"
 
 Fit Before MWA
 --------------

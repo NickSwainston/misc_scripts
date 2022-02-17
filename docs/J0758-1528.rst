@@ -4,23 +4,23 @@ J0758-1528
 
 Best Fit
 --------
-.. image:: best_fits/J0758-1528_simple_power_law_fit.png
+.. image:: best_fits/J0758-1528_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0758-1528 fit results
-   :header: "model","a","b"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "simple_power_law","-1.67±0.20","0.00±0.00"
+   "broken_power_law","925±3","-1.76±0.16","-0.11±0.28","0.00±0.00"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0758-1528_simple_power_law_fit.png
+.. image:: before_mwa/J0758-1528_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0758-1528 before fit results
-   :header: "model","a","b"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "simple_power_law","-1.71±0.24","0.00±0.00"
+   "broken_power_law","925±3","-1.81±0.18","-0.08±0.28","0.00±0.00"
 
 
 Flux Density Results

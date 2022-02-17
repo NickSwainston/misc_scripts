@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1240-4124 fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.88±0.24","0.00±0.00"
+   "simple_power_law","-1.87±0.24","0.00±0.00"
 
 
 Flux Density Results

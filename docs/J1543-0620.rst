@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1543-0620 fit results
    :header: "model","vc (MHz)","a","b","beta"
 
-   "low_frequency_turn_over_power_law","77±14","-1.87±0.40","0.00±0.00","1.47±0.58"
+   "low_frequency_turn_over_power_law","77±14","-1.87±0.40","0.00±0.00","1.47±0.57"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J1543-0620 before fit results
    :header: "model","vc (MHz)","a","b","beta"
 
-   "low_frequency_turn_over_power_law","76±15","-1.85±0.41","0.00±0.00","1.49±0.60"
+   "low_frequency_turn_over_power_law","76±15","-1.85±0.41","0.00±0.00","1.50±0.61"
 
 
 Flux Density Results

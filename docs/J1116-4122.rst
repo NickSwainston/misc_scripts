@@ -10,17 +10,17 @@ Best Fit
 .. csv-table:: J1116-4122 fit results
    :header: "model","vb (MHz)","a1","a2","b"
 
-   "broken_power_law","1237±178","-0.95±0.11","-3.71±0.58","0.01±0.00"
+   "broken_power_law","1228±172","-0.94±0.09","-3.71±0.58","0.01±0.00"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1116-4122_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J1116-4122_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1116-4122 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "log_parabolic_spectrum","-1.61±0.31","-2.51±0.22","-2.28±0.07"
+   "broken_power_law","1227±173","-0.94±0.10","-3.71±0.58","0.01±0.00"
 
 
 Flux Density Results

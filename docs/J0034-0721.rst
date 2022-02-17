@@ -4,23 +4,23 @@ J0034-0721
 
 Best Fit
 --------
-.. image:: best_fits/J0034-0721_broken_power_law_fit.png
+.. image:: best_fits/J0034-0721_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J0034-0721 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","a","b","c"
 
-   "broken_power_law","215±6","-0.56±0.09","-2.78±0.21","0.11±0.02"
+   "log_parabolic_spectrum","-1.50±0.16","-4.02±0.34","-2.87±0.18"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0034-0721_broken_power_law_fit.png
+.. image:: before_mwa/J0034-0721_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J0034-0721 before fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","a","b","c"
 
-   "broken_power_law","215±6","-0.56±0.09","-2.78±0.21","0.11±0.02"
+   "log_parabolic_spectrum","-1.50±0.16","-4.02±0.34","-2.86±0.18"
 
 
 Flux Density Results

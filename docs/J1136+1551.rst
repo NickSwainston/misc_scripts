@@ -4,23 +4,23 @@ J1136+1551
 
 Best Fit
 --------
-.. image:: best_fits/J1136+1551_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1136+1551_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1136+1551 fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "log_parabolic_spectrum","-1.84±0.14","-4.25±0.24","-2.56±0.08"
+   "broken_power_law","176±12","0.67±0.18","-2.75±0.08","3.64±1.98"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1136+1551_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J1136+1551_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1136+1551 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "log_parabolic_spectrum","-1.86±0.14","-4.28±0.24","-2.56±0.08"
+   "broken_power_law","572±27","-0.07±0.10","-6.30±0.53","0.21±0.05"
 
 
 Flux Density Results

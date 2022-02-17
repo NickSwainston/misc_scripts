@@ -10,17 +10,17 @@ Best Fit
 .. csv-table:: J0742-2822 fit results
    :header: "model","vb (MHz)","a1","a2","b"
 
-   "broken_power_law","402±12","0.08±0.39","-1.98±0.07","0.33±0.15"
+   "broken_power_law","402±12","0.09±0.39","-1.98±0.06","0.33±0.15"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0742-2822_simple_power_law_fit.png
+.. image:: before_mwa/J0742-2822_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0742-2822 before fit results
-   :header: "model","a","b"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "simple_power_law","-1.95±0.06","0.03±0.00"
+   "broken_power_law","1426±1486","-2.00±0.05","-1.60±0.54","0.03±0.00"
 
 
 Flux Density Results

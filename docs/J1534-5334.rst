@@ -4,23 +4,23 @@ J1534-5334
 
 Best Fit
 --------
-.. image:: best_fits/J1534-5334_simple_power_law_fit.png
+.. image:: best_fits/J1534-5334_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J1534-5334 fit results
-   :header: "model","a","b"
+   :header: "model","a","b","c"
 
-   "simple_power_law","-1.87±0.05","0.01±0.00"
+   "log_parabolic_spectrum","1.54±0.39","-0.46±0.39","-2.16±0.03"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1534-5334_simple_power_law_fit.png
+.. image:: before_mwa/J1534-5334_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J1534-5334 before fit results
-   :header: "model","a","b"
+   :header: "model","a","b","c"
 
-   "simple_power_law","-1.87±0.05","0.01±0.00"
+   "log_parabolic_spectrum","1.51±0.39","-0.49±0.38","-2.16±0.03"
 
 
 Flux Density Results

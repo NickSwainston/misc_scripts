@@ -4,13 +4,13 @@ J1224-6407
 
 Best Fit
 --------
-.. image:: best_fits/J1224-6407_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1224-6407_simple_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1224-6407 fit results
-   :header: "model","a","b","c"
+   :header: "model","a","b"
 
-   "log_parabolic_spectrum","-0.55±0.26","-1.45±0.19","-2.02±0.02"
+   "simple_power_law","-1.27±0.09","0.01±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J1224-6407 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.41±0.11","0.01±0.00"
+   "simple_power_law","-1.42±0.11","0.01±0.00"
 
 
 Flux Density Results

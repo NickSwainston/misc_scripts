@@ -10,17 +10,17 @@ Best Fit
 .. csv-table:: J0630-2834 fit results
    :header: "model","a","b","c"
 
-   "log_parabolic_spectrum","-0.64±0.12","-2.23±0.20","-1.66±0.08"
+   "log_parabolic_spectrum","-1.99±0.03","-5.00±0.08","-3.06±0.03"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0630-2834_low_frequency_turn_over_power_law_fit.png
+.. image:: before_mwa/J0630-2834_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0630-2834 before fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "low_frequency_turn_over_power_law","82±4","-1.70±0.09","0.02±0.00","2.10±0.14"
+   "broken_power_law","135±0","-0.13±0.13","-1.64±0.08","0.70±0.21"
 
 
 Flux Density Results
