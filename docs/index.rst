@@ -12,7 +12,7 @@ Flux Density Results
 .. csv-table::
    :header: "Pulsar", "DM", "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   ":ref:`J0151-0635<J0151-0635>`", "25.66", "1",  "7.6±5.2", "3.1", "4.2", "0.551"
+   ":ref:`J0942-5552<J0942-5552>`", "180.16", "2",  "35.9±12.9", "11.9", "7.9", "0.221"
 
 Single Power Law Results
 ------------------------
@@ -25,13 +25,13 @@ Broken Power Law Results
 .. csv-table::
    :header: "Pulsar", "DM", "vb (MHz)", "a1", "a2", "b"
 
+   ":ref:`J0942-5552<J0942-5552>`", "180.16", "1151±62", "-0.57±0.27", "-2.73±0.14", "0.02±0.00"
 
 Log-parabolic spectrum Results
 ------------------------------
 .. csv-table::
    :header: "Pulsar", "DM", "a", "b", "c"
 
-   ":ref:`J0151-0635<J0151-0635>`", "25.66", "-1.62±0.21", "-2.70±0.28", "-2.72±0.07"
 
 Power law with high-frequency cut-off Results
 ---------------------------------------------
