@@ -1,10 +1,16 @@
+.. _J0151-0635:
 J0151-0635
 ==========
 
 Best Fit
 --------
-Only 0 MWA data and 11 cat data available
+.. image:: best_fits/J0151-0635_log_parabolic_spectrum_fit.png
+  :width: 800
 
+.. csv-table:: J0151-0635 fit results
+   :header: "model","a","b","c"
+
+   "log_parabolic_spectrum","-1.62±0.21","-2.70±0.28","-2.72±0.07"
 
 Fit Before MWA
 --------------
@@ -14,4 +20,31 @@ Fit Before MWA
 .. csv-table:: J0151-0635 before fit results
    :header: "model","a","b","c"
 
-   "log_parabolic_spectrum","-1.66±0.19","-2.83±0.27","-2.74±0.07"
+   "log_parabolic_spectrum","-1.67±0.19","-2.83±0.27","-2.74±0.07"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0151-0635 flux density total results
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "7.6±5.2", "3.1", "4.2", "0.551"
+
+.. csv-table:: J0151-0635 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1252177744", "7.6±3.1"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0151-0635_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/1252177744_J0151-0635.prepfold.png
+  :width: 800
+
+.. image:: on_pulse_plots/1252177744_J0151-0635_100_bins_gaussian_components.png
+  :width: 800
