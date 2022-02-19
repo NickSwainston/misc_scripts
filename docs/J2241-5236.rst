@@ -28,14 +28,14 @@ Flux Density Results
 .. csv-table:: J2241-5236 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "331.6±254.0", "34.7", "267.5", "0.807"
+   "3",  "274.4±204.7", "44.9", "221.4", "0.807"
 
 .. csv-table:: J2241-5236 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1221399680", "44.9±11.2"
-    "1225713560", "nan±nan"
-    "1224252736", "618.3±32.9"
+    "1221399680", "50.1±12.5"
+    "1225713560", "68.5±21.4"
+    "1224252736", "704.6±37.4"
 
 Comparison Fit
 --------------
