@@ -4,13 +4,13 @@ J2324-6054
 
 Best Fit
 --------
-.. image:: best_fits/J2324-6054_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J2324-6054_simple_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2324-6054 fit results
-   :header: "model","a","b","c"
+   :header: "model","a","b"
 
-   "log_parabolic_spectrum","-5.00±4.47","-3.34±0.42","-2.82±0.08"
+   "simple_power_law","-1.17±0.29","0.00±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J2324-6054 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.21±0.40","0.00±0.00"
+   "simple_power_law","-1.27±0.37","0.00±0.00"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J2324-6054 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "10.3±8.4", "3.6", "7.5", "0.733"
+   "1",  "11.6±9.4", "4.1", "8.5", "0.733"
 
 .. csv-table:: J2324-6054 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1227009976", "10.3±3.6"
+    "1227009976", "11.6±4.1"
 
 Comparison Fit
 --------------

@@ -4,13 +4,13 @@ J1202-5820
 
 Best Fit
 --------
-.. image:: best_fits/J1202-5820_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1202-5820_simple_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1202-5820 fit results
-   :header: "model","a","b","c"
+   :header: "model","a","b"
 
-   "log_parabolic_spectrum","-1.25±0.49","-2.81±0.44","-2.58±0.05"
+   "simple_power_law","-1.79±0.16","0.00±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J1202-5820 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-2.21±0.33","0.00±0.00"
+   "simple_power_law","-2.22±0.31","0.00±0.00"
 
 
 Flux Density Results
@@ -28,13 +28,13 @@ Flux Density Results
 .. csv-table:: J1202-5820 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "90.8±20.0", "11.8", "22.2", "0.244"
+   "2",  "103.8±23.1", "13.4", "25.3", "0.244"
 
 .. csv-table:: J1202-5820 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1267459328", "103.3±7.0"
-    "1301240224", "78.4±9.5"
+    "1267459328", "119.3±8.1"
+    "1301240224", "88.4±10.7"
 
 Comparison Fit
 --------------

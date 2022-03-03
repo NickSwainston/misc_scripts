@@ -4,8 +4,13 @@ J1418-3921
 
 Best Fit
 --------
-Only 4 MWA data and 2 cat data available
+.. image:: best_fits/J1418-3921_simple_power_law_fit.png
+  :width: 800
 
+.. csv-table:: J1418-3921 fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-1.90±0.12","0.00±0.00"
 
 
 Flux Density Results
@@ -13,15 +18,20 @@ Flux Density Results
 .. csv-table:: J1418-3921 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "4",  "46.2±20.9", "19.7", "17.0", "0.368"
+   "4",  "50.3±22.7", "21.4", "18.5", "0.368"
 
 .. csv-table:: J1418-3921 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1301412552", "58.2±9.0"
-    "1301674968", "26.1±7.6"
-    "1302106648", "49.2±10.7"
-    "1302282040", "51.3±11.7"
+    "1301412552", "64.3±10.0"
+    "1301674968", "28.9±8.4"
+    "1302106648", "53.2±11.5"
+    "1302282040", "55.0±12.5"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J1418-3921_comparison_fit.png
+  :width: 800
 
 Detection Plots
 ---------------

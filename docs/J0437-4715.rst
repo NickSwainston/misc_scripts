@@ -1,0 +1,50 @@
+.. _J0437-4715:
+J0437-4715
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0437-4715_broken_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0437-4715 fit results
+   :header: "model","vb (MHz)","a1","a2","b"
+
+   "broken_power_law","1435±45","-0.83±0.01","-2.15±0.09","0.16±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0437-4715_broken_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0437-4715 before fit results
+   :header: "model","vb (MHz)","a1","a2","b"
+
+   "broken_power_law","1905±123","-0.83±0.01","-2.43±0.17","0.16±0.00"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0437-4715 flux density total results
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "1179.0±1906.0", "237.7", "1891.1", "1.604"
+
+.. csv-table:: J0437-4715 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1257617424", "1179.0±237.7"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0437-4715_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1257617424_J0437-4715_04:37:15.89_-47:15:09.11_b50_PSR_J0437-4715.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/
+  :width: 800

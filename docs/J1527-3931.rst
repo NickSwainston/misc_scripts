@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1527-3931 fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.67±0.21","0.00±0.00"
+   "simple_power_law","-1.67±0.25","0.00±0.00"
 
 
 Flux Density Results
@@ -18,12 +18,12 @@ Flux Density Results
 .. csv-table:: J1527-3931 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "28.7±16.6", "11.9", "11.7", "0.408"
+   "1",  "30.7±17.8", "12.7", "12.5", "0.408"
 
 .. csv-table:: J1527-3931 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1302282040", "28.7±11.9"
+    "1302282040", "30.7±12.7"
 
 Comparison Fit
 --------------

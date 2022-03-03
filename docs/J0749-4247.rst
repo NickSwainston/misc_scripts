@@ -1,0 +1,30 @@
+.. _J0749-4247:
+J0749-4247
+==========
+
+Best Fit
+--------
+Only 1 MWA data and 2 cat data available
+
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0749-4247 flux density total results
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "19.0±10.3", "8.7", "5.4", "0.285"
+
+.. csv-table:: J0749-4247 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1265983624", "19.0±8.7"
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1265983624_J0749-4247_07:49:49.67_-42:47:42.14_b100_1095.45ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1265983624_J0749-4247_100_bins_gaussian_components.png
+  :width: 800

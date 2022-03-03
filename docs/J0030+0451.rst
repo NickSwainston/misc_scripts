@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0030+0451 fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.78±0.10","0.00±0.00"
+   "simple_power_law","-1.64±0.12","0.00±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J0030+0451 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.78±0.10","0.00±0.00"
+   "simple_power_law","-1.64±0.12","0.00±0.00"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J0030+0451 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "32.5±42.0", "7.3", "41.3", "1.272"
+   "1",  "36.9±47.7", "8.3", "46.9", "1.272"
 
 .. csv-table:: J0030+0451 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1255444104", "32.5±7.3"
+    "1255444104", "36.9±8.3"
 
 Comparison Fit
 --------------

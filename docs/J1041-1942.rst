@@ -4,13 +4,13 @@ J1041-1942
 
 Best Fit
 --------
-.. image:: best_fits/J1041-1942_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1041-1942_simple_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1041-1942 fit results
-   :header: "model","a","b","c"
+   :header: "model","a","b"
 
-   "log_parabolic_spectrum","-1.08±0.59","-2.26±0.58","-2.49±0.14"
+   "simple_power_law","-1.39±0.29","0.00±0.00"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J1041-1942 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.77±0.29","0.00±0.00"
+   "simple_power_law","-1.76±0.31","0.00±0.00"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J1041-1942 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "42.0±21.1", "5.8", "20.3", "0.484"
+   "1",  "49.0±24.7", "6.7", "23.7", "0.484"
 
 .. csv-table:: J1041-1942 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1268321832", "42.0±5.8"
+    "1268321832", "49.0±6.7"
 
 Comparison Fit
 --------------

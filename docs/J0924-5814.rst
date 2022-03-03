@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0924-5814 fit results
    :header: "model","a","b","c"
 
-   "log_parabolic_spectrum","-0.82±0.42","-1.65±0.28","-2.29±0.04"
+   "log_parabolic_spectrum","-0.71±0.48","-1.60±0.30","-2.29±0.05"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J0924-5814 before fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.30±0.10","0.00±0.00"
+   "simple_power_law","-1.30±0.13","0.00±0.00"
 
 
 Flux Density Results
@@ -28,13 +28,13 @@ Flux Density Results
 .. csv-table:: J0924-5814 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "32.0±12.0", "8.1", "12.1", "0.378"
+   "2",  "36.2±13.3", "9.1", "13.7", "0.378"
 
 .. csv-table:: J0924-5814 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1266329600", "38.7±6.7"
-    "1266932744", "25.3±4.6"
+    "1266329600", "42.8±7.4"
+    "1266932744", "29.5±5.4"
 
 Comparison Fit
 --------------

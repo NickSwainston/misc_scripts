@@ -1,0 +1,30 @@
+.. _J0838-3947:
+J0838-3947
+==========
+
+Best Fit
+--------
+Only 1 MWA data and 1 cat data available
+
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0838-3947 flux density total results
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "22.0±10.1", "9.0", "4.4", "0.201"
+
+.. csv-table:: J0838-3947 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1265983624", "22.0±9.0"
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1265983624_J0838-3947_08:38:30.80_-39:47:22.00_b100_1703.95ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1265983624_J0838-3947_100_bins_gaussian_components.png
+  :width: 800

@@ -4,23 +4,23 @@ J2048-1616
 
 Best Fit
 --------
-.. image:: best_fits/J2048-1616_low_frequency_turn_over_power_law_fit.png
+.. image:: best_fits/J2048-1616_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2048-1616 fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "low_frequency_turn_over_power_law","158±23","-1.66±0.17","0.01±0.00","2.10±0.29"
+   "broken_power_law","237±43","1.43±0.81","-1.51±0.41","2.37±2.96"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J2048-1616_low_frequency_turn_over_power_law_fit.png
+.. image:: before_mwa/J2048-1616_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2048-1616 before fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "low_frequency_turn_over_power_law","149±24","-1.64±0.17","0.01±0.00","2.10±0.27"
+   "broken_power_law","239±46","1.28±0.74","-1.51±0.41","1.82±2.22"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J2048-1616 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "60.9±49.8", "8.8", "49.1", "0.805"
+   "1",  "69.2±56.6", "9.9", "55.7", "0.805"
 
 .. csv-table:: J2048-1616 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1222435400", "60.9±8.8"
+    "1222435400", "69.2±9.9"
 
 Comparison Fit
 --------------

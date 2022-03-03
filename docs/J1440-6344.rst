@@ -10,7 +10,17 @@ Best Fit
 .. csv-table:: J1440-6344 fit results
    :header: "model","a","b"
 
-   "simple_power_law","-1.97±0.15","0.00±0.00"
+   "simple_power_law","-2.07±0.17","0.00±0.00"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J1440-6344_simple_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J1440-6344 before fit results
+   :header: "model","a","b"
+
+   "simple_power_law","-2.68±0.15","0.00±0.00"
 
 
 Flux Density Results
@@ -18,12 +28,12 @@ Flux Density Results
 .. csv-table:: J1440-6344 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "55.5±18.5", "11.4", "14.6", "0.263"
+   "1",  "60.0±20.0", "12.3", "15.8", "0.263"
 
 .. csv-table:: J1440-6344 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1302106648", "55.5±11.4"
+    "1302106648", "60.0±12.3"
 
 Comparison Fit
 --------------

@@ -1,0 +1,50 @@
+.. _J0528+2200:
+J0528+2200
+==========
+
+Best Fit
+--------
+.. image:: best_fits/J0528+2200_broken_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0528+2200 fit results
+   :header: "model","vb (MHz)","a1","a2","b"
+
+   "broken_power_law","463±42","0.35±0.15","-1.95±0.23","0.09±0.02"
+
+Fit Before MWA
+--------------
+.. image:: before_mwa/J0528+2200_broken_power_law_fit.png
+  :width: 800
+
+.. csv-table:: J0528+2200 before fit results
+   :header: "model","vb (MHz)","a1","a2","b"
+
+   "broken_power_law","463±42","0.35±0.15","-1.95±0.23","0.08±0.02"
+
+
+Flux Density Results
+--------------------
+.. csv-table:: J0528+2200 flux density total results
+   :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
+
+   "1",  "38.3±16.8", "6.9", "15.3", "0.400"
+
+.. csv-table:: J0528+2200 flux density individual results
+   :header: "ObsID", "Flux Density (mJy)"
+
+    "1259685792", "38.3±6.9"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0528+2200_comparison_fit.png
+  :width: 800
+
+Detection Plots
+---------------
+
+.. image:: detection_plots/pf_1259685792_J0528+2200_05:28:52.26_+22:00:04.00_b1024_3744.90ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1259685792_J0528+2200_512_bins_gaussian_components.png
+  :width: 800

@@ -10,17 +10,17 @@ Best Fit
 .. csv-table:: J1453-6413 fit results
    :header: "model","vb (MHz)","a1","a2","b"
 
-   "broken_power_law","260±23","0.29±0.16","-2.26±0.15","1.18±0.38"
+   "broken_power_law","250±473","0.31±0.18","-2.22±0.06","1.24±0.44"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1453-6413_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J1453-6413_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1453-6413 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "log_parabolic_spectrum","-0.83±0.22","-2.38±0.22","-1.69±0.02"
+   "broken_power_law","250±559","0.31±0.18","-2.22±0.06","1.24±0.45"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J1453-6413 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "546.0±195.4", "59.1", "186.2", "0.341"
+   "1",  "589.9±211.1", "63.9", "201.2", "0.341"
 
 .. csv-table:: J1453-6413 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1302106648", "546.0±59.1"
+    "1302106648", "589.9±63.9"
 
 Comparison Fit
 --------------

@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0826+2637 fit results
    :header: "model","vb (MHz)","a1","a2","b"
 
-   "broken_power_law","161±9","0.29±0.11","-1.61±0.02","0.71±0.19"
+   "broken_power_law","126±13","0.52±0.20","-1.59±0.02","1.76±1.10"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J0826+2637 before fit results
    :header: "model","vb (MHz)","a1","a2","b"
 
-   "broken_power_law","127±10","0.53±0.16","-1.59±0.02","1.77±0.87"
+   "broken_power_law","127±13","0.52±0.20","-1.59±0.02","1.76±1.10"
 
 
 Flux Density Results
@@ -28,12 +28,12 @@ Flux Density Results
 .. csv-table:: J0826+2637 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "174.4±110.8", "16.9", "109.5", "0.628"
+   "1",  "193.9±123.1", "18.8", "121.7", "0.628"
 
 .. csv-table:: J0826+2637 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1265725128", "174.4±16.9"
+    "1265725128", "193.9±18.8"
 
 Comparison Fit
 --------------

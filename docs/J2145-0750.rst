@@ -4,23 +4,23 @@ J2145-0750
 
 Best Fit
 --------
-.. image:: best_fits/J2145-0750_simple_power_law_fit.png
+.. image:: best_fits/J2145-0750_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2145-0750 fit results
-   :header: "model","a","b"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "simple_power_law","-1.49±0.01","0.01±0.00"
+   "broken_power_law","184±43","1.42±0.08","-1.72±0.27","3.48±0.61"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J2145-0750_simple_power_law_fit.png
+.. image:: before_mwa/J2145-0750_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2145-0750 before fit results
-   :header: "model","a","b"
+   :header: "model","vb (MHz)","a1","a2","b"
 
-   "simple_power_law","-1.49±0.01","0.01±0.00"
+   "broken_power_law","184±0","1.30±0.21","-1.71±0.03","2.71±1.23"
 
 
 Flux Density Results
@@ -28,13 +28,13 @@ Flux Density Results
 .. csv-table:: J2145-0750 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "368.2±318.2", "124.2", "332.1", "0.902"
+   "2",  "418.5±361.6", "141.1", "377.5", "0.902"
 
 .. csv-table:: J2145-0750 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1221832280", "682.8±123.8"
-    "1222697776", "53.6±9.7"
+    "1221832280", "775.9±140.6"
+    "1222697776", "61.1±11.1"
 
 Comparison Fit
 --------------

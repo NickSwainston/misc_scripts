@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0835-4510 fit results
    :header: "model","vc (MHz)","a","b","beta"
 
-   "low_frequency_turn_over_power_law","112±3","-2.76±0.03","1.57±0.12","0.54±0.01"
+   "low_frequency_turn_over_power_law","115±20","-2.68±0.65","1.17±2.48","0.59±0.38"
 
 Fit Before MWA
 --------------
@@ -20,7 +20,7 @@ Fit Before MWA
 .. csv-table:: J0835-4510 before fit results
    :header: "model","vc (MHz)","a","b","beta"
 
-   "low_frequency_turn_over_power_law","112±3","-2.76±0.03","1.56±0.12","0.54±0.01"
+   "low_frequency_turn_over_power_law","96±5","-3.62±0.08","96.16±97.35","0.30±0.01"
 
 
 Flux Density Results
@@ -28,14 +28,14 @@ Flux Density Results
 .. csv-table:: J0835-4510 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "985.2±347.5", "48.7", "344.0", "0.349"
+   "1",  "1120.6±395.2", "55.3", "391.4", "0.349"
 
 .. csv-table:: J0835-4510 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1265983624", "0.0±6.3"
-    "1265470568", "-0.0±-6.4"
-    "1266680784", "985.2±48.7"
+    "1265983624", "0.0±7.0"
+    "1265470568", "-0.0±-7.1"
+    "1266680784", "1120.6±55.3"
 
 Comparison Fit
 --------------

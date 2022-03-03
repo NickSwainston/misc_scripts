@@ -4,23 +4,23 @@ J1057-5226
 
 Best Fit
 --------
-.. image:: best_fits/J1057-5226_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1057-5226_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1057-5226 fit results
-   :header: "model","a","b","c"
+   :header: "model","vc (MHz)","a","b","beta"
 
-   "log_parabolic_spectrum","-0.85±0.02","-2.65±0.08","-2.25±0.05"
+   "low_frequency_turn_over_power_law","26±0","-3.72±0.19","2.51±1.13","0.24±0.01"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1057-5226_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J1057-5226_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1057-5226 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vc (MHz)","a","b","beta"
 
-   "log_parabolic_spectrum","-0.85±0.02","-2.65±0.08","-2.25±0.05"
+   "low_frequency_turn_over_power_law","25±1","-3.26±0.44","0.25±0.46","0.29±0.05"
 
 
 Flux Density Results
@@ -28,13 +28,13 @@ Flux Density Results
 .. csv-table:: J1057-5226 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "198.3±73.9", "15.5", "102.1", "0.515"
+   "2",  "227.7±85.3", "17.8", "117.2", "0.515"
 
 .. csv-table:: J1057-5226 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1266680784", "148.3±8.2"
-    "1267459328", "248.3±13.2"
+    "1266680784", "168.6±9.4"
+    "1267459328", "286.7±15.2"
 
 Comparison Fit
 --------------

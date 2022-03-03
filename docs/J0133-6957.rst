@@ -13,12 +13,12 @@ Flux Density Results
 .. csv-table:: J0133-6957 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "10.7±7.2", "3.5", "6.2", "0.581"
+   "1",  "12.1±8.0", "4.0", "7.0", "0.581"
 
 .. csv-table:: J0133-6957 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
-    "1227009976", "10.7±3.5"
+    "1227009976", "12.1±4.0"
 
 Detection Plots
 ---------------
