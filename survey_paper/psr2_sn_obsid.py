@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("{}/psr2 J0024-1932_follow_up.csv".format(os.path.dirname(os.path.realpath(__file__))))
+df = pd.read_csv("{}/psr2_J0024-1932_follow_up.csv".format(os.path.dirname(os.path.realpath(__file__))))
 obsids = []
 sns = []
 print(df.keys())
