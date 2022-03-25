@@ -4,23 +4,23 @@ J0837-4135
 
 Best Fit
 --------
-.. image:: best_fits/J0837-4135_broken_power_law_fit.png
+.. image:: best_fits/J0837-4135_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J0837-4135 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","727±1","-0.31±0.10","-2.65±0.34","0.08±0.01"
+   "log_parabolic_spectrum","-2.44±0.42","-2.79±0.35","-1.51±0.04","1138±11"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0837-4135_broken_power_law_fit.png
+.. image:: before_mwa/J0837-4135_log_parabolic_spectrum_fit.png
   :width: 800
 
 .. csv-table:: J0837-4135 before fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","728±17","-0.32±0.10","-2.64±0.34","0.08±0.02"
+   "log_parabolic_spectrum","-2.44±0.43","-2.98±0.39","-1.62±0.04","1246±12"
 
 
 Flux Density Results

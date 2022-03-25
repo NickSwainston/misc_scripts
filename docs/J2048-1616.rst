@@ -4,23 +4,23 @@ J2048-1616
 
 Best Fit
 --------
-.. image:: best_fits/J2048-1616_broken_power_law_fit.png
+.. image:: best_fits/J2048-1616_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2048-1616 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","237±43","1.43±0.81","-1.51±0.41","2.37±2.96"
+   "low_frequency_turn_over_power_law","182±19","-1.55±0.19","0.01±0.00","2.10±1.35","1525±15"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J2048-1616_broken_power_law_fit.png
+.. image:: before_mwa/J2048-1616_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J2048-1616 before fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","239±46","1.28±0.74","-1.51±0.41","1.82±2.22"
+   "low_frequency_turn_over_power_law","179±18","-1.54±0.18","0.01±0.00","2.10±1.29","1525±15"
 
 
 Flux Density Results

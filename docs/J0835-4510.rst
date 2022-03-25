@@ -4,23 +4,23 @@ J0835-4510
 
 Best Fit
 --------
-.. image:: best_fits/J0835-4510_low_frequency_turn_over_power_law_fit.png
+.. image:: best_fits/J0835-4510_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0835-4510 fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","115±20","-2.68±0.65","1.17±2.48","0.59±0.38"
+   "broken_power_law","1314±68","-0.75±0.09","-4.67±0.07","0.73±0.21","3376±33"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0835-4510_low_frequency_turn_over_power_law_fit.png
+.. image:: before_mwa/J0835-4510_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0835-4510 before fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","96±5","-3.62±0.08","96.16±97.35","0.30±0.01"
+   "broken_power_law","1385±33","-0.84±0.04","-4.70±0.07","0.56±0.07","3376±33"
 
 
 Flux Density Results

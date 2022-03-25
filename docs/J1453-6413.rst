@@ -4,23 +4,23 @@ J1453-6413
 
 Best Fit
 --------
-.. image:: best_fits/J1453-6413_broken_power_law_fit.png
+.. image:: best_fits/J1453-6413_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1453-6413 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","250±473","0.31±0.18","-2.22±0.06","1.24±0.44"
+   "low_frequency_turn_over_power_law","181±5","-2.42±0.08","0.03±0.00","2.10±0.33","1122±11"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1453-6413_broken_power_law_fit.png
+.. image:: before_mwa/J1453-6413_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J1453-6413 before fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","250±559","0.31±0.18","-2.22±0.06","1.24±0.45"
+   "low_frequency_turn_over_power_law","181±5","-2.42±0.08","0.03±0.00","2.10±0.33","1122±11"
 
 
 Flux Density Results

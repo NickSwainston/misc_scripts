@@ -4,13 +4,13 @@ J0630-2834
 
 Best Fit
 --------
-.. image:: best_fits/J0630-2834_broken_power_law_fit.png
+.. image:: best_fits/J0630-2834_low_frequency_turn_over_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0630-2834 fit results
-   :header: "model","vb (MHz)","a1","a2","b"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","135±0","-0.10±0.17","-1.79±0.06","0.75±0.29"
+   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 Fit Before MWA
 --------------
@@ -18,9 +18,9 @@ Fit Before MWA
   :width: 800
 
 .. csv-table:: J0630-2834 before fit results
-   :header: "model","vc (MHz)","a","b","beta"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","16±0","-3.14±0.08","15.22±2.00","0.20±0.00"
+   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 
 Flux Density Results
@@ -28,13 +28,14 @@ Flux Density Results
 .. csv-table:: J0630-2834 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "1041.9±389.3", "102.9", "500.3", "0.480"
+   "3",  "753.0±367.2", "105.8", "361.6", "0.480"
 
 .. csv-table:: J0630-2834 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
     "1258221008", "730.6±47.2"
     "1261241272", "1353.2±91.4"
+    "1265983624", "175.3±24.8"
 
 Comparison Fit
 --------------
@@ -53,4 +54,9 @@ Detection Plots
   :width: 800
 
 .. image:: on_pulse_plots/1261241272_J0630-2834_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1265983624_J0630-2834_06:30:49.40_-28:34:42.77_b1024_1244.56ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1265983624_J0630-2834_256_bins_gaussian_components.png
   :width: 800

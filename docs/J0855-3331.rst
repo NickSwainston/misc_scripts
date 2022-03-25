@@ -4,23 +4,23 @@ J0855-3331
 
 Best Fit
 --------
-.. image:: best_fits/J0855-3331_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0855-3331_high_frequency_cut_off_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0855-3331 fit results
-   :header: "model","a","b","c"
+   :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.27±0.19","-2.31±0.16","-3.06±0.04"
+   "high_frequency_cut_off_power_law","7049±2653","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0855-3331_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J0855-3331_high_frequency_cut_off_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0855-3331 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.28±0.20","-2.32±0.16","-3.06±0.04"
+   "high_frequency_cut_off_power_law","7051±2664","0.00±0.00","757±7"
 
 
 Flux Density Results

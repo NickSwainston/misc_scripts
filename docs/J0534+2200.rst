@@ -8,19 +8,19 @@ Best Fit
   :width: 800
 
 .. csv-table:: J0534+2200 fit results
-   :header: "model","a","b","c"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-3.14±0.15","-4.57±0.05","-1.82±0.01"
+   "log_parabolic_spectrum","-3.14±0.17","1.72±0.29","-0.39±0.11","128±1"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0534+2200_log_parabolic_spectrum_fit.png
+.. image:: before_mwa/J0534+2200_broken_power_law_fit.png
   :width: 800
 
 .. csv-table:: J0534+2200 before fit results
-   :header: "model","a","b","c"
+   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.40±0.03","-4.18±0.03","-1.88±0.00"
+   "broken_power_law","122±0","3.33±0.12","-3.32±0.01","31.48±1.57","128±1"
 
 
 Flux Density Results
