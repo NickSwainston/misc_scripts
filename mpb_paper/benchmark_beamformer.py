@@ -27,14 +27,14 @@ def make_pointing_list(pointing_in, pointing_num):
     return pointing_list_list
 
 def send_off_benchmark_jobs(obsid, cal_obs, pointing_in, begin, end, pointing_num, args, vcstools_version):
-    import config
+    from vcstools import config
     from mwa_search_pipeline import process_vcs_wrapper, search_options_class
     from mwa_metadb_utils import get_channels
     #creating pointing list
     pointing_list_list = make_pointing_list(pointing_in, pointing_num)
     #print(pointing_list_list)
     #print(len(pointing_list_list))
-    
+
     channels = get_channels(obsid)
 
     comp_config = config.load_config_file()
@@ -61,11 +61,11 @@ def read_beanchmark_jobs(obsid, pointing, max_pointing_num, begin, end):
     comp_config = config.load_config_file()
     batch_dir = "{0}/{1}/batch/".format(comp_config['base_product_dir'], obsid)
     channels = get_channels(obsid)
-    
+
     #get all batch files we care about
     pointing_list_list = make_pointing_list(pointing, max_pointing_num)
     import subprocess
-    
+
     benchmark_list = []
     for pointing_list in pointing_list_list:
         pointing_str = ",".join(pointing_list)
@@ -124,7 +124,7 @@ def plot_benchmark(pns, orig, mpb_raw, orig_std, mpb_std_raw, colour, label, off
     std = []
     for i in range(len(orig_std)):
         std.append( factor_improved[i] * np.sqrt( (orig_std[i]/orig[i])**2 + (mpb_std[i]/mpb[i])**2 ) )
-    
+
     # Plot error bars
     markersize = 3
     makerwidth = 1
@@ -161,7 +161,7 @@ def plot_benchmarks(max_pointings):
 
     plot_benchmark(pns, ozstar_orig_times, ozstar_mpb_times, ozstar_orig_t_std, ozstar_mpb_t_std, 'green', 'OzSTAR super computer', -0.0, ".",
                    888.9, 114.6,  42.5,  43.4)
-    
+
     #Galaxy MPB benchmarks serial, cal once upgrade
     galaxy_mpb_times = np.array([24.946077569999996, 16.736973759999998, 13.74829847,
                         12.11295253, 11.083652268, 10.641167811666666,
@@ -207,8 +207,9 @@ def plot_benchmarks(max_pointings):
     plt.legend(loc='upper left', bbox_to_anchor=(0.005, 0.995))
     ax.set_xticks([1,5,10,15,20])
     plt.savefig("Beamformer_benchmark.eps")
+    plt.savefig("Beamformer_benchmark.pdf")
     plt.savefig("Beamformer_benchmark.png", bbox_inches='tight', dpi=1000)
-    
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="""Automate benchmarking""")

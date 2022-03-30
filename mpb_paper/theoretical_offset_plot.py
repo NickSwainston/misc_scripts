@@ -94,3 +94,4 @@ fig.legend(legend_lines,     # The line objects
            ncol=3,
 )
 fig.savefig("theoretical_offset.eps")
+fig.savefig("theoretical_offset.pdf")

@@ -28,7 +28,7 @@ write_starts = [read_time + cal_time + calc_time]
 for i in range(1,5):
     read_starts.append(write_starts[i-1] + write_time)
     cal_starts.append(read_starts[i] + read_time)
-    calc_starts.append(cal_starts[i] + cal_time) 
+    calc_starts.append(cal_starts[i] + cal_time)
     write_starts.append(calc_starts[i] + calc_time)
 
 #print(read_starts, calc_starts, write_starts)
@@ -84,12 +84,12 @@ for i in range(1, secs_plotting):
         temp_cal.append(temp_calc[p-1] + calc_time)
         temp_calc.append(temp_cal[p] + cal_time)
     cal_starts.append(temp_cal)
-    calc_starts.append(temp_calc) 
+    calc_starts.append(temp_calc)
     temp_write = [calc_starts[i][-1] + calc_time]
     for p in range(1, npointing):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
-    
+
 patches = []
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
@@ -147,12 +147,12 @@ for i in range(1, secs_plotting):
         temp_cal.append(temp_calc[p-1] + calc_time)
         temp_calc.append(temp_cal[p] + cal_time)
     cal_starts.append(temp_cal)
-    calc_starts.append(temp_calc) 
+    calc_starts.append(temp_calc)
     temp_write = [calc_starts[i][-1] + calc_time]
     for p in range(1, npointing):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
-    
+
 
 #print(read_starts, calc_starts, write_starts)
 
@@ -204,12 +204,12 @@ for i in range(1, secs_plotting):
         temp_cal.append(temp_calc[p-1] + calc_time)
         temp_calc.append(temp_cal[p] + cal_time)
     cal_starts.append(temp_cal)
-    calc_starts.append(temp_calc) 
+    calc_starts.append(temp_calc)
     temp_write = [calc_starts[i][-1] + calc_time]
     for p in range(1, npointing):
         temp_write.append(temp_write[p-1] + write_time)
     write_starts.append(temp_write)
-    
+
 patches = []
 for i in range(secs_plotting):
     read  = Rectangle([read_starts[i],  2.],  read_time, 1., facecolor='r',
@@ -244,7 +244,7 @@ for i in range(1, secs_plotting):
     temp_calc = [cal_starts[i] + cal_time]
     for p in range(1, npointing):
         temp_calc.append(temp_calc[p-1] + calc_time)
-    calc_starts.append(temp_calc) 
+    calc_starts.append(temp_calc)
     temp_write = [calc_starts[i][-1] + calc_time]
     for p in range(1, npointing):
         temp_write.append(temp_write[p-1] + write_time)
@@ -287,5 +287,6 @@ plt.xticks(fontsize=30)
 plt.xlabel('Processing time (s)', fontsize=30)
 plt.savefig('multi-pixel_workflow.eps', bbox_inches='tight', dpi=100)
 plt.savefig('multi-pixel_workflow.png', bbox_inches='tight', dpi=100)
+plt.savefig('multi-pixel_workflow.pdf', bbox_inches='tight')
 
 

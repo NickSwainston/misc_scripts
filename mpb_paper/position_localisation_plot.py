@@ -80,13 +80,13 @@ print("FWHM(``) : {:.1f}".format(fwhm*3600.))
 # Read in data
 # plot_label, cal_source, hours_away, azel_diff, file_glob
 all_calibrators_data = [('offringer_1276625432',         '3C444',  1.67, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276625432_casa_offringa/*orig_best_predicted_sn.csv'),
-                        ('offringer_imaging_1276625432', '3C444',  1.67, 57.99, None),
-                        ('RTS_1276625432',               '3C444',  1.67, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276625432/*orig_best_predicted_sn.csv'),
-                        ('RTS_to_offringer_1276625432',  '3C444',  1.67, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276625432_rts2ao/*orig_best_predicted_sn.csv'),
-                        ('RTS_1276468440',               '3C444', 41.9,  57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276468440/*orig_best_predicted_sn.csv'),
-                        ('RTS_1276509016',               'HydA',  30.67, 46.10, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276509016/*orig_best_predicted_sn.csv'),
-                        ('RTS_1276554856',               '3C444', 17.93, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276554856/*orig_best_predicted_sn.csv'),
-                        ('RTS_1276641272',               '3C444',  6.07, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276641272/*orig_best_predicted_sn.csv'),
+                        # ('offringer_imaging_1276625432', '3C444',  1.67, 57.99, None),
+                        # ('RTS_1276625432',               '3C444',  1.67, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276625432/*orig_best_predicted_sn.csv'),
+                        # ('RTS_to_offringer_1276625432',  '3C444',  1.67, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276625432_rts2ao/*orig_best_predicted_sn.csv'),
+                        # ('RTS_1276468440',               '3C444', 41.9,  57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276468440/*orig_best_predicted_sn.csv'),
+                        # ('RTS_1276509016',               'HydA',  30.67, 46.10, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276509016/*orig_best_predicted_sn.csv'),
+                        # ('RTS_1276554856',               '3C444', 17.93, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276554856/*orig_best_predicted_sn.csv'),
+                        # ('RTS_1276641272',               '3C444',  6.07, 57.99, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276641272/*orig_best_predicted_sn.csv'),
                         #No detections in the below
                         #('RTS_1276619296',      'HerA',   0.03, 23.35, '/astro/mwavcs/pulsar_search/mpb_localisation/1276619416_1276619296/*orig_best_predicted_sn.csv')
                         ]
@@ -150,7 +150,7 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
             c1 = SkyCoord( psrcat_pointing.split("_")[0], psrcat_pointing.split("_")[1], frame='icrs', unit=(u.hourangle,u.deg))
             og_ra  = c1.ra.deg
             og_dec = c1.dec.deg
-            
+
             c2 = SkyCoord( localisation_pointing.split("_")[0], localisation_pointing.split("_")[1], frame='icrs', unit=(u.hourangle,u.deg))
             loc_ra  = c2.ra.deg
             loc_dec = c2.dec.deg
@@ -182,7 +182,7 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
             #positions_calcs.append([pulsar, og_ra, og_dec, og_ra, og_dec, 0., 0., 0.])
             if pulsar in ["J1820-0427", "J1823+0550", "J1825-0935", "J1834-0426", "J1913-0440"]:
                 brightest_sns.append(psrcat_pdmp_SN)
-        
+
         #if plot_label == 'offringer_1276625432':
         #    print(f"{distance},{improvement}")
     #print(np.array(positions_calcs))
@@ -305,15 +305,17 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
         plt.close()
 
     # Combined plot
-    bigfig.legend(legend_lines,     # The line objects
-                labels=["Exp improve"] + pulsars,#["J1820-0427", "J1825-0935", "J1834-0426", "J1913-0440"],#pulsars,   # The labels for each line
-                loc="center right",   # Position of legend
-                borderaxespad=0.1,    # Small spacing around legend box
-                title="Pulsars"  # Title for the legend
-                )
+    bigfig.legend(
+        handles=legend_lines,     # The line objects
+        labels=["Exp improve"] + pulsars,#["J1820-0427", "J1825-0935", "J1834-0426", "J1913-0440"],#pulsars,   # The labels for each line
+        loc="center right",   # Position of legend
+        borderaxespad=0.1,    # Small spacing around legend box
+        title="Pulsars",  # Title for the legend
+        framealpha=1.0,
+    )
     if add_title:
         bigfig.suptitle(f"{plot_label}  {cal_source}   mean offset: {np.mean(distances)*60*60:.2f}''   mean brightest SN {np.mean(brightest_sns):.2f}   Hrs Away: {hours_away}   Az El diff: {azel_diff}$^\circ$")
     #bigfig.legend(handles, labels, loc='upper left')
     #bigfig.subplots_adjust(right=0.85)
     #bigfig.axis('equal')
-    bigfig.savefig("{}_all_offsets.eps".format(plot_label), dpi=500)
+    bigfig.savefig("{}_all_offsets.pdf".format(plot_label), format='pdf')
