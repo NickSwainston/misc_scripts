@@ -4,13 +4,13 @@ J0624-0424
 
 Best Fit
 --------
-.. image:: best_fits/J0624-0424_i_fit.png
+.. image:: best_fits/J0624-0424_fit.png
   :width: 800
 
 .. csv-table:: J0624-0424 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.01±0.21","0.01±0.00","379±3"
+   "simple_power_law","-1.01±0.21","0.01±0.00","379±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0624-0424 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-0.98±0.21","0.01±0.00","379±3"
+   "simple_power_law","-0.98±0.21","0.01±0.00","379±3"
 
 
 Flux Density Results

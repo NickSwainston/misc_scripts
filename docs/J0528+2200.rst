@@ -4,13 +4,13 @@ J0528+2200
 
 Best Fit
 --------
-.. image:: best_fits/J0528+2200_o_fit.png
+.. image:: best_fits/J0528+2200_fit.png
   :width: 800
 
 .. csv-table:: J0528+2200 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.51±0.21","-1.71±0.17","-1.71±0.04","940±9"
+   "log_parabolic_spectrum","-1.51±0.21","-1.71±0.17","-1.71±0.04","940±9"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0528+2200 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.50±0.21","-1.71±0.17","-1.71±0.04","940±9"
+   "log_parabolic_spectrum","-1.50±0.21","-1.71±0.17","-1.71±0.04","940±9"
 
 
 Flux Density Results

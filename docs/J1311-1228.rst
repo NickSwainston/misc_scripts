@@ -4,13 +4,13 @@ J1311-1228
 
 Best Fit
 --------
-.. image:: best_fits/J1311-1228_i_fit.png
+.. image:: best_fits/J1311-1228_fit.png
   :width: 800
 
 .. csv-table:: J1311-1228 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.78±0.24","0.00±0.00","379±3"
+   "simple_power_law","-1.78±0.24","0.00±0.00","379±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1311-1228 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.75±0.24","0.00±0.00","379±3"
+   "simple_power_law","-1.75±0.24","0.00±0.00","379±3"
 
 
 Flux Density Results

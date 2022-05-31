@@ -4,13 +4,13 @@ J0614+2229
 
 Best Fit
 --------
-.. image:: best_fits/J0614+2229_o_fit.png
+.. image:: best_fits/J0614+2229_fit.png
   :width: 800
 
 .. csv-table:: J0614+2229 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","206±18","-2.23±0.07","0.02±0.00","2.10±0.33","513±5"
+   "low_frequency_turn_over_power_law","206±18","-2.23±0.07","0.02±0.00","2.10±0.33","513±5"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0614+2229 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.24±0.17","-1.95±0.07","-1.75±0.01","513±5"
+   "log_parabolic_spectrum","-0.24±0.17","-1.95±0.07","-1.75±0.01","513±5"
 
 
 Flux Density Results

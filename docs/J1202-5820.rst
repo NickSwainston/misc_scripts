@@ -4,13 +4,13 @@ J1202-5820
 
 Best Fit
 --------
-.. image:: best_fits/J1202-5820_i_fit.png
+.. image:: best_fits/J1202-5820_fit.png
   :width: 800
 
 .. csv-table:: J1202-5820 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.79±0.16","0.01±0.00","691±6"
+   "simple_power_law","-1.79±0.16","0.01±0.00","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1202-5820 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.22±0.31","0.00±0.00","1113±11"
+   "simple_power_law","-2.22±0.31","0.00±0.00","1113±11"
 
 
 Flux Density Results

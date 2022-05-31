@@ -4,13 +4,13 @@ J2222-0137
 
 Best Fit
 --------
-.. image:: best_fits/J2222-0137_i_fit.png
+.. image:: best_fits/J2222-0137_fit.png
   :width: 800
 
 .. csv-table:: J2222-0137 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-0.69±0.34","0.00±0.00","681±6"
+   "simple_power_law","-0.69±0.34","0.00±0.00","681±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J2222-0137 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-0.69±0.34","0.00±0.00","681±6"
+   "simple_power_law","-0.69±0.34","0.00±0.00","681±6"
 
 
 Flux Density Results

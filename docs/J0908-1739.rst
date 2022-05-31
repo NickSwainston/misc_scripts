@@ -4,13 +4,13 @@ J0908-1739
 
 Best Fit
 --------
-.. image:: best_fits/J0908-1739_o_fit.png
+.. image:: best_fits/J0908-1739_fit.png
   :width: 800
 
 .. csv-table:: J0908-1739 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.66±0.23","-1.02±0.16","-1.78±0.03","392±3"
+   "log_parabolic_spectrum","-0.66±0.23","-1.02±0.16","-1.78±0.03","392±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0908-1739 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.67±0.23","-1.01±0.16","-1.78±0.03","392±3"
+   "log_parabolic_spectrum","-0.67±0.23","-1.01±0.16","-1.78±0.03","392±3"
 
 
 Flux Density Results

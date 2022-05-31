@@ -4,13 +4,13 @@ J0034-0721
 
 Best Fit
 --------
-.. image:: best_fits/J0034-0721_o_fit.png
+.. image:: best_fits/J0034-0721_fit.png
   :width: 800
 
 .. csv-table:: J0034-0721 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.55±0.12","-1.78±0.08","-0.67±0.02","218±2"
+   "log_parabolic_spectrum","-1.55±0.12","-1.78±0.08","-0.67±0.02","218±2"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0034-0721 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.55±0.12","-1.78±0.08","-0.67±0.02","218±2"
+   "log_parabolic_spectrum","-1.55±0.12","-1.78±0.08","-0.67±0.02","218±2"
 
 
 Flux Density Results

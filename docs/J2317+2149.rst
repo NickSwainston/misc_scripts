@@ -4,13 +4,13 @@ J2317+2149
 
 Best Fit
 --------
-.. image:: best_fits/J2317+2149_o_fit.png
+.. image:: best_fits/J2317+2149_fit.png
   :width: 800
 
 .. csv-table:: J2317+2149 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.15±0.43","-0.74±0.16","-1.49±0.08","187±1"
+   "log_parabolic_spectrum","-1.15±0.43","-0.74±0.16","-1.49±0.08","187±1"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J2317+2149 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.14±0.42","-0.74±0.16","-1.49±0.08","187±1"
+   "log_parabolic_spectrum","-1.14±0.42","-0.74±0.16","-1.49±0.08","187±1"
 
 
 Flux Density Results

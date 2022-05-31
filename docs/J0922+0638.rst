@@ -4,13 +4,13 @@ J0922+0638
 
 Best Fit
 --------
-.. image:: best_fits/J0922+0638_o_fit.png
+.. image:: best_fits/J0922+0638_fit.png
   :width: 800
 
 .. csv-table:: J0922+0638 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.58±0.12","-1.37±0.10","-1.33±0.03","409±4"
+   "log_parabolic_spectrum","-0.58±0.12","-1.37±0.10","-1.33±0.03","409±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0922+0638 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.59±0.12","-1.38±0.10","-1.33±0.03","409±4"
+   "log_parabolic_spectrum","-0.59±0.12","-1.38±0.10","-1.33±0.03","409±4"
 
 
 Flux Density Results
@@ -53,7 +53,7 @@ Detection Plots
 
 .. image:: on_pulse_plots/1264867416_J0922+0638_1024_bins_gaussian_components.png
   :width: 800
-.. image:: detection_plots/1267111608_J0922+0638.prepfold.png
+.. image:: detection_plots/pf_1267111608_J0922+0638_09:22:14.02_+06:38:23.30_b1024_430.27ms_Cand.pfd.png
   :width: 800
 
 .. image:: on_pulse_plots/1267111608_J0922+0638_128_bins_gaussian_components.png

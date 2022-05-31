@@ -4,13 +4,13 @@ J1328-4357
 
 Best Fit
 --------
-.. image:: best_fits/J1328-4357_i_fit.png
+.. image:: best_fits/J1328-4357_fit.png
   :width: 800
 
 .. csv-table:: J1328-4357 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.13±0.34","0.01±0.00","464±4"
+   "simple_power_law","-1.13±0.34","0.01±0.00","464±4"
 
 
 Flux Density Results

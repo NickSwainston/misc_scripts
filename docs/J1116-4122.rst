@@ -4,13 +4,13 @@ J1116-4122
 
 Best Fit
 --------
-.. image:: best_fits/J1116-4122_o_fit.png
+.. image:: best_fits/J1116-4122_fit.png
   :width: 800
 
 .. csv-table:: J1116-4122 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.37±0.48","-1.68±0.14","-1.75±0.16","691±6"
+   "log_parabolic_spectrum","-1.37±0.48","-1.68±0.14","-1.75±0.16","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1116-4122 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.39±0.48","-1.79±0.13","-1.81±0.16","757±7"
+   "log_parabolic_spectrum","-1.39±0.48","-1.79±0.13","-1.81±0.16","757±7"
 
 
 Flux Density Results

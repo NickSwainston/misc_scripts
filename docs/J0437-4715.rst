@@ -4,13 +4,13 @@ J0437-4715
 
 Best Fit
 --------
-.. image:: best_fits/J0437-4715_o_fit.png
+.. image:: best_fits/J0437-4715_fit.png
   :width: 800
 
 .. csv-table:: J0437-4715 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
+   "log_parabolic_spectrum","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0437-4715 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
+   "log_parabolic_spectrum","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
 
 
 Flux Density Results

@@ -4,13 +4,13 @@ J1534-5334
 
 Best Fit
 --------
-.. image:: best_fits/J1534-5334_o_fit.png
+.. image:: best_fits/J1534-5334_fit.png
   :width: 800
 
 .. csv-table:: J1534-5334 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","207±3","-4.05±0.19","0.20±0.02","2.10±0.29","458±4"
+   "low_frequency_turn_over_power_law","207±3","-4.05±0.19","0.20±0.02","2.10±0.29","458±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1534-5334 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","206±3","-4.04±0.19","0.20±0.02","2.10±0.28","458±4"
+   "low_frequency_turn_over_power_law","206±3","-4.04±0.19","0.20±0.02","2.10±0.28","458±4"
 
 
 Flux Density Results

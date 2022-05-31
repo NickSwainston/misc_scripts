@@ -4,13 +4,13 @@ J1430-6623
 
 Best Fit
 --------
-.. image:: best_fits/J1430-6623_o_fit.png
+.. image:: best_fits/J1430-6623_fit.png
   :width: 800
 
 .. csv-table:: J1430-6623 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","197±29","-1.76±0.17","0.02±0.00","2.10±1.33","1138±11"
+   "low_frequency_turn_over_power_law","197±29","-1.76±0.17","0.02±0.00","2.10±1.33","1138±11"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1430-6623 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.29±0.23","-1.58±0.17","-1.79±0.01","1246±12"
+   "log_parabolic_spectrum","-0.29±0.23","-1.58±0.17","-1.79±0.01","1246±12"
 
 
 Flux Density Results

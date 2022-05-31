@@ -4,13 +4,13 @@ J2330-2005
 
 Best Fit
 --------
-.. image:: best_fits/J2330-2005_o_fit.png
+.. image:: best_fits/J2330-2005_fit.png
   :width: 800
 
 .. csv-table:: J2330-2005 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.70±0.18","-1.49±0.12","-1.50±0.07","418±4"
+   "log_parabolic_spectrum","-0.70±0.18","-1.49±0.12","-1.50±0.07","418±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J2330-2005 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.70±0.17","-1.50±0.13","-1.49±0.07","418±4"
+   "log_parabolic_spectrum","-0.70±0.17","-1.50±0.13","-1.49±0.07","418±4"
 
 
 Flux Density Results

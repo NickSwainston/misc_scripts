@@ -4,13 +4,13 @@ J1018-1642
 
 Best Fit
 --------
-.. image:: best_fits/J1018-1642_i_fit.png
+.. image:: best_fits/J1018-1642_fit.png
   :width: 800
 
 .. csv-table:: J1018-1642 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.66±0.24","0.01±0.00","379±3"
+   "simple_power_law","-1.66±0.24","0.01±0.00","379±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1018-1642 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.78±0.35","0.01±0.00","379±3"
+   "simple_power_law","-1.78±0.35","0.01±0.00","379±3"
 
 
 Flux Density Results

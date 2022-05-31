@@ -4,13 +4,13 @@ J1340-6456
 
 Best Fit
 --------
-.. image:: best_fits/J1340-6456_i_fit.png
+.. image:: best_fits/J1340-6456_fit.png
   :width: 800
 
 .. csv-table:: J1340-6456 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.45±0.25","0.01±0.00","464±4"
+   "simple_power_law","-1.45±0.25","0.01±0.00","464±4"
 
 
 Flux Density Results

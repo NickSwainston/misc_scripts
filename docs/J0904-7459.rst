@@ -4,13 +4,13 @@ J0904-7459
 
 Best Fit
 --------
-.. image:: best_fits/J0904-7459_o_fit.png
+.. image:: best_fits/J0904-7459_fit.png
   :width: 800
 
 .. csv-table:: J0904-7459 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.40±0.56","-1.29±0.26","-2.11±0.12","691±6"
+   "log_parabolic_spectrum","-1.40±0.56","-1.29±0.26","-2.11±0.12","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0904-7459 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.90±0.26","0.00±0.00","1113±11"
+   "simple_power_law","-1.90±0.26","0.00±0.00","1113±11"
 
 
 Flux Density Results

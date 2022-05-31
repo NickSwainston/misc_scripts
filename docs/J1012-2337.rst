@@ -4,13 +4,13 @@ J1012-2337
 
 Best Fit
 --------
-.. image:: best_fits/J1012-2337_i_fit.png
+.. image:: best_fits/J1012-2337_fit.png
   :width: 800
 
 .. csv-table:: J1012-2337 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.59±0.18","0.00±0.00","464±4"
+   "simple_power_law","-2.59±0.18","0.00±0.00","464±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1012-2337 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.78±0.24","0.00±0.00","529±5"
+   "simple_power_law","-2.78±0.24","0.00±0.00","529±5"
 
 
 Flux Density Results

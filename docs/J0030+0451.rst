@@ -4,13 +4,13 @@ J0030+0451
 
 Best Fit
 --------
-.. image:: best_fits/J0030+0451_i_fit.png
+.. image:: best_fits/J0030+0451_fit.png
   :width: 800
 
 .. csv-table:: J0030+0451 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.64±0.12","0.01±0.00","316±3"
+   "simple_power_law","-1.64±0.12","0.01±0.00","316±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0030+0451 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.64±0.12","0.01±0.00","316±3"
+   "simple_power_law","-1.64±0.12","0.01±0.00","316±3"
 
 
 Flux Density Results
@@ -41,7 +41,7 @@ Comparison Fit
 Detection Plots
 ---------------
 
-.. image:: detection_plots/1255444104_J0030+0451.prepfold.png
+.. image:: detection_plots/pf_1255444104_J0030+0451_00:30:27.42_+04:51:39.72_b49_4.87ms_Cand.pfd.png
   :width: 800
 
 .. image:: on_pulse_plots/

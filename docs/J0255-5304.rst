@@ -4,13 +4,13 @@ J0255-5304
 
 Best Fit
 --------
-.. image:: best_fits/J0255-5304_i_fit.png
+.. image:: best_fits/J0255-5304_fit.png
   :width: 800
 
 .. csv-table:: J0255-5304 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-0.93±0.36","0.01±0.00","464±4"
+   "simple_power_law","-0.93±0.36","0.01±0.00","464±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0255-5304 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-0.91±0.50","0.01±0.00","748±7"
+   "simple_power_law","-0.91±0.50","0.01±0.00","748±7"
 
 
 Flux Density Results

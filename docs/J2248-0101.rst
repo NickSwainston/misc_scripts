@@ -4,13 +4,13 @@ J2248-0101
 
 Best Fit
 --------
-.. image:: best_fits/J2248-0101_i_fit.png
+.. image:: best_fits/J2248-0101_fit.png
   :width: 800
 
 .. csv-table:: J2248-0101 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.64±0.20","0.00±0.00","378±3"
+   "simple_power_law","-1.64±0.20","0.00±0.00","378±3"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J2248-0101 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.63±0.21","0.00±0.00","378±3"
+   "simple_power_law","-1.63±0.21","0.00±0.00","378±3"
 
 
 Flux Density Results

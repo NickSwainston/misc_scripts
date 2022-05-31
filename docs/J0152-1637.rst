@@ -4,13 +4,13 @@ J0152-1637
 
 Best Fit
 --------
-.. image:: best_fits/J0152-1637_o_fit.png
+.. image:: best_fits/J0152-1637_fit.png
   :width: 800
 
 .. csv-table:: J0152-1637 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.52±0.20","-1.36±0.11","-1.27±0.04","222±2"
+   "log_parabolic_spectrum","-0.52±0.20","-1.36±0.11","-1.27±0.04","222±2"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0152-1637 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.52±0.20","-1.36±0.11","-1.27±0.04","222±2"
+   "log_parabolic_spectrum","-0.52±0.20","-1.36±0.11","-1.27±0.04","222±2"
 
 
 Flux Density Results

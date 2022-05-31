@@ -4,13 +4,13 @@ J0051+0423
 
 Best Fit
 --------
-.. image:: best_fits/J0051+0423_i_fit.png
+.. image:: best_fits/J0051+0423_fit.png
   :width: 800
 
 .. csv-table:: J0051+0423 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.07±0.15","0.00±0.00","187±1"
+   "simple_power_law","-1.07±0.15","0.00±0.00","187±1"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0051+0423 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.07±0.15","0.00±0.00","187±1"
+   "simple_power_law","-1.07±0.15","0.00±0.00","187±1"
 
 
 Flux Density Results

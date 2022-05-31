@@ -4,13 +4,13 @@ J1022+1001
 
 Best Fit
 --------
-.. image:: best_fits/J1022+1001_o_fit.png
+.. image:: best_fits/J1022+1001_fit.png
   :width: 800
 
 .. csv-table:: J1022+1001 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
+   "log_parabolic_spectrum","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1022+1001 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
+   "log_parabolic_spectrum","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
 
 
 Flux Density Results

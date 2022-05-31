@@ -4,13 +4,13 @@ J0630-2834
 
 Best Fit
 --------
-.. image:: best_fits/J0630-2834_o_fit.png
+.. image:: best_fits/J0630-2834_fit.png
   :width: 800
 
 .. csv-table:: J0630-2834 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
+   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0630-2834 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
+   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 
 Flux Density Results

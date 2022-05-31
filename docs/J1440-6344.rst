@@ -4,13 +4,13 @@ J1440-6344
 
 Best Fit
 --------
-.. image:: best_fits/J1440-6344_i_fit.png
+.. image:: best_fits/J1440-6344_fit.png
   :width: 800
 
 .. csv-table:: J1440-6344 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "i","5845±7386","0.01±0.00","464±4"
+   "high_frequency_cut_off_power_law","5845±7386","0.01±0.00","464±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1440-6344 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.68±0.15","0.01±0.00","508±5"
+   "simple_power_law","-2.68±0.15","0.01±0.00","508±5"
 
 
 Flux Density Results

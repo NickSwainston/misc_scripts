@@ -4,13 +4,13 @@ J1355-5153
 
 Best Fit
 --------
-.. image:: best_fits/J1355-5153_i_fit.png
+.. image:: best_fits/J1355-5153_fit.png
   :width: 800
 
 .. csv-table:: J1355-5153 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "i","3000±296","0.01±0.00","464±4"
+   "high_frequency_cut_off_power_law","3000±296","0.01±0.00","464±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1355-5153 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.64±0.09","0.01±0.00","648±6"
+   "simple_power_law","-2.64±0.09","0.01±0.00","648±6"
 
 
 Flux Density Results

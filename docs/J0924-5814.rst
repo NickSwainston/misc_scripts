@@ -4,13 +4,13 @@ J0924-5814
 
 Best Fit
 --------
-.. image:: best_fits/J0924-5814_o_fit.png
+.. image:: best_fits/J0924-5814_fit.png
   :width: 800
 
 .. csv-table:: J0924-5814 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.71±0.48","-1.21±0.13","-1.90±0.05","691±6"
+   "log_parabolic_spectrum","-0.71±0.48","-1.21±0.13","-1.90±0.05","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0924-5814 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.30±0.13","0.01±0.00","1113±11"
+   "simple_power_law","-1.30±0.13","0.01±0.00","1113±11"
 
 
 Flux Density Results

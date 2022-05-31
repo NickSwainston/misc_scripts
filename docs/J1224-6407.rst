@@ -4,13 +4,13 @@ J1224-6407
 
 Best Fit
 --------
-.. image:: best_fits/J1224-6407_o_fit.png
+.. image:: best_fits/J1224-6407_fit.png
   :width: 800
 
 .. csv-table:: J1224-6407 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.42±0.22","-1.17±0.11","-1.66±0.03","691±6"
+   "log_parabolic_spectrum","-0.42±0.22","-1.17±0.11","-1.66±0.03","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1224-6407 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.42±0.13","0.01±0.00","1113±11"
+   "simple_power_law","-1.42±0.13","0.01±0.00","1113±11"
 
 
 Flux Density Results

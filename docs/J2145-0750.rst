@@ -4,13 +4,13 @@ J2145-0750
 
 Best Fit
 --------
-.. image:: best_fits/J2145-0750_o_fit.png
+.. image:: best_fits/J2145-0750_fit.png
   :width: 800
 
 .. csv-table:: J2145-0750 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","108±18","-1.65±0.14","0.03±0.01","1.89±1.04","514±5"
+   "low_frequency_turn_over_power_law","108±18","-1.65±0.14","0.03±0.01","1.89±1.04","514±5"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J2145-0750 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","108±18","-1.65±0.14","0.03±0.01","1.89±1.52","514±5"
+   "low_frequency_turn_over_power_law","108±18","-1.65±0.14","0.03±0.01","1.89±1.52","514±5"
 
 
 Flux Density Results
@@ -42,7 +42,7 @@ Comparison Fit
 Detection Plots
 ---------------
 
-.. image:: detection_plots/pf_1221832280_J2145-0750_21:45:50.45_-07:50:18.51_b100_PSR_J2145-0750.pfd.png
+.. image:: detection_plots/pf_1221832280_J2145-0750_21:45:50.45_-07:50:18.49_b161_PSR_J2145-0750.pfd.png
   :width: 800
 
 .. image:: on_pulse_plots/1221832280_J2145-0750_100_bins_gaussian_components.png

@@ -4,13 +4,13 @@ J1003-4747
 
 Best Fit
 --------
-.. image:: best_fits/J1003-4747_o_fit.png
+.. image:: best_fits/J1003-4747_fit.png
   :width: 800
 
 .. csv-table:: J1003-4747 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.56±0.26","-1.38±0.08","-2.38±0.04","691±6"
+   "log_parabolic_spectrum","-0.56±0.26","-1.38±0.08","-2.38±0.04","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1003-4747 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.41±0.09","0.00±0.00","964±9"
+   "simple_power_law","-1.41±0.09","0.00±0.00","964±9"
 
 
 Flux Density Results

@@ -4,13 +4,13 @@ J0534+2200
 
 Best Fit
 --------
-.. image:: best_fits/J0534+2200_o_fit.png
+.. image:: best_fits/J0534+2200_fit.png
   :width: 800
 
 .. csv-table:: J0534+2200 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","261±9","-4.15±0.04","1.53±0.08","2.10±0.05","412±4"
+   "low_frequency_turn_over_power_law","261±9","-4.15±0.04","1.53±0.08","2.10±0.05","412±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0534+2200 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-0.49±0.11","-3.21±0.02","-0.22±0.03","412±4"
+   "log_parabolic_spectrum","-0.49±0.11","-3.21±0.02","-0.22±0.03","412±4"
 
 
 Flux Density Results

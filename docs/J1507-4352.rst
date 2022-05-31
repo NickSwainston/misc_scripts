@@ -4,13 +4,13 @@ J1507-4352
 
 Best Fit
 --------
-.. image:: best_fits/J1507-4352_i_fit.png
+.. image:: best_fits/J1507-4352_fit.png
   :width: 800
 
 .. csv-table:: J1507-4352 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.56±0.40","0.02±0.01","464±4"
+   "simple_power_law","-2.56±0.40","0.02±0.01","464±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1507-4352 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-2.99±0.17","0.02±0.00","508±5"
+   "simple_power_law","-2.99±0.17","0.02±0.00","508±5"
 
 
 Flux Density Results

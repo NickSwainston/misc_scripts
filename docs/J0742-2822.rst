@@ -4,13 +4,13 @@ J0742-2822
 
 Best Fit
 --------
-.. image:: best_fits/J0742-2822_o_fit.png
+.. image:: best_fits/J0742-2822_fit.png
   :width: 800
 
 .. csv-table:: J0742-2822 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","289±4","-2.46±0.10","0.07±0.00","2.10±0.14","927±9"
+   "low_frequency_turn_over_power_law","289±4","-2.46±0.10","0.07±0.00","2.10±0.14","927±9"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0742-2822 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","290±4","-2.46±0.10","0.07±0.00","2.10±0.14","927±9"
+   "low_frequency_turn_over_power_law","290±4","-2.46±0.10","0.07±0.00","2.10±0.14","927±9"
 
 
 Flux Density Results

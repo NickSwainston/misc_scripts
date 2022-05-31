@@ -4,13 +4,13 @@ J1034-3224
 
 Best Fit
 --------
-.. image:: best_fits/J1034-3224_o_fit.png
+.. image:: best_fits/J1034-3224_fit.png
   :width: 800
 
 .. csv-table:: J1034-3224 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-2.13±0.84","-0.38±0.30","-1.73±0.10","691±6"
+   "log_parabolic_spectrum","-2.13±0.84","-0.38±0.30","-1.73±0.10","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1034-3224 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-2.19±0.82","-1.14±0.31","-1.85±0.11","1041±10"
+   "log_parabolic_spectrum","-2.19±0.82","-1.14±0.31","-1.85±0.11","1041±10"
 
 
 Flux Density Results

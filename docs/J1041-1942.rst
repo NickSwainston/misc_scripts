@@ -4,13 +4,13 @@ J1041-1942
 
 Best Fit
 --------
-.. image:: best_fits/J1041-1942_i_fit.png
+.. image:: best_fits/J1041-1942_fit.png
   :width: 800
 
 .. csv-table:: J1041-1942 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.39±0.29","0.02±0.00","466±4"
+   "simple_power_law","-1.39±0.29","0.02±0.00","466±4"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1041-1942 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "i","-1.76±0.31","0.01±0.00","750±7"
+   "simple_power_law","-1.76±0.31","0.01±0.00","750±7"
 
 
 Flux Density Results

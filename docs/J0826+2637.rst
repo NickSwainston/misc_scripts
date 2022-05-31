@@ -4,13 +4,13 @@ J0826+2637
 
 Best Fit
 --------
-.. image:: best_fits/J0826+2637_o_fit.png
+.. image:: best_fits/J0826+2637_fit.png
   :width: 800
 
 .. csv-table:: J0826+2637 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","58±4","-1.67±0.05","0.05±0.01","1.15±0.20","673±6"
+   "low_frequency_turn_over_power_law","58±4","-1.67±0.05","0.05±0.01","1.15±0.20","673±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0826+2637 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","58±4","-1.67±0.05","0.05±0.01","1.15±0.19","673±6"
+   "low_frequency_turn_over_power_law","58±4","-1.67±0.05","0.05±0.01","1.15±0.19","673±6"
 
 
 Flux Density Results

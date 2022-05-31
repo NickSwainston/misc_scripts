@@ -4,13 +4,13 @@ J0942-5552
 
 Best Fit
 --------
-.. image:: best_fits/J0942-5552_o_fit.png
+.. image:: best_fits/J0942-5552_fit.png
   :width: 800
 
 .. csv-table:: J0942-5552 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.77±0.25","-1.34±0.10","-1.44±0.04","691±6"
+   "log_parabolic_spectrum","-1.77±0.25","-1.34±0.10","-1.44±0.04","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0942-5552 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "o","-1.60±0.29","-1.59±0.11","-1.52±0.03","787±7"
+   "log_parabolic_spectrum","-1.60±0.29","-1.59±0.11","-1.52±0.03","787±7"
 
 
 Flux Density Results

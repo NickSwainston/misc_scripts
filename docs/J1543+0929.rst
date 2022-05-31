@@ -4,13 +4,13 @@ J1543+0929
 
 Best Fit
 --------
-.. image:: best_fits/J1543+0929_o_fit.png
+.. image:: best_fits/J1543+0929_fit.png
   :width: 800
 
 .. csv-table:: J1543+0929 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","89±16","-2.41±0.64","0.32±0.41","0.98±0.60","273±2"
+   "low_frequency_turn_over_power_law","89±16","-2.41±0.64","0.32±0.41","0.98±0.60","273±2"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1543+0929 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "o","89±16","-2.41±0.64","0.33±0.42","0.97±0.60","273±2"
+   "low_frequency_turn_over_power_law","89±16","-2.41±0.64","0.33±0.42","0.97±0.60","273±2"
 
 
 Flux Density Results
