@@ -4,23 +4,21 @@ J0942-5552
 
 Best Fit
 --------
-.. image:: best_fits/J0942-5552_broken_power_law_fit.png
+.. image:: best_fits/J0942-5552_o_fit.png
   :width: 800
 
 .. csv-table:: J0942-5552 fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","1142±79","-0.55±0.21","-2.75±0.11","0.02±0.00","691±6"
+   "o","-1.77±0.25","-1.34±0.10","-1.44±0.04","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0942-5552_broken_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0942-5552 before fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","1192±103","-0.90±0.19","-2.75±0.11","0.02±0.00","787±7"
+   "o","-1.60±0.29","-1.59±0.11","-1.52±0.03","787±7"
 
 
 Flux Density Results

@@ -4,23 +4,21 @@ J0953+0755
 
 Best Fit
 --------
-.. image:: best_fits/J0953+0755_low_frequency_turn_over_power_law_fit.png
+.. image:: best_fits/J0953+0755_o_fit.png
   :width: 800
 
 .. csv-table:: J0953+0755 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","97±5","-2.50±0.12","1.08±0.50","0.55±0.06","673±6"
+   "o","97±5","-2.50±0.13","1.08±0.52","0.55±0.06","673±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0953+0755_low_frequency_turn_over_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0953+0755 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","111±6","-3.62±0.05","100.00±50.00","0.33±0.01","673±6"
+   "o","111±6","-3.62±0.06","100.00±89.07","0.33±0.01","673±6"
 
 
 Flux Density Results
@@ -28,14 +26,14 @@ Flux Density Results
 .. csv-table:: J0953+0755 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "2",  "1319.4±1322.9", "136.2", "2004.1", "1.519"
+   "3",  "906.4±788.2", "136.8", "1376.9", "1.519"
 
 .. csv-table:: J0953+0755 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
     "1264867416", "1863.6±126.2"
     "1267111608", "775.2±51.2"
-    "1268063336", "nan±nan"
+    "1268063336", "80.5±13.2"
 
 Comparison Fit
 --------------
@@ -54,4 +52,9 @@ Detection Plots
   :width: 800
 
 .. image:: on_pulse_plots/1267111608_J0953+0755_1024_bins_gaussian_components.png
+  :width: 800
+.. image:: detection_plots/pf_1268063336_J0953+0755_09:53:09.30_+07:55:35.75_b1024_253.06ms_Cand.pfd.png
+  :width: 800
+
+.. image:: on_pulse_plots/1268063336_J0953+0755_256_bins_gaussian_components.png
   :width: 800

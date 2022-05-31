@@ -4,23 +4,21 @@ J1312-5402
 
 Best Fit
 --------
-.. image:: best_fits/J1312-5402_broken_power_law_fit.png
+.. image:: best_fits/J1312-5402_o_fit.png
   :width: 800
 
 .. csv-table:: J1312-5402 fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "broken_power_law","299±25","0.71±0.36","-2.56±0.04","0.07±0.03","691±6"
+   "o","219±16","-3.03±0.10","0.01±0.00","2.10±0.32","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1312-5402_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1312-5402 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.56±0.04","0.00±0.00","964±9"
+   "i","-2.56±0.04","0.00±0.00","964±9"
 
 
 Flux Density Results

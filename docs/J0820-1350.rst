@@ -4,23 +4,21 @@ J0820-1350
 
 Best Fit
 --------
-.. image:: best_fits/J0820-1350_broken_power_law_fit.png
+.. image:: best_fits/J0820-1350_r_fit.png
   :width: 800
 
 .. csv-table:: J0820-1350 fit results
    :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
 
-   "broken_power_law","437±44","-0.79±0.08","-2.29±0.23","0.08±0.01","541±5"
+   "r","499±103","-0.87±0.29","-2.48±0.24","0.07±0.02","541±5"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0820-1350_broken_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0820-1350 before fit results
    :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
 
-   "broken_power_law","437±44","-0.79±0.08","-2.29±0.23","0.08±0.01","541±5"
+   "r","500±103","-0.87±0.30","-2.48±0.24","0.07±0.02","541±5"
 
 
 Flux Density Results

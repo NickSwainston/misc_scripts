@@ -4,23 +4,21 @@ J1022+1001
 
 Best Fit
 --------
-.. image:: best_fits/J1022+1001_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1022+1001_o_fit.png
   :width: 800
 
 .. csv-table:: J1022+1001 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.50±0.15","-1.26±0.07","-1.90±0.05","707±7"
+   "o","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1022+1001_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J1022+1001 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.50±0.16","-1.26±0.07","-1.90±0.05","707±7"
+   "o","-0.64±0.12","-1.02±0.07","-1.72±0.06","499±4"
 
 
 Flux Density Results
@@ -28,7 +26,7 @@ Flux Density Results
 .. csv-table:: J1022+1001 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "1",  "68.0±58.5", "9.6", "57.7", "0.848"
+   "1",  "68.0±58.5", "9.6", "57.7", "0.849"
 
 .. csv-table:: J1022+1001 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"

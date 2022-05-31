@@ -4,23 +4,21 @@ J0942-5657
 
 Best Fit
 --------
-.. image:: best_fits/J0942-5657_simple_power_law_fit.png
+.. image:: best_fits/J0942-5657_i_fit.png
   :width: 800
 
 .. csv-table:: J0942-5657 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.20±0.17","0.00±0.00","691±6"
+   "i","-2.20±0.17","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0942-5657_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0942-5657 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","1.09±0.38","-2.19±0.15","-2.64±0.07","787±7"
+   "o","1.09±0.38","-2.19±0.15","-2.64±0.07","787±7"
 
 
 Flux Density Results

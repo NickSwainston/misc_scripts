@@ -4,23 +4,21 @@ J1300+1240
 
 Best Fit
 --------
-.. image:: best_fits/J1300+1240_simple_power_law_fit.png
+.. image:: best_fits/J1300+1240_i_fit.png
   :width: 800
 
 .. csv-table:: J1300+1240 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.75±0.46","0.00±0.00","374±3"
+   "i","-0.81±0.31","0.01±0.00","264±2"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1300+1240_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1300+1240 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.81±0.44","0.00±0.00","374±3"
+   "i","-0.79±0.32","0.01±0.00","264±2"
 
 
 Flux Density Results

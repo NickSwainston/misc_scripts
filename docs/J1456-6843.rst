@@ -4,23 +4,21 @@ J1456-6843
 
 Best Fit
 --------
-.. image:: best_fits/J1456-6843_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1456-6843_o_fit.png
   :width: 800
 
 .. csv-table:: J1456-6843 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.39±0.17","-1.43±0.15","-0.98±0.05","1122±11"
+   "o","-0.39±0.17","-1.43±0.15","-0.98±0.05","1122±11"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1456-6843_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J1456-6843 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.38±0.16","-1.43±0.15","-0.98±0.05","1122±11"
+   "o","-0.38±0.16","-1.43±0.15","-0.98±0.05","1122±11"
 
 
 Flux Density Results

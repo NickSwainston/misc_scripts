@@ -4,23 +4,21 @@ J0151-0635
 
 Best Fit
 --------
-.. image:: best_fits/J0151-0635_low_frequency_turn_over_power_law_fit.png
+.. image:: best_fits/J0151-0635_o_fit.png
   :width: 800
 
 .. csv-table:: J0151-0635 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","211±48","-4.11±0.46","100.00±72.39","0.53±0.13","187±1"
+   "o","211±48","-4.11±0.46","100.00±72.39","0.53±0.13","187±1"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0151-0635_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0151-0635 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.68±0.25","-0.04±0.17","-1.52±0.08","187±1"
+   "o","-1.68±0.25","-0.04±0.17","-1.52±0.08","187±1"
 
 
 Flux Density Results

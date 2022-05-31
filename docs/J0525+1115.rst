@@ -4,23 +4,21 @@ J0525+1115
 
 Best Fit
 --------
-.. image:: best_fits/J0525+1115_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0525+1115_o_fit.png
   :width: 800
 
 .. csv-table:: J0525+1115 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.46±0.16","-1.46±0.13","-1.51±0.03","293±2"
+   "o","-0.46±0.16","-1.46±0.13","-1.51±0.03","293±2"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0525+1115_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0525+1115 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.41±0.14","-1.52±0.11","-1.50±0.03","293±2"
+   "o","-0.41±0.14","-1.52±0.11","-1.50±0.03","293±2"
 
 
 Flux Density Results

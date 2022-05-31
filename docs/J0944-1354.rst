@@ -4,23 +4,21 @@ J0944-1354
 
 Best Fit
 --------
-.. image:: best_fits/J0944-1354_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0944-1354_o_fit.png
   :width: 800
 
 .. csv-table:: J0944-1354 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.84±0.62","-1.88±0.26","-1.60±0.07","379±3"
+   "o","-1.84±0.62","-1.88±0.26","-1.60±0.07","379±3"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0944-1354_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0944-1354 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.75±0.56","-2.04±0.25","-1.57±0.07","379±3"
+   "o","-1.75±0.56","-2.04±0.25","-1.57±0.07","379±3"
 
 
 Flux Density Results

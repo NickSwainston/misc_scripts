@@ -4,23 +4,21 @@ J2241-5236
 
 Best Fit
 --------
-.. image:: best_fits/J2241-5236_high_frequency_cut_off_power_law_fit.png
+.. image:: best_fits/J2241-5236_i_fit.png
   :width: 800
 
 .. csv-table:: J2241-5236 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","46487±60896","0.01±0.00","556±5"
+   "i","64294±117507","0.01±0.00","556±5"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J2241-5236_high_frequency_cut_off_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J2241-5236 before fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","47507±63747","0.01±0.00","556±5"
+   "i","47507±63747","0.01±0.00","556±5"
 
 
 Flux Density Results
@@ -28,14 +26,14 @@ Flux Density Results
 .. csv-table:: J2241-5236 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "3",  "274.4±204.7", "44.9", "221.4", "0.807"
+   "2",  "59.3±39.6", "24.8", "47.8", "0.807"
 
 .. csv-table:: J2241-5236 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
     "1221399680", "50.1±12.5"
     "1225713560", "68.5±21.4"
-    "1224252736", "704.6±37.4"
+    "1224252736", "nan±nan"
 
 Comparison Fit
 --------------

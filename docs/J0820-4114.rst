@@ -4,23 +4,21 @@ J0820-4114
 
 Best Fit
 --------
-.. image:: best_fits/J0820-4114_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0820-4114_o_fit.png
   :width: 800
 
 .. csv-table:: J0820-4114 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.88±0.28","-1.51±0.06","-1.39±0.06","485±4"
+   "o","-0.88±0.28","-1.51±0.06","-1.39±0.06","485±4"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0820-4114_broken_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0820-4114 before fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","800±0","-0.92±0.09","-3.14±0.32","0.05±0.00","485±4"
+   "o","-0.87±0.27","-1.51±0.06","-1.39±0.06","485±4"
 
 
 Flux Density Results

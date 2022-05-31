@@ -4,23 +4,21 @@ J0630-2834
 
 Best Fit
 --------
-.. image:: best_fits/J0630-2834_low_frequency_turn_over_power_law_fit.png
+.. image:: best_fits/J0630-2834_o_fit.png
   :width: 800
 
 .. csv-table:: J0630-2834 fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
+   "o","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0630-2834_low_frequency_turn_over_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0630-2834 before fit results
    :header: "model","vc (MHz)","a","b","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
+   "o","70±4","-1.66±0.09","0.10±0.01","2.10±0.33","542±5"
 
 
 Flux Density Results

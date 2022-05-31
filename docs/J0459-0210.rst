@@ -4,23 +4,21 @@ J0459-0210
 
 Best Fit
 --------
-.. image:: best_fits/J0459-0210_simple_power_law_fit.png
+.. image:: best_fits/J0459-0210_i_fit.png
   :width: 800
 
 .. csv-table:: J0459-0210 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.32±0.26","0.00±0.00","458±4"
+   "i","-1.32±0.26","0.00±0.00","458±4"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0459-0210_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0459-0210 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.30±0.27","0.00±0.00","458±4"
+   "i","-1.30±0.27","0.00±0.00","458±4"
 
 
 Flux Density Results

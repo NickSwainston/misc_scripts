@@ -4,23 +4,21 @@ J1112-6926
 
 Best Fit
 --------
-.. image:: best_fits/J1112-6926_simple_power_law_fit.png
+.. image:: best_fits/J1112-6926_i_fit.png
   :width: 800
 
 .. csv-table:: J1112-6926 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.68±0.20","0.00±0.00","691±6"
+   "i","-1.68±0.20","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1112-6926_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1112-6926 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.84±0.52","0.00±0.00","757±7"
+   "i","-1.84±0.52","0.00±0.00","757±7"
 
 
 Flux Density Results

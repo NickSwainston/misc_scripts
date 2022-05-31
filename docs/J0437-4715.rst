@@ -4,23 +4,21 @@ J0437-4715
 
 Best Fit
 --------
-.. image:: best_fits/J0437-4715_broken_power_law_fit.png
+.. image:: best_fits/J0437-4715_o_fit.png
   :width: 800
 
 .. csv-table:: J0437-4715 fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","1435±45","-0.83±0.01","-2.15±0.09","0.18±0.00","1136±11"
+   "o","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0437-4715_broken_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0437-4715 before fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","1435±45","-0.83±0.01","-2.15±0.09","0.18±0.00","1136±11"
+   "o","-0.51±0.05","-1.27±0.04","-0.75±0.01","1136±11"
 
 
 Flux Density Results

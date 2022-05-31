@@ -4,23 +4,21 @@ J0304+1932
 
 Best Fit
 --------
-.. image:: best_fits/J0304+1932_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0304+1932_o_fit.png
   :width: 800
 
 .. csv-table:: J0304+1932 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.91±0.33","-0.69±0.15","-1.45±0.05","293±2"
+   "o","-0.91±0.33","-0.69±0.15","-1.45±0.05","293±2"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0304+1932_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0304+1932 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.91±0.33","-0.70±0.15","-1.45±0.05","293±2"
+   "o","-0.91±0.33","-0.70±0.15","-1.45±0.05","293±2"
 
 
 Flux Density Results

@@ -4,23 +4,21 @@ J1123-4844
 
 Best Fit
 --------
-.. image:: best_fits/J1123-4844_simple_power_law_fit.png
+.. image:: best_fits/J1123-4844_i_fit.png
   :width: 800
 
 .. csv-table:: J1123-4844 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.27±0.21","0.00±0.00","691±6"
+   "i","-1.27±0.21","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1123-4844_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1123-4844 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.32±0.31","0.00±0.00","1113±11"
+   "i","-1.32±0.31","0.00±0.00","1113±11"
 
 
 Flux Density Results

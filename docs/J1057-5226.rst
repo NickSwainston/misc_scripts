@@ -4,23 +4,21 @@ J1057-5226
 
 Best Fit
 --------
-.. image:: best_fits/J1057-5226_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J1057-5226_i_fit.png
   :width: 800
 
 .. csv-table:: J1057-5226 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","a","b","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.85±0.03","-0.66±0.03","-0.32±0.02","88±0"
+   "i","-1.78±0.05","0.02±0.00","681±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1057-5226_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J1057-5226 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","a","b","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.85±0.03","-0.66±0.03","-0.32±0.02","88±0"
+   "i","-1.78±0.05","0.02±0.00","681±6"
 
 
 Flux Density Results

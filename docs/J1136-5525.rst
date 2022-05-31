@@ -4,23 +4,21 @@ J1136-5525
 
 Best Fit
 --------
-.. image:: best_fits/J1136-5525_simple_power_law_fit.png
+.. image:: best_fits/J1136-5525_i_fit.png
   :width: 800
 
 .. csv-table:: J1136-5525 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-0.78±0.20","0.02±0.00","461±4"
+   "i","-0.78±0.20","0.02±0.00","461±4"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1136-5525_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1136-5525 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.32±0.33","0.01±0.00","743±7"
+   "i","-1.32±0.33","0.01±0.00","743±7"
 
 
 Flux Density Results

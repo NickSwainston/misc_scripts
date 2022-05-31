@@ -4,23 +4,21 @@ J1121-5444
 
 Best Fit
 --------
-.. image:: best_fits/J1121-5444_high_frequency_cut_off_power_law_fit.png
+.. image:: best_fits/J1121-5444_i_fit.png
   :width: 800
 
 .. csv-table:: J1121-5444 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","6580±2804","0.01±0.00","691±6"
+   "i","6580±2804","0.01±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1121-5444_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1121-5444 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.25±0.09","0.01±0.00","787±7"
+   "i","-2.25±0.09","0.01±0.00","787±7"
 
 
 Flux Density Results

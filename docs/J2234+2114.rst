@@ -4,23 +4,23 @@ J2234+2114
 
 Best Fit
 --------
-.. image:: best_fits/J2234+2114_simple_power_law_fit.png
+.. image:: best_fits/J2234+2114_i_fit.png
   :width: 800
 
 .. csv-table:: J2234+2114 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.51±0.42","0.01±0.00","200±2"
+   "i","-1.51±0.39","33661232745.39±220651629336.52","200±2"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J2234+2114_simple_power_law_fit.png
+.. image:: before_mwa/J2234+2114_i_fit.png
   :width: 800
 
 .. csv-table:: J2234+2114 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.55±0.41","0.01±0.00","200±2"
+   "i","-1.55±0.43","76111719692.05±560865544324.88","200±2"
 
 
 Flux Density Results

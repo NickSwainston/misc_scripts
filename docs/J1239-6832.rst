@@ -4,23 +4,21 @@ J1239-6832
 
 Best Fit
 --------
-.. image:: best_fits/J1239-6832_simple_power_law_fit.png
+.. image:: best_fits/J1239-6832_i_fit.png
   :width: 800
 
 .. csv-table:: J1239-6832 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.62±0.14","0.00±0.00","691±6"
+   "i","-1.62±0.14","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J1239-6832_simple_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J1239-6832 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.66±0.16","0.00±0.00","1113±11"
+   "i","-1.66±0.16","0.00±0.00","1113±11"
 
 
 Flux Density Results

@@ -4,23 +4,21 @@ J0922+0638
 
 Best Fit
 --------
-.. image:: best_fits/J0922+0638_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0922+0638_o_fit.png
   :width: 800
 
 .. csv-table:: J0922+0638 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.59±0.12","-1.38±0.10","-1.33±0.03","409±4"
+   "o","-0.58±0.12","-1.37±0.10","-1.33±0.03","409±4"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0922+0638_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0922+0638 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.59±0.12","-1.38±0.10","-1.33±0.03","409±4"
+   "o","-0.59±0.12","-1.38±0.10","-1.33±0.03","409±4"
 
 
 Flux Density Results
@@ -28,14 +26,14 @@ Flux Density Results
 .. csv-table:: J0922+0638 flux density total results
    :header: "N obs", "Flux Density (mJy)", "u_S_mean", "u_scint", "m_r_v"
 
-   "3",  "168.1±104.5", "70.3", "90.0", "0.535"
+   "2",  "109.9±63.7", "18.6", "58.8", "0.535"
 
 .. csv-table:: J0922+0638 flux density individual results
    :header: "ObsID", "Flux Density (mJy)"
 
     "1265725128", "35.5±7.8"
     "1264867416", "184.3±16.8"
-    "1267111608", "284.5±67.8"
+    "1267111608", "nan±nan"
 
 Comparison Fit
 --------------

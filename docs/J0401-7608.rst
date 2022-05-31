@@ -4,23 +4,21 @@ J0401-7608
 
 Best Fit
 --------
-.. image:: best_fits/J0401-7608_log_parabolic_spectrum_fit.png
+.. image:: best_fits/J0401-7608_o_fit.png
   :width: 800
 
 .. csv-table:: J0401-7608 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-5.00±4.85","1.17±0.48","-2.21±0.09","691±6"
+   "o","-5.00±4.85","1.17±0.48","-2.21±0.09","691±6"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0401-7608_log_parabolic_spectrum_fit.png
-  :width: 800
 
 .. csv-table:: J0401-7608 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-5.00±4.85","-0.90±0.48","-2.18±0.05","1113±11"
+   "o","-5.00±4.85","-0.90±0.48","-2.18±0.05","1113±11"
 
 
 Flux Density Results

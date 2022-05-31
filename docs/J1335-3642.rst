@@ -4,13 +4,13 @@ J1335-3642
 
 Best Fit
 --------
-.. image:: best_fits/J1335-3642_simple_power_law_fit.png
+.. image:: best_fits/J1335-3642_i_fit.png
   :width: 800
 
 .. csv-table:: J1335-3642 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.20±0.21","0.00±0.00","464±4"
+   "i","-2.20±0.21","0.00±0.00","464±4"
 
 
 Flux Density Results

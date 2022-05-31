@@ -4,23 +4,21 @@ J0452-1759
 
 Best Fit
 --------
-.. image:: best_fits/J0452-1759_broken_power_law_fit.png
+.. image:: best_fits/J0452-1759_o_fit.png
   :width: 800
 
 .. csv-table:: J0452-1759 fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","781±40","-0.32±0.08","-4.02±0.51","0.08±0.00","379±3"
+   "o","-2.16±0.36","-0.57±0.07","-1.01±0.03","379±3"
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/J0452-1759_broken_power_law_fit.png
-  :width: 800
 
 .. csv-table:: J0452-1759 before fit results
-   :header: "model","vb (MHz)","a1","a2","b","v0 (MHz)"
+   :header: "model","a","b","c","v0 (MHz)"
 
-   "broken_power_law","781±40","-0.32±0.08","-4.02±0.51","0.08±0.00","379±3"
+   "o","-2.18±0.39","-0.57±0.07","-1.01±0.03","379±3"
 
 
 Flux Density Results
