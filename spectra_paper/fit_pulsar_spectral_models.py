@@ -7,23 +7,48 @@ import numpy as np
 import shutil
 from PIL import Image
 import glob
+from astropy.coordinates import SkyCoord
+import astropy.units as u
 
-from pulsar_spectra.spectral_fit import find_best_spectral_fit
-from pulsar_spectra.catalogues import collect_catalogue_fluxes
+from pulsar_spectra.spectral_fit import find_best_spectral_fit, estimate_flux_density
+from pulsar_spectra.catalogue import collect_catalogue_fluxes
+from pulsar_spectra.models import model_settings
+
+from vcstools.metadb_utils import get_common_obs_metadata
 
 df = pd.read_csv("{}/../survey_paper/SMART_pulsars.csv".format(os.path.dirname(os.path.realpath(__file__))))
+pulsar_obsid_df = pd.read_csv("{}/pulsar_best_obs.csv".format(os.path.dirname(os.path.realpath(__file__))))
 
-print(df['Pulsar'].tolist())
+#print(df['Pulsar'].tolist())
 pulsars = list(dict.fromkeys(df['Pulsar'].tolist()))
 
-cat_list = collect_catalogue_fluxes(exclude=["Xue_2017", "Bondonneau_2020", "Johnston_2021"])
+cat_list = collect_catalogue_fluxes()
+query = psrqpy.QueryATNF().pandas
 
 results_record = []
 
+#for output csv
+output_df = pd.DataFrame(
+    columns=[
+        "Pulsar",
+        "ObservationID",
+        "ATNF Period (s)",
+        "ATNF DM",
+        "Offset (degrees)",
+        "Flux Density (mJy)",
+        "Flux Density Uncertainty (mJy)",
+        "Flux Density Scintilation Uncertainty (mJy)",
+        "Estimated Flux Density (mJy)",
+        "Estimated Flux Density Uncertainty (mJy)",
+    ]
+)
+
+model_dict = model_settings()
 for pulsar in pulsars:
-    #if pulsar != "J0528+2200":
-    # if pulsar != "J0030+0451":
-    #    continue
+    scale_figure = 0.9
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5.5*scale_figure,4*scale_figure))
+    # if pulsar != "J0534+2200":
+    #      continue
     # if os.path.exists(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/{pulsar}.rst"):
     #     continue
     # Grab all rows with pulsar then grab their fluxes
@@ -34,6 +59,9 @@ for pulsar in pulsars:
     pulsar_plots = []
     models = None
     pre_models = None
+    estimate_flux = ""
+    estimate_flux_err = ""
+
     for index, row in pulsar_df.iterrows():
         if row["Plot location"] == "" or isinstance(row["Plot location"], float):
             continue
@@ -69,7 +97,6 @@ for pulsar in pulsars:
         else:
             basename = os.path.basename(row["Plot location"])
             detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{basename}")
-            print(detection_plot)
             if len(detection_plot) == 0:
                 # cp
                 print(row["Plot location"])
@@ -77,17 +104,33 @@ for pulsar in pulsars:
                 detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{basename}")
         pulsar_plots.append((detection_plot[0], on_pulse_fit[0]))
 
-    freq_all     = np.array(cat_list[pulsar][0])
-    flux_all     = np.array(cat_list[pulsar][1])
-    flux_err_all = np.array(cat_list[pulsar][2])
-    ref_all      = np.array(cat_list[pulsar][3])
+    freq_all, flux_all, flux_err_all, ref_all = cat_list[pulsar]
+    freqs = freq_all + [154.24]
+    fit_range = (np.log10(min(freqs)), np.log10(max(freqs)))
+
     if len(freq_all) > 0:
-        pre_models, pre_iminuit_results, pre_fit_infos, pre_p_best, pre_p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all, plot_compare=True, plot_best=True, alternate_style=True)
+        pre_models, pre_iminuit_results, pre_fit_infos, pre_p_best, pre_p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all,
+            plot_best=True, alternate_style=True, axis=ax, secondary_fit=True)
     else:
         pre_models = pre_iminuit_results = pre_fit_infos = pre_p_best = pre_p_catagory = None
     if pre_models is not None:
-        if len(pre_models) > 0:
-            shutil.move(f"{pulsar}_{pre_models[1]}_fit.png", f"{os.path.dirname(os.path.realpath(__file__))}/../docs/before_mwa/{pulsar}_{pre_models[1]}_fit.png")
+        estimate_flux, estimate_flux_err = estimate_flux_density(154.24, pre_models, pre_iminuit_results)
+
+
+    # calc offset
+    # find obsid using for this pulsar
+    #pulsar_obsid_df = pulsar_obsid_df[pulsar_obsid_df['Jname '].str.contains(pulsar)]
+    this_df = pulsar_obsid_df.loc[pulsar == pulsar_obsid_df['Jname']].reset_index()
+    obsid = this_df['ObsID'][0]
+    obsid, ra, dec, dura, [xdelays, ydelays], centrefreq, channels = get_common_obs_metadata(obsid)
+    print("coords")
+    print(ra,dec)
+    obs_beam = SkyCoord(ra, dec, unit=(u.deg,u.deg))
+    query_id = list(query['PSRJ']).index(pulsar)
+    print(query["RAJ"][query_id], query["DECJ"][query_id])
+    pulsar_coord = SkyCoord(query["RAJ"][query_id], query["DECJ"][query_id], unit=(u.hourangle,u.deg))
+    offset = pulsar_coord.separation(obs_beam).deg
+
 
     print(f"\n{pulsar}")
     if len(mwa_fluxs) == 0:
@@ -98,21 +141,25 @@ for pulsar in pulsars:
         # Average data
         S_mean = np.mean(mwa_fluxs)
         u_S_mean = np.sqrt(np.sum(np.array(mwa_flux_errors)**2))
-        # robust standard deviation com- puted using the interquartile range
-        std_r_v = 0.9183 * (np.quantile(mwa_fluxs, 0.75) - np.quantile(mwa_fluxs, 0.25))
-        # modultaion index
-        #m_r = std_r_v / np.median(mwa_fluxs)
+
         # using 728 MHz values from table 4
         a = -0.47
         b = 0.21
         d0 = 200
         d = float(row['ATNF DM'])
-        # Equation 18
+        # Equation 18 modultaion index
         m_r_v = b* (d/d0)**a
+
+        # Equation 4
         u_scint = m_r_v * S_mean
 
+        # Equation 2 robust standard deviation computed using the interquartile range
+        std_r_v = 0.9183 * (np.quantile(mwa_fluxs, 0.75) - np.quantile(mwa_fluxs, 0.25))
+
         N = len(mwa_fluxs)
+        # Equation 3
         u_S = np.sqrt( u_S_mean**2 + std_r_v**2/N + (6/(5*N) - 1/5)*u_scint**2)
+
         #print(u_S, mwa_flux_errors)
 
         # freq_all     = np.array(mwa_freqs                + cat_list[pulsar][0])
@@ -123,14 +170,35 @@ for pulsar in pulsars:
         flux_all     = np.array([S_mean]  + cat_list[pulsar][1])
         flux_err_all = np.array([u_S]     + cat_list[pulsar][2])
         ref_all      = np.array(["SMART"] + cat_list[pulsar][3])
-        models, iminuit_results, fit_infos, p_best, p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all, plot_compare=True, plot_best=True, alternate_style=True)
+        #for freq, flux, flux_err in zip(freq_all, flux_all, flux_err_all):
+            #print(freq, flux, flux_err)
+        models, iminuit_results, fit_infos, p_best, p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all, plot_best=True, alternate_style=True, axis=ax)
+        plt.tight_layout(pad=2.5)
+        #plt.savefig(f"{pulsar}_fit.pdf", bbox_inches='tight', dpi=300)
+        plt.savefig(f"{pulsar}_fit.png", bbox_inches='tight', dpi=300)
+        models, iminuit_results, fit_infos, p_best, p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all, plot_compare=True)
+
         if models is not None:
             if len(models) > 0:
-                shutil.move(f"{pulsar}_{models[1]}_fit.png", f"{os.path.dirname(os.path.realpath(__file__))}/../docs/best_fits/{pulsar}_{models[1]}_fit.png")
+                shutil.move(f"{pulsar}_fit.png", f"{os.path.dirname(os.path.realpath(__file__))}/../docs/best_fits/{pulsar}_fit.png")
+                print(f"{pulsar}_comparison_fit.png",  f"{os.path.dirname(os.path.realpath(__file__))}/../docs/comparison_fits/{pulsar}_comparison_fit.png")
                 shutil.move(f"{pulsar}_comparison_fit.png",  f"{os.path.dirname(os.path.realpath(__file__))}/../docs/comparison_fits/{pulsar}_comparison_fit.png")
 
                 # Record data
                 results_record.append((pulsar, row['ATNF DM'], models, iminuit_results, fit_infos, p_best, p_catagory, len(mwa_fluxs), S_mean, u_S, u_S_mean, u_scint, m_r_v))
+        # Record data for csv
+        output_df = output_df.append({
+            "Pulsar":pulsar,
+            "ObservationID":obsid,
+            "ATNF Period (s)": row['ATNF Period (s)'],
+            "ATNF DM": row['ATNF DM'],
+            "Offset (degrees)":offset,
+            "Flux Density (mJy)":S_mean,
+            "Flux Density Uncertainty (mJy)":u_S_mean,
+            "Flux Density Scintilation Uncertainty (mJy)":u_S,
+            "Estimated Flux Density (mJy)":estimate_flux,
+            "Estimated Flux Density Uncertainty (mJy)":estimate_flux_err,
+        }, ignore_index=True)
 
 
         with open(f'{os.path.dirname(os.path.realpath(__file__))}/../docs/{pulsar}.rst', 'w') as file:
@@ -144,13 +212,13 @@ for pulsar in pulsars:
 
 Best Fit
 --------
-.. image:: best_fits/{pulsar}_{models[1]}_fit.png
+.. image:: best_fits/{pulsar}_fit.png
   :width: 800
 
 .. csv-table:: {pulsar} fit results
 ''')
                 header_str = '   :header: "model",'
-                data_str = f'   "{models[1]}",'
+                data_str = f'   "{models}",'
                 for p, v, e in zip(iminuit_results.parameters, iminuit_results.values, iminuit_results.errors):
                     if p.startswith('v'):
                         header_str += f'"{p} (MHz)",'
@@ -175,13 +243,11 @@ Only {len(mwa_freqs)} MWA data and {len(cat_list[pulsar][0])} cat data available
 
 Fit Before MWA
 --------------
-.. image:: before_mwa/{pulsar}_{pre_models[1]}_fit.png
-  :width: 800
 
 .. csv-table:: {pulsar} before fit results
 ''')
                 header_str = '   :header: "model",'
-                data_str = f'   "{pre_models[1]}",'
+                data_str = f'   "{pre_models}",'
                 for p, v, e in zip(pre_iminuit_results.parameters, pre_iminuit_results.values, pre_iminuit_results.errors):
                     if p.startswith('v'):
                         header_str += f'"{p} (MHz)",'
@@ -259,15 +325,15 @@ Flux Density Results
         file.write(f'   ":ref:`{pulsar}<{pulsar}>`", "{dm}", "{n_obs}",  "{S_mean:.1f}±{u_S:.1f}", "{u_S_mean:.1f}", "{u_scint:.1f}", "{m_r_v:.3f}"\n')
 
         #sort
-        if models[1] == "simple_power_law":
+        if models == "simple_power_law":
             simple_power_law.append((pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory))
-        if models[1] == "broken_power_law":
+        if models == "broken_power_law":
             broken_power_law.append((pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory))
-        if models[1] == "log_parabolic_spectrum":
+        if models == "log_parabolic_spectrum":
             log_parabolic_spectrum.append((pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory))
-        if models[1] == "high_frequency_cut_off_power_law":
+        if models == "high_frequency_cut_off_power_law":
             high_frequency_cut_off_power_law.append((pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory))
-        if models[1] == "low_frequency_turn_over_power_law":
+        if models == "low_frequency_turn_over_power_law":
             low_frequency_turn_over_power_law.append((pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory))
 
     file.write(f'''
@@ -360,3 +426,5 @@ Power law with low-frequency turn-over Results
    J*
 
 ''')
+
+output_df.to_csv('SMART_pulsars_flux_update.csv', index=False)
