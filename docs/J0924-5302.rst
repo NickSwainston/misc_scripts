@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0924-5302 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","14123±20927","0.01±0.00","691±6"
+   "high_frequency_cut_off_power_law","18578±34518","0.00±0.00","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0924-5302 before fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-2.08±0.10","0.00±0.00","787±7"
+   "simple_power_law","-2.06±0.09","0.00±0.00","787±7"
 
 
 Flux Density Results

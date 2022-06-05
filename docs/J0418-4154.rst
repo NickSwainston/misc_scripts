@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0418-4154 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-1.98±0.15","0.01±0.00","351±3"
+   "simple_power_law","-1.91±0.15","0.01±0.00","360±3"
 
 
 Flux Density Results

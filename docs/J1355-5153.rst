@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1355-5153 fit results
    :header: "model","vc (MHz)","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","3000±296","0.01±0.00","464±4"
+   "high_frequency_cut_off_power_law","3000±330","0.01±0.00","464±4"
 
 Fit Before MWA
 --------------

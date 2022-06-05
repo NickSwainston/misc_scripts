@@ -10,7 +10,15 @@ Best Fit
 .. csv-table:: J0134-2937 fit results
    :header: "model","a","b","v0 (MHz)"
 
-   "simple_power_law","-0.57±0.24","0.01±0.00","464±4"
+   "simple_power_law","-0.63±0.24","0.01±0.00","464±4"
+
+Fit Before MWA
+--------------
+
+.. csv-table:: J0134-2937 before fit results
+   :header: "model","a","b","v0 (MHz)"
+
+   "simple_power_law","-0.87±0.32","0.01±0.00","748±7"
 
 
 Flux Density Results
