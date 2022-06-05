@@ -1,4 +1,3 @@
 numpydoc
 sphinx-rtd-theme
 myst-parser
-git-lfs

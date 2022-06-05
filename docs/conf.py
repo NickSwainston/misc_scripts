@@ -33,41 +33,6 @@ author = 'Nick Swainston'
 # The full version, including alpha/beta/rc tags
 release = '1.0'
 
-# Fix from https://github.com/readthedocs/readthedocs.org/issues/1846
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if on_rtd:
-    # from convert_readme import convert_md
-    # convert_md()
-
-    render_examples = False
-
-    # hack for lacking git-lfs support on rtd
-    import git_lfs
-    from urllib.error import HTTPError
-
-    _fetch_urls = git_lfs.fetch_urls
-
-    def _patched_fetch_urls(lfs_url, oid_list):
-        """Hack git_lfs library that sometimes makes too big requests"""
-        objects = []
-
-        try:
-            objects.extend(_fetch_urls(lfs_url, oid_list))
-        except HTTPError as err:
-            if err.code != 413:
-                raise
-            logger.error("LFS: request entity too large, splitting in half")
-            objects.extend(_patched_fetch_urls(lfs_url, oid_list[:len(oid_list) // 2]))
-            objects.extend(_patched_fetch_urls(lfs_url, oid_list[len(oid_list) // 2:]))
-
-        return objects
-
-    git_lfs.fetch_urls = _patched_fetch_urls
-    git_lfs.fetch(PROJECT_ROOT_DIR)
-
-else:
-    render_examples = True
-
 
 # -- General configuration ---------------------------------------------------
 
