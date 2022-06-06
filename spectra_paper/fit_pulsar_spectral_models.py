@@ -12,7 +12,7 @@ import astropy.units as u
 
 from pulsar_spectra.spectral_fit import find_best_spectral_fit, estimate_flux_density
 from pulsar_spectra.catalogue import collect_catalogue_fluxes
-from pulsar_spectra.models import model_settings
+from pulsar_spectra.models import model_settings, calc_log_parabolic_spectrum_max_freq
 
 from vcstools.metadb_utils import get_common_obs_metadata
 
@@ -40,6 +40,43 @@ output_df = pd.DataFrame(
         "Flux Density Scintilation Uncertainty (mJy)",
         "Estimated Flux Density (mJy)",
         "Estimated Flux Density Uncertainty (mJy)",
+        "Model",
+        "Model before MWA",
+        "Probability Best",
+        "Min freq before MWA (MHz)",
+        "Max freq before MWA (MHz)",
+        "pl_a"      ,
+        "pl_b"      ,
+        "bpl_vb"    ,
+        "bpl_a1"    ,
+        "bpl_a2"    ,
+        "bpl_b"     ,
+        "lps_a"     ,
+        "lps_b"     ,
+        "lps_c"     ,
+        "lps_v_peak",
+        "hfco_vc"   ,
+        "hfco_b"    ,
+        "lfto_vc"   ,
+        "lfto_a"    ,
+        "lfto_b"    ,
+        "lfto_beta" ,
+        "pre_pl_a"      ,
+        "pre_pl_b"      ,
+        "pre_bpl_vb"    ,
+        "pre_bpl_a1"    ,
+        "pre_bpl_a2"    ,
+        "pre_bpl_b"     ,
+        "pre_lps_a"     ,
+        "pre_lps_b"     ,
+        "pre_lps_c"     ,
+        "pre_lps_v_peak",
+        "pre_hfco_vc"   ,
+        "pre_hfco_b"    ,
+        "pre_lfto_vc"   ,
+        "pre_lfto_a"    ,
+        "pre_lfto_b"    ,
+        "pre_lfto_beta" ,
     ]
 )
 
@@ -47,7 +84,7 @@ model_dict = model_settings()
 for pulsar in pulsars:
     scale_figure = 0.9
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5.5*scale_figure,4*scale_figure))
-    # if pulsar != "J0534+2200":
+    # if pulsar != "J1136+1551":
     #      continue
     # if os.path.exists(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/{pulsar}.rst"):
     #     continue
@@ -108,6 +145,38 @@ for pulsar in pulsars:
     freqs = freq_all + [154.24]
     fit_range = (np.log10(min(freqs)), np.log10(max(freqs)))
 
+    pre_pl_a      = None
+    pre_pl_b      = None
+    pre_bpl_vb    = None
+    pre_bpl_a1    = None
+    pre_bpl_a2    = None
+    pre_bpl_b     = None
+    pre_lps_a     = None
+    pre_lps_b     = None
+    pre_lps_c     = None
+    pre_lps_v_peak= None
+    pre_hfco_vc   = None
+    pre_hfco_b    = None
+    pre_lfto_vc   = None
+    pre_lfto_a    = None
+    pre_lfto_b    = None
+    pre_lfto_beta = None
+    pl_a      = None
+    pl_b      = None
+    bpl_vb    = None
+    bpl_a1    = None
+    bpl_a2    = None
+    bpl_b     = None
+    lps_a     = None
+    lps_b     = None
+    lps_c     = None
+    lps_v_peak= None
+    hfco_vc   = None
+    hfco_b    = None
+    lfto_vc   = None
+    lfto_a    = None
+    lfto_b    = None
+    lfto_beta = None
     if len(freq_all) > 0:
         pre_models, pre_iminuit_results, pre_fit_infos, pre_p_best, pre_p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all,
             plot_best=True, alternate_style=True, axis=ax, secondary_fit=True)
@@ -115,6 +184,41 @@ for pulsar in pulsars:
         pre_models = pre_iminuit_results = pre_fit_infos = pre_p_best = pre_p_catagory = None
     if pre_models is not None:
         estimate_flux, estimate_flux_err = estimate_flux_density(154.24, pre_models, pre_iminuit_results)
+
+        # record model specific bits
+        if pre_models == "simple_power_law":
+            pre_pl_a = pre_iminuit_results.values["a"]
+            pre_pl_b = pre_iminuit_results.values["b"]
+        elif pre_models == "broken_power_law":
+            #vb, a1, a2, b
+            pre_bpl_vb = pre_iminuit_results.values["vb"]
+            pre_bpl_a1 = pre_iminuit_results.values["a1"]
+            pre_bpl_a2 = pre_iminuit_results.values["a2"]
+            pre_bpl_b = pre_iminuit_results.values["b"]
+        elif pre_models == "log_parabolic_spectrum":
+            pre_lps_a = pre_iminuit_results.values["a"]
+            pre_lps_b = pre_iminuit_results.values["b"]
+            pre_lps_c = pre_iminuit_results.values["c"]
+            # Calculate the peak frequency
+            v_peak, u_v_peak = calc_log_parabolic_spectrum_max_freq(
+                pre_iminuit_results.values["a"],
+                pre_iminuit_results.values["b"],
+                pre_iminuit_results.values["v0"],
+                pre_iminuit_results.errors["a"],
+                pre_iminuit_results.errors["b"],
+                pre_iminuit_results.covariance[0][1],
+            )
+            pre_lps_v_peak = v_peak
+            print(f"vpeak: {v_peak/1e6:6.2f} +/- {u_v_peak/1e6:6.2f}")
+        elif pre_models == "high_frequency_cut_off_power_law":
+            pre_hfco_vc = pre_iminuit_results.values["vc"]
+            pre_hfco_b = pre_iminuit_results.values["b"]
+        elif pre_models == "low_frequency_turn_over_power_law":
+            #  vc, a, b, beta
+            pre_lfto_vc = pre_iminuit_results.values["vc"]
+            pre_lfto_a = pre_iminuit_results.values["a"]
+            pre_lfto_b = pre_iminuit_results.values["b"]
+            pre_lfto_beta = pre_iminuit_results.values["beta"]
 
 
     # calc offset
@@ -186,6 +290,49 @@ for pulsar in pulsars:
 
                 # Record data
                 results_record.append((pulsar, row['ATNF DM'], models, iminuit_results, fit_infos, p_best, p_catagory, len(mwa_fluxs), S_mean, u_S, u_S_mean, u_scint, m_r_v))
+
+
+                # record model specific bits
+                if models == "simple_power_law":
+                    pl_a = iminuit_results.values["a"]
+                    pl_b = iminuit_results.values["b"]
+                elif models == "broken_power_law":
+                    #vb, a1, a2, b
+                    bpl_vb = iminuit_results.values["vb"]
+                    bpl_a1 = iminuit_results.values["a1"]
+                    bpl_a2 = iminuit_results.values["a2"]
+                    bpl_b = iminuit_results.values["b"]
+                elif models == "log_parabolic_spectrum":
+                    lps_a = iminuit_results.values["a"]
+                    lps_b = iminuit_results.values["b"]
+                    lps_c = iminuit_results.values["c"]
+                    # Calculate the peak frequency
+                    v_peak, u_v_peak = calc_log_parabolic_spectrum_max_freq(
+                        iminuit_results.values["a"],
+                        iminuit_results.values["b"],
+                        iminuit_results.values["v0"],
+                        iminuit_results.errors["a"],
+                        iminuit_results.errors["b"],
+                        iminuit_results.covariance[0][1],
+                    )
+                    lps_v_peak = v_peak
+                    print(f"vpeak: {v_peak/1e6:6.2f} +/- {u_v_peak/1e6:6.2f}")
+                elif models == "high_frequency_cut_off_power_law":
+                    hfco_vc = iminuit_results.values["vc"]
+                    hfco_b = iminuit_results.values["b"]
+                elif models == "low_frequency_turn_over_power_law":
+                    #  vc, a, b, beta
+                    lfto_vc = iminuit_results.values["vc"]
+                    lfto_a = iminuit_results.values["a"]
+                    lfto_b = iminuit_results.values["b"]
+                    lfto_beta = iminuit_results.values["beta"]
+        if len(cat_list[pulsar][0]) == 0:
+            min_freq = None
+            max_freq = None
+        else:
+            min_freq = min(cat_list[pulsar][0])
+            max_freq = max(cat_list[pulsar][0])
+
         # Record data for csv
         output_df = output_df.append({
             "Pulsar":pulsar,
@@ -198,6 +345,43 @@ for pulsar in pulsars:
             "Flux Density Scintilation Uncertainty (mJy)":u_S,
             "Estimated Flux Density (mJy)":estimate_flux,
             "Estimated Flux Density Uncertainty (mJy)":estimate_flux_err,
+            "Model":models,
+            "Model before MWA":pre_models,
+            "Probability Best":p_best,
+            "Min freq before MWA (MHz)":min_freq,
+            "Max freq before MWA (MHz)":max_freq,
+            "pl_a"      : pl_a     ,
+            "pl_b"      : pl_b     ,
+            "bpl_vb"    : bpl_vb   ,
+            "bpl_a1"    : bpl_a1   ,
+            "bpl_a2"    : bpl_a2   ,
+            "bpl_b"     : bpl_b    ,
+            "lps_a"     : lps_a    ,
+            "lps_b"     : lps_b    ,
+            "lps_c"     : lps_c    ,
+            "lps_v_peak": lps_v_peak,
+            "hfco_vc"   : hfco_vc  ,
+            "hfco_b"    : hfco_b   ,
+            "lfto_vc"   : lfto_vc  ,
+            "lfto_a"    : lfto_a   ,
+            "lfto_b"    : lfto_b   ,
+            "lfto_beta" : lfto_beta,
+            "pre_pl_a"      : pre_pl_a     ,
+            "pre_pl_b"      : pre_pl_b     ,
+            "pre_bpl_vb"    : pre_bpl_vb   ,
+            "pre_bpl_a1"    : pre_bpl_a1   ,
+            "pre_bpl_a2"    : pre_bpl_a2   ,
+            "pre_bpl_b"     : pre_bpl_b    ,
+            "pre_lps_a"     : pre_lps_a    ,
+            "pre_lps_b"     : pre_lps_b    ,
+            "pre_lps_c"     : pre_lps_c    ,
+            "pre_lps_v_peak": pre_lps_v_peak,
+            "pre_hfco_vc"   : pre_hfco_vc  ,
+            "pre_hfco_b"    : pre_hfco_b   ,
+            "pre_lfto_vc"   : pre_lfto_vc  ,
+            "pre_lfto_a"    : pre_lfto_a   ,
+            "pre_lfto_b"    : pre_lfto_b   ,
+            "pre_lfto_beta" : pre_lfto_beta,
         }, ignore_index=True)
 
 

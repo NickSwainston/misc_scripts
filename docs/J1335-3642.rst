@@ -16,9 +16,9 @@ Fit Before MWA
 --------------
 
 .. csv-table:: J1335-3642 before fit results
-   :header: "model","vc (MHz)","b","v0 (MHz)"
+   :header: "model","a","b","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","5045±4996","0.00±0.00","700±7"
+   "simple_power_law","-2.18±0.22","0.00±0.00","700±7"
 
 
 Flux Density Results
