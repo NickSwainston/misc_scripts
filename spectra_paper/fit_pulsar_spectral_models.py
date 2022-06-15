@@ -55,9 +55,11 @@ output_df = pd.DataFrame(
         "lps_b"     ,
         "lps_c"     ,
         "lps_v_peak",
+        "lps_u_v_peak",
         "hfco_vc"   ,
         "hfco_b"    ,
         "lfto_vc"   ,
+        "lfto_u_vc"   ,
         "lfto_a"    ,
         "lfto_b"    ,
         "lfto_beta" ,
@@ -171,9 +173,11 @@ for pulsar in pulsars:
     lps_b     = None
     lps_c     = None
     lps_v_peak= None
+    lps_u_v_peak= None
     hfco_vc   = None
     hfco_b    = None
     lfto_vc   = None
+    lfto_u_vc   = None
     lfto_a    = None
     lfto_b    = None
     lfto_beta = None
@@ -316,6 +320,7 @@ for pulsar in pulsars:
                         iminuit_results.covariance[0][1],
                     )
                     lps_v_peak = v_peak
+                    lps_u_v_peak = u_v_peak
                     print(f"vpeak: {v_peak/1e6:6.2f} +/- {u_v_peak/1e6:6.2f}")
                 elif models == "high_frequency_cut_off_power_law":
                     hfco_vc = iminuit_results.values["vc"]
@@ -323,6 +328,7 @@ for pulsar in pulsars:
                 elif models == "low_frequency_turn_over_power_law":
                     #  vc, a, b, beta
                     lfto_vc = iminuit_results.values["vc"]
+                    lfto_u_vc = iminuit_results.errors["vc"]
                     lfto_a = iminuit_results.values["a"]
                     lfto_b = iminuit_results.values["b"]
                     lfto_beta = iminuit_results.values["beta"]
@@ -360,9 +366,11 @@ for pulsar in pulsars:
             "lps_b"     : lps_b    ,
             "lps_c"     : lps_c    ,
             "lps_v_peak": lps_v_peak,
+            "lps_u_v_peak": lps_u_v_peak,
             "hfco_vc"   : hfco_vc  ,
             "hfco_b"    : hfco_b   ,
             "lfto_vc"   : lfto_vc  ,
+            "lfto_u_vc" : lfto_u_vc,
             "lfto_a"    : lfto_a   ,
             "lfto_b"    : lfto_b   ,
             "lfto_beta" : lfto_beta,
