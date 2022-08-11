@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 
 query = psrqpy.QueryATNF(loadfromdb=catalogue.ATNF_LOC).pandas
 #pulsars = ['J0820-1350', 'J0835-4510', 'J1820-0427']
-pulsars = ['J0835-4510', 'J1141-6545', 'J1751-4657', 'J0953+0755']
+#pulsars = ['J0835-4510', 'J1141-6545', 'J1751-4657', 'J0953+0755']
+pulsars = ['J0835-4510', 'J1751-4657', 'J0953+0755', 'J1607-0032']
 np = len(pulsars)
 
 fig, axs = plt.subplots(nrows=np, ncols=2, figsize=(9, 3.5*np))
@@ -56,6 +57,7 @@ for pi, pulsar in enumerate(pulsars):
         print(f"{str(freq):8s}{float(flux):8.2f}{float(flux_err):8.2f} {str(ref):20s}")
     model, m, fit_info, p_best, p_category = find_best_spectral_fit(pulsar, fo, flo, fleo, ro, plot_best=True, alternate_style=True, axis=axs[pi][1])
     axs[pi][1].set_title(f'PSR {pulsar} pulsar_spectra')
+    print(model)
 
     #make same y axis the same
     print(fluxs)
