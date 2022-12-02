@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 
 query = psrqpy.QueryATNF(loadfromdb=catalogue.ATNF_LOC).pandas
 #pulsars = ['J0820-1350', 'J0835-4510', 'J1820-0427']
-#pulsars = ['J0835-4510', 'J1141-6545', 'J1751-4657', 'J0953+0755']
-pulsars = ['J0835-4510', 'J1751-4657', 'J0953+0755', 'J1607-0032']
+pulsars = ['J0835-4510', 'J1141-6545', 'J1751-4657', 'J0953+0755']
+#pulsars = ['J0835-4510', 'J1751-4657', 'J0953+0755', 'J1607-0032']
 np = len(pulsars)
 
-fig, axs = plt.subplots(nrows=np, ncols=2, figsize=(9, 3.5*np))
+fig, axs = plt.subplots(nrows=np, ncols=2, figsize=(10, 4*np))
 
 antf_dict = catalogue.all_flux_from_atnf(query=query)
 # Resort into cat_list format
@@ -31,7 +31,7 @@ for pi, pulsar in enumerate(pulsars):
     axs[pi][0].set_title(f'PSR {pulsar} ATNF')
 
 
-    cat_dict = catalogue.collect_catalogue_fluxes(query=query)
+    cat_dict = catalogue.collect_catalogue_fluxes(query=query, exclude=["Taylor_1993"])
     # reorganise so it is in the same order
     freqs, fluxs, flux_errs, refs = cat_dict[pulsar]
     fo = []
