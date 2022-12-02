@@ -8,17 +8,17 @@ Best Fit
   :width: 800
 
 .. csv-table:: J1141-6545 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vc (MHz)","a","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.14±0.34","-1.87±0.17","-1.90±0.05","691±6"
+   "high_frequency_cut_off_power_law","3430±242","-1.25±0.15","0.01±0.00","691±6"
 
 Fit Before MWA
 --------------
 
 .. csv-table:: J1141-6545 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vc (MHz)","a","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-0.98±0.31","-2.02±0.16","-1.97±0.04","757±7"
+   "high_frequency_cut_off_power_law","3497±296","-1.37±0.14","0.01±0.00","757±7"
 
 
 Flux Density Results

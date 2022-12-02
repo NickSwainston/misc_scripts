@@ -8,17 +8,17 @@ Best Fit
   :width: 800
 
 .. csv-table:: J2317+2149 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vpeak (MHz)","a","c","beta","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.16±0.38","-0.73±0.16","-1.50±0.09","187±1"
+   "low_frequency_turn_over_power_law","84±14","-8.00±5.85","72281076797726343036928.00±362128679709935365259264.00","0.13±0.01","187±1"
 
 Fit Before MWA
 --------------
 
 .. csv-table:: J2317+2149 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vpeak (MHz)","a","c","beta","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.15±0.38","-0.73±0.16","-1.50±0.09","187±1"
+   "low_frequency_turn_over_power_law","83±14","-8.00±5.61","140367977508965781078016.00±711682596419538094391296.00","0.13±0.01","187±1"
 
 
 Flux Density Results

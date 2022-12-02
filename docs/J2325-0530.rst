@@ -4,7 +4,7 @@ J2325-0530
 
 Best Fit
 --------
-Only 1 MWA data and 1 cat data available
+Only 1 MWA data and 2 cat data available
 
 
 
