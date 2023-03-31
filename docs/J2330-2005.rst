@@ -8,7 +8,7 @@ Best Fit
   :width: 800
 
 .. csv-table:: J2330-2005 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vpeak (MHz)","a","c","beta","v0 (MHz)"
 
    "log_parabolic_spectrum","-0.65±0.17","-1.46±0.09","-1.54±0.09","415±4"
 
@@ -16,7 +16,7 @@ Fit Before MWA
 --------------
 
 .. csv-table:: J2330-2005 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vpeak (MHz)","a","c","beta","v0 (MHz)"
 
    "log_parabolic_spectrum","-0.68±0.19","-1.49±0.13","-1.51±0.09","415±4"
 

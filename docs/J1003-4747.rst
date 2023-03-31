@@ -8,7 +8,7 @@ Best Fit
   :width: 800
 
 .. csv-table:: J1003-4747 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vc (MHz)","a","c","v0 (MHz)"
 
    "log_parabolic_spectrum","-0.50±0.24","-1.40±0.08","-2.38±0.04","691±6"
 

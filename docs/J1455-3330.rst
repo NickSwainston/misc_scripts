@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1455-3330 before fit results
    :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.47±0.39","0.00±0.00","748±7"
+   "low_frequency_turn_over_power_law","553±4","-8.00±1.06","57.02±55.37","0.76±0.08","700±7"
 
 
 Flux Density Results

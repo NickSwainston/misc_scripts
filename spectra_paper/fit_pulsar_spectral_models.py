@@ -1,28 +1,32 @@
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
-from matplotlib.ticker import ScalarFormatter
 import psrqpy
 import numpy as np
 import shutil
 from PIL import Image
 import glob
-from astropy.coordinates import SkyCoord
-import astropy.units as u
+import torch.multiprocessing as mp
+from functools import partial
+from tqdm import tqdm
+import yaml
 
 from pulsar_spectra.spectral_fit import find_best_spectral_fit, estimate_flux_density
-from pulsar_spectra.catalogue import collect_catalogue_fluxes
+from pulsar_spectra.catalogue import collect_catalogue_fluxes, CAT_DIR
 from pulsar_spectra.models import model_settings
-
-from vcstools.metadb_utils import get_common_obs_metadata
 
 df = pd.read_csv("{}/../survey_paper/SMART_pulsars.csv".format(os.path.dirname(os.path.realpath(__file__))))
 pulsar_obsid_df = pd.read_csv("{}/pulsar_best_obs.csv".format(os.path.dirname(os.path.realpath(__file__))))
 
 #print(df['Pulsar'].tolist())
-pulsars = list(dict.fromkeys(df['Pulsar'].tolist()))
+#pulsars = list(dict.fromkeys(df['Pulsar'].tolist()))
+with open(f"{CAT_DIR}/Bhat_2022.yaml", "r") as stream:
+    cat_dict = yaml.safe_load(stream)
+pulsars = cat_dict.keys()
+print(len(pulsars))
 
-cat_list = collect_catalogue_fluxes()
+cat_list_no_smart = collect_catalogue_fluxes(exclude=["Bhat_2022"])
+cat_list_all = collect_catalogue_fluxes()
 query = psrqpy.QueryATNF().pandas
 
 results_record = []
@@ -34,85 +38,184 @@ output_df = pd.DataFrame(
         "ObservationID",
         "ATNF Period (s)",
         "ATNF DM",
+        "ATNF B_surf (G)",
+        "ATNF E_dot (ergs/s)",
         "Offset (degrees)",
         "Flux Density (mJy)",
         "Flux Density Uncertainty (mJy)",
         "Flux Density Scintilation Uncertainty (mJy)",
         "Estimated Flux Density (mJy)",
         "Estimated Flux Density Uncertainty (mJy)",
+        "Model",
+        "Model before MWA",
+        "Probability Best",
+        "Min freq before MWA (MHz)",
+        "Max freq before MWA (MHz)",
+        "N data flux",
+        "pl_a"      ,
+        "pl_u_a"      ,
+        "pl_c"      ,
+        "pl_u_c"      ,
+        "bpl_vb"    ,
+        "bpl_u_vb"    ,
+        "bpl_a1"    ,
+        "bpl_u_a1"    ,
+        "bpl_a2"    ,
+        "bpl_u_a2"    ,
+        "bpl_c"     ,
+        "bpl_u_c"     ,
+        "hfco_vc"   ,
+        "hfco_u_vc"   ,
+        "hfco_c"    ,
+        "hfco_u_c"    ,
+        "lfto_vpeak"   ,
+        "lfto_u_vpeak" ,
+        "lfto_a"    ,
+        "lfto_u_a"    ,
+        "lfto_c"    ,
+        "lfto_u_c"    ,
+        "lfto_beta" ,
+        "lfto_u_beta" ,
+        "dtos_vpeak"   ,
+        "dtos_u_vpeak" ,
+        "dtos_vc"   ,
+        "dtos_u_vc" ,
+        "dtos_a"    ,
+        "dtos_u_a"    ,
+        "dtos_c"    ,
+        "dtos_u_c"    ,
+        "dtos_beta" ,
+        "dtos_u_beta" ,
+        "pre_pl_a"      ,
+        "pre_pl_u_a"      ,
+        "pre_pl_c"      ,
+        "pre_pl_u_c"      ,
+        "pre_bpl_vb"    ,
+        "pre_bpl_u_vb"    ,
+        "pre_bpl_a1"    ,
+        "pre_bpl_u_a1"    ,
+        "pre_bpl_a2"    ,
+        "pre_bpl_u_a2"    ,
+        "pre_bpl_c"     ,
+        "pre_bpl_u_c"     ,
+        "pre_hfco_vc"   ,
+        "pre_hfco_u_vc"   ,
+        "pre_hfco_c"    ,
+        "pre_hfco_u_c"    ,
+        "pre_lfto_vpeak"   ,
+        "pre_lfto_u_vpeak"   ,
+        "pre_lfto_a"    ,
+        "pre_lfto_u_a"    ,
+        "pre_lfto_c"    ,
+        "pre_lfto_u_c"    ,
+        "pre_lfto_beta" ,
+        "pre_lfto_u_beta" ,
+        "pre_dtos_vpeak"   ,
+        "pre_dtos_u_vpeak" ,
+        "pre_dtos_vc"   ,
+        "pre_dtos_u_vc" ,
+        "pre_dtos_a"    ,
+        "pre_dtos_u_a"    ,
+        "pre_dtos_c"    ,
+        "pre_dtos_u_c"    ,
+        "pre_dtos_beta" ,
+        "pre_dtos_u_beta" ,
     ]
 )
 
 model_dict = model_settings()
-for pulsar in pulsars:
+def fit_and_plot(pulsar):
+#for pulsar in pulsars:
+    print(f"\n{pulsar}")
     scale_figure = 0.9
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(5.5*scale_figure,4*scale_figure))
-    # if pulsar != "J0534+2200":
+    # if pulsar != "J1136+1551":
     #      continue
     # if os.path.exists(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/{pulsar}.rst"):
     #     continue
     # Grab all rows with pulsar then grab their fluxes
     pulsar_df = df.loc[df['Pulsar'] == pulsar]
-    mwa_freqs = []
-    mwa_fluxs = []
-    mwa_flux_errors = []
-    pulsar_plots = []
+
+    # Set defaults
     models = None
     pre_models = None
     estimate_flux = ""
     estimate_flux_err = ""
+    pre_pl_a      = None
+    pre_pl_u_a      = None
+    pre_pl_c      = None
+    pre_pl_u_c      = None
+    pre_bpl_vb    = None
+    pre_bpl_u_vb    = None
+    pre_bpl_a1    = None
+    pre_bpl_u_a1    = None
+    pre_bpl_a2    = None
+    pre_bpl_u_a2    = None
+    pre_bpl_c     = None
+    pre_bpl_u_c     = None
+    pre_hfco_vc   = None
+    pre_hfco_u_vc   = None
+    pre_hfco_c    = None
+    pre_hfco_u_c    = None
+    pre_lfto_vpeak   = None
+    pre_lfto_u_vpeak   = None
+    pre_lfto_a    = None
+    pre_lfto_u_a    = None
+    pre_lfto_c    = None
+    pre_lfto_u_c    = None
+    pre_lfto_beta = None
+    pre_lfto_u_beta = None
+    pre_dtos_vpeak   = None
+    pre_dtos_u_vpeak   = None
+    pre_dtos_vc   = None
+    pre_dtos_u_vc   = None
+    pre_dtos_a    = None
+    pre_dtos_u_a    = None
+    pre_dtos_c    = None
+    pre_dtos_u_c    = None
+    pre_dtos_beta = None
+    pre_dtos_u_beta = None
+    pl_a      = None
+    pl_u_a      = None
+    pl_c      = None
+    pl_u_c      = None
+    bpl_vb    = None
+    bpl_u_vb    = None
+    bpl_a1    = None
+    bpl_u_a1    = None
+    bpl_a2    = None
+    bpl_u_a2    = None
+    bpl_c     = None
+    bpl_u_c     = None
+    hfco_vc   = None
+    hfco_u_vc   = None
+    hfco_c    = None
+    hfco_u_c    = None
+    lfto_vpeak   = None
+    lfto_u_vpeak   = None
+    lfto_a    = None
+    lfto_u_a    = None
+    lfto_c    = None
+    lfto_u_c    = None
+    lfto_beta = None
+    lfto_u_beta = None
+    dtos_vpeak   = None
+    dtos_u_vpeak   = None
+    dtos_vc   = None
+    dtos_u_vc   = None
+    dtos_a    = None
+    dtos_u_a    = None
+    dtos_c    = None
+    dtos_u_c    = None
+    dtos_beta = None
+    dtos_u_beta = None
 
-    for index, row in pulsar_df.iterrows():
-        if row["Plot location"] == "" or isinstance(row["Plot location"], float):
-            continue
-        if not np.isnan(row['Flux Density (mJy)']) and row['Flux Density (mJy)'] != 0:
-            mwa_freqs.append(154.24)
-            mwa_fluxs.append(row['Flux Density (mJy)'])
-            mwa_flux_errors.append(row['Flux Density Uncertainty (mJy)'])
-
-        # Move files
-        on_pulse_fit = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/on_pulse_plots/{row['ObservationID']}_{pulsar}_*_bins_gaussian_components.png")
-        if len(on_pulse_fit) == 0:
-            on_pulse_fit = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../survey_paper/{row['ObservationID']}_{pulsar}_*_bins_gaussian_components.png")
-            if len(on_pulse_fit) == 0:
-                on_pulse_fit = [""]
-            else:
-                #os.rename(on_pulse_fit[0], f"{os.path.dirname(os.path.realpath(__file__))}/../docs/on_pulse_plots/{on_pulse_fit[0]}")
-                shutil.copyfile(on_pulse_fit[0], f"{os.path.dirname(os.path.realpath(__file__))}/../docs/on_pulse_plots/{os.path.basename(on_pulse_fit[0])}")
-                on_pulse_fit = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/on_pulse_plots/{row['ObservationID']}_{pulsar}_*_bins_gaussian_components.png")
-
-        if row["Plot location"].endswith("ps"):
-            basename = row["Plot location"].split("/")[-1][:-2]
-            png_basename = f"{basename}png"
-            detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename}")
-            if len(detection_plot) == 0:
-                # doesn't exist so make a png
-                print(f"gs -sDEVICE=eps2write -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha -sOutputFile={os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename} {row['Plot location']}")
-                os.system(f"gs -sDEVICE=eps2write -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -r600 -sDEVICE=pngalpha -sOutputFile={os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename} {row['Plot location']}")
-                img = Image.open(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename}")
-                # rotate by 90 degrees
-                rot_img = img.transpose(Image.ROTATE_270)
-                rot_img.save(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename}")
-                detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{png_basename}")
-        else:
-            basename = os.path.basename(row["Plot location"])
-            detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{basename}")
-            if len(detection_plot) == 0:
-                # cp
-                print(row["Plot location"])
-                shutil.copyfile(row["Plot location"], f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{os.path.basename(row['Plot location'])}")
-                detection_plot = glob.glob(f"{os.path.dirname(os.path.realpath(__file__))}/../docs/detection_plots/{basename}")
-        pulsar_plots.append((detection_plot[0], on_pulse_fit[0]))
-
-    freq_all, flux_all, flux_err_all, ref_all = cat_list[pulsar]
-    freqs = freq_all + [154.24]
-    fit_range = (np.log10(min(freqs)), np.log10(max(freqs)))
-
-    if len(freq_all) > 0:
-        pre_models, pre_iminuit_results, pre_fit_infos, pre_p_best, pre_p_catagory = find_best_spectral_fit(pulsar, freq_all, flux_all, flux_err_all, ref_all,
-            plot_best=True, alternate_style=True, axis=ax, secondary_fit=True)
-    else:
-        pre_models = pre_iminuit_results = pre_fit_infos = pre_p_best = pre_p_catagory = None
+    # Fit without SMART
+    freq_all, band_all, flux_all, flux_err_all, ref_all = cat_list_no_smart[pulsar]
+    pre_models, pre_iminuit_results, pre_fit_infos, pre_p_best, pre_p_catagory = find_best_spectral_fit(
+        pulsar, freq_all, band_all, flux_all, flux_err_all, ref_all,
+        plot_best=True, alternate_style=True, axis=ax, secondary_fit=True
+    )
     if pre_models is not None:
         estimate_flux, estimate_flux_err = estimate_flux_density(154.24, pre_models, pre_iminuit_results)
 

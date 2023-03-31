@@ -8,7 +8,7 @@ Best Fit
   :width: 800
 
 .. csv-table:: J0944-1354 fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
    "log_parabolic_spectrum","-2.63±0.77","-1.31±0.19","-1.66±0.12","379±3"
 
@@ -16,7 +16,7 @@ Fit Before MWA
 --------------
 
 .. csv-table:: J0944-1354 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
    "log_parabolic_spectrum","-1.66±0.50","-1.99±0.21","-1.58±0.09","379±3"
 

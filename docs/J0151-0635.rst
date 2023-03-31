@@ -16,7 +16,7 @@ Fit Before MWA
 --------------
 
 .. csv-table:: J0151-0635 before fit results
-   :header: "model","a","b","c","v0 (MHz)"
+   :header: "model","vb (MHz)","a1","a2","c","v0 (MHz)"
 
    "log_parabolic_spectrum","-1.70±0.27","-0.01±0.19","-1.52±0.09","187±1"
 
