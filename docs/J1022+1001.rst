@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1022+1001 fit results
    :header: "model","vc (MHz)","vpeak (MHz)","a","beta","c","v0 (MHz)"
 
-   "double_turn_over_spectrum","96999±89826","109±17","-2.20±0.11","0.47±0.04","0.18±0.06","492±4"
+   "log_parabolic_spectrum","-0.63±0.14","-1.05±0.09","-1.70±0.06","499±4"
 
 Fit Before MWA
 --------------

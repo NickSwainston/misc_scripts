@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J2108-3429 fit results
    :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.22±0.26","0.00±0.00","458±4"
+   "simple_power_law","-1.18±0.26","0.00±0.00","464±4"
 
 Fit Before MWA
 --------------

@@ -313,9 +313,9 @@ for plot_label, cal_source, hours_away, azel_diff, file_glob in all_calibrators_
         title="Pulsars",  # Title for the legend
         framealpha=1.0,
     )
-    if add_title:
-        bigfig.suptitle(f"{plot_label}  {cal_source}   mean offset: {np.mean(distances)*60*60:.2f}''   mean brightest SN {np.mean(brightest_sns):.2f}   Hrs Away: {hours_away}   Az El diff: {azel_diff}$^\circ$")
+    # if add_title:
+    #     bigfig.suptitle(f"{plot_label}  {cal_source}   mean offset: {np.mean(distances)*60*60:.2f}''   mean brightest SN {np.mean(brightest_sns):.2f}   Hrs Away: {hours_away}   Az El diff: {azel_diff}$^\circ$")
     #bigfig.legend(handles, labels, loc='upper left')
     #bigfig.subplots_adjust(right=0.85)
     #bigfig.axis('equal')
-    bigfig.savefig("{}_all_offsets.pdf".format(plot_label), format='pdf')
+    bigfig.savefig("{}_all_offsets.svg".format(plot_label), format='svg')

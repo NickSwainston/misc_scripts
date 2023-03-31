@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0528+2200 fit results
    :header: "model","vb (MHz)","a1","a2","c","v0 (MHz)"
 
-   "broken_power_law","484±53","0.34±0.16","-2.10±0.28","0.07±0.02","940±9"
+   "log_parabolic_spectrum","-1.43±0.27","-1.61±0.19","-1.72±0.06","940±9"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0528+2200 before fit results
    :header: "model","vpeak (MHz)","a","c","beta","v0 (MHz)"
 
-   "low_frequency_turn_over_power_law","248±16","-8.00±4.09","11238318967742.05±11238318967743.05","0.18±0.00","940±9"
+   "log_parabolic_spectrum","-1.45±0.21","-1.67±0.17","-1.71±0.04","940±9"
 
 
 Flux Density Results
