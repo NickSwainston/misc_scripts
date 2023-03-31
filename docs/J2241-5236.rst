@@ -8,17 +8,17 @@ Best Fit
   :width: 800
 
 .. csv-table:: J2241-5236 fit results
-   :header: "model","vc (MHz)","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","46486±60895","0.01±0.00","556±5"
+   "simple_power_law","-2.03±0.03","0.01±0.00","556±5"
 
 Fit Before MWA
 --------------
 
 .. csv-table:: J2241-5236 before fit results
-   :header: "model","vc (MHz)","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
-   "high_frequency_cut_off_power_law","47507±63747","0.01±0.00","556±5"
+   "simple_power_law","-2.03±0.03","0.01±0.00","556±5"
 
 
 Flux Density Results

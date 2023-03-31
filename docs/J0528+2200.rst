@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J0528+2200 fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.51±0.21","-1.71±0.17","-1.71±0.04","940±9"
+   "log_parabolic_spectrum","-1.43±0.27","-1.61±0.19","-1.72±0.06","940±9"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J0528+2200 before fit results
    :header: "model","a","b","c","v0 (MHz)"
 
-   "log_parabolic_spectrum","-1.50±0.21","-1.71±0.17","-1.71±0.04","940±9"
+   "log_parabolic_spectrum","-1.45±0.21","-1.67±0.17","-1.71±0.04","940±9"
 
 
 Flux Density Results

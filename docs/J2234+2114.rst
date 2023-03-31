@@ -8,17 +8,17 @@ Best Fit
   :width: 800
 
 .. csv-table:: J2234+2114 fit results
-   :header: "model","a","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.51±0.42","0.01±0.00","200±2"
+   "simple_power_law","-1.50±0.39","0.01±0.00","200±2"
 
 Fit Before MWA
 --------------
 
 .. csv-table:: J2234+2114 before fit results
-   :header: "model","a","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.55±0.41","0.01±0.00","200±2"
+   "simple_power_law","-1.54±0.38","0.01±0.00","200±2"
 
 
 Flux Density Results

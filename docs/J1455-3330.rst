@@ -8,15 +8,15 @@ Best Fit
   :width: 800
 
 .. csv-table:: J1455-3330 fit results
-   :header: "model","a","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.50±0.40","0.01±0.00","464±4"
+   "simple_power_law","-1.68±0.35","0.01±0.00","464±4"
 
 Fit Before MWA
 --------------
 
 .. csv-table:: J1455-3330 before fit results
-   :header: "model","a","b","v0 (MHz)"
+   :header: "model","a","c","v0 (MHz)"
 
    "simple_power_law","-1.47±0.39","0.00±0.00","748±7"
 
