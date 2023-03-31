@@ -4,8 +4,13 @@ J0133-6957
 
 Best Fit
 --------
-Only 1 MWA data and 2 cat data available
+.. image:: best_fits/J0133-6957_fit.png
+  :width: 800
 
+.. csv-table:: J0133-6957 fit results
+   :header: "model","a","c","v0 (MHz)"
+
+   "simple_power_law","-1.99±0.31","0.00±0.00","464±4"
 
 
 Flux Density Results
@@ -19,6 +24,11 @@ Flux Density Results
    :header: "ObsID", "Flux Density (mJy)"
 
     "1227009976", "12.1±4.0"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0133-6957_comparison_fit.png
+  :width: 800
 
 Detection Plots
 ---------------

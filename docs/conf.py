@@ -12,6 +12,15 @@
 #
 import os
 import sys
+import logging
+
+logger = logging.getLogger(__name__)
+
+DOC_SOURCES_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT_DIR = os.path.abspath(os.path.join(DOC_SOURCES_DIR, ".."))
+
+# insert
+sys.path.insert(0, DOC_SOURCES_DIR)
 sys.path.insert(0, os.path.abspath('.'))
 
 

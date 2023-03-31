@@ -4,8 +4,13 @@ J0902-6325
 
 Best Fit
 --------
-Only 2 MWA data and 2 cat data available
+.. image:: best_fits/J0902-6325_fit.png
+  :width: 800
 
+.. csv-table:: J0902-6325 fit results
+   :header: "model","a","c","v0 (MHz)"
+
+   "simple_power_law","-1.13±0.35","0.01±0.00","458±4"
 
 
 Flux Density Results
@@ -20,6 +25,11 @@ Flux Density Results
 
     "1266329600", "38.8±9.8"
     "1266932744", "22.7±5.1"
+
+Comparison Fit
+--------------
+.. image:: comparison_fits/J0902-6325_comparison_fit.png
+  :width: 800
 
 Detection Plots
 ---------------

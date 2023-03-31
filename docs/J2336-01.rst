@@ -4,7 +4,7 @@ J2336-01
 
 Best Fit
 --------
-Only 1 MWA data and 0 cat data available
+Only 1 MWA data and 1 cat data available
 
 
 
