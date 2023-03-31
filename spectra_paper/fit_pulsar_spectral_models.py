@@ -168,7 +168,7 @@ for pulsar in pulsars:
         # ref_all      = np.array(["SMART"]*len(mwa_freqs) + cat_list[pulsar][3])
         freq_all     = np.array([154.24]  + cat_list[pulsar][0])
         flux_all     = np.array([S_mean]  + cat_list[pulsar][1])
-        flux_err_all = np.array([u_S]     + cat_list[pulsar][2])
+        flux_err_all = np.array([u_S_mean]     + cat_list[pulsar][2])
         ref_all      = np.array(["SMART"] + cat_list[pulsar][3])
         #for freq, flux, flux_err in zip(freq_all, flux_all, flux_err_all):
             #print(freq, flux, flux_err)
@@ -340,7 +340,7 @@ Flux Density Results
 Single Power Law Results
 ------------------------
 .. csv-table::
-   :header: "Pulsar", "DM", "a", "b"
+   :header: "Pulsar", "DM", "a", "c"
 
 ''')
     for pulsar, dm, models, iminuit_results, fit_infos, p_best, p_catagory in simple_power_law:
