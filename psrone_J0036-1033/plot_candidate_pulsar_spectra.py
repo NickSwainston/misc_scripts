@@ -1,5 +1,6 @@
 import numpy as np
 from pulsar_spectra.spectral_fit import find_best_spectral_fit
+import pandas as pd
 
 def average_flux(flux, flux_u):
     flux   = np.array(flux)
@@ -10,92 +11,23 @@ def average_flux(flux, flux_u):
 
     favg = fsum / len(flux)
     fuavg = fusum / len(flux_u)
-    return favg*1000, fuavg*1000
+    return favg, fuavg
 
-# fluxes_184 = [
-#     (1133775752,6.855,3.494),
-#     (1150234552,2.891,1.603),
-# ]
-fluxes_184 = [
-    6.855,
-    2.891,
-]
-fluxes_184_u = [
-    3.494,
-    1.603,
-]
-# fluxes_154 = [
-#     (1164110416,9.337,3.119),
-#     (1182630616,4.337,2.956),
-#     (1194350120,7.467,2.404),
-#     (1194350120,7.467,2.404),
-#     (1222697776,26.931,6.903),
-#     (1255444104,23.679,6.608),
-#     (1275085816,17.531,5.125),
-#     (1275094456,10.987,3.905),
-#     (1275172216,13.584,4.2),
-#     (1275177136,11.281,4.194),
-#     (1275178816,18.748,4.561),
-#     (1275258616,12.112,3.959),
-#     (1275431416,12.228,3.745),
-#     (1275863416,14.96,4.552),
-#     (1275866536,17.517,5.241),
-#     (1276725752,14.44,3.909),
-#     (1278106408,18.635,5.034),
-#     (1283104232,15.477,4.476),
-#     (1285086000,12.152,3.659),
-#     (1287670032,10.162,3.116),
-#     (1290341112,10.158,3.02),
-# ]
-fluxes_154 = [
-    9.337,
-    4.337,
-    7.467,
-    7.467,
-    26.931,
-    23.679,
-    17.531,
-    10.987,
-    13.584,
-    11.281,
-    18.748,
-    12.112,
-    12.228,
-    14.96,
-    17.517,
-    14.44,
-    18.635,
-    15.477,
-    12.152,
-    10.162,
-    10.158,
-]
-fluxes_154_u = [
-    3.119,
-    2.956,
-    2.404,
-    2.404,
-    6.903,
-    6.608,
-    5.125,
-    3.905,
-    4.2,
-    4.194,
-    4.561,
-    3.959,
-    3.745,
-    4.552,
-    5.241,
-    3.909,
-    5.034,
-    4.476,
-    3.659,
-    3.116,
-    3.02,
-]
+df = pd.read_csv('psrone_variability.csv')
+print(df)
+df_154 = df[df["freq (MHz)"] == 154.24]
+df_184 = df[df["freq (MHz)"] == 184.96]
 
-flux_184, flux_184_u = average_flux(fluxes_184, fluxes_184_u)
+fluxes_154 = df_154["flux"]
+fluxes_154_u = df_154["flux_error"]
+fluxes_184 = df_184["flux"]
+fluxes_184_u = df_184["flux_error"]
+
 flux_154, flux_154_u = average_flux(fluxes_154, fluxes_154_u)
+flux_184, flux_184_u = average_flux(fluxes_184, fluxes_184_u)
+
+print(f"154 MHz ({len(fluxes_154)}): {flux_154:.2f} +/- {flux_154_u:.2f}")
+print(f"184 MHz ({len(fluxes_184)}): {flux_184:.2f} +/- {flux_184_u:.2f}")
 
 freqs     = [154.24, 184.96]
 bands     = [30.72, 30.72]
@@ -122,4 +54,4 @@ fluxs     += [323.16, 1146.3, 90.96, 60.41, 164.02]
 flux_errs += [207.92, 454.72, 12.61, 15.35, 46.0]
 refs      += ["Parkes", "Parkes", "Parkes", "Parkes", "Parkes"]
 
-find_best_spectral_fit("J0036-1033", freqs, bands, np.array(fluxs)/1000, np.array(flux_errs)/1000, refs, plot_best=True, alternate_style=True)
+find_best_spectral_fit("J0036-1033", freqs, bands, np.array(fluxs), np.array(flux_errs), refs, plot_best=True, alternate_style=True)
