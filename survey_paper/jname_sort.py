@@ -89,9 +89,10 @@ df = pd.DataFrame(columns=["Pulsar",
 query = psrqpy.QueryATNF().pandas
 #with open('SMART_pulsars.csv', 'w', newline='') as csvfile:
 #    spamwriter = csv.writer(csvfile)
+print(jname_dict)
 for jname, obsids in sorted(jname_dict.items()):
     for o, obsid in enumerate(obsids):
-        #print(jname, obsid)
+        print(jname, obsid)
         if o == 0:
             joutput = jname
         else:
@@ -138,18 +139,21 @@ for jname, obsids in sorted(jname_dict.items()):
             dpp_bestprof = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/*{0}_{1}*bestprof".format(
                                     obsid, jname))
             if len(dpp_bestprof) != 0:
+                shutil.copy(dpp_bestprof[0], "/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/".format(obsid))
                 bestprof = dpp_bestprof[0]
 
         # Find png
-        dpp_png = glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*png".format(
+        dpp_png = glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*ps".format(
                             obsid, jname)) +\
-                glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*ps".format(
+                glob.glob("/astro/mwavcs/pulsar_search/SMART_quick_look_detection/{0}/*{0}_{1}*png".format(
                             obsid, jname))
         if len(dpp_png) != 0:
             png = dpp_png[0]
         else:
-            dpp_png = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*png".format(
-                                obsid, jname, bins))
+            dpp_png = glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*ps".format(
+                            obsid, jname, bins)) + \
+                      glob.glob("/astro/mwavcs/vcs/{0}/dpp/{0}_{1}/pf_{0}_{1}_*_b{2}*png".format(
+                            obsid, jname, bins))
             if len(dpp_png) != 0:
                 png = dpp_png[0]
 
