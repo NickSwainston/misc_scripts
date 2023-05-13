@@ -10,7 +10,7 @@ Best Fit
 .. csv-table:: J1146-6030 fit results
    :header: "model","vb (MHz)","a1","a2","c","v0 (MHz)"
 
-   "broken_power_law","599±1","-0.36±0.41","-1.62±0.24","0.01±0.00","691±6"
+   "log_parabolic_spectrum","-0.86±0.36","-1.15±0.16","-1.98±0.05","691±6"
 
 Fit Before MWA
 --------------
@@ -18,7 +18,7 @@ Fit Before MWA
 .. csv-table:: J1146-6030 before fit results
    :header: "model","a","c","v0 (MHz)"
 
-   "simple_power_law","-1.47±0.19","0.01±0.00","1113±11"
+   "simple_power_law","-1.54±0.21","0.01±0.00","1113±11"
 
 
 Flux Density Results
