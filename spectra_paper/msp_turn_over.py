@@ -11,18 +11,22 @@ pulsars = [
     # Likely true
     "J0024-7204C",
     "J2124-3358",
+    # "J0214+5222",
 
     # Not enough points as it curves
     "J0024-7204J",
     "J0621+1002",
+    # "J0711-6830",
 
     # Curves lower than reasonable
     "J0030+0451",
     "J1300+1240",
+    # "J0613-0200",
 
     # ignores some low frequency points
     "J1600-3053",
     "J1623-2631",
+    # "J1603-7202",
 ]
 fig, axs = plt.subplots(nrows=4, ncols=2, figsize=(10, 4*3))
 

@@ -9,7 +9,7 @@ pulsars = [
 ]
 cols = 1
 rows = 2
-fig, axs = plt.subplots(nrows=rows, ncols=cols, figsize=(5*cols, 3*rows))
+fig, axs = plt.subplots(nrows=rows, ncols=cols, figsize=(5*cols, 4*rows))
 
 cat_list = collect_catalogue_fluxes()
 for pi, pulsar in enumerate(pulsars):
