@@ -24,11 +24,11 @@ pulsars = [
 ]
 np = len(pulsars)
 
-fig, axs = plt.subplots(nrows=np, ncols=2, figsize=(10, 4*np))
 
 antf_dict = catalogue.all_flux_from_atnf()
 # Resort into cat_list format
 for pi, pulsar in enumerate(pulsars):
+    fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(10, 4))
     antf_refs = []
     antf_cat = { pulsar : [ [], [], [], [], [] ] }
     for ref in antf_dict[pulsar].keys():
@@ -45,8 +45,8 @@ for pi, pulsar in enumerate(pulsars):
             antf_cat[pulsar][3] += [flux_err]
             antf_cat[pulsar][4] += [ref]
     freqs, bands, fluxs, flux_errs, refs = antf_cat[pulsar]
-    model, m, fit_info, p_best, p_category = find_best_spectral_fit(pulsar, freqs, bands, fluxs, flux_errs, refs, plot_best=True, alternate_style=True, axis=axs[pi][0])
-    axs[pi][0].set_title(f'PSR {pulsar} ATNF')
+    model, m, fit_info, p_best, p_category = find_best_spectral_fit(pulsar, freqs, bands, fluxs, flux_errs, refs, plot_best=True, alternate_style=True, axis=axs[0])
+    axs[0].set_title(f'PSR {pulsar} ATNF')
 
 
     cat_dict = catalogue.collect_catalogue_fluxes()
@@ -78,24 +78,23 @@ for pi, pulsar in enumerate(pulsars):
 
     for freq, band, flux, flux_err, ref in zip(fo, bo, flo, fleo, ro):
         print(f"{str(freq):8s}{str(band):8s}{float(flux):8.2f}{float(flux_err):8.2f} {str(ref):20s}")
-    model, m, fit_info, p_best, p_category = find_best_spectral_fit(pulsar, fo, bo, flo, fleo, ro, plot_best=True, alternate_style=True, axis=axs[pi][1])
-    axs[pi][1].set_title(f'PSR {pulsar} pulsar_spectra')
+    model, m, fit_info, p_best, p_category = find_best_spectral_fit(pulsar, fo, bo, flo, fleo, ro, plot_best=True, alternate_style=True, axis=axs[1])
+    axs[1].set_title(f'PSR {pulsar} pulsar_spectra')
     print(model)
 
     #make same y axis the same
     print(fluxs)
     ymin = min(flo + fluxs) * 0.1
     ymax = max(flo + fluxs) ** 1.1
-    axs[pi][0].set_ylim(ymin, ymax)
-    axs[pi][1].set_ylim(ymin, ymax)
+    axs[0].set_ylim(ymin, ymax)
+    axs[1].set_ylim(ymin, ymax)
     #make same x axis the same
     print(fo)
     xmin = min(fo) * 0.7
     xmax = max(fo) * 1.5
-    axs[pi][0].set_xlim(xmin, xmax)
-    axs[pi][1].set_xlim(xmin, xmax)
+    axs[0].set_xlim(xmin, xmax)
+    axs[1].set_xlim(xmin, xmax)
 #axs[ax_i//cols, ax_i%cols].set_title('PSR '+pulsar)
 
-plt.tight_layout(pad=2.5)
-pulsar_str = "_".join(pulsars)
-plt.savefig(f"antf_comparison_{pulsar_str}.png", bbox_inches='tight', dpi=300)
+    plt.tight_layout(pad=2.5)
+    plt.savefig(f"antf_comparison_{pulsar}.png", bbox_inches='tight', dpi=300)
