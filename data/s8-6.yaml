@@ -1,0 +1,3547 @@
+platform:
+  array:
+    stations:
+      s8-6:
+        id: 350
+        reference:
+          datum: WGS84
+          epoch: 2024.5
+          latitude: -26.855106431
+          longitude: 116.730025424
+          ellipsoidal_height: 330.297
+        rotation: 193.6
+        sps:
+          sdn_first_interface: 10.130.0.33/25
+          sdn_gateway: 10.130.0.126
+          daq:
+            receiver_interface: net1
+          subracks:
+            sr1:
+              srmb_host: 10.132.0.33
+              srmb_port: 8081
+            sr2:
+              srmb_host: 10.132.0.49
+              srmb_port: 8081
+          tpms:
+            tpm01:
+              id: 0
+              host: 10.132.0.40
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 1
+            tpm02:
+              id: 1
+              host: 10.132.0.41
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 2
+            tpm03:
+              id: 2
+              host: 10.132.0.42
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 3
+            tpm04:
+              id: 3
+              host: 10.132.0.43
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 4
+            tpm05:
+              id: 4
+              host: 10.132.0.44
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 5
+            tpm06:
+              id: 5
+              host: 10.132.0.45
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 6
+            tpm07:
+              id: 6
+              host: 10.132.0.46
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 7
+            tpm08:
+              id: 7
+              host: 10.132.0.47
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr1
+              subrack_slot: 8
+            tpm09:
+              id: 8
+              host: 10.132.0.56
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 1
+            tpm10:
+              id: 9
+              host: 10.132.0.57
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 2
+            tpm11:
+              id: 10
+              host: 10.132.0.58
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 3
+            tpm12:
+              id: 11
+              host: 10.132.0.59
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 4
+            tpm13:
+              id: 12
+              host: 10.132.0.60
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 5
+            tpm14:
+              id: 13
+              host: 10.132.0.61
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 6
+            tpm15:
+              id: 14
+              host: 10.132.0.62
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 7
+            tpm16:
+              id: 15
+              host: 10.132.0.63
+              port: 10000
+              version: tpm_v1_6
+              subrack: sr2
+              subrack_slot: 8
+        pasd:
+          fndh:
+            gateway:
+              host: 10.132.0.206
+              port: 5000
+              timeout: 10.0
+            controller:
+              modbus_id: 101
+          smartboxes:
+            sb01:
+              fndh_port: 1
+              modbus_id: 1
+            sb02:
+              fndh_port: 2
+              modbus_id: 2
+            sb03:
+              fndh_port: 3
+              modbus_id: 3
+            sb04:
+              fndh_port: 4
+              modbus_id: 4
+            sb05:
+              fndh_port: 5
+              modbus_id: 5
+            sb06:
+              fndh_port: 6
+              modbus_id: 6
+            sb07:
+              fndh_port: 7
+              modbus_id: 7
+            sb08:
+              fndh_port: 8
+              modbus_id: 8
+            sb09:
+              fndh_port: 9
+              modbus_id: 9
+            sb10:
+              fndh_port: 10
+              modbus_id: 10
+            sb11:
+              fndh_port: 11
+              modbus_id: 11
+            sb12:
+              fndh_port: 12
+              modbus_id: 12
+            sb13:
+              fndh_port: 13
+              modbus_id: 13
+            sb14:
+              fndh_port: 14
+              modbus_id: 14
+            sb15:
+              fndh_port: 15
+              modbus_id: 15
+            sb16:
+              fndh_port: 16
+              modbus_id: 16
+            sb17:
+              fndh_port: 17
+              modbus_id: 17
+            sb18:
+              fndh_port: 18
+              modbus_id: 18
+            sb19:
+              fndh_port: 19
+              modbus_id: 19
+            sb20:
+              fndh_port: 20
+              modbus_id: 20
+            sb21:
+              fndh_port: 21
+              modbus_id: 21
+            sb22:
+              fndh_port: 22
+              modbus_id: 22
+            sb23:
+              fndh_port: 23
+              modbus_id: 23
+            sb24:
+              fndh_port: 24
+              modbus_id: 24
+        antennas:
+          sb01-01:
+            location_offset:
+              east: 1.628
+              north: -19.392
+              up: -0.08
+            eep: 244
+            smartbox: sb01
+            smartbox_port: 1
+            tpm: tpm01
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 50
+          sb01-02:
+            location_offset:
+              east: -0.543
+              north: -15.888
+              up: -0.059
+            eep: 189
+            smartbox: sb01
+            smartbox_port: 2
+            tpm: tpm01
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 50
+          sb01-03:
+            location_offset:
+              east: 1.179
+              north: -15.566
+              up: -0.041
+            eep: 155
+            smartbox: sb01
+            smartbox_port: 3
+            tpm: tpm01
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 50
+          sb01-04:
+            location_offset:
+              east: 2.288
+              north: -12.346
+              up: -0.033
+            eep: 121
+            smartbox: sb01
+            smartbox_port: 4
+            tpm: tpm01
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 50
+          sb01-05:
+            location_offset:
+              east: 0.329
+              north: -12.124
+              up: -0.026
+            eep: 100
+            smartbox: sb01
+            smartbox_port: 5
+            tpm: tpm01
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 50
+          sb01-06:
+            location_offset:
+              east: -0.232
+              north: -13.999
+              up: -0.042
+            eep: 134
+            smartbox: sb01
+            smartbox_port: 6
+            tpm: tpm01
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 50
+          sb01-07:
+            location_offset:
+              east: -2.85
+              north: -12.675
+              up: -0.04
+            eep: 113
+            smartbox: sb01
+            smartbox_port: 7
+            tpm: tpm01
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 50
+          sb01-08:
+            location_offset:
+              east: -2.013
+              north: -14.743
+              up: -0.032
+            eep: 168
+            smartbox: sb01
+            smartbox_port: 8
+            tpm: tpm01
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 50
+          sb01-09:
+            location_offset:
+              east: -3.772
+              north: -15.808
+              up: -0.033
+            eep: 202
+            smartbox: sb01
+            smartbox_port: 9
+            tpm: tpm01
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 50
+          sb01-10:
+            location_offset:
+              east: -0.458
+              north: -17.604
+              up: -0.06
+            eep: 223
+            smartbox: sb01
+            smartbox_port: 10
+            tpm: tpm01
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 50
+          sb02-01:
+            location_offset:
+              east: 5.519
+              north: -17.833
+              up: -0.098
+            eep: 231
+            smartbox: sb02
+            smartbox_port: 1
+            tpm: tpm01
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 50
+          sb02-02:
+            location_offset:
+              east: 7.946
+              north: -17.599
+              up: -0.066
+            eep: 203
+            smartbox: sb02
+            smartbox_port: 2
+            tpm: tpm01
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 50
+          sb02-03:
+            location_offset:
+              east: 5.55
+              north: -16.023
+              up: -0.086
+            eep: 197
+            smartbox: sb02
+            smartbox_port: 3
+            tpm: tpm01
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 50
+          sb02-04:
+            location_offset:
+              east: 8.591
+              north: -15.179
+              up: -0.062
+            eep: 218
+            smartbox: sb02
+            smartbox_port: 4
+            tpm: tpm01
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 50
+          sb02-05:
+            location_offset:
+              east: 8.904
+              north: -13.497
+              up: -0.039
+            eep: 184
+            smartbox: sb02
+            smartbox_port: 5
+            tpm: tpm01
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 50
+          sb02-06:
+            location_offset:
+              east: 6.417
+              north: -13.976
+              up: -0.05
+            eep: 163
+            smartbox: sb02
+            smartbox_port: 6
+            tpm: tpm01
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 50
+          sb02-07:
+            location_offset:
+              east: 6.328
+              north: -11.996
+              up: -0.041
+            eep: 129
+            smartbox: sb02
+            smartbox_port: 7
+            tpm: tpm02
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 50
+          sb02-08:
+            location_offset:
+              east: 4.536
+              north: -12.371
+              up: -0.038
+            eep: 108
+            smartbox: sb02
+            smartbox_port: 8
+            tpm: tpm02
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 50
+          sb02-09:
+            location_offset:
+              east: 3.497
+              north: -13.873
+              up: -0.049
+            eep: 142
+            smartbox: sb02
+            smartbox_port: 9
+            tpm: tpm02
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 50
+          sb02-10:
+            location_offset:
+              east: 3.671
+              north: -16.135
+              up: -0.078
+            eep: 176
+            smartbox: sb02
+            smartbox_port: 10
+            tpm: tpm02
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 50
+          sb02-11:
+            location_offset:
+              east: 1.681
+              north: -17.544
+              up: -0.074
+            eep: 210
+            smartbox: sb02
+            smartbox_port: 11
+            tpm: tpm02
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 50
+          sb03-01:
+            location_offset:
+              east: 10.801
+              north: -14.383
+              up: -0.062
+            eep: 239
+            smartbox: sb03
+            smartbox_port: 1
+            tpm: tpm02
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb03-02:
+            location_offset:
+              east: 10.627
+              north: -12.586
+              up: -0.061
+            eep: 205
+            smartbox: sb03
+            smartbox_port: 2
+            tpm: tpm02
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb03-03:
+            location_offset:
+              east: 14.263
+              north: -12.439
+              up: -0.02
+            eep: 226
+            smartbox: sb03
+            smartbox_port: 3
+            tpm: tpm02
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb03-04:
+            location_offset:
+              east: 11.428
+              north: -10.523
+              up: -0.032
+            eep: 171
+            smartbox: sb03
+            smartbox_port: 4
+            tpm: tpm02
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb03-05:
+            location_offset:
+              east: 13.109
+              north: -11.026
+              up: -0.02
+            eep: 192
+            smartbox: sb03
+            smartbox_port: 5
+            tpm: tpm02
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb03-06:
+            location_offset:
+              east: 12.258
+              north: -7.156
+              up: 0.041
+            eep: 158
+            smartbox: sb03
+            smartbox_port: 6
+            tpm: tpm02
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb03-07:
+            location_offset:
+              east: 10.216
+              north: -9.19
+              up: -0.032
+            eep: 137
+            smartbox: sb03
+            smartbox_port: 7
+            tpm: tpm02
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb03-08:
+            location_offset:
+              east: 11.687
+              north: -5.275
+              up: 0.08
+            eep: 124
+            smartbox: sb03
+            smartbox_port: 8
+            tpm: tpm02
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb03-09:
+            location_offset:
+              east: 9.945
+              north: -7.11
+              up: -0.004
+            eep: 103
+            smartbox: sb03
+            smartbox_port: 9
+            tpm: tpm02
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb03-10:
+            location_offset:
+              east: 8.302
+              north: -9.227
+              up: -0.022
+            eep: 116
+            smartbox: sb03
+            smartbox_port: 10
+            tpm: tpm02
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb03-11:
+            location_offset:
+              east: 8.351
+              north: -11.769
+              up: -0.035
+            eep: 150
+            smartbox: sb03
+            smartbox_port: 11
+            tpm: tpm02
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb04-01:
+            location_offset:
+              east: 4.788
+              north: -9.459
+              up: -0.021
+            eep: 74
+            smartbox: sb04
+            smartbox_port: 1
+            tpm: tpm03
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 50
+          sb04-02:
+            location_offset:
+              east: 6.538
+              north: -9.884
+              up: -0.031
+            eep: 95
+            smartbox: sb04
+            smartbox_port: 2
+            tpm: tpm03
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 50
+          sb04-03:
+            location_offset:
+              east: 8.057
+              north: -7.279
+              up: -0.026
+            eep: 82
+            smartbox: sb04
+            smartbox_port: 3
+            tpm: tpm03
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 50
+          sb04-04:
+            location_offset:
+              east: 6.244
+              north: -6.875
+              up: -0.028
+            eep: 61
+            smartbox: sb04
+            smartbox_port: 4
+            tpm: tpm03
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 50
+          sb04-05:
+            location_offset:
+              east: 5.515
+              north: -5.205
+              up: -0.047
+            eep: 48
+            smartbox: sb04
+            smartbox_port: 5
+            tpm: tpm03
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 50
+          sb04-06:
+            location_offset:
+              east: 4.214
+              north: -3.856
+              up: -0.008
+            eep: 27
+            smartbox: sb04
+            smartbox_port: 6
+            tpm: tpm03
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 50
+          sb04-07:
+            location_offset:
+              east: 4.16
+              north: -7.184
+              up: -0.035
+            eep: 40
+            smartbox: sb04
+            smartbox_port: 7
+            tpm: tpm03
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 50
+          sb04-08:
+            location_offset:
+              east: 2.302
+              north: -4.888
+              up: -0.017
+            eep: 19
+            smartbox: sb04
+            smartbox_port: 8
+            tpm: tpm03
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 50
+          sb04-09:
+            location_offset:
+              east: 2.793
+              north: -8.343
+              up: -0.012
+            eep: 53
+            smartbox: sb04
+            smartbox_port: 9
+            tpm: tpm03
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 50
+          sb04-10:
+            location_offset:
+              east: 1.205
+              north: -9.356
+              up: -0.019
+            eep: 66
+            smartbox: sb04
+            smartbox_port: 10
+            tpm: tpm03
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 50
+          sb04-11:
+            location_offset:
+              east: 3.267
+              north: -10.625
+              up: -0.017
+            eep: 87
+            smartbox: sb04
+            smartbox_port: 11
+            tpm: tpm03
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 50
+          sb05-01:
+            location_offset:
+              east: -1.128
+              north: -10.895
+              up: -0.027
+            eep: 79
+            smartbox: sb05
+            smartbox_port: 1
+            tpm: tpm03
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 50
+          sb05-02:
+            location_offset:
+              east: -0.095
+              north: -8.162
+              up: -0.019
+            eep: 45
+            smartbox: sb05
+            smartbox_port: 2
+            tpm: tpm03
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 50
+          sb05-03:
+            location_offset:
+              east: 1.311
+              north: -6.809
+              up: -0.021
+            eep: 32
+            smartbox: sb05
+            smartbox_port: 3
+            tpm: tpm03
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 50
+          sb05-04:
+            location_offset:
+              east: -0.457
+              north: -6.218
+              up: -0.005
+            eep: 24
+            smartbox: sb05
+            smartbox_port: 4
+            tpm: tpm03
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 50
+          sb05-05:
+            location_offset:
+              east: -1.766
+              north: -3.839
+              up: -0.028
+            eep: 16
+            smartbox: sb05
+            smartbox_port: 5
+            tpm: tpm03
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 50
+          sb05-06:
+            location_offset:
+              east: -3.448
+              north: -4.553
+              up: -0.055
+            eep: 29
+            smartbox: sb05
+            smartbox_port: 6
+            tpm: tpm04
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 50
+          sb05-07:
+            location_offset:
+              east: -2.361
+              north: -7.089
+              up: -0.024
+            eep: 37
+            smartbox: sb05
+            smartbox_port: 7
+            tpm: tpm04
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 50
+          sb05-08:
+            location_offset:
+              east: -1.984
+              north: -8.883
+              up: -0.022
+            eep: 58
+            smartbox: sb05
+            smartbox_port: 8
+            tpm: tpm04
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 50
+          sb05-09:
+            location_offset:
+              east: -5.038
+              north: -9.171
+              up: -0.008
+            eep: 71
+            smartbox: sb05
+            smartbox_port: 9
+            tpm: tpm04
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 50
+          sb05-10:
+            location_offset:
+              east: -3.476
+              north: -9.961
+              up: -0.03
+            eep: 92
+            smartbox: sb05
+            smartbox_port: 10
+            tpm: tpm04
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 50
+          sb06-01:
+            location_offset:
+              east: 15.429
+              north: -8.502
+              up: 0.049
+            eep: 213
+            smartbox: sb06
+            smartbox_port: 1
+            tpm: tpm04
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb06-02:
+            location_offset:
+              east: 15.695
+              north: -10.784
+              up: 0.042
+            eep: 247
+            smartbox: sb06
+            smartbox_port: 2
+            tpm: tpm04
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb06-03:
+            location_offset:
+              east: 16.826
+              north: -6.628
+              up: 0.051
+            eep: 234
+            smartbox: sb06
+            smartbox_port: 3
+            tpm: tpm04
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb06-04:
+            location_offset:
+              east: 18.532
+              north: -4.316
+              up: 0.06
+            eep: 255
+            smartbox: sb06
+            smartbox_port: 4
+            tpm: tpm04
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb06-05:
+            location_offset:
+              east: 17.469
+              north: -2.973
+              up: 0.07
+            eep: 221
+            smartbox: sb06
+            smartbox_port: 5
+            tpm: tpm04
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb06-06:
+            location_offset:
+              east: 15.368
+              north: -5.64
+              up: 0.048
+            eep: 200
+            smartbox: sb06
+            smartbox_port: 6
+            tpm: tpm04
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb06-07:
+            location_offset:
+              east: 15.485
+              north: -3.721
+              up: 0.056
+            eep: 166
+            smartbox: sb06
+            smartbox_port: 7
+            tpm: tpm04
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb06-08:
+            location_offset:
+              east: 13.063
+              north: -2.202
+              up: 0.044
+            eep: 132
+            smartbox: sb06
+            smartbox_port: 8
+            tpm: tpm04
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb06-09:
+            location_offset:
+              east: 11.677
+              north: -3.257
+              up: 0.041
+            eep: 111
+            smartbox: sb06
+            smartbox_port: 9
+            tpm: tpm04
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb06-10:
+            location_offset:
+              east: 13.851
+              north: -4.617
+              up: 0.045
+            eep: 145
+            smartbox: sb06
+            smartbox_port: 10
+            tpm: tpm04
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb06-11:
+            location_offset:
+              east: 14.13
+              north: -7.298
+              up: 0.038
+            eep: 179
+            smartbox: sb06
+            smartbox_port: 11
+            tpm: tpm04
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb07-01:
+            location_offset:
+              east: 8.392
+              north: -4.625
+              up: -0.001
+            eep: 69
+            smartbox: sb07
+            smartbox_port: 1
+            tpm: tpm05
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 0
+          sb07-02:
+            location_offset:
+              east: 10.122
+              north: -4.317
+              up: 0.013
+            eep: 90
+            smartbox: sb07
+            smartbox_port: 2
+            tpm: tpm05
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 0
+          sb07-03:
+            location_offset:
+              east: 7.894
+              north: -2.496
+              up: -0.01
+            eep: 56
+            smartbox: sb07
+            smartbox_port: 3
+            tpm: tpm05
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 0
+          sb07-04:
+            location_offset:
+              east: 10.41
+              north: -1.466
+              up: 0.032
+            eep: 77
+            smartbox: sb07
+            smartbox_port: 4
+            tpm: tpm05
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 0
+          sb07-05:
+            location_offset:
+              east: 9.741
+              north: 1.073
+              up: 0.045
+            eep: 64
+            smartbox: sb07
+            smartbox_port: 5
+            tpm: tpm05
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 0
+          sb07-06:
+            location_offset:
+              east: 7.615
+              north: -0.257
+              up: 0.002
+            eep: 43
+            smartbox: sb07
+            smartbox_port: 6
+            tpm: tpm05
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb07-07:
+            location_offset:
+              east: 6.525
+              north: 1.195
+              up: 0.03
+            eep: 30
+            smartbox: sb07
+            smartbox_port: 7
+            tpm: tpm05
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb07-08:
+            location_offset:
+              east: 3.438
+              north: 0.187
+              up: -0.017
+            eep: 9
+            smartbox: sb07
+            smartbox_port: 8
+            tpm: tpm05
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb07-09:
+            location_offset:
+              east: 5.979
+              north: -1.443
+              up: -0.034
+            eep: 22
+            smartbox: sb07
+            smartbox_port: 9
+            tpm: tpm05
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb07-10:
+            location_offset:
+              east: 4.119
+              north: -2.131
+              up: -0.042
+            eep: 14
+            smartbox: sb07
+            smartbox_port: 10
+            tpm: tpm05
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb07-11:
+            location_offset:
+              east: 6.538
+              north: -3.758
+              up: -0.03
+            eep: 35
+            smartbox: sb07
+            smartbox_port: 11
+            tpm: tpm05
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb08-01:
+            location_offset:
+              east: 14.373
+              north: -0.416
+              up: 0.05
+            eep: 153
+            smartbox: sb08
+            smartbox_port: 1
+            tpm: tpm05
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb08-02:
+            location_offset:
+              east: 16.305
+              north: -1.396
+              up: 0.061
+            eep: 187
+            smartbox: sb08
+            smartbox_port: 2
+            tpm: tpm05
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb08-03:
+            location_offset:
+              east: 17.653
+              north: -0.293
+              up: 0.103
+            eep: 242
+            smartbox: sb08
+            smartbox_port: 3
+            tpm: tpm05
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb08-04:
+            location_offset:
+              east: 17.414
+              north: 1.471
+              up: 0.091
+            eep: 208
+            smartbox: sb08
+            smartbox_port: 4
+            tpm: tpm05
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb08-05:
+            location_offset:
+              east: 18.152
+              north: 3.243
+              up: 0.085
+            eep: 229
+            smartbox: sb08
+            smartbox_port: 5
+            tpm: tpm05
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb08-06:
+            location_offset:
+              east: 15.008
+              north: 2.208
+              up: 0.083
+            eep: 174
+            smartbox: sb08
+            smartbox_port: 6
+            tpm: tpm06
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 0
+          sb08-07:
+            location_offset:
+              east: 13.276
+              north: 2.689
+              up: 0.074
+            eep: 140
+            smartbox: sb08
+            smartbox_port: 7
+            tpm: tpm06
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 0
+          sb08-08:
+            location_offset:
+              east: 11.467
+              north: 1.79
+              up: 0.044
+            eep: 85
+            smartbox: sb08
+            smartbox_port: 8
+            tpm: tpm06
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 0
+          sb08-09:
+            location_offset:
+              east: 13.025
+              north: 0.84
+              up: 0.035
+            eep: 119
+            smartbox: sb08
+            smartbox_port: 9
+            tpm: tpm06
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 0
+          sb08-10:
+            location_offset:
+              east: 11.393
+              north: 0.003
+              up: 0.061
+            eep: 98
+            smartbox: sb08
+            smartbox_port: 10
+            tpm: tpm06
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 0
+          sb09-01:
+            location_offset:
+              east: 6.754
+              north: 3.201
+              up: 0.026
+            eep: 38
+            smartbox: sb09
+            smartbox_port: 1
+            tpm: tpm06
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb09-02:
+            location_offset:
+              east: 8.154
+              north: 1.975
+              up: 0.039
+            eep: 51
+            smartbox: sb09
+            smartbox_port: 2
+            tpm: tpm06
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb09-03:
+            location_offset:
+              east: 9.675
+              north: 2.943
+              up: 0.057
+            eep: 72
+            smartbox: sb09
+            smartbox_port: 3
+            tpm: tpm06
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb09-04:
+            location_offset:
+              east: 10.582
+              north: 5.187
+              up: 0.069
+            eep: 93
+            smartbox: sb09
+            smartbox_port: 4
+            tpm: tpm06
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb09-05:
+            location_offset:
+              east: 6.961
+              north: 5.12
+              up: 0.023
+            eep: 59
+            smartbox: sb09
+            smartbox_port: 5
+            tpm: tpm06
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb09-06:
+            location_offset:
+              east: 7.96
+              north: 7.285
+              up: 0.051
+            eep: 80
+            smartbox: sb09
+            smartbox_port: 6
+            tpm: tpm06
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb09-07:
+            location_offset:
+              east: 6.193
+              north: 7.868
+              up: 0.04
+            eep: 67
+            smartbox: sb09
+            smartbox_port: 7
+            tpm: tpm06
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb09-08:
+            location_offset:
+              east: 5.521
+              north: 6.184
+              up: 0.018
+            eep: 46
+            smartbox: sb09
+            smartbox_port: 8
+            tpm: tpm06
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb09-09:
+            location_offset:
+              east: 5.104
+              north: 3.851
+              up: 0.016
+            eep: 25
+            smartbox: sb09
+            smartbox_port: 9
+            tpm: tpm06
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb09-10:
+            location_offset:
+              east: 2.678
+              north: 2.548
+              up: -0.022
+            eep: 12
+            smartbox: sb09
+            smartbox_port: 10
+            tpm: tpm06
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb09-11:
+            location_offset:
+              east: 4.642
+              north: 1.54
+              up: 0.015
+            eep: 17
+            smartbox: sb09
+            smartbox_port: 11
+            tpm: tpm06
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb10-01:
+            location_offset:
+              east: 14.064
+              north: 4.242
+              up: 0.085
+            eep: 161
+            smartbox: sb10
+            smartbox_port: 1
+            tpm: tpm07
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb10-02:
+            location_offset:
+              east: 15.955
+              north: 3.778
+              up: 0.092
+            eep: 195
+            smartbox: sb10
+            smartbox_port: 2
+            tpm: tpm07
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb10-03:
+            location_offset:
+              east: 18.576
+              north: 5.616
+              up: 0.056
+            eep: 250
+            smartbox: sb10
+            smartbox_port: 3
+            tpm: tpm07
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb10-04:
+            location_offset:
+              east: 15.948
+              north: 6.204
+              up: 0.087
+            eep: 216
+            smartbox: sb10
+            smartbox_port: 4
+            tpm: tpm07
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb10-05:
+            location_offset:
+              east: 16.443
+              north: 9.738
+              up: 0.061
+            eep: 237
+            smartbox: sb10
+            smartbox_port: 5
+            tpm: tpm07
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb10-06:
+            location_offset:
+              east: 14.166
+              north: 6.539
+              up: 0.092
+            eep: 182
+            smartbox: sb10
+            smartbox_port: 6
+            tpm: tpm07
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: -35
+          sb10-07:
+            location_offset:
+              east: 14.444
+              north: 9.145
+              up: 0.077
+            eep: 252
+            smartbox: sb10
+            smartbox_port: 7
+            tpm: tpm07
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: -35
+          sb10-08:
+            location_offset:
+              east: 12.61
+              north: 7.548
+              up: 0.09
+            eep: 148
+            smartbox: sb10
+            smartbox_port: 8
+            tpm: tpm07
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: -35
+          sb10-09:
+            location_offset:
+              east: 9.69
+              north: 7.624
+              up: 0.075
+            eep: 114
+            smartbox: sb10
+            smartbox_port: 9
+            tpm: tpm07
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: -35
+          sb10-10:
+            location_offset:
+              east: 12.388
+              north: 5.181
+              up: 0.094
+            eep: 127
+            smartbox: sb10
+            smartbox_port: 10
+            tpm: tpm07
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: -35
+          sb10-11:
+            location_offset:
+              east: 11.567
+              north: 3.683
+              up: 0.08
+            eep: 106
+            smartbox: sb10
+            smartbox_port: 11
+            tpm: tpm07
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: -35
+          sb11-01:
+            location_offset:
+              east: 9.987
+              north: 10.082
+              up: 0.071
+            eep: 135
+            smartbox: sb11
+            smartbox_port: 1
+            tpm: tpm07
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb11-02:
+            location_offset:
+              east: 11.733
+              north: 9.648
+              up: 0.08
+            eep: 169
+            smartbox: sb11
+            smartbox_port: 2
+            tpm: tpm07
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb11-03:
+            location_offset:
+              east: 10.883
+              north: 12.284
+              up: 0.074
+            eep: 190
+            smartbox: sb11
+            smartbox_port: 3
+            tpm: tpm07
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb11-04:
+            location_offset:
+              east: 13.293
+              north: 13.027
+              up: 0.057
+            eep: 224
+            smartbox: sb11
+            smartbox_port: 4
+            tpm: tpm07
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb11-05:
+            location_offset:
+              east: 11.936
+              north: 14.235
+              up: 0.067
+            eep: 245
+            smartbox: sb11
+            smartbox_port: 5
+            tpm: tpm07
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb11-06:
+            location_offset:
+              east: 9.279
+              north: 14.952
+              up: 0.07
+            eep: 211
+            smartbox: sb11
+            smartbox_port: 6
+            tpm: tpm08
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb11-07:
+            location_offset:
+              east: 8.488
+              north: 16.785
+              up: 0.065
+            eep: 232
+            smartbox: sb11
+            smartbox_port: 7
+            tpm: tpm08
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb11-08:
+            location_offset:
+              east: 9.126
+              north: 11.639
+              up: 0.066
+            eep: 156
+            smartbox: sb11
+            smartbox_port: 8
+            tpm: tpm08
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb11-09:
+            location_offset:
+              east: 7.141
+              north: 10.878
+              up: 0.059
+            eep: 122
+            smartbox: sb11
+            smartbox_port: 9
+            tpm: tpm08
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb11-10:
+            location_offset:
+              east: 7.583
+              north: 9.12
+              up: 0.054
+            eep: 101
+            smartbox: sb11
+            smartbox_port: 10
+            tpm: tpm08
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb12-01:
+            location_offset:
+              east: 2.472
+              north: 12.478
+              up: 0.058
+            eep: 130
+            smartbox: sb12
+            smartbox_port: 1
+            tpm: tpm08
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: -35
+          sb12-02:
+            location_offset:
+              east: 4.834
+              north: 12.004
+              up: 0.059
+            eep: 109
+            smartbox: sb12
+            smartbox_port: 2
+            tpm: tpm08
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: -35
+          sb12-03:
+            location_offset:
+              east: 6.552
+              north: 12.663
+              up: 0.062
+            eep: 143
+            smartbox: sb12
+            smartbox_port: 3
+            tpm: tpm08
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: -35
+          sb12-04:
+            location_offset:
+              east: 4.452
+              north: 13.854
+              up: 0.062
+            eep: 164
+            smartbox: sb12
+            smartbox_port: 4
+            tpm: tpm08
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: -35
+          sb12-05:
+            location_offset:
+              east: 7.899
+              north: 13.775
+              up: 0.074
+            eep: 177
+            smartbox: sb12
+            smartbox_port: 5
+            tpm: tpm08
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: -35
+          sb12-06:
+            location_offset:
+              east: 6.628
+              north: 16.142
+              up: 0.059
+            eep: 198
+            smartbox: sb12
+            smartbox_port: 6
+            tpm: tpm08
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: -35
+          sb12-07:
+            location_offset:
+              east: 4.894
+              north: 16.675
+              up: 0.055
+            eep: 219
+            smartbox: sb12
+            smartbox_port: 7
+            tpm: tpm08
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb12-08:
+            location_offset:
+              east: 7.118
+              north: 17.984
+              up: 0.062
+            eep: 253
+            smartbox: sb12
+            smartbox_port: 8
+            tpm: tpm08
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb12-09:
+            location_offset:
+              east: 2.582
+              north: 18.597
+              up: 0.053
+            eep: 240
+            smartbox: sb12
+            smartbox_port: 9
+            tpm: tpm08
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb12-10:
+            location_offset:
+              east: 2.896
+              north: 16.501
+              up: 0.039
+            eep: 185
+            smartbox: sb12
+            smartbox_port: 10
+            tpm: tpm08
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb12-11:
+            location_offset:
+              east: 1.338
+              north: 11.169
+              up: 0.031
+            eep: 96
+            smartbox: sb12
+            smartbox_port: 11
+            tpm: tpm08
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb13-01:
+            location_offset:
+              east: -3.174
+              north: 11.549
+              up: 0.016
+            eep: 104
+            smartbox: sb13
+            smartbox_port: 1
+            tpm: tpm09
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb13-02:
+            location_offset:
+              east: -1.096
+              north: 13.721
+              up: 0.033
+            eep: 138
+            smartbox: sb13
+            smartbox_port: 2
+            tpm: tpm09
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb13-03:
+            location_offset:
+              east: 0.961
+              north: 14.71
+              up: 0.044
+            eep: 151
+            smartbox: sb13
+            smartbox_port: 3
+            tpm: tpm09
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb13-04:
+            location_offset:
+              east: -0.671
+              north: 15.434
+              up: -0.002
+            eep: 172
+            smartbox: sb13
+            smartbox_port: 4
+            tpm: tpm09
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb13-05:
+            location_offset:
+              east: 1.172
+              north: 16.876
+              up: 0.022
+            eep: 206
+            smartbox: sb13
+            smartbox_port: 5
+            tpm: tpm09
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb13-06:
+            location_offset:
+              east: -1.941
+              north: 17.182
+              up: -0.041
+            eep: 227
+            smartbox: sb13
+            smartbox_port: 6
+            tpm: tpm09
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: -35
+          sb13-07:
+            location_offset:
+              east: -3.332
+              north: 15.972
+              up: -0.037
+            eep: 193
+            smartbox: sb13
+            smartbox_port: 7
+            tpm: tpm09
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: -35
+          sb13-08:
+            location_offset:
+              east: -4.927
+              north: 18.831
+              up: -0.002
+            eep: 248
+            smartbox: sb13
+            smartbox_port: 8
+            tpm: tpm09
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: -35
+          sb13-09:
+            location_offset:
+              east: -5.492
+              north: 16.343
+              up: -0.039
+            eep: 214
+            smartbox: sb13
+            smartbox_port: 9
+            tpm: tpm09
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: -35
+          sb13-10:
+            location_offset:
+              east: -4.395
+              north: 14.377
+              up: -0.013
+            eep: 159
+            smartbox: sb13
+            smartbox_port: 10
+            tpm: tpm09
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: -35
+          sb13-11:
+            location_offset:
+              east: -4.562
+              north: 12.615
+              up: -0.003
+            eep: 125
+            smartbox: sb13
+            smartbox_port: 11
+            tpm: tpm09
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: -35
+          sb14-01:
+            location_offset:
+              east: -8.829
+              north: 10.305
+              up: -0.024
+            eep: 133
+            smartbox: sb14
+            smartbox_port: 1
+            tpm: tpm09
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb14-02:
+            location_offset:
+              east: -9.475
+              north: 13.188
+              up: -0.005
+            eep: 167
+            smartbox: sb14
+            smartbox_port: 2
+            tpm: tpm09
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb14-03:
+            location_offset:
+              east: -7.099
+              north: 10.656
+              up: -0.029
+            eep: 112
+            smartbox: sb14
+            smartbox_port: 3
+            tpm: tpm09
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb14-04:
+            location_offset:
+              east: -6.37
+              north: 12.383
+              up: -0.034
+            eep: 146
+            smartbox: sb14
+            smartbox_port: 4
+            tpm: tpm09
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb14-05:
+            location_offset:
+              east: -6.227
+              north: 14.608
+              up: -0.039
+            eep: 180
+            smartbox: sb14
+            smartbox_port: 5
+            tpm: tpm09
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb14-06:
+            location_offset:
+              east: -7.759
+              north: 13.849
+              up: -0.018
+            eep: 201
+            smartbox: sb14
+            smartbox_port: 6
+            tpm: tpm10
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb14-07:
+            location_offset:
+              east: -7.274
+              north: 16.47
+              up: -0.008
+            eep: 235
+            smartbox: sb14
+            smartbox_port: 7
+            tpm: tpm10
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb14-08:
+            location_offset:
+              east: -10.934
+              north: 15.615
+              up: 0.01
+            eep: 256
+            smartbox: sb14
+            smartbox_port: 8
+            tpm: tpm10
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb14-09:
+            location_offset:
+              east: -11.18
+              north: 13.822
+              up: -0.008
+            eep: 222
+            smartbox: sb14
+            smartbox_port: 9
+            tpm: tpm10
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb14-10:
+            location_offset:
+              east: -12.863
+              north: 13.051
+              up: -0.05
+            eep: 243
+            smartbox: sb14
+            smartbox_port: 10
+            tpm: tpm10
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb14-11:
+            location_offset:
+              east: -11.489
+              north: 11.725
+              up: -0.021
+            eep: 188
+            smartbox: sb14
+            smartbox_port: 11
+            tpm: tpm10
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: -35
+          sb15-01:
+            location_offset:
+              east: 2.138
+              north: 4.993
+              up: -0.011
+            eep: 20
+            smartbox: sb15
+            smartbox_port: 1
+            tpm: tpm10
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: -35
+          sb15-02:
+            location_offset:
+              east: 1.576
+              north: 7.96
+              up: 0.011
+            eep: 41
+            smartbox: sb15
+            smartbox_port: 2
+            tpm: tpm10
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: -35
+          sb15-03:
+            location_offset:
+              east: 3.763
+              north: 5.722
+              up: -0.016
+            eep: 33
+            smartbox: sb15
+            smartbox_port: 3
+            tpm: tpm10
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: -35
+          sb15-04:
+            location_offset:
+              east: 3.317
+              north: 7.691
+              up: 0.02
+            eep: 54
+            smartbox: sb15
+            smartbox_port: 4
+            tpm: tpm10
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: -35
+          sb15-05:
+            location_offset:
+              east: 5.541
+              north: 9.618
+              up: 0.028
+            eep: 88
+            smartbox: sb15
+            smartbox_port: 5
+            tpm: tpm10
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: -35
+          sb15-06:
+            location_offset:
+              east: 3.582
+              north: 10.465
+              up: 0.034
+            eep: 75
+            smartbox: sb15
+            smartbox_port: 6
+            tpm: tpm10
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb15-07:
+            location_offset:
+              east: 0.292
+              north: 12.615
+              up: 0.039
+            eep: 117
+            smartbox: sb15
+            smartbox_port: 7
+            tpm: tpm10
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb15-08:
+            location_offset:
+              east: -1.687
+              north: 10.425
+              up: 0.007
+            eep: 83
+            smartbox: sb15
+            smartbox_port: 8
+            tpm: tpm10
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb15-09:
+            location_offset:
+              east: 0.002
+              north: 9.949
+              up: 0.018
+            eep: 62
+            smartbox: sb15
+            smartbox_port: 9
+            tpm: tpm10
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb15-10:
+            location_offset:
+              east: 0.285
+              north: 6.015
+              up: -0.016
+            eep: 28
+            smartbox: sb15
+            smartbox_port: 10
+            tpm: tpm10
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb16-01:
+            location_offset:
+              east: -4.819
+              north: 5.835
+              up: -0.029
+            eep: 44
+            smartbox: sb16
+            smartbox_port: 1
+            tpm: tpm11
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb16-02:
+            location_offset:
+              east: -2.682
+              north: 4.674
+              up: -0.016
+            eep: 23
+            smartbox: sb16
+            smartbox_port: 2
+            tpm: tpm11
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb16-03:
+            location_offset:
+              east: -2.102
+              north: 6.403
+              up: -0.017
+            eep: 36
+            smartbox: sb16
+            smartbox_port: 3
+            tpm: tpm11
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb16-04:
+            location_offset:
+              east: -4.318
+              north: 7.51
+              up: -0.008
+            eep: 57
+            smartbox: sb16
+            smartbox_port: 4
+            tpm: tpm11
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb16-05:
+            location_offset:
+              east: -0.582
+              north: 8.186
+              up: 0.004
+            eep: 49
+            smartbox: sb16
+            smartbox_port: 5
+            tpm: tpm11
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb16-06:
+            location_offset:
+              east: -2.56
+              north: 8.776
+              up: 0.006
+            eep: 70
+            smartbox: sb16
+            smartbox_port: 6
+            tpm: tpm11
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: -35
+          sb16-07:
+            location_offset:
+              east: -5.278
+              north: 10.941
+              up: -0.041
+            eep: 91
+            smartbox: sb16
+            smartbox_port: 7
+            tpm: tpm11
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: -35
+          sb16-08:
+            location_offset:
+              east: -5.983
+              north: 8.276
+              up: -0.03
+            eep: 78
+            smartbox: sb16
+            smartbox_port: 8
+            tpm: tpm11
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: -35
+          sb16-09:
+            location_offset:
+              east: -8.538
+              north: 8.576
+              up: -0.009
+            eep: 99
+            smartbox: sb16
+            smartbox_port: 9
+            tpm: tpm11
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: -35
+          sb16-10:
+            location_offset:
+              east: -7.246
+              north: 6.263
+              up: -0.015
+            eep: 65
+            smartbox: sb16
+            smartbox_port: 10
+            tpm: tpm11
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: -35
+          sb16-11:
+            location_offset:
+              east: -8.958
+              north: 6.832
+              up: -0.003
+            eep: 86
+            smartbox: sb16
+            smartbox_port: 11
+            tpm: tpm11
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: -35
+          sb17-01:
+            location_offset:
+              east: -14.396
+              north: 5.906
+              up: -0.042
+            eep: 162
+            smartbox: sb17
+            smartbox_port: 1
+            tpm: tpm11
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb17-02:
+            location_offset:
+              east: -11.482
+              north: 5.806
+              up: -0.019
+            eep: 107
+            smartbox: sb17
+            smartbox_port: 2
+            tpm: tpm11
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb17-03:
+            location_offset:
+              east: -12.898
+              north: 6.979
+              up: -0.001
+            eep: 141
+            smartbox: sb17
+            smartbox_port: 3
+            tpm: tpm11
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb17-04:
+            location_offset:
+              east: -10.544
+              north: 7.798
+              up: -0.001
+            eep: 120
+            smartbox: sb17
+            smartbox_port: 4
+            tpm: tpm11
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb17-05:
+            location_offset:
+              east: -10.692
+              north: 10.095
+              up: -0.024
+            eep: 154
+            smartbox: sb17
+            smartbox_port: 5
+            tpm: tpm11
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb17-06:
+            location_offset:
+              east: -12.083
+              north: 8.791
+              up: -0.03
+            eep: 175
+            smartbox: sb17
+            smartbox_port: 6
+            tpm: tpm12
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb17-07:
+            location_offset:
+              east: -13.435
+              north: 10.668
+              up: -0.033
+            eep: 209
+            smartbox: sb17
+            smartbox_port: 7
+            tpm: tpm12
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb17-08:
+            location_offset:
+              east: -15.142
+              north: 10.055
+              up: -0.039
+            eep: 230
+            smartbox: sb17
+            smartbox_port: 8
+            tpm: tpm12
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb17-09:
+            location_offset:
+              east: -14.705
+              north: 8.243
+              up: -0.03
+            eep: 196
+            smartbox: sb17
+            smartbox_port: 9
+            tpm: tpm12
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb17-10:
+            location_offset:
+              east: -17.935
+              north: 7.292
+              up: -0.077
+            eep: 251
+            smartbox: sb17
+            smartbox_port: 10
+            tpm: tpm12
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb18-01:
+            location_offset:
+              east: -0.685
+              north: -1.063
+              up: -0.017
+            eep: 3
+            smartbox: sb18
+            smartbox_port: 1
+            tpm: tpm12
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb18-02:
+            location_offset:
+              east: 2.342
+              north: -2.42
+              up: -0.005
+            eep: 6
+            smartbox: sb18
+            smartbox_port: 2
+            tpm: tpm12
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb18-03:
+            location_offset:
+              east: 1.853
+              north: -0.648
+              up: -0.002
+            eep: 1
+            smartbox: sb18
+            smartbox_port: 3
+            tpm: tpm12
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb18-04:
+            location_offset:
+              east: 1.33
+              north: 1.076
+              up: -0.021
+            eep: 4
+            smartbox: sb18
+            smartbox_port: 4
+            tpm: tpm12
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb18-05:
+            location_offset:
+              east: 0.33
+              north: 3.069
+              up: -0.044
+            eep: 7
+            smartbox: sb18
+            smartbox_port: 5
+            tpm: tpm12
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb18-06:
+            location_offset:
+              east: -0.542
+              north: 1.379
+              up: -0.014
+            eep: 2
+            smartbox: sb18
+            smartbox_port: 6
+            tpm: tpm12
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb18-07:
+            location_offset:
+              east: -0.961
+              north: 4.72
+              up: -0.027
+            eep: 15
+            smartbox: sb18
+            smartbox_port: 7
+            tpm: tpm12
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb18-08:
+            location_offset:
+              east: -2.563
+              north: 2.852
+              up: -0.004
+            eep: 10
+            smartbox: sb18
+            smartbox_port: 8
+            tpm: tpm12
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb18-09:
+            location_offset:
+              east: -2.204
+              north: -0.126
+              up: 0.005
+            eep: 5
+            smartbox: sb18
+            smartbox_port: 9
+            tpm: tpm12
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb18-10:
+            location_offset:
+              east: -2.797
+              north: -2.347
+              up: -0.041
+            eep: 8
+            smartbox: sb18
+            smartbox_port: 10
+            tpm: tpm12
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb18-11:
+            location_offset:
+              east: -0.032
+              north: -3.49
+              up: -0.01
+            eep: 11
+            smartbox: sb18
+            smartbox_port: 11
+            tpm: tpm12
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb19-01:
+            location_offset:
+              east: -3.923
+              north: -0.636
+              up: -0.019
+            eep: 13
+            smartbox: sb19
+            smartbox_port: 1
+            tpm: tpm13
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 0
+          sb19-02:
+            location_offset:
+              east: -6.044
+              north: -0.253
+              up: -0.023
+            eep: 26
+            smartbox: sb19
+            smartbox_port: 2
+            tpm: tpm13
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 0
+          sb19-03:
+            location_offset:
+              east: -5.495
+              north: 2.221
+              up: -0.017
+            eep: 18
+            smartbox: sb19
+            smartbox_port: 3
+            tpm: tpm13
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 0
+          sb19-04:
+            location_offset:
+              east: -4.531
+              north: 3.844
+              up: -0.005
+            eep: 31
+            smartbox: sb19
+            smartbox_port: 4
+            tpm: tpm13
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 0
+          sb19-05:
+            location_offset:
+              east: -7.716
+              north: 1.789
+              up: -0.007
+            eep: 39
+            smartbox: sb19
+            smartbox_port: 5
+            tpm: tpm13
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 0
+          sb19-06:
+            location_offset:
+              east: -7.834
+              north: 3.63
+              up: 0.003
+            eep: 52
+            smartbox: sb19
+            smartbox_port: 6
+            tpm: tpm13
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb19-07:
+            location_offset:
+              east: -9.58
+              north: 3.9
+              up: -0.02
+            eep: 73
+            smartbox: sb19
+            smartbox_port: 7
+            tpm: tpm13
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb19-08:
+            location_offset:
+              east: -9.551
+              north: 1.423
+              up: -0.034
+            eep: 60
+            smartbox: sb19
+            smartbox_port: 8
+            tpm: tpm13
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb19-09:
+            location_offset:
+              east: -11.549
+              north: 2.731
+              up: -0.03
+            eep: 94
+            smartbox: sb19
+            smartbox_port: 9
+            tpm: tpm13
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb19-10:
+            location_offset:
+              east: -10.41
+              north: -0.125
+              up: -0.058
+            eep: 81
+            smartbox: sb19
+            smartbox_port: 10
+            tpm: tpm13
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb19-11:
+            location_offset:
+              east: -11.726
+              north: -1.295
+              up: -0.002
+            eep: 102
+            smartbox: sb19
+            smartbox_port: 11
+            tpm: tpm13
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb20-01:
+            location_offset:
+              east: -15.816
+              north: 0.53
+              up: 0.007
+            eep: 170
+            smartbox: sb20
+            smartbox_port: 1
+            tpm: tpm13
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: -35
+          sb20-02:
+            location_offset:
+              east: -14.335
+              north: -0.394
+              up: 0.026
+            eep: 136
+            smartbox: sb20
+            smartbox_port: 2
+            tpm: tpm13
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: -35
+          sb20-03:
+            location_offset:
+              east: -12.133
+              north: 0.973
+              up: -0.008
+            eep: 115
+            smartbox: sb20
+            smartbox_port: 3
+            tpm: tpm13
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: -35
+          sb20-04:
+            location_offset:
+              east: -13.901
+              north: 2.185
+              up: 0.006
+            eep: 149
+            smartbox: sb20
+            smartbox_port: 4
+            tpm: tpm13
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: -35
+          sb20-05:
+            location_offset:
+              east: -13.308
+              north: 4.454
+              up: -0.02
+            eep: 128
+            smartbox: sb20
+            smartbox_port: 5
+            tpm: tpm13
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: -35
+          sb20-06:
+            location_offset:
+              east: -15.868
+              north: 4.309
+              up: -0.021
+            eep: 183
+            smartbox: sb20
+            smartbox_port: 6
+            tpm: tpm14
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: -35
+          sb20-07:
+            location_offset:
+              east: -16.192
+              north: 6.342
+              up: -0.045
+            eep: 217
+            smartbox: sb20
+            smartbox_port: 7
+            tpm: tpm14
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: -35
+          sb20-08:
+            location_offset:
+              east: -18.077
+              north: 4.755
+              up: -0.042
+            eep: 238
+            smartbox: sb20
+            smartbox_port: 8
+            tpm: tpm14
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: -35
+          sb20-09:
+            location_offset:
+              east: -16.586
+              north: 2.423
+              up: 0.003
+            eep: 204
+            smartbox: sb20
+            smartbox_port: 9
+            tpm: tpm14
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: -35
+          sb20-10:
+            location_offset:
+              east: -18.609
+              north: -0.792
+              up: -0.021
+            eep: 225
+            smartbox: sb20
+            smartbox_port: 10
+            tpm: tpm14
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: -35
+          sb21-01:
+            location_offset:
+              east: -6.871
+              north: -8.875
+              up: -0.023
+            eep: 84
+            smartbox: sb21
+            smartbox_port: 1
+            tpm: tpm14
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb21-02:
+            location_offset:
+              east: -6.312
+              north: -6.805
+              up: -0.043
+            eep: 63
+            smartbox: sb21
+            smartbox_port: 2
+            tpm: tpm14
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb21-03:
+            location_offset:
+              east: -4.161
+              north: -7.27
+              up: -0.015
+            eep: 50
+            smartbox: sb21
+            smartbox_port: 3
+            tpm: tpm14
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb21-04:
+            location_offset:
+              east: -5.549
+              north: -4.967
+              up: -0.063
+            eep: 42
+            smartbox: sb21
+            smartbox_port: 4
+            tpm: tpm14
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb21-05:
+            location_offset:
+              east: -4.713
+              north: -2.235
+              up: -0.053
+            eep: 21
+            smartbox: sb21
+            smartbox_port: 5
+            tpm: tpm14
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb21-06:
+            location_offset:
+              east: -6.528
+              north: -1.995
+              up: -0.03
+            eep: 34
+            smartbox: sb21
+            smartbox_port: 6
+            tpm: tpm14
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb21-07:
+            location_offset:
+              east: -7.934
+              north: -0.781
+              up: -0.029
+            eep: 47
+            smartbox: sb21
+            smartbox_port: 7
+            tpm: tpm14
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 0
+          sb21-08:
+            location_offset:
+              east: -7.417
+              north: -3.536
+              up: -0.046
+            eep: 55
+            smartbox: sb21
+            smartbox_port: 8
+            tpm: tpm14
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 0
+          sb21-09:
+            location_offset:
+              east: -9.078
+              north: -2.3
+              up: -0.027
+            eep: 68
+            smartbox: sb21
+            smartbox_port: 9
+            tpm: tpm14
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 0
+          sb21-10:
+            location_offset:
+              east: -9.074
+              north: -5.861
+              up: -0.008
+            eep: 76
+            smartbox: sb21
+            smartbox_port: 10
+            tpm: tpm14
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 0
+          sb21-11:
+            location_offset:
+              east: -7.991
+              north: -7.324
+              up: -0.006
+            eep: 97
+            smartbox: sb21
+            smartbox_port: 11
+            tpm: tpm14
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 0
+          sb22-01:
+            location_offset:
+              east: -15.24
+              north: -7.446
+              up: -0.043
+            eep: 199
+            smartbox: sb22
+            smartbox_port: 1
+            tpm: tpm15
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 0
+          sb22-02:
+            location_offset:
+              east: -13.504
+              north: -5.647
+              up: -0.041
+            eep: 144
+            smartbox: sb22
+            smartbox_port: 2
+            tpm: tpm15
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 0
+          sb22-03:
+            location_offset:
+              east: -11.053
+              north: -5.992
+              up: -0.005
+            eep: 110
+            smartbox: sb22
+            smartbox_port: 3
+            tpm: tpm15
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 0
+          sb22-04:
+            location_offset:
+              east: -11.082
+              north: -4.195
+              up: 0.004
+            eep: 89
+            smartbox: sb22
+            smartbox_port: 4
+            tpm: tpm15
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 0
+          sb22-05:
+            location_offset:
+              east: -12.623
+              north: -3.341
+              up: 0.009
+            eep: 123
+            smartbox: sb22
+            smartbox_port: 5
+            tpm: tpm15
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 0
+          sb22-06:
+            location_offset:
+              east: -15.06
+              north: -2.946
+              up: 0.002
+            eep: 157
+            smartbox: sb22
+            smartbox_port: 6
+            tpm: tpm15
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 0
+          sb22-07:
+            location_offset:
+              east: -16.275
+              north: -1.575
+              up: 0.016
+            eep: 191
+            smartbox: sb22
+            smartbox_port: 7
+            tpm: tpm15
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 0
+          sb22-08:
+            location_offset:
+              east: -18.304
+              north: -2.515
+              up: -0.012
+            eep: 246
+            smartbox: sb22
+            smartbox_port: 8
+            tpm: tpm15
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 0
+          sb22-09:
+            location_offset:
+              east: -17.065
+              north: -4.365
+              up: -0.01
+            eep: 212
+            smartbox: sb22
+            smartbox_port: 9
+            tpm: tpm15
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 0
+          sb22-10:
+            location_offset:
+              east: -17.033
+              north: -6.586
+              up: -0.043
+            eep: 233
+            smartbox: sb22
+            smartbox_port: 10
+            tpm: tpm15
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 0
+          sb22-11:
+            location_offset:
+              east: -15.273
+              north: -4.704
+              up: -0.006
+            eep: 178
+            smartbox: sb22
+            smartbox_port: 11
+            tpm: tpm15
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 0
+          sb23-01:
+            location_offset:
+              east: -11.901
+              north: -12.632
+              up: -0.001
+            eep: 207
+            smartbox: sb23
+            smartbox_port: 1
+            tpm: tpm15
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 50
+          sb23-02:
+            location_offset:
+              east: -10.093
+              north: -12.411
+              up: -0.018
+            eep: 173
+            smartbox: sb23
+            smartbox_port: 2
+            tpm: tpm15
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 50
+          sb23-03:
+            location_offset:
+              east: -8.684
+              north: -9.358
+              up: -0.015
+            eep: 118
+            smartbox: sb23
+            smartbox_port: 3
+            tpm: tpm15
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 50
+          sb23-04:
+            location_offset:
+              east: -11.306
+              north: -9.95
+              up: 0.005
+            eep: 152
+            smartbox: sb23
+            smartbox_port: 4
+            tpm: tpm15
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 50
+          sb23-05:
+            location_offset:
+              east: -11.635
+              north: -7.705
+              up: 0.01
+            eep: 131
+            smartbox: sb23
+            smartbox_port: 5
+            tpm: tpm15
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 50
+          sb23-06:
+            location_offset:
+              east: -13.091
+              north: -9.616
+              up: -0.016
+            eep: 186
+            smartbox: sb23
+            smartbox_port: 6
+            tpm: tpm16
+            tpm_fibre_input: 1
+            tpm_y_channel: 16
+            tpm_x_channel: 17
+            delay: 50
+          sb23-07:
+            location_offset:
+              east: -13.448
+              north: -7.524
+              up: -0.005
+            eep: 165
+            smartbox: sb23
+            smartbox_port: 7
+            tpm: tpm16
+            tpm_fibre_input: 2
+            tpm_y_channel: 18
+            tpm_x_channel: 19
+            delay: 50
+          sb23-08:
+            location_offset:
+              east: -14.77
+              north: -9.149
+              up: -0.015
+            eep: 220
+            smartbox: sb23
+            smartbox_port: 8
+            tpm: tpm16
+            tpm_fibre_input: 3
+            tpm_y_channel: 20
+            tpm_x_channel: 21
+            delay: 50
+          sb23-09:
+            location_offset:
+              east: -17.487
+              north: -9.099
+              up: -0.015
+            eep: 254
+            smartbox: sb23
+            smartbox_port: 9
+            tpm: tpm16
+            tpm_fibre_input: 4
+            tpm_y_channel: 22
+            tpm_x_channel: 23
+            delay: 50
+          sb23-10:
+            location_offset:
+              east: -14.83
+              north: -12.342
+              up: -0.018
+            eep: 241
+            smartbox: sb23
+            smartbox_port: 10
+            tpm: tpm16
+            tpm_fibre_input: 5
+            tpm_y_channel: 24
+            tpm_x_channel: 25
+            delay: 50
+          sb24-01:
+            location_offset:
+              east: -5.021
+              north: -17.106
+              up: -0.032
+            eep: 236
+            smartbox: sb24
+            smartbox_port: 1
+            tpm: tpm16
+            tpm_fibre_input: 6
+            tpm_y_channel: 26
+            tpm_x_channel: 27
+            delay: 50
+          sb24-02:
+            location_offset:
+              east: -5.908
+              north: -15.243
+              up: -0.009
+            eep: 181
+            smartbox: sb24
+            smartbox_port: 2
+            tpm: tpm16
+            tpm_fibre_input: 7
+            tpm_y_channel: 28
+            tpm_x_channel: 29
+            delay: 50
+          sb24-03:
+            location_offset:
+              east: -4.46
+              north: -13.78
+              up: -0.055
+            eep: 147
+            smartbox: sb24
+            smartbox_port: 3
+            tpm: tpm16
+            tpm_fibre_input: 8
+            tpm_y_channel: 30
+            tpm_x_channel: 31
+            delay: 50
+          sb24-04:
+            location_offset:
+              east: -5.531
+              north: -12.235
+              up: -0.023
+            eep: 126
+            smartbox: sb24
+            smartbox_port: 4
+            tpm: tpm16
+            tpm_fibre_input: 9
+            tpm_y_channel: 0
+            tpm_x_channel: 1
+            delay: 50
+          sb24-05:
+            location_offset:
+              east: -6.199
+              north: -10.574
+              up: -0.025
+            eep: 105
+            smartbox: sb24
+            smartbox_port: 5
+            tpm: tpm16
+            tpm_fibre_input: 10
+            tpm_y_channel: 2
+            tpm_x_channel: 3
+            delay: 50
+          sb24-06:
+            location_offset:
+              east: -8.453
+              north: -11.105
+              up: -0.009
+            eep: 139
+            smartbox: sb24
+            smartbox_port: 6
+            tpm: tpm16
+            tpm_fibre_input: 11
+            tpm_y_channel: 4
+            tpm_x_channel: 5
+            delay: 50
+          sb24-07:
+            location_offset:
+              east: -7.566
+              north: -13.44
+              up: -0.013
+            eep: 160
+            smartbox: sb24
+            smartbox_port: 7
+            tpm: tpm16
+            tpm_fibre_input: 12
+            tpm_y_channel: 6
+            tpm_x_channel: 7
+            delay: 50
+          sb24-08:
+            location_offset:
+              east: -9.23
+              north: -14.078
+              up: -0.013
+            eep: 194
+            smartbox: sb24
+            smartbox_port: 8
+            tpm: tpm16
+            tpm_fibre_input: 13
+            tpm_y_channel: 8
+            tpm_x_channel: 9
+            delay: 50
+          sb24-09:
+            location_offset:
+              east: -10.97
+              north: -14.671
+              up: -0.072
+            eep: 228
+            smartbox: sb24
+            smartbox_port: 9
+            tpm: tpm16
+            tpm_fibre_input: 14
+            tpm_y_channel: 10
+            tpm_x_channel: 11
+            delay: 50
+          sb24-10:
+            location_offset:
+              east: -9.644
+              north: -16.438
+              up: -0.03
+            eep: 249
+            smartbox: sb24
+            smartbox_port: 10
+            tpm: tpm16
+            tpm_fibre_input: 15
+            tpm_y_channel: 12
+            tpm_x_channel: 13
+            delay: 50
+          sb24-11:
+            location_offset:
+              east: -7.402
+              north: -16.145
+              up: -0.019
+            eep: 215
+            smartbox: sb24
+            smartbox_port: 11
+            tpm: tpm16
+            tpm_fibre_input: 16
+            tpm_y_channel: 14
+            tpm_x_channel: 15
+            delay: 50
