@@ -93,7 +93,7 @@ def main():
                 },
                 "geometry": {
                     "type": "Polygon",
-                    "coordinates": alpha_shape_lat_long,
+                    "coordinates": [alpha_shape_lat_long],
                 },
             }
         )
