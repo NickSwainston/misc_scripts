@@ -7,6 +7,7 @@ cat_dict = collect_catalogue_fluxes()
 atnf = []
 both = []
 us = []
+us_spectra = []
 none = []
 for jname in cat_dict.keys():
     atnf_bool = False
@@ -19,10 +20,14 @@ for jname in cat_dict.keys():
 
     if atnf_bool and us_bool:
         both.append(jname)
+        if len(cat_dict[jname][0]) > 3:
+            us_spectra.append((jname, cat_dict[jname]))
     elif atnf_bool:
         atnf.append(jname)
     elif us_bool:
         us.append(jname)
+        if len(cat_dict[jname][0]) > 3:
+            us_spectra.append((jname, cat_dict[jname]))
     else:
         none.append(jname)
 
@@ -30,6 +35,7 @@ print(f"atnf: {len(atnf)}")
 print(f"both: {len(both)}")
 print(f"us  : {len(us)}")
 print(f"none: {len(none)}")
+print(f"Pulsars with enough fluxes to plot a spectrum: {len(us_spectra)}")
 
 
 ref_count = {}
